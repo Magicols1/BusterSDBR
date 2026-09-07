@@ -1,3 +1,1093 @@
--- Obfuscated with Matcha Obfuscator
--- https://github.com/matcha-obfuscator
-local _0x0,_0x308,_0x1,_0x2,_0x3,_0x4,_0x5,_0x309,_0x6,_0x7,_0x30a,_0x8,_0x9,_0xa,_0xb,_0xc,_0xd,_0xe,_0xf,_0x30b,_0x10,_0x11,_0x12,_0x13,_0x14,_0x15,_0x16,_0x17,_0x18,_0x19,_0x1a,_0x1b,_0x1c,_0x1d,_0x1e,_0x1f,_0x20,_0x21,_0x22,_0x23,_0x24,_0x25,_0x26,_0x27,_0x28,_0x29,_0x2a,_0x2b,_0x2c,_0x2d,_0x2e,_0x2f,_0x30,_0x31,_0x32,_0x33,_0x34,_0x35,_0x36,_0x37,_0x38,_0x310,_0x39,_0x3a,_0x312,_0x3b,_0x3c,_0x3d,_0x3e,_0x3f,_0x40,_0x41,_0x42,_0x43,_0x44,_0x48,_0x4c,_0x4e,_0x50,_0x51,_0x52,_0x53,_0x54,_0x5b,_0x63,_0x67,_0x31a,_0x68,_0x6a,_0x6c,_0x70,_0x71,_0x74,_0x75,_0x76,_0x7a,_0x31c,_0x7e,_0x95,_0x96,_0x9a,_0x9b,_0xa5,_0xa6,_0xa7,_0xa8,_0xaa,_0xae,_0xb5,_0xc0,_0xc2,_0xc4,_0xc6,_0xcb,_0xcc,_0xcd,_0xd0,_0xd2,_0xd4,_0xd5,_0xd6,_0xd7,_0xd8,_0xe3,_0xe4,_0xe5,_0xe6,_0xe8,_0xea,_0xef,_0xf0,_0xf1,_0xf2,_0xf3,_0xf4,_0xfd,_0xff,_0x101,_0x104,_0x105,_0x324,_0x106,_0x109,_0x10c,_0x112,_0x113,_0x116,_0x325,_0x11b,_0x11d,_0x11f,_0x327,_0x121,_0x123,_0x129,_0x12b,_0x12c,_0x12e,_0x329,_0x131,_0x132,_0x133,_0x32a,_0x135,_0x13a,_0x13d,_0x143,_0x146,_0x148,_0x14a,_0x14b,_0x14c,_0x14d,_0x14e,_0x14f,_0x150,_0x151,_0x152,_0x153,_0x154,_0x155,_0x156,_0x157,_0x158,_0x159,_0x15a,_0x15b,_0x15c,_0x15f,_0x162,_0x330,_0x331,_0x163,_0x165,_0x166,_0x167,_0x168,_0x334,_0x336,_0x339,_0x169,_0x33b,_0x16a,_0x33c,_0x16b,_0x16c,_0x33d,_0x16e,_0x16f,_0x170,_0x171,_0x33e,_0x173,_0x174,_0x175,_0x33f,_0x17c;local _0x384=1;while true do if _0x384 == 248 then _0x2a="";_0x384=253 elseif _0x384 == 81 then _0x30a=(10 + 0) * 1;_0x384=87 elseif _0x384 == 857 then _0xd7=1 - 1;_0x384=863 elseif _0x384 == 627 then _0x75=function() local _0x34a=2;while true do if _0x34a == 2 then if type(writefile) ~= __0x385d(1) then return end;_0x34a=10 elseif _0x34a == 10 then pcall(function() writefile(_0x74,_0x4:JSONEncode({selItem=_0x32,selVeh=_0x25,selMission=_0x29,smuggleOn=_0x27,truckerOn=_0x28,DriveSpeed=_0x10,WEBHOOK=_0x2a,vehList=_0x26})) end);_0x34a=16 elseif _0x34a == 16 then do local _0x1a4=25 end;_0x34a=40 else break end end end;_0x384=632 elseif _0x384 == 613 then _0x71=function(_0x72) local _0x73;local _0x349=2;while true do if _0x349 == 16 then _0x73=tostring(_0x72):gsub(__0x385d(2),__0x385d(3)):gsub(__0x385d(4),__0x385d(5)):gsub(__0x385d(6),__0x385d(7));_0x349=23 elseif _0x349 == 9 then if _0x2a == "" then return end;_0x349=16 elseif _0x349 == 23 then _0x6c(_0x2a,__0x385d(8) .. _0x73 .. __0x385d(9));_0x349=48 elseif _0x349 == 2 then do local _0x1a3=764 end;_0x349=9 else break end end end;_0x384=618 elseif _0x384 == 1755 then _0x165(_0x168.islT,false);_0x384=1758 elseif _0x384 == 381 then _0x3b={111.39,17.23,148.67};_0x384=389 elseif _0x384 == 30 then _0x3=_0x2:GetMouse();_0x384=38 elseif _0x384 == 949 then _0xf3=function() local _0x364=4;while true do if _0x364 == 12 then pcall(function() print(__0x385d(10):format(tostring(_0xf1),_0xef,_0x10)) end);_0x364=15 elseif _0x364 == 4 then if _0xf1 and _0xf1 > 1 - 1 then _0x10=math.floor(math.clamp(_0xf1 * _0xef,6 * 9 + 6,273 + 127) + 0.5) else _0x10=_0xf0 end;_0x364=12 elseif _0x364 == 15 then return _0x10 else break end end end;_0x384=956 elseif _0x384 == 1682 then _0x168.islB=_0x15f(Color3.fromRGB(77 + 206 - 28,123 + 132,31 * 8 + 7),19 + 8 - 9);_0x384=1692 elseif _0x384 == 1 then _0x0=game:GetService(__0x385d(11));_0x384=10 elseif _0x384 == 326 then _0x37={6615.33,64.53,-463.03};_0x384=331 elseif _0x384 == 1200 then _0x13d=function() local _0x13e,_0x83,_0x2ad,_0x13f,_0x140;local _0x37b=5;while true do if _0x37b == 24 then while _0x1c and _G.__sdq == _0x5 and not _0x13e and tick() - _0x83 < 8 + 11 - 9 do if false then local _0x29d=nil end;_0x13e=_0x13a();if not _0x13e then wait(0.3) end end;_0x37b=33 elseif _0x37b == 87 then _0x1d=__0x385d(12);_0x37b=96 elseif _0x37b == 18 then _0x83=tick();_0x37b=24 elseif _0x37b == 159 then _0x1d=__0x385d(13);_0x37b=166 elseif _0x37b == 5 then _0x13e=nil;_0x37b=10 elseif _0x37b == 45 then if not _0xf4(_0x3a[2 - 1],_0x3a[3 + 3 - 3]) then return false end;_0x37b=53 elseif _0x37b == 10 then do local _0x2ab=311 end;_0x37b=18 elseif _0x37b == 134 then do local _0x2af=843 end;_0x37b=142 elseif _0x37b == 166 then return true elseif _0x37b == 60 then do local _0x2ac=703 end;_0x37b=65 elseif _0x37b == 96 then _0xf4(_0x13e.X,_0x13e.Z);_0x37b=103 elseif _0x37b == 75 then _0x13e=_0x13a() or _0x13e;_0x37b=81 elseif _0x37b == 142 then _0xff();_0x37b=152 elseif _0x37b == 108 then _0x1d=__0x385d(14);_0x37b=116 elseif _0x37b == 103 then do local _0x2ae=949 end;_0x37b=108 elseif _0x37b == 53 then _0x1d=__0x385d(15);_0x37b=60 elseif _0x37b == 81 then _0x2ad=(97 + 0) * 1;_0x37b=87 elseif _0x37b == 152 then if _0xe5 then local _0x2aa=(25 + 0) * 1;_0xe8(_0xd4);_0xe5=false end;_0x37b=159 elseif _0x37b == 122 then _0x140=nil;_0x37b=127 elseif _0x37b == 36 then _0x1d=__0x385d(16);_0x37b=45 elseif _0x37b == 65 then if not _0xf4(_0x3b[2 - 1],_0x3b[1 + 2]) then if 1 > 2 then local _0x29e=nil end;return false end;_0x37b=75 elseif _0x37b == 116 then _0x13f=tick() + (98 + 33 - 11);_0x37b=122 elseif _0x37b == 127 then while _0x1c and _G.__sdq == _0x5 and tick() < _0x13f do if 1 > 2 then local _0x2a8=nil end;local _0x141=_0x13a();if not _0x141 then break end;local _0x4a,_0x49=_0xe3();local _0xdd=_0x49 and _0x4e(_0x49);if _0xdd then local _0x2a6=(95 + 0) * 1;local _0x58,_0x59=_0x141.X - _0xdd.X,_0x141.Z - _0xdd.Z;local _0xf6=math.sqrt(_0x58 * _0x58 + _0x59 * _0x59);do local _0x2a7=218 end;if _0xf6 > 1 + 4 then if 1 > 2 then local _0x2a0=nil end;_0x140=nil;if false then local _0x2a1=nil end;_0xe6(true);local _0xf7,_0xf8=_0x58 / _0xf6,_0x59 / _0xf6;local _0x142=math.clamp(_0xf6 * 1.5,2 + 3,5 + 54 - 31);local _0xf9=_0xea(_0xdd.X,_0xdd.Y + (5 + 3 - 2),_0xdd.Z);local _0xfc=-(8 + 2);local _0x2a2=(53 + 0) * 1;if _0xf9 then if 1 > 2 then local _0x29f=nil end;_0xfc=math.clamp((_0xf9 + (9 + 12 - 19) - _0xdd.Y) * _0x14,-_0x15,_0x15) end;pcall(function() _0x49.AssemblyLinearVelocity=Vector3.new(_0xf7 * _0x142,_0xfc,_0xf8 * _0x142) end) else do local _0x2a5=404 end;_0x1d=__0x385d(17);if not _0x140 then local _0xdb,_0x73=pcall(function() return _0x49.CFrame end);_0x140=_0xdb and _0x73 or nil;if false then local _0x2a3=nil end end;pcall(function() _0x49.AssemblyLinearVelocity=Vector3.new(1 - 1,1 - 1,1 - 1);_0x49.AssemblyAngularVelocity=Vector3.new(1 - 1,1 - 1,1 - 1) end);if _0x140 then pcall(function() _0x49.CFrame=_0x140 end);if 1 > 2 then local _0x2a4=nil end end end end;if false then local _0x2a9=nil end;wait(0.05) end;_0x37b=134 elseif _0x37b == 33 then if not _0x13e then _0x1d=__0x385d(18);return false end;_0x37b=36 else break end end end;_0x384=1209 elseif _0x384 == 417 then do local _0x314=209 end;_0x384=424 elseif _0x384 == 962 then _0xfd=function(_0xfe) local _0x366=1;while true do if _0x366 == 8 then if false then local _0x22f=nil end;_0x366=19 elseif _0x366 == 19 then for _0x4a,_0x4b in ipairs(_0xfe) do if not _0xf4(_0x4b[2 - 1],_0x4b[30 + 9 - 36]) then return false end end;_0x366=26 elseif _0x366 == 1 then _0xf3();_0x366=8 elseif _0x366 == 26 then return true else break end end end;_0x384=969 elseif _0x384 == 582 then _0x68=function() local _0x69,_0x19e;local _0x345=2;while true do if _0x345 == 22 then return _0x69 - _0x2b elseif _0x345 == 10 then _0x19e=(9 + 0) * 1;_0x345=17 elseif _0x345 == 2 then _0x69=_0x5b();_0x345=10 elseif _0x345 == 17 then if not (_0x69 and _0x2b) then return 1 - 1 end;_0x345=22 else break end end end;_0x384=591 elseif _0x384 == 1583 then _0x168.msT=_0x163(Color3.fromRGB(110 * 2 + 0,28 * 8 + 0,58 * 4 + 0),4 * 3 + 0,25 + 9 - 29);_0x384=1594 elseif _0x384 == 156 then _0x1a,_0x1b=7 + 23,30 * 2 + 0;_0x384=166 elseif _0x384 == 1222 then _0x148=function() _0x1c=false;_0x1d=__0x385d(19) end;_0x384=1228 elseif _0x384 == 523 then do local _0x318=806 end;_0x384=527 elseif _0x384 == 1905 then _0x17c();_0x384=1915 elseif _0x384 == 1403 then _0x44(_0x168.bd,__0x385d(20),34 + 15 - 37);_0x384=1412 elseif _0x384 == 1668 then _0x168.s2=_0x163(Color3.fromRGB(171 + 9 - 30,103 + 58 - 5,42 * 4 + 0),33 + 2 - 23,1 * 4 + 1);_0x384=1678 elseif _0x384 == 122 then _0x13,_0x14,_0x15=9.3,49 + 5 - 44,92 + 68;_0x384=130 elseif _0x384 == 527 then _0x52=function(_0x46) pcall(setrobloxinput,true);pcall(keypress,_0x46) end;_0x384=535 elseif _0x384 == 331 then if false then local _0x30f=nil end;_0x384=339 elseif _0x384 == 1678 then _0x339=(9 + 0) * 1;_0x384=1682 elseif _0x384 == 1528 then _0x168.itT=_0x163(Color3.fromRGB(124 + 96,74 * 3 + 2,23 * 10 + 2),19 + 35 - 42,41 + 12 - 48);_0x384=1535 elseif _0x384 == 1781 then _0x16a={};_0x384=1789 elseif _0x384 == 1710 then _0x168.islBg=_0x15f(Color3.fromRGB(4 + 10,35 + 15 - 36,15 + 12 - 11),37 + 24 - 42);_0x384=1717 elseif _0x384 == 1493 then _0x168.div=_0x15f(Color3.fromRGB(69 + 47 - 42,14 * 5 + 4,40 + 65 - 23),2 + 2 - 1);_0x384=1499 elseif _0x384 == 1066 then if false then local _0x326=nil end;_0x384=1075 elseif _0x384 == 975 then _0x101=function(_0x102) local _0xa1,_0xdb,_0x85,_0x103;local _0x367=3;while true do if _0x367 == 37 then while tick() < _0x103 and _G.__sdq == _0x5 do pcall(function() _0xa1.AssemblyLinearVelocity=Vector3.new(1 - 1,1 - 1,1 - 1) end);pcall(function() _0xa1.AssemblyAngularVelocity=Vector3.new(1 - 1,1 - 1,1 - 1) end);if _0xdb and typeof(_0x85) == __0x385d(21) then pcall(function() _0xa1.CFrame=_0x85 end) end;task.wait() end;_0x367=60 elseif _0x367 == 23 then _0x103=tick() + (_0x102 or 0.5);_0x367=30 elseif _0x367 == 3 then _0xa1=_0x4c();_0x367=10 elseif _0x367 == 30 then if 1 > 2 then local _0x231=nil end;_0x367=37 elseif _0x367 == 10 then if not _0xa1 then return end;_0x367=16 elseif _0x367 == 16 then _0xdb,_0x85=pcall(function() return _0xa1.CFrame end);_0x367=23 else break end end end;_0x384=983 elseif _0x384 == 16 then _0x1=game:GetService(__0x385d(22));_0x384=26 elseif _0x384 == 1303 then _0x15c=function(_0x47,_0x15d,_0x15e) return math.clamp((_0x47 - _0x15d) / (_0x15e - _0x15d),1 - 1,2 - 1) end;_0x384=1313 elseif _0x384 == 1828 then _0x16e=17 + 9;_0x384=1835 elseif _0x384 == 925 then _0xf1=nil;_0x384=933 elseif _0x384 == 696 then if 1 > 2 then local _0x31d=nil end;_0x384=702 elseif _0x384 == 1704 then _0x165(_0x168.islB,false);_0x384=1710 elseif _0x384 == 494 then _0x4e=function(_0x45) local _0x4f,_0x47=pcall(function() return _0x45.Position end);return _0x4f and typeof(_0x47) == __0x385d(23) and _0x47 or nil end;_0x384=502 elseif _0x384 == 1725 then _0x44(_0x168.islBg,__0x385d(24),9 + 8 - 6);_0x384=1732 elseif _0x384 == 673 then _0x95={};_0x384=680 elseif _0x384 == 933 then do local _0x322=604 end;_0x384=943 elseif _0x384 == 93 then _0xc,_0xd,_0xe=19 * 5 + 0,true,31 + 14;_0x384=103 elseif _0x384 == 312 then _0x35={6613.92,64.53,-436.56};_0x384=317 elseif _0x384 == 1178 then _0x135=function() local _0x136,_0x137,_0x58,_0x59,_0x138,_0xb9,_0xbb,_0x122,_0x294,_0x125;local _0x379=5;while true do if _0x379 == 80 then _0x294=(41 + 0) * 1;_0x379=89 elseif _0x379 == 94 then while _0x1c and _G.__sdq == _0x5 and not (_0xe4() or _0x133()) and _0x125 < 3 + 11 - 8 do if 1 > 2 then local _0x28d=nil end;_0x125=_0x125 + (2 - 1);_0xa8(_0xb9,_0x137.Y,_0xbb,1 + 4);local _0xa1=_0x4c();local _0xa3=_0xa1 and _0x4e(_0xa1);if _0xa3 then pcall(function() _0xa1.CFrame=_0x54(_0xa3.X,_0xa3.Y,_0xa3.Z,_0x137.X - _0xa3.X,_0x137.Z - _0xa3.Z) end) end;_0x7e(_0x137.X,_0x137.Y + (1 + 1),_0x137.Z,1.5);if 1 > 2 then local _0x28e=nil end;if _0x122 then if 1 > 2 then local _0x286=nil end;pcall(function() fireproximityprompt(_0x122) end);local _0x287=(22 + 0) * 1 end;local _0x28f=(85 + 0) * 1;_0x1d=__0x385d(25) .. _0x125 .. __0x385d(26);local _0x290=(78 + 0) * 1;_0x52(_0x50);wait(0.06);do local _0x291=110 end;_0x53(_0x50);wait(0.25);local _0x292=math.random() * 0;local _0xce=_0x131();if 1 > 2 then local _0x293=nil end;if _0xce then local _0x12f=_0x12b() and _0x12b():FindFirstChild(_0xce);local _0x139=_0x12f and _0x12f:FindFirstChild(__0x385d(27));if _0x139 then _0x1d=__0x385d(28) .. _0xce;_0x10c(_0x139,0.8);if false then local _0x28a=nil end;wait(0.6);do local _0x28b=914 end;if _0x43[_0xce] then if 1 > 2 then local _0x288=nil end;_0x10=_0x43[_0xce];local _0x289=(61 + 0) * 1 end;do local _0x28c=697 end end end end;_0x379=100 elseif _0x379 == 8 then if not _0x136 then do local _0x284=602 end;_0x1d=__0x385d(29);do local _0x285=327 end;return false end;_0x379=18 elseif _0x379 == 61 then _0x122=_0x136:FindFirstChild(__0x385d(30));_0x379=66 elseif _0x379 == 25 then if not _0x137 then _0x137=Vector3.new(_0x41[2 - 1],_0x41[6 + 4 - 8],_0x41[8 + 1 - 6]) end;_0x379=30 elseif _0x379 == 50 then if _0x138 > 2 - 1 then _0xb9,_0xbb=_0x137.X + _0x58 / _0x138 * (15 + 21 - 31),_0x137.Z + _0x59 / _0x138 * (38 + 15 - 48) end;_0x379=61 elseif _0x379 == 100 then if _0xe4() or _0x133() then _0xd4,_0xd5,_0xd6=nil,nil,{};for _0x4a=2 - 1,4 + 18 - 2 do if _0xd8() then break end;wait(0.1) end end;_0x379=106 elseif _0x379 == 89 then _0x125=1 - 1;_0x379=94 elseif _0x379 == 106 then return _0xe4() or _0x133() elseif _0x379 == 30 then _0x58,_0x59=_0x40[2 - 1] - _0x137.X,_0x40[1 + 2] - _0x137.Z;_0x379=39 elseif _0x379 == 18 then _0x137=_0x4e(_0x136);_0x379=25 elseif _0x379 == 5 then _0x136=_0x132();_0x379=8 elseif _0x379 == 66 then _0x1d=__0x385d(31);_0x379=75 elseif _0x379 == 46 then _0xb9,_0xbb=_0x137.X,_0x137.Z;_0x379=50 elseif _0x379 == 39 then _0x138=math.sqrt(_0x58 * _0x58 + _0x59 * _0x59);_0x379=46 elseif _0x379 == 75 then _0x9b(_0xb9,_0x137.Y,_0xbb);_0x379=80 else break end end end;_0x384=1184 elseif _0x384 == 38 then _0x4=game:GetService(__0x385d(32));_0x384=47 elseif _0x384 == 863 then _0xd8=function() local _0xd9,_0x209,_0xda,_0xb0,_0xb1,_0xdb,_0xdc,_0xe1,_0x20c,_0x78,_0xb3,_0x20f;local _0x35f=1;while true do if _0x35f == 166 then _0x20f=(92 + 0) * 1;_0x35f=170 elseif _0x35f == 120 then if not _0xe1 then local _0x4f,_0xe2=pcall(function() return _0xb0:FindFirstChildWhichIsA(__0x385d(33),true) end);if _0x4f then local _0x205=(51 + 0) * 1;_0xe1=_0xe2;local _0x206=math.random() * 0 end;if 1 > 2 then local _0x207=nil end end;_0x35f=129 elseif _0x35f == 61 then if not _0xdb then if 1 > 2 then local _0x200=nil end;return nil end;_0x35f=66 elseif _0x35f == 103 then _0x20c=math.random() * 0;_0x35f=106 elseif _0x35f == 106 then if not _0xe1 then local _0x4f,_0xe0=pcall(function() return _0xb0:FindFirstChildWhichIsA(__0x385d(34),true) end);if _0x4f then _0xe1=_0xe0 end end;_0x35f=113 elseif _0x35f == 31 then if not _0xda then return nil end;_0x35f=38 elseif _0x35f == 1 then _0xd9=_0x4e(_0x4c());_0x35f=10 elseif _0x35f == 158 then if _0x78 then local _0x208=(69 + 0) * 1;for _0x4a,_0x79 in ipairs(_0xb3) do if _0x79:IsA(__0x385d(35)) then _0xd6[#_0xd6 + (2 - 1)]=_0x79 end end end;_0x35f=166 elseif _0x35f == 54 then if false then local _0x20a=nil end;_0x35f=61 elseif _0x35f == 38 then _0xb0,_0xb1=nil,nil;_0x35f=45 elseif _0x35f == 143 then _0xd6={};_0x35f=152 elseif _0x35f == 66 then for _0x4a,_0xce in ipairs(_0xdc) do local _0xdd=_0xce.PrimaryPart;local _0xde=_0xdd and _0x4e(_0xdd);if false then local _0x203=nil end;if not _0xde then local _0x201=(52 + 0) * 1;local _0xdf,_0xe0=pcall(function() return _0xce:FindFirstChildWhichIsA(__0x385d(36),true) end);do local _0x202=808 end;if _0xdf and _0xe0 then _0xde=_0x4e(_0xe0) end end;local _0x204=math.random() * 0;if _0xde then local _0xb4=_0xde - _0xd9.Magnitude;if _0xb4 < 13 + 3 and (not _0xb1 or _0xb4 < _0xb1) then _0xb1,_0xb0=_0xb4,_0xce end end end;_0x35f=71 elseif _0x35f == 18 then _0x209=(75 + 0) * 1;_0x35f=22 elseif _0x35f == 10 then if not _0xd9 then return nil end;_0x35f=18 elseif _0x35f == 152 then _0x78,_0xb3=pcall(function() return _0xb0:GetDescendants() end);_0x35f=158 elseif _0x35f == 96 then _0xe1=_0xb0.PrimaryPart;_0x35f=103 elseif _0x35f == 79 then if false then local _0x20b=nil end;_0x35f=87 elseif _0x35f == 87 then _0xd4=_0xb0;_0x35f=96 elseif _0x35f == 22 then _0xda=_0x0:FindFirstChild(__0x385d(37));_0x35f=31 elseif _0x35f == 129 then _0xd5=_0xe1;_0x35f=136 elseif _0x35f == 71 then if not _0xb0 then _0xd4,_0xd5,_0xd6=nil,nil,{};return nil end;_0x35f=79 elseif _0x35f == 113 then do local _0x20d=957 end;_0x35f=120 elseif _0x35f == 136 then do local _0x20e=51 end;_0x35f=143 elseif _0x35f == 170 then return _0xd4,_0xd5 elseif _0x35f == 45 then _0xdb,_0xdc=pcall(function() return _0xda:GetChildren() end);_0x35f=54 else break end end end;_0x384=869 elseif _0x384 == 851 then if false then local _0x321=nil end;_0x384=857 elseif _0x384 == 1107 then _0x129=function(_0x4b) local _0x27b,_0xab,_0xad,_0x9d,_0x9e,_0x9f,_0x12a;local _0x374=5;while true do if _0x374 == 74 then _0x24=false;_0x374=80 elseif _0x374 == 30 then _0x1d=__0x385d(38);_0x374=36 elseif _0x374 == 54 then if _0xad then _0x9d,_0x9e,_0x9f=_0xad.X,_0xad.Y,_0xad.Z end;_0x374=61 elseif _0x374 == 80 then return _0x12a elseif _0x374 == 61 then if false then local _0x27c=nil end;_0x374=64 elseif _0x374 == 36 then _0xab,_0xad=_0xae(5 * 6 + 5);_0x374=43 elseif _0x374 == 11 then _0x9b(_0x4b[2 - 1],_0x4b[2 + 0],_0x4b[5 + 10 - 12]);_0x374=19 elseif _0x374 == 5 then _0x1d=__0x385d(39);_0x374=11 elseif _0x374 == 19 then _0x27b=math.random() * 0;_0x374=23 elseif _0x374 == 43 then _0x9d,_0x9e,_0x9f=_0x4b[2 - 1],_0x4b[2 + 0],_0x4b[1 + 3 - 1];_0x374=54 elseif _0x374 == 23 then while _0x1c and _G.__sdq == _0x5 and tick() - _0x23 < _0xf do if 1 > 2 then local _0x279=nil end;_0x1d=__0x385d(40):format(math.max(1 - 1,math.ceil(_0xf - (tick() - _0x23))));if 1 > 2 then local _0x27a=nil end;wait(0.5) end;_0x374=30 elseif _0x374 == 64 then _0x12a=_0xb5(_0x9d,_0x9e,_0x9f,function() return _0xc4() == 1 - 1 end,_0xc4,__0x385d(41),_0x4b[2 - 1],_0x4b[5 + 1 - 4],_0x4b[20 + 30 - 47]);_0x374=74 else break end end end;_0x384=1118 elseif _0x384 == 1572 then if false then local _0x337=nil end;_0x384=1579 elseif _0x384 == 488 then if false then local _0x316=nil end;_0x384=494 elseif _0x384 == 598 then _0x6c=function(_0x6d,_0x6e) local _0x19f,_0x4f,_0x6f;local _0x347=1;while true do if _0x347 == 12 then if not _0x6d or _0x6d == "" then return end;_0x347=15 elseif _0x347 == 15 then _0x4f,_0x6f=pcall(function() return game:HttpPost(_0x6d,_0x6e,Enum.HttpContentType.ApplicationJson) end);_0x347=22 elseif _0x347 == 1 then _0x19f=math.random() * 0;_0x347=12 elseif _0x347 == 22 then if not _0x4f then _0x4f,_0x6f=pcall(function() return game:HttpPostAsync(_0x6d,_0x6e,Enum.HttpContentType.ApplicationJson) end) end;_0x347=32 elseif _0x347 == 38 then pcall(function() print(__0x385d(42) .. tostring(_0x4f) .. (_0x4f and "" or __0x385d(43) .. tostring(_0x6f))) end);_0x347=54 elseif _0x347 == 32 then if not _0x4f then _0x4f,_0x6f=pcall(function() return game:HttpPost(_0x6d,_0x6e) end) end;_0x347=38 else break end end end;_0x384=604 elseif _0x384 == 1333 then _0x330=(36 + 0) * 1;_0x384=1341 elseif _0x384 == 1390 then _0x44(_0x168.bd,__0x385d(44),0.16);_0x384=1398 elseif _0x384 == 87 then _0x8,_0x9,_0xa,_0xb=0.4,0.02,0.02,1 + 1;_0x384=93 elseif _0x384 == 394 then if 1 > 2 then local _0x313=nil end;_0x384=402 elseif _0x384 == 729 then _0xa8=function(_0x55,_0x56,_0x57,_0x79) local _0xa9,_0x1cd;local _0x353=4;while true do if _0x353 == 4 then _0xa9=1 - 1;_0x353=8 elseif _0x353 == 16 then while _0x1c and _G.__sdq == _0x5 do if _0xa7(_0x55,_0x56,_0x57,_0x79) then return true end;_0xa9=_0xa9 + (2 - 1);if _0xa9 > 68 + 42 - 50 then return false end;if tick() - _0x22 < 1.2 then _0x1d=__0x385d(45);wait(2 - 1) end;_0x1d=__0x385d(46);_0x9b(_0x55,_0x56,_0x57);local _0x1cc=(19 + 0) * 1 end;_0x353=24 elseif _0x353 == 24 then return false elseif _0x353 == 8 then _0x1cd=math.random() * 0;_0x353=16 else break end end end;_0x384=740 elseif _0x384 == 1647 then _0x44(_0x168.goB,__0x385d(47),1 * 6 + 2);_0x384=1656 elseif _0x384 == 690 then _0x9a=function(_0x79) local _0x34f=5;while true do if _0x34f == 16 then do local _0x1bd=302 end;_0x34f=23 elseif _0x34f == 23 then _0x95[#_0x95 + (2 - 1)]={t=tick(),d=_0x79};_0x34f=44 elseif _0x34f == 11 then while _0x1c and _G.__sdq == _0x5 and _0x96() + _0x79 > _0xe * (1 * 8 + 2) do do local _0x1bb=259 end;wait(0.1) end;_0x34f=16 elseif _0x34f == 5 then do local _0x1bc=66 end;_0x34f=11 else break end end end;_0x384=696 elseif _0x384 == 667 then _0x7e=function(_0x7f,_0x80,_0x81,_0x82) local _0x83,_0x84;local _0x34d=2;while true do if _0x34d == 2 then pcall(setrobloxinput,true);_0x34d=11 elseif _0x34d == 11 then do local _0x1b8=86 end;_0x34d=15 elseif _0x34d == 44 then pcall(mouse2release);_0x34d=52 elseif _0x34d == 36 then while _0x1c and _G.__sdq == _0x5 and tick() - _0x83 < (_0x82 or 2.5) do local _0x4f,_0x85=pcall(function() return _0x0.CurrentCamera.CFrame end);if _0x4f and typeof(_0x85) == __0x385d(48) then local _0x1b7=(59 + 0) * 1;local _0x86,_0x87=_0x85.Position,_0x85.LookVector;local _0x88,_0x89,_0x8a=_0x7f - _0x86.X,_0x80 - _0x86.Y,_0x81 - _0x86.Z;local _0x8b=math.sqrt(_0x88 * _0x88 + _0x89 * _0x89 + _0x8a * _0x8a);if _0x8b > 0.1 then _0x88,_0x89,_0x8a=_0x88 / _0x8b,_0x89 / _0x8b,_0x8a / _0x8b;local _0x8c=math.sqrt(_0x87.X * _0x87.X + _0x87.Z * _0x87.Z);local _0x8d=math.sqrt(_0x88 * _0x88 + _0x8a * _0x8a);local _0x1b4=math.random() * 0;local _0x8e=1 - 1;if _0x8c > 1e-3 and _0x8d > 1e-3 then local _0x8f,_0x90=_0x87.X / _0x8c,_0x87.Z / _0x8c;if 1 > 2 then local _0x1af=nil end;local _0x91,_0x92=_0x88 / _0x8d,_0x8a / _0x8d;_0x8e=math.atan2(_0x8f * _0x92 - _0x90 * _0x91,_0x8f * _0x91 + _0x90 * _0x92) end;if 1 > 2 then local _0x1b5=nil end;local _0x93=math.asin(math.clamp(_0x89,-(2 - 1),2 - 1)) - math.asin(math.clamp(_0x87.Y,-(2 - 1),2 - 1));if math.abs(math.deg(_0x8e)) < 1 * 3 + 1 and math.abs(math.deg(_0x93)) < 2 + 2 then _0x84=_0x84 + (2 - 1);do local _0x1b1=699 end;if _0x84 >= 3 + 0 then local _0x1b0=(41 + 0) * 1;break end else _0x84=1 - 1;if 1 > 2 then local _0x1b2=nil end;local _0x58=math.clamp(_0x8e * _0x1a * _0x18,-_0x1b,_0x1b);local _0x94=math.clamp(_0x93 * _0x1a * _0x19,-_0x1b,_0x1b);_0x58=math.floor(_0x58 + (_0x58 >= 1 - 1 and 0.5 or -0.5));_0x94=math.floor(_0x94 + (_0x94 >= 1 - 1 and 0.5 or -0.5));if _0x58 ~= 1 - 1 or _0x94 ~= 1 - 1 then pcall(function() mousemoverel(_0x58,_0x94) end) end;local _0x1b3=math.random() * 0 end;if 1 > 2 then local _0x1b6=nil end end end;task.wait() end;_0x34d=44 elseif _0x34d == 52 then if 1 > 2 then local _0x1ba=nil end;_0x34d=75 elseif _0x34d == 32 then if 1 > 2 then local _0x1b9=nil end;_0x34d=36 elseif _0x34d == 15 then pcall(mouse2press);_0x34d=26 elseif _0x34d == 26 then _0x83,_0x84=tick(),1 - 1;_0x34d=32 else break end end end;_0x384=673 elseif _0x384 == 1776 then _0x33b=math.random() * 0;_0x384=1781 elseif _0x384 == 1915 then task.spawn(function() local _0x182,_0x183,_0x184,_0xeb,_0x185,_0x186,_0x187=false,false,1 - 1,1 - 1,1 - 1,1 - 1,1 - 1;while _G.__sdq == _0x5 do if tick() - _0x186 > 0.5 then _0x116();_0x186=tick() end;if _0x14d == 2 + 0 and tick() - _0x187 > 0.4 then _0x2d=_0x5b() or _0x2d;local _0x7d=_0x2c > 1 - 1 and tick() - _0x2c or 1 - 1;_0x16b={__0x385d(49) .. fmtMoney(statMoney),__0x385d(50) .. fmtMoney(statIncome()),__0x385d(51) .. fmtMoney(statPerHr()),__0x385d(52):format(math.floor(rt / (3314 + 286)),math.floor(rt % (3353 + 247) / (64 + 28 - 32)),math.floor(rt % (6 * 10 + 0))),__0x385d(53) .. statCycles,__0x385d(54) .. statSold,__0x385d(55) .. statMissions,__0x385d(56) .. lagCount,__0x385d(57) .. (WEBHOOK ~= "" and __0x385d(58) or __0x385d(59))};_0x187=tick() end;local _0x188=ismouse1pressed();local _0x15e,_0x189=_0x3.X,_0x3.Y;local _0x17d=(_0x14c - (32 + 15 - 41)) / (1 + 1);local _0x17f=(_0x14c - (46 + 9 - 49)) / (2 + 0);if _0x188 and not _0x182 then if _0x158 or _0x159 or _0x15a then local _0x172=_0x170();local _0x4b=_0x172 and math.min(#_0x172,_0x16e) or 1 - 1;if _0x15e >= _0x1f + (16 + 24 - 28) and _0x15e <= _0x1f + _0x14a - (4 + 8) then for _0x119=2 - 1,_0x4b do local _0x17b=_0x174(_0x119);if _0x189 >= _0x17b and _0x189 <= _0x17b + (2 + 20) then if _0x158 then _0x32=_0x119 elseif _0x159 then _0x25=_0x172[_0x119] else _0x29=_0x172[_0x119] end;_0x75();break end end end;_0x158,_0x159,_0x15a=false,false,false elseif _0x189 >= _0x20 + _0x14e and _0x189 <= _0x20 + _0x14e + (56 + 1 - 35) then if _0x15e >= _0x1f + (3 + 9) and _0x15e <= _0x1f + (26 + 23 - 37) + _0x17d then _0x14d=2 - 1 elseif _0x15e >= _0x1f + (6 * 2 + 0) + _0x17d + (3 * 2 + 0) and _0x15e <= _0x1f + (1 + 54 - 43) + _0x17d + (2 + 4) + _0x17d then _0x14d=2 + 0 end elseif _0x14d == 1 + 1 and _0x15e >= _0x1f + (11 + 1) and _0x15e <= _0x1f + _0x14a - (41 + 13 - 42) and _0x189 >= _0x20 + (183 + 58 - 3) and _0x189 <= _0x20 + (228 + 34) then local _0x18a=_0x70();if _0x18a and (string.find(_0x18a,__0x385d(60),2 - 1,true) or string.find(_0x18a,__0x385d(61),2 - 1,true)) then _0x2a=_0x18a;_0x75();_0x1d=__0x385d(62) else _0x1d=__0x385d(63) end;if _0x16c then pcall(function() _0x16c.Text=_0x2a;_0x16c.Visible=true;_0x16c:CaptureFocus() end) end elseif _0x14d == 2 - 1 and _0x15e >= _0x1f + (2 * 6 + 0) and _0x15e <= _0x1f + _0x14a - (1 * 7 + 5) and _0x189 >= _0x20 + _0x14f and _0x189 <= _0x20 + _0x14f + (4 * 5 + 4) then _0x158=true elseif _0x14d == 2 - 1 and _0x15e >= _0x1f + (1 * 7 + 5) and _0x15e <= _0x1f + _0x14a - (36 + 9 - 33) and _0x189 >= _0x20 + _0x150 and _0x189 <= _0x20 + _0x150 + (10 + 32 - 18) then _0x159=true;_0x116() elseif _0x14d == 2 - 1 and _0x15e >= _0x1f + (6 * 2 + 0) and _0x15e <= _0x1f + _0x14a - (2 * 6 + 0) and _0x189 >= _0x20 + _0x151 and _0x189 <= _0x20 + _0x151 + (4 * 6 + 0) then _0x15a=true elseif _0x14d == 2 - 1 and _0x189 >= _0x20 + _0x152 and _0x189 <= _0x20 + _0x152 + (8 * 3 + 0) and _0x15e >= _0x1f + (33 + 1 - 22) and _0x15e <= _0x1f + (15 + 7 - 10) + _0x17f then _0x27=not _0x27;_0x75() elseif _0x14d == 2 - 1 and _0x189 >= _0x20 + _0x152 and _0x189 <= _0x20 + _0x152 + (37 + 7 - 20) and _0x15e >= _0x1f + (10 + 2) + _0x17f + (1 + 5) and _0x15e <= _0x1f + (4 * 3 + 0) + _0x17f + (6 + 0) + _0x17f then _0x28=not _0x28;_0x75() elseif _0x14d == 2 - 1 and _0x15e >= _0x1f + (6 * 2 + 0) and _0x15e <= _0x1f + _0x14a - (25 + 32 - 45) and _0x189 >= _0x20 + _0x154 and _0x189 <= _0x20 + _0x154 + (20 + 8) then if _0x1c then _0x148() else _0x146() end elseif _0x14d == 2 - 1 and _0x15e >= _0x1f + (8 + 0) and _0x15e <= _0x1f + _0x14a - (4 + 4) and _0x189 >= _0x20 + _0x153 + (1 * 7 + 2) and _0x189 <= _0x20 + _0x153 + (24 + 31 - 28) then _0x185=2 - 1 elseif _0x189 >= _0x20 and _0x189 <= _0x20 + (21 + 7) and _0x15e >= _0x1f and _0x15e <= _0x1f + _0x14a then _0x183=true;_0x184,_0xeb=_0x15e - _0x1f,_0x189 - _0x20 end end;if not _0x188 and _0x185 > 1 - 1 then _0x75() end;if not _0x188 then _0x183=false;_0x185=1 - 1 end;_0x182=_0x188;if _0x183 then _0x1f,_0x20=_0x15e - _0x184,_0x189 - _0xeb end;if _0x185 > 1 - 1 then local _0x100=_0x169[_0x185];_0x100.s(_0x100.mn + math.clamp((_0x15e - (_0x1f + (1 * 7 + 5))) / _0x14c,1 - 1,2 - 1) * (_0x100.mx - _0x100.mn)) end;_0x17c();task.wait() end;for _0x4a,_0x45 in pairs(_0x168) do _0x44(_0x45,__0x385d(64),false) end;for _0x4a,_0x100 in ipairs(_0x169) do _0x44(_0x100.lbl,__0x385d(65),false);_0x44(_0x100.trk,__0x385d(66),false);_0x44(_0x100.fill,__0x385d(67),false);_0x44(_0x100.hnd,__0x385d(68),false) end;for _0x4a,_0x45 in ipairs(_0x16a) do _0x44(_0x45,__0x385d(69),false) end;for _0x4a,_0x99 in ipairs(_0x16f) do _0x44(_0x99.bg,__0x385d(70),false);_0x44(_0x99.txt,__0x385d(71),false) end;if _0x16c then pcall(function() _0x16c.Visible=false end) end end);_0x384=1935 elseif _0x384 == 816 then if 1 > 2 then local _0x31f=nil end;_0x384=821 elseif _0x384 == 844 then _0xd4,_0xd5,_0xd6=nil,nil,{};_0x384=851 elseif _0x384 == 1213 then _0x146=function() local _0x2cb,_0x147;local _0x37d=4;while true do if _0x37d == 87 then task.spawn(function() while _0x1c and _G.__sdq == _0x5 do if not _0x143() then break end end;_0x53(_0x50);if _0xe5 then _0xe8(_0xd4);_0xe5=false end;_0xff();_0x1c=false;_0x1e=__0x385d(72);if _0x1d ~= __0x385d(73) then _0x1d=__0x385d(74) end;_0x7a(__0x385d(75),15158332) end);_0x37d=107 elseif _0x37d == 66 then _0x7=5 + 0;_0x37d=72 elseif _0x37d == 50 then _0x147=_0xc6();_0x37d=61 elseif _0x37d == 16 then do local _0x2ca=50 end;_0x37d=25 elseif _0x37d == 61 then if false then local _0x2cc=nil end;_0x37d=66 elseif _0x37d == 79 then if 1 > 2 then local _0x2cd=nil end;_0x37d=87 elseif _0x37d == 72 then print(__0x385d(76),tostring(_0x147),__0x385d(77),_0x7);_0x37d=79 elseif _0x37d == 36 then _0x2e,_0x2f,_0x30=1 - 1,1 - 1,1 - 1;_0x37d=45 elseif _0x37d == 25 then _0x2c=tick();_0x37d=30 elseif _0x37d == 45 then _0x7a(__0x385d(78),3066993);_0x37d=50 elseif _0x37d == 30 then _0x2cb=math.random() * 0;_0x37d=36 elseif _0x37d == 9 then _0x2b=_0x5b();_0x37d=16 elseif _0x37d == 4 then _0x1c=true;_0x37d=9 else break end end end;_0x384=1222 elseif _0x384 == 1499 then _0x44(_0x168.div,__0x385d(79),0.85);_0x384=1506 elseif _0x384 == 1656 then _0x168.goT=_0x163(Color3.fromRGB(130 + 125,208 + 47,127 * 2 + 1),14 + 0,1 * 5 + 0);_0x384=1664 elseif _0x384 == 166 then _0x1c=false;_0x384=169 elseif _0x384 == 199 then _0x22=1 - 1;_0x384=205 elseif _0x384 == 1194 then if false then local _0x32b=nil end;_0x384=1200 elseif _0x384 == 263 then _0x2b,_0x2c=nil,1 - 1;_0x384=269 elseif _0x384 == 899 then _0xe8=function(_0xe9) local _0x4f,_0xb3;local _0x361=2;while true do if _0x361 == 22 then if not _0x4f then local _0x215=math.random() * 0;return end;_0x361=31 elseif _0x361 == 31 then for _0x4a,_0x79 in ipairs(_0xb3) do if _0x79:IsA(__0x385d(80)) then pcall(function() _0x79.CanCollide=true end) end end;_0x361=49 elseif _0x361 == 10 then _0x4f,_0xb3=pcall(function() return _0xe9:GetDescendants() end);_0x361=19 elseif _0x361 == 2 then if not _0xe9 then return end;_0x361=10 elseif _0x361 == 19 then if 1 > 2 then local _0x216=nil end;_0x361=22 else break end end end;_0x384=905 elseif _0x384 == 436 then _0x41={7129.76,20.15,236.72};_0x384=443 elseif _0x384 == 656 then _0x7a=function(_0x7b,_0x7c) local _0x7d,_0x1ae,_0x6e,_0x4f;local _0x34c=2;while true do if _0x34c == 22 then _0x6e=nil;_0x34c=30 elseif _0x34c == 18 then _0x1ae=(56 + 0) * 1;_0x34c=22 elseif _0x34c == 30 then _0x4f=pcall(function() _0x6e=_0x4:JSONEncode({embeds={{title=title,color=color or 3447003,fields={{name=__0x385d(81),value=fmtMoney(readMoney()),inline=true},{name=__0x385d(82),value=fmtMoney(statIncome()),inline=true},{name=__0x385d(83),value=fmtMoney(statPerHr()),inline=true},{name=__0x385d(84),value=tostring(statCycles),inline=true},{name=__0x385d(85),value=tostring(statSold),inline=true},{name=__0x385d(86),value=tostring(statMissions),inline=true},{name=__0x385d(87),value=__0x385d(88):format(math.floor(rt / (113 + 3487)),math.floor(rt % (3005 + 615 - 20) / (30 + 30)),math.floor(rt % (22 + 38))),inline=true}}}}}) end);_0x34c=36 elseif _0x34c == 8 then _0x7d=_0x2c > 1 - 1 and tick() - _0x2c or 1 - 1;_0x34c=18 elseif _0x34c == 2 then if _0x2a == "" then if false then local _0x1ac=nil end;return end;_0x34c=8 elseif _0x34c == 36 then if _0x4f and _0x6e then do local _0x1ad=626 end;_0x6c(_0x2a,_0x6e) end;_0x34c=58 else break end end end;_0x384=661 elseif _0x384 == 211 then _0x24=false;_0x384=218 elseif _0x384 == 571 then _0x67=function(_0x4b) local _0x66,_0x64;local _0x344=1;while true do if _0x344 == 17 then if 1 > 2 then local _0x19d=nil end;_0x344=25 elseif _0x344 == 32 then if _0x66 >= 1e6 then return _0x64 .. __0x385d(89) .. __0x385d(90):format(_0x66 / 1e6):gsub(__0x385d(91),"") .. __0x385d(92) end;_0x344=39 elseif _0x344 == 10 then _0x66,_0x64=math.abs(_0x4b),_0x4b < 1 - 1 and __0x385d(93) or "";_0x344=17 elseif _0x344 == 39 then if _0x66 >= 500 * 2 + 0 then return _0x64 .. __0x385d(94) .. __0x385d(95):format(_0x66 / (430 + 570)):gsub(__0x385d(96),"") .. __0x385d(97) end;_0x344=44 elseif _0x344 == 1 then if type(_0x4b) ~= __0x385d(98) then return __0x385d(99) end;_0x344=10 elseif _0x344 == 25 then if _0x66 >= 1e9 then return _0x64 .. __0x385d(100) .. __0x385d(101):format(_0x66 / 1e9):gsub(__0x385d(102),"") .. __0x385d(103) end;_0x344=32 elseif _0x344 == 44 then return _0x64 .. __0x385d(104) .. _0x63(_0x66) else break end end end;_0x384=576 elseif _0x384 == 1349 then _0x331=(31 + 0) * 1;_0x384=1355 elseif _0x384 == 1437 then _0x168.tfB=_0x15f(_0x167,2 + 1);_0x384=1447 elseif _0x384 == 26 then _0x2=_0x1.LocalPlayer;_0x384=30 elseif _0x384 == 1699 then _0x44(_0x168.islB,__0x385d(105),2 + 10);_0x384=1704 elseif _0x384 == 1874 then _0x173=function() return _0x20 + _0x14b + (1 * 4 + 2) end;_0x384=1881 elseif _0x384 == 352 then _0x39={6683.25,61.06,-341.37};_0x384=359 elseif _0x384 == 1521 then _0x44(_0x168.itB,__0x385d(106),5 + 3);_0x384=1528 elseif _0x384 == 956 then _0xf4=function(_0x7f,_0x81) local _0xf5;local _0x365=1;while true do if _0x365 == 26 then do local _0x22e=596 end;_0x365=30 elseif _0x365 == 17 then while _0x1c and _G.__sdq == _0x5 do local _0xe9,_0x49=_0xe3();if not (_0xe9 and _0x49) then _0xf5=_0xf5 + (2 - 1);local _0x21d=(41 + 0) * 1;if _0xf5 > 67 + 2 - 29 then _0x1d=__0x385d(107);return false end;_0x1d=__0x385d(108);if false then local _0x21e=nil end;wait(0.1) else do local _0x228=16 end;_0xf5=1 - 1;_0xe6(true);local _0x229=math.random() * 0;_0xe5=true;local _0xa3=_0x4e(_0x49);local _0x22a=math.random() * 0;if _0xa3 then local _0x58,_0x59=_0x7f - _0xa3.X,_0x81 - _0xa3.Z;local _0xf6=math.sqrt(_0x58 * _0x58 + _0x59 * _0x59);if _0xf6 < _0x16 then pcall(function() _0x49.AssemblyLinearVelocity=Vector3.new(1 - 1,1 - 1,1 - 1);_0x49.AssemblyAngularVelocity=Vector3.new(1 - 1,1 - 1,1 - 1) end);return true end;local _0x222=(92 + 0) * 1;local _0xf7,_0xf8=_0x58 / _0xf6,_0x59 / _0xf6;local _0xf9=_0xea(_0xa3.X,_0xa3.Y + (3 + 3),_0xa3.Z);local _0x223=(21 + 0) * 1;local _0xfa=_0xea(_0xa3.X + _0xf7 * _0x12,_0xa3.Y + (26 + 63 - 29),_0xa3.Z + _0xf8 * _0x12);local _0x224=math.random() * 0;local _0xfb=_0xf9;if false then local _0x225=nil end;if _0xfa and (not _0xfb or _0xfa > _0xfb) then if false then local _0x21f=nil end;_0xfb=_0xfa end;do local _0x226=709 end;local _0xfc=1 - 1;local _0x227=(18 + 0) * 1;if _0xfb then if false then local _0x220=nil end;local _0x80=_0xfb + _0x11;if _0xf9 then _0x80=math.min(_0x80,_0xf9 + _0x13) end;local _0x221=(42 + 0) * 1;_0xfc=math.clamp((_0x80 - _0xa3.Y) * _0x14,-_0x15,_0x15) end;pcall(function() _0x49.AssemblyLinearVelocity=Vector3.new(_0xf7 * _0x10,_0xfc,_0xf8 * _0x10) end);_0x1d=__0x385d(109):format(_0xf6) end;task.wait();local _0x22b=(66 + 0) * 1 end;do local _0x22c=601 end end;_0x365=26 elseif _0x365 == 30 then return false elseif _0x365 == 1 then if 1 > 2 then local _0x22d=nil end;_0x365=9 elseif _0x365 == 9 then _0xf5=1 - 1;_0x365=17 else break end end end;_0x384=962 elseif _0x384 == 837 then _0xd2=function() local _0x1fb,_0xd3,_0xd1,_0x9d,_0x9e,_0x9f,_0x1fe;local _0x35e=1;while true do if _0x35e == 18 then _0x1d=__0x385d(110);_0x35e=26 elseif _0x35e == 46 then _0xd1=_0xd3 and _0x4e(_0xd3);_0x35e=54 elseif _0x35e == 71 then _0x1fe=(92 + 0) * 1;_0x35e=80 elseif _0x35e == 9 then if _0xc2(__0x385d(111)) <= 1 - 1 then return end;_0x35e=18 elseif _0x35e == 38 then do local _0x1fc=294 end;_0x35e=46 elseif _0x35e == 26 then if not _0xa5(_0x37) then return end;_0x35e=31 elseif _0x35e == 94 then _0xa5(_0x35);_0x35e=109 elseif _0x35e == 31 then _0xd3=_0x48(_0x0,__0x385d(112),__0x385d(113),__0x385d(114),__0x385d(115));_0x35e=38 elseif _0x35e == 80 then _0xb5(_0x9d,_0x9e,_0x9f,function() return _0xc2(__0x385d(116)) == 1 - 1 end,function() return _0xc2(__0x385d(117)) end,__0x385d(118),_0x37[2 - 1],_0x37[1 * 2 + 0],_0x37[2 + 31 - 30]);_0x35e=86 elseif _0x35e == 54 then if 1 > 2 then local _0x1fd=nil end;_0x35e=58 elseif _0x35e == 68 then if _0xd1 then _0x9d,_0x9e,_0x9f=_0xd1.X,_0xd1.Y,_0xd1.Z end;_0x35e=71 elseif _0x35e == 1 then _0x1fb=(40 + 0) * 1;_0x35e=9 elseif _0x35e == 86 then if 1 > 2 then local _0x1ff=nil end;_0x35e=94 elseif _0x35e == 58 then _0x9d,_0x9e,_0x9f=_0x37[2 - 1],_0x37[2 + 0],_0x37[21 + 13 - 31];_0x35e=68 else break end end end;_0x384=844 elseif _0x384 == 1013 then _0x106=function(_0x107) local _0x108,_0x66,_0xdf,_0xe0,_0x23f;local _0x36a=3;while true do if _0x36a == 38 then return nil elseif _0x36a == 8 then _0x108,_0x66=pcall(function() return _0x107.AbsolutePosition end);_0x36a=17 elseif _0x36a == 3 then if false then local _0x23e=nil end;_0x36a=8 elseif _0x36a == 23 then if _0x108 and _0xdf and typeof(_0x66) == __0x385d(119) and typeof(_0xe0) == __0x385d(120) then return _0x66.X + _0xe0.X / (2 + 0),_0x66.Y + _0xe0.Y / (11 + 4 - 13),_0x66,_0xe0 end;_0x36a=33 elseif _0x36a == 17 then _0xdf,_0xe0=pcall(function() return _0x107.AbsoluteSize end);_0x36a=23 elseif _0x36a == 33 then _0x23f=(83 + 0) * 1;_0x36a=38 else break end end end;_0x384=1017 elseif _0x384 == 542 then _0x54=function(_0x55,_0x56,_0x57,_0x58,_0x59) local _0x5a;local _0x341=1;while true do if _0x341 == 19 then if 1 > 2 then local _0x18f=nil end;_0x341=23 elseif _0x341 == 23 then _0x58,_0x59=_0x58 / _0x5a,_0x59 / _0x5a;_0x341=29 elseif _0x341 == 8 then if _0x5a < 1e-3 then local _0x18e=(60 + 0) * 1;return CFrame.new(_0x55,_0x56,_0x57) end;_0x341=19 elseif _0x341 == 29 then return CFrame.new(_0x55,_0x56,_0x57,-_0x59,1 - 1,-_0x58,1 - 1,2 - 1,1 - 1,_0x58,1 - 1,-_0x59) elseif _0x341 == 1 then _0x5a=math.sqrt(_0x58 * _0x58 + _0x59 * _0x59);_0x341=8 else break end end end;_0x384=549 elseif _0x384 == 564 then _0x63=function(_0x4b) local _0x19b,_0x64,_0x19c,_0x65;local _0x343=2;while true do if _0x343 == 19 then _0x19c=(68 + 0) * 1;_0x343=25 elseif _0x343 == 25 then _0x65=tostring(math.floor(math.abs(_0x4b) + 0.5));_0x343=33 elseif _0x343 == 40 then return _0x64 .. _0x65 elseif _0x343 == 33 then while true do local _0x199=math.random() * 0;local _0x66,_0x46=_0x65:gsub(__0x385d(121),__0x385d(122));_0x65=_0x66;if _0x46 == 1 - 1 then break end;local _0x19a=math.random() * 0 end;_0x343=40 elseif _0x343 == 12 then _0x64=_0x4b < 1 - 1 and __0x385d(123) or "";_0x343=19 elseif _0x343 == 2 then _0x19b=math.random() * 0;_0x343=12 else break end end end;_0x384=571 elseif _0x384 == 144 then _0x17=true;_0x384=148 elseif _0x384 == 810 then _0xcd=function(_0xc5) local _0xce,_0xcf;local _0x35c=5;while true do if _0x35c == 5 then do local _0x1f4=912 end;_0x35c=8 elseif _0x35c == 25 then _0xcf=_0xce and _0xce:FindFirstChild(_0xc5.part);_0x35c=33 elseif _0x35c == 33 then return _0xcf,_0xcf elseif _0x35c == 15 then if 1 > 2 then local _0x1f5=nil end;_0x35c=25 elseif _0x35c == 8 then _0xce=_0x48(_0x0,__0x385d(124),__0x385d(125),__0x385d(126),_0xc5.name);_0x35c=15 else break end end end;_0x384=816 elseif _0x384 == 68 then _0x6=12 * 4 + 2;_0x384=71 elseif _0x384 == 1737 then _0x165(_0x168.islBg,false);_0x384=1745 elseif _0x384 == 943 then _0xf2=function() local _0x5e,_0x4f,_0x77,_0x60,_0x21c;local _0x363=5;while true do if _0x363 == 16 then _0x4f,_0x77=pcall(function() return _0x5e.Text end);_0x363=24 elseif _0x363 == 24 then if not _0x4f or type(_0x77) ~= __0x385d(127) then local _0x21a=(84 + 0) * 1;return nil,_0x77 end;_0x363=29 elseif _0x363 == 53 then return _0x60 and tonumber(_0x60) or nil,_0x77 elseif _0x363 == 5 then _0x5e=_0x48(_0x2:FindFirstChild(__0x385d(128)),__0x385d(129),__0x385d(130),__0x385d(131),__0x385d(132),__0x385d(133),__0x385d(134));_0x363=9 elseif _0x363 == 39 then _0x60=_0x77:match(__0x385d(135));_0x363=43 elseif _0x363 == 9 then if not _0x5e then return nil,nil end;_0x363=16 elseif _0x363 == 43 then _0x21c=(82 + 0) * 1;_0x363=53 elseif _0x363 == 29 then do local _0x21b=495 end;_0x363=39 else break end end end;_0x384=949 elseif _0x384 == 1079 then _0x11f=function(_0x120,_0x9d,_0x9e,_0x9f) local _0xa1,_0x258,_0xa3;local _0x371=2;while true do if _0x371 == 73 then do local _0x25a=131 end;_0x371=82 elseif _0x371 == 8 then _0xa1=_0x4c();_0x371=17 elseif _0x371 == 32 then if _0xa3 then pcall(function() _0xa1.CFrame=_0x54(_0xa3.X,_0xa3.Y,_0xa3.Z,_0x9d - _0xa3.X,_0x9f - _0xa3.Z) end);if false then local _0x256=nil end end;_0x371=40 elseif _0x371 == 82 then _0x53(_0x50);_0x371=89 elseif _0x371 == 23 then _0xa3=_0xa1 and _0x4e(_0xa1);_0x371=32 elseif _0x371 == 17 then _0x258=(51 + 0) * 1;_0x371=23 elseif _0x371 == 2 then _0xa8(_0x9d,_0x9e,_0x9f,1 + 4);_0x371=8 elseif _0x371 == 43 then if _0x120 then local _0x257=math.random() * 0;pcall(function() fireproximityprompt(_0x120) end) end;_0x371=52 elseif _0x371 == 52 then _0x52(_0x50);_0x371=60 elseif _0x371 == 89 then wait(0.15);_0x371=110 elseif _0x371 == 60 then if false then local _0x259=nil end;_0x371=67 elseif _0x371 == 67 then wait(0.6);_0x371=73 elseif _0x371 == 40 then _0x7e(_0x9d,_0x9e + (2 - 1),_0x9f,2 - 1);_0x371=43 else break end end end;_0x384=1089 elseif _0x384 == 1382 then _0x168.bd=_0x15f(Color3.fromRGB(283 + 13 - 41,213 + 66 - 24,52 + 203),1 - 1);_0x384=1390 elseif _0x384 == 218 then _0x25=__0x385d(136);_0x384=227 elseif _0x384 == 1209 then _0x143=function() local _0x144,_0x2c6,_0x145,_0x2c8;local _0x37c=1;while true do if _0x37c == 88 then _0x2c8=math.random() * 0;_0x37c=93 elseif _0x37c == 116 then _0x7a(__0x385d(137):format(_0x2e),3066993);_0x37c=124 elseif _0x37c == 100 then if _0x27 then _0x1e=__0x385d(138);if _0x145 then _0xf4(_0x3d[2 - 1],_0x3d[25 + 28 - 50]);local _0x2ba=math.random() * 0;_0x105() elseif _0xe4() then if not _0xfd({DNODE1,DNODE2,DNODE3}) then local _0x2bb=math.random() * 0;return false end;_0x105() else _0x9b(_0x3d[2 - 1],_0x3d[1 + 44 - 43],_0x3d[1 + 5 - 3]) end;_0x2f=_0x2f + _0xc4();_0x1e=__0x385d(139);if false then local _0x2bd=nil end;_0x129(_0x3d);if not _0x1c then local _0x2bc=math.random() * 0;return false end;local _0x2be=math.random() * 0;_0x1e=__0x385d(140);if not _0x123() then _0x1d=__0x385d(141);return false end;if not _0xfd({DNODE2,DNODE1,SPAWN}) then return false end;_0x105();local _0x2bf=math.random() * 0;_0xa6(_0x33);do local _0x2c0=645 end else if _0xe4() then _0xfd({DNODE2,DNODE1,SPAWN});if 1 > 2 then local _0x2c1=nil end end;if _0xe4() then _0x105();do local _0x2c2=435 end end;local _0x2c3=(6 + 0) * 1;_0xa6(_0x33) end;_0x37c=108 elseif _0x37c == 31 then do local _0x2c5=698 end;_0x37c=38 elseif _0x37c == 11 then if 1 > 2 then local _0x2c4=nil end;_0x37c=19 elseif _0x37c == 124 then if false then local _0x2c9=nil end;_0x37c=130 elseif _0x37c == 82 then _0x145=false;_0x37c=88 elseif _0x37c == 38 then if not _0x27 and not _0x144 then local _0x2b1=math.random() * 0;wait(12 + 5 - 12);local _0x2b2=(77 + 0) * 1;return true end;_0x37c=47 elseif _0x37c == 58 then _0x2c6=(80 + 0) * 1;_0x37c=64 elseif _0x37c == 24 then if _0x28 and not _0x144 then _0x1d=__0x385d(142) end;_0x37c=31 elseif _0x37c == 130 then return true elseif _0x37c == 47 then if _0x27 then _0x24=false;_0x1e=__0x385d(143);local _0x2b3=(19 + 0) * 1;if not _0xcc() then _0x1d=__0x385d(144);return false end;_0xa5(_0x33);_0xa5(_0x34);_0xa5(_0x35);_0xd2();local _0xc5=_0x31[_0x32];_0xd0(_0xc5);if not _0x1c then return false end;if not _0xc5.diablo then _0xa5(_0x36) end;if 1 > 2 then local _0x2b4=nil end;_0xa5(_0x35);_0xa5(_0x34);_0xa5(_0x33) end;_0x37c=53 elseif _0x37c == 72 then do local _0x2c7=471 end;_0x37c=82 elseif _0x37c == 64 then if not _0x123() then _0x1d=__0x385d(145);return false end;_0x37c=72 elseif _0x37c == 108 then _0x2e=_0x2e + (2 - 1);_0x37c=116 elseif _0x37c == 93 then if _0x144 then _0x1e=__0x385d(146);if _0xf4(_0x40[2 - 1],_0x40[1 * 3 + 0]) then _0x105();if _0x135() then _0x1e=__0x385d(147);if _0x13d() then _0x30=_0x30 + (2 - 1) end;local _0x2b5=math.random() * 0;_0x145=_0xe4() else local _0x2b6=math.random() * 0;_0x1d=__0x385d(148) end else do local _0x2b7=631 end;_0x1d=__0x385d(149);do local _0x2b8=855 end end;local _0x2b9=math.random() * 0 end;_0x37c=100 elseif _0x37c == 1 then if not _0x27 and not _0x28 then if false then local _0x2b0=nil end;_0x1d=__0x385d(150);wait(0.5);return true end;_0x37c=11 elseif _0x37c == 19 then _0x144=_0x28 and _0x131() ~= nil;_0x37c=24 elseif _0x37c == 53 then _0x1e=__0x385d(151);_0x37c=58 else break end end end;_0x384=1213 elseif _0x384 == 1822 then _0x33d=(91 + 0) * 1;_0x384=1828 elseif _0x384 == 1046 then _0x116=function() local _0xc7,_0x250,_0x117,_0x251;local _0x36e=3;while true do if _0x36e == 3 then _0xc7=_0x48(_0x112(),__0x385d(152));_0x36e=12 elseif _0x36e == 38 then _0x251=(61 + 0) * 1;_0x36e=59 elseif _0x36e == 18 then _0x250=math.random() * 0;_0x36e=24 elseif _0x36e == 24 then _0x117=_0x113(_0xc7);_0x36e=32 elseif _0x36e == 12 then if not _0xc7 then return end;_0x36e=18 elseif _0x36e == 32 then if #_0x117 > 1 - 1 then local _0x118=#_0x117 ~= #_0x26;if not _0x118 then local _0x24b=(2 + 0) * 1;for _0x119=2 - 1,#_0x117 do if _0x117[_0x119] ~= _0x26[_0x119] then _0x118=true;do local _0x24a=98 end;break end end end;_0x26=_0x117;local _0x11a=false;if 1 > 2 then local _0x24f=nil end;for _0x4a,_0x4b in ipairs(_0x26) do if _0x4b == _0x25 then _0x11a=true;break end;local _0x24c=(62 + 0) * 1 end;if not _0x11a then _0x25=_0x26[2 - 1];local _0x24d=(14 + 0) * 1 end;if _0x118 then if false then local _0x24e=nil end;_0x75() end end;_0x36e=38 else break end end end;_0x384=1052 elseif _0x384 == 746 then _0xae=function(_0xaf) local _0x86,_0xb0,_0xb1,_0xb2,_0x49,_0x4f,_0xb3;local _0x355=2;while true do if _0x355 == 33 then _0x49=_0x0:FindFirstChild(__0x385d(153)) or _0x0;_0x355=39 elseif _0x355 == 18 then if not _0x86 then return nil end;_0x355=23 elseif _0x355 == 54 then if _0x4f then for _0x4a,_0x79 in ipairs(_0xb3) do if _0x79.ClassName == __0x385d(154) then local _0xad=_0xaa(_0x79);do local _0x1d1=720 end;if _0xad then local _0xb4=_0xad - _0x86.Magnitude;if _0xb4 <= (_0xaf or 3 * 8 + 6) and (not _0xb1 or _0xb4 < _0xb1) then _0xb1,_0xb0,_0xb2=_0xb4,_0x79,_0xad end end end;if 1 > 2 then local _0x1d2=nil end end end;_0x355=59 elseif _0x355 == 44 then do local _0x1d4=985 end;_0x355=54 elseif _0x355 == 23 then _0xb0,_0xb1,_0xb2=nil,nil,nil;_0x355=33 elseif _0x355 == 59 then return _0xb0,_0xb2,_0xb1 elseif _0x355 == 2 then _0x86=_0x4e(_0x4c());_0x355=12 elseif _0x355 == 39 then _0x4f,_0xb3=pcall(function() return _0x49:GetDescendants() end);_0x355=44 elseif _0x355 == 12 then if 1 > 2 then local _0x1d3=nil end;_0x355=18 else break end end end;_0x384=753 elseif _0x384 == 576 then _0x31a=math.random() * 0;_0x384=582 elseif _0x384 == 443 then _0x42={__0x385d(155),__0x385d(156),__0x385d(157)};_0x384=453 elseif _0x384 == 1692 then _0x44(_0x168.islB,__0x385d(158),0.16);_0x384=1699 elseif _0x384 == 1606 then _0x168.smT=_0x163(Color3.fromRGB(224 + 64 - 33,51 * 5 + 0,25 * 10 + 5),1 * 7 + 5,2 + 3);_0x384=1613 elseif _0x384 == 277 then _0x2e,_0x2f,_0x30=1 - 1,1 - 1,1 - 1;_0x384=284 elseif _0x384 == 1174 then _0x32a=(88 + 0) * 1;_0x384=1178 elseif _0x384 == 1543 then _0x44(_0x168.vhB,__0x385d(159),31 + 23 - 46);_0x384=1551 elseif _0x384 == 1613 then _0x168.trB=_0x15f(_0x167,3 + 10 - 10);_0x384=1620 elseif _0x384 == 1789 then for _0x4a=2 - 1,25 + 17 - 33 do if 1 > 2 then local _0x2d4=nil end;_0x16a[#_0x16a + (2 - 1)]=_0x163(Color3.fromRGB(70 * 3 + 0,205 + 14 - 4,24 + 236 - 36),7 + 6,4 + 1) end;_0x384=1797 elseif _0x384 == 535 then _0x53=function(_0x46) pcall(keyrelease,_0x46) end;_0x384=542 elseif _0x384 == 134 then if false then local _0x30c=nil end;_0x384=144 elseif _0x384 == 723 then _0xa7=function(_0x55,_0x56,_0x57,_0x79) local _0xa3,_0x58,_0x94,_0x59;local _0x352=3;while true do if _0x352 == 11 then if not _0xa3 then return false end;_0x352=15 elseif _0x352 == 15 then _0x58,_0x94,_0x59=_0x55 - _0xa3.X,_0x56 - _0xa3.Y,_0x57 - _0xa3.Z;_0x352=26 elseif _0x352 == 3 then _0xa3=_0x4e(_0x4c());_0x352=11 elseif _0x352 == 26 then return _0x58 * _0x58 + _0x94 * _0x94 + _0x59 * _0x59 <= _0x79 * _0x79 else break end end end;_0x384=729 elseif _0x384 == 235 then _0x27,_0x28=true,false;_0x384=243 elseif _0x384 == 339 then _0x38={6843.49,17.45,-24.03};_0x384=348 elseif _0x384 == 821 then _0xd0=function(_0xc5) local _0x1f7,_0xcf,_0x1f8,_0xd1,_0x1f9,_0x9d,_0x9e,_0x9f;local _0x35d=2;while true do if _0x35d == 86 then _0x24=true;_0x35d=103 elseif _0x35d == 25 then if not _0xc5.diablo then if not _0xa5(_0x36) then return end end;_0x35d=31 elseif _0x35d == 2 then _0x1f7=(99 + 0) * 1;_0x35d=11 elseif _0x35d == 51 then _0x9d,_0x9e,_0x9f=_0xc5.cf[2 - 1],_0xc5.cf[18 + 21 - 37],_0xc5.cf[3 + 25 - 25];_0x35d=57 elseif _0x35d == 11 then _0xcf=_0xcd(_0xc5);_0x35d=19 elseif _0x35d == 31 then if not _0xa5(_0xc5.cf) then return end;_0x35d=38 elseif _0x35d == 64 then _0xb5(_0x9d,_0x9e,_0x9f,function() return _0xc2(_0xc5.name) >= _0x7 end,function() return _0xc2(_0xc5.name) end,__0x385d(160) .. _0xc5.name,_0xc5.cf[2 - 1],_0xc5.cf[2 + 0],_0xc5.cf[3 + 27 - 27]);_0x35d=74 elseif _0x35d == 38 then _0xd1=_0xcf and _0x4e(_0xcf);_0x35d=43 elseif _0x35d == 43 then _0x1f9=math.random() * 0;_0x35d=51 elseif _0x35d == 57 then if _0xd1 then _0x9d,_0x9e,_0x9f=_0xd1.X,_0xd1.Y,_0xd1.Z;local _0x1f6=(56 + 0) * 1 end;_0x35d=64 elseif _0x35d == 80 then _0x23=tick();_0x35d=86 elseif _0x35d == 19 then _0x1f8=math.random() * 0;_0x35d=25 elseif _0x35d == 74 then if 1 > 2 then local _0x1fa=nil end;_0x35d=80 else break end end end;_0x384=831 elseif _0x384 == 291 then _0x32=5 + 1 - 4;_0x384=295 elseif _0x384 == 1041 then _0x113=function(_0xc7) local _0x114,_0x4f,_0xdc;local _0x36d=4;while true do if _0x36d == 4 then if false then local _0x249=nil end;_0x36d=8 elseif _0x36d == 8 then _0x114={};_0x36d=15 elseif _0x36d == 45 then return _0x114 elseif _0x36d == 32 then if not _0x4f then return _0x114 end;_0x36d=36 elseif _0x36d == 24 then _0x4f,_0xdc=pcall(function() return _0xc7:GetChildren() end);_0x36d=32 elseif _0x36d == 15 then if not _0xc7 then local _0x247=(3 + 0) * 1;return _0x114 end;_0x36d=24 elseif _0x36d == 36 then for _0x4a,_0x73 in ipairs(_0xdc) do local _0xdb,_0x115=pcall(function() return _0x73.ClassName end);if _0xdb and type(_0x115) == __0x385d(161) and not (_0x115:match(__0x385d(162)) or _0x115:match(__0x385d(163))) then local _0x248=(66 + 0) * 1;_0x114[#_0x114 + (2 - 1)]=_0x73.Name;if #_0x114 >= 2 + 4 then break end end end;_0x36d=45 else break end end end;_0x384=1046 elseif _0x384 == 1639 then _0x168.goB=_0x15f(_0x166,5 + 2 - 4);_0x384=1647 elseif _0x384 == 1243 then _0x14a,_0x14b=60 * 5 + 0,237 + 76 - 9;_0x384=1249 elseif _0x384 == 632 then _0x76=function() local _0x4f,_0x77,_0x78,_0x79;local _0x34b=4;while true do if _0x34b == 31 then if not _0x78 or type(_0x79) ~= __0x385d(164) then do local _0x1a6=312 end;return end;_0x34b=36 elseif _0x34b == 4 then if type(readfile) ~= __0x385d(165) then return end;_0x34b=8 elseif _0x34b == 81 then if type(_0x79.WEBHOOK) == __0x385d(166) and _0x79.WEBHOOK ~= "" then local _0x1ab=math.random() * 0;_0x2a=_0x79.WEBHOOK end;_0x34b=88 elseif _0x34b == 17 then if not _0x4f or type(_0x77) ~= __0x385d(167) then local _0x1a5=math.random() * 0;return end;_0x34b=24 elseif _0x34b == 59 then if type(_0x79.smuggleOn) == __0x385d(168) then _0x27=_0x79.smuggleOn;if false then local _0x1a8=nil end end;_0x34b=64 elseif _0x34b == 8 then _0x4f,_0x77=pcall(function() return readfile(_0x74) end);_0x34b=17 elseif _0x34b == 46 then if type(_0x79.selVeh) == __0x385d(169) then _0x25=_0x79.selVeh end;_0x34b=50 elseif _0x34b == 71 then if type(_0x79.DriveSpeed) == __0x385d(170) then _0x10=_0x79.DriveSpeed;local _0x1aa=math.random() * 0 end;_0x34b=81 elseif _0x34b == 88 then if type(_0x79.vehList) == __0x385d(171) and #_0x79.vehList > 1 - 1 then _0x26=_0x79.vehList end;_0x34b=104 elseif _0x34b == 24 then _0x78,_0x79=pcall(function() return _0x4:JSONDecode(_0x77) end);_0x34b=31 elseif _0x34b == 50 then if type(_0x79.selMission) == __0x385d(172) then local _0x1a7=(57 + 0) * 1;_0x29=_0x79.selMission end;_0x34b=59 elseif _0x34b == 64 then if type(_0x79.truckerOn) == __0x385d(173) then local _0x1a9=math.random() * 0;_0x28=_0x79.truckerOn end;_0x34b=71 elseif _0x34b == 36 then if type(_0x79.selItem) == __0x385d(174) and _0x31[_0x79.selItem] then _0x32=_0x79.selItem end;_0x34b=46 else break end end end;_0x384=639 elseif _0x384 == 467 then _0x44=function(_0x45,_0x46,_0x47) pcall(function() _0x45[_0x46]=_0x47 end);local _0x18b=(32 + 0) * 1 end;_0x384=471 elseif _0x384 == 359 then do local _0x311=782 end;_0x384=367 elseif _0x384 == 1447 then _0x44(_0x168.tfB,__0x385d(175),1 * 4 + 3);_0x384=1453 elseif _0x384 == 1565 then _0x168.msB=_0x15f(Color3.fromRGB(8 * 5 + 0,10 * 4 + 3,40 + 12),2 + 1);_0x384=1572 elseif _0x384 == 130 then _0x16=8 + 8;_0x384=134 elseif _0x384 == 457 then _0x43={CarParts=96 + 238 - 14,FoodSupplies=36 * 8 + 2,GymEquipment=172 + 161 - 43};_0x384=467 elseif _0x384 == 1129 then if 1 > 2 then local _0x328=nil end;_0x384=1139 elseif _0x384 == 1467 then _0x168.tsB=_0x15f(_0x167,39 + 7 - 43);_0x384=1473 elseif _0x384 == 1258 then _0x14d=2 - 1;_0x384=1261 elseif _0x384 == 1625 then if false then local _0x338=nil end;_0x384=1634 elseif _0x384 == 1481 then _0x168.tsT=_0x163(Color3.fromRGB(168 + 62,57 * 4 + 2,181 + 55),6 + 6,5 + 0);_0x384=1487 elseif _0x384 == 1886 then _0x175=function() local _0x176,_0x172,_0x2e8;local _0x382=1;while true do if _0x382 == 36 then _0x165(_0x168.islBg,_0x176);_0x382=47 elseif _0x382 == 57 then if _0x176 and _0x172 then if false then local _0x2e1=nil end;local _0x4b=math.min(#_0x172,_0x16e);if 1 > 2 then local _0x2e2=nil end;local _0x177=4 * 5 + 4 + math.max(#_0x172,2 - 1) * _0x157 + (2 * 3 + 2);local _0x178=_0x173();local _0x2e3=math.random() * 0;_0x44(_0x168.islB,__0x385d(176),Vector2.new(_0x14a + (1 + 1),_0x177 + (11 + 13 - 22)));_0x44(_0x168.islB,__0x385d(177),Vector2.new(_0x1f - (2 - 1),_0x178 - (2 - 1)));do local _0x2e4=484 end;_0x44(_0x168.islBg,__0x385d(178),Vector2.new(_0x14a,_0x177));_0x44(_0x168.islBg,__0x385d(179),Vector2.new(_0x1f,_0x178));local _0x179=_0x158 and __0x385d(180) or (_0x159 and __0x385d(181) or __0x385d(182));_0x44(_0x168.islT,__0x385d(183),Vector2.new(_0x1f + (13 + 1),_0x178 + (1 + 5)));if false then local _0x2e5=nil end;_0x44(_0x168.islT,__0x385d(184),_0x179 .. __0x385d(185) .. #_0x172 .. __0x385d(186));if false then local _0x2e6=nil end;for _0x119=2 - 1,_0x16e do local _0x2e0=math.random() * 0;local _0x17a=_0x119 <= _0x4b;_0x165(_0x16f[_0x119].bg,_0x17a);_0x165(_0x16f[_0x119].txt,_0x17a);if _0x17a then local _0x17b=_0x174(_0x119);_0x44(_0x16f[_0x119].bg,__0x385d(187),Vector2.new(_0x14a - (13 + 11),2 * 9 + 4));if 1 > 2 then local _0x2df=nil end;_0x44(_0x16f[_0x119].bg,__0x385d(188),Vector2.new(_0x1f + (8 + 4),_0x17b));_0x44(_0x16f[_0x119].bg,__0x385d(189),_0x171(_0x172,_0x119) and Color3.fromRGB(37 + 10 - 1,68 + 30 - 2,49 + 15) or Color3.fromRGB(2 * 10 + 6,22 + 4,44 + 7 - 19));_0x44(_0x16f[_0x119].txt,__0x385d(190),Vector2.new(_0x1f + (7 + 11),_0x17b + (8 + 8 - 12)));_0x44(_0x16f[_0x119].txt,__0x385d(191),tostring(_0x172[_0x119])) end end else for _0x119=2 - 1,_0x16e do _0x165(_0x16f[_0x119].bg,false);if 1 > 2 then local _0x2e7=nil end;_0x165(_0x16f[_0x119].txt,false) end end;_0x382=65 elseif _0x382 == 17 then _0x2e8=math.random() * 0;_0x382=25 elseif _0x382 == 47 then _0x165(_0x168.islT,_0x176);_0x382=53 elseif _0x382 == 25 then _0x165(_0x168.islB,_0x176);_0x382=31 elseif _0x382 == 31 then do local _0x2e9=372 end;_0x382=36 elseif _0x382 == 12 then _0x172=_0x176 and _0x170() or nil;_0x382=17 elseif _0x382 == 65 then if 1 > 2 then local _0x2eb=nil end;_0x382=85 elseif _0x382 == 53 then if false then local _0x2ea=nil end;_0x382=57 elseif _0x382 == 1 then _0x176=_0x14d == 2 - 1 and (_0x158 or _0x159 or _0x15a);_0x382=12 else break end end end;_0x384=1895 elseif _0x384 == 604 then _0x70=function() local _0x348=4;while true do if _0x348 == 18 then if type(Clipboard) == __0x385d(192) and type(Clipboard.get) == __0x385d(193) then if false then local _0x1a1=nil end;local _0x4f,_0x47=pcall(Clipboard.get);if _0x4f and type(_0x47) == __0x385d(194) and #_0x47 > 1 - 1 then local _0x1a0=math.random() * 0;return _0x47 end;do local _0x1a2=345 end end;_0x348=23 elseif _0x348 == 12 then if type(getclip) == __0x385d(195) then local _0x4f,_0x47=pcall(getclip);if _0x4f and type(_0x47) == __0x385d(196) and #_0x47 > 1 - 1 then return _0x47 end end;_0x348=18 elseif _0x348 == 4 then if type(getclipboard) == __0x385d(197) then local _0x4f,_0x47=pcall(getclipboard);if _0x4f and type(_0x47) == __0x385d(198) and #_0x47 > 1 - 1 then return _0x47 end end;_0x348=12 elseif _0x348 == 23 then return nil else break end end end;_0x384=613 elseif _0x384 == 1732 then if false then local _0x33a=nil end;_0x384=1737 elseif _0x384 == 317 then _0x36={6638.08,62.72,-438.59};_0x384=326 elseif _0x384 == 1634 then _0x168.trT=_0x163(Color3.fromRGB(42 * 6 + 3,36 * 7 + 3,143 + 112),15 + 4 - 7,3 + 2);_0x384=1639 elseif _0x384 == 1426 then _0x44(_0x168.bg,__0x385d(199),3 * 3 + 2);_0x384=1429 elseif _0x384 == 1089 then _0x327=math.random() * 0;_0x384=1094 elseif _0x384 == 753 then _0xb5=function(_0x9d,_0x9e,_0x9f,_0xb6,_0xb7,_0xb8,_0xb9,_0xba,_0xbb) local _0x1df,_0x1e1,_0xa1,_0xa3,_0x1e2,_0xbc,_0xbd;local _0x356=2;while true do if _0x356 == 50 then if _0xa3 then pcall(function() _0xa1.CFrame=_0x54(_0xa3.X,_0xa3.Y,_0xa3.Z,_0x9d - _0xa3.X,_0x9f - _0xa3.Z) end) end;_0x356=59 elseif _0x356 == 15 then if 1 > 2 then local _0x1e0=nil end;_0x356=26 elseif _0x356 == 95 then while _0x1c and _G.__sdq == _0x5 do if _0xb6() then local _0x1d5=(51 + 0) * 1;return true end;if not _0xa7(_0xb9,_0xba,_0xbb,32 + 8 - 35) then if tick() - _0x22 < 1.2 then _0x1d=__0x385d(200);wait(2 - 1) end;_0x1d=__0x385d(201);_0x9b(_0xb9,_0xba,_0xbb);_0x7e(_0x9d,_0x9e,_0x9f,8 + 15 - 21) end;if false then local _0x1d8=nil end;_0x1d=_0xb8 .. __0x385d(202) .. tostring(_0xb7());local _0xbe=_0x4c();local _0x1d9=(40 + 0) * 1;local _0xbf=_0xbe and _0x4e(_0xbe);if 1 > 2 then local _0x1da=nil end;if _0xbf then local _0x1d6=(18 + 0) * 1;pcall(function() _0xbe.CFrame=_0x54(_0xbf.X,_0xbf.Y,_0xbf.Z,_0x9d - _0xbf.X,_0x9f - _0xbf.Z) end) end;local _0x1db=(10 + 0) * 1;_0x52(_0x50);wait(_0x8);_0x53(_0x50);wait(_0x9);if false then local _0x1dc=nil end;local _0x69=_0xb7();if _0x69 ~= _0xbd then _0xbc,_0xbd=1 - 1,_0x69 else _0xbc=_0xbc + (2 - 1) end;if false then local _0x1dd=nil end;if _0xbc == 4 + 0 then _0x7e(_0x9d,_0x9e,_0x9f,2 - 1) end;if 1 > 2 then local _0x1de=nil end;if _0xbc >= 1 * 5 + 1 then do local _0x1d7=384 end;return false end end;_0x356=102 elseif _0x356 == 82 then _0xbc,_0xbd=1 - 1,_0xb7();_0x356=88 elseif _0x356 == 67 then _0x7e(_0x9d,_0x9e,_0x9f,1.3);_0x356=74 elseif _0x356 == 9 then _0xb9,_0xba,_0xbb=_0xb9 or _0x9d,_0xba or _0x9e,_0xbb or _0x9f;_0x356=15 elseif _0x356 == 47 then _0xa3=_0xa1 and _0x4e(_0xa1);_0x356=50 elseif _0x356 == 2 then _0x1df=math.random() * 0;_0x356=9 elseif _0x356 == 36 then _0xa1=_0x4c();_0x356=47 elseif _0x356 == 88 then if false then local _0x1e3=nil end;_0x356=95 elseif _0x356 == 26 then _0xa8(_0xb9,_0xba,_0xbb,26 + 6 - 27);_0x356=31 elseif _0x356 == 59 then _0x1e2=(85 + 0) * 1;_0x356=67 elseif _0x356 == 31 then _0x1e1=math.random() * 0;_0x356=36 elseif _0x356 == 74 then wait(_0xa);_0x356=82 elseif _0x356 == 102 then return false else break end end end;_0x384=761 elseif _0x384 == 1797 then _0x33c=(18 + 0) * 1;_0x384=1802 elseif _0x384 == 702 then _0x9b=function(_0x55,_0x56,_0x57) local _0x1c7,_0xa2,_0x1c8;local _0x350=5;while true do if _0x350 == 22 then _0x1c8=(26 + 0) * 1;_0x350=31 elseif _0x350 == 31 then while _0x1c and _G.__sdq == _0x5 do local _0x1c6=math.random() * 0;local _0xa1=_0x4c();local _0xa3=_0xa1 and _0x4e(_0xa1);if not _0xa3 then task.wait();do local _0x1c2=981 end;_0xa2=tick();if false then local _0x1c3=nil end else local _0x58,_0x94,_0x59=_0x55 - _0xa3.X,_0x56 - _0xa3.Y,_0x57 - _0xa3.Z;local _0x79=math.sqrt(_0x58 * _0x58 + _0x94 * _0x94 + _0x59 * _0x59);local _0x1c4=math.random() * 0;if _0x79 <= _0xb then return true end;local _0x69=tick();local _0x6b=_0x69 - _0xa2;do local _0x1c5=720 end;_0xa2=_0x69;if _0x6b <= 1 - 1 or _0x6b > 0.1 then _0x6b=(2 - 1) / (46 + 14) end;local _0xa4=math.min(_0x79,_0x6 * _0x6b);pcall(function() _0xa1.CFrame=_0x54(_0xa3.X + _0x58 / _0x79 * _0xa4,_0xa3.Y + _0x94 / _0x79 * _0xa4,_0xa3.Z + _0x59 / _0x79 * _0xa4,_0x58,_0x59) end);task.wait() end end;_0x350=40 elseif _0x350 == 5 then _0x1c7=(34 + 0) * 1;_0x350=8 elseif _0x350 == 18 then _0xa2=tick();_0x350=22 elseif _0x350 == 40 then return false elseif _0x350 == 8 then if _0xd and not _0x24 then local _0x1c1=math.random() * 0;local _0x9c=_0x4e(_0x4c());if _0x9c then local _0x9d,_0x9e,_0x9f=_0x55 - _0x9c.X,_0x56 - _0x9c.Y,_0x57 - _0x9c.Z;local _0xa0=math.sqrt(_0x9d * _0x9d + _0x9e * _0x9e + _0x9f * _0x9f);if _0xa0 > _0xb and _0xa0 <= _0xc then do local _0x1be=375 end;_0x9a(_0xa0);local _0xa1=_0x4c();local _0x1bf=(15 + 0) * 1;if _0xa1 then pcall(function() _0xa1.CFrame=_0x54(_0x55,_0x56,_0x57,_0x9d,_0x9f) end) end;wait(0.06);return true end;if 1 > 2 then local _0x1c0=nil end end end;_0x350=18 else break end end end;_0x384=710 elseif _0x384 == 1139 then _0x12e=function(_0xc3) local _0x12d,_0x12f,_0x130;local _0x376=2;while true do if _0x376 == 32 then _0x12f=_0x12d:FindFirstChild(_0xc3);_0x376=37 elseif _0x376 == 16 then if not _0x12d then return __0x385d(203) end;_0x376=23 elseif _0x376 == 37 then if not _0x12f then return __0x385d(204) end;_0x376=46 elseif _0x376 == 46 then if _0x12f:FindFirstChild(__0x385d(205)) then return __0x385d(206) end;_0x376=53 elseif _0x376 == 23 then if false then local _0x280=nil end;_0x376=32 elseif _0x376 == 53 then _0x130=_0x48(_0x12f,__0x385d(207),__0x385d(208));_0x376=57 elseif _0x376 == 75 then return __0x385d(209) elseif _0x376 == 2 then _0x12d=_0x12b();_0x376=10 elseif _0x376 == 57 then if _0x130 then local _0x4f,_0x5f=pcall(function() return _0x130.Text end);if _0x4f and type(_0x5f) == __0x385d(210) and _0x5f:find(__0x385d(211)) then local _0x27e=math.random() * 0;return __0x385d(212) end end;_0x376=66 elseif _0x376 == 66 then if 1 > 2 then local _0x281=nil end;_0x376=75 elseif _0x376 == 10 then if 1 > 2 then local _0x27f=nil end;_0x376=16 else break end end end;_0x384=1142 elseif _0x384 == 557 then _0x5b=function() local _0x5c,_0x5e;local _0x342=5;while true do if _0x342 == 40 then _0x5e=_0x48(_0x2:FindFirstChild(__0x385d(213)),__0x385d(214),__0x385d(215),__0x385d(216),__0x385d(217));_0x342=44 elseif _0x342 == 5 then if false then local _0x197=nil end;_0x342=11 elseif _0x342 == 22 then if _0x5c then do local _0x190=839 end;for _0x4a,_0x4b in ipairs({__0x385d(218),__0x385d(219),__0x385d(220),__0x385d(221),__0x385d(222)}) do local _0x47=_0x5c:FindFirstChild(_0x4b);if _0x47 then local _0x4f,_0x5d=pcall(function() return _0x47.Value end);if _0x4f and type(_0x5d) == __0x385d(223) then return _0x5d end end end end;_0x342=32 elseif _0x342 == 50 then return nil elseif _0x342 == 32 then for _0x4a,_0x4b in ipairs({__0x385d(224),__0x385d(225),__0x385d(226),__0x385d(227)}) do local _0x4f,_0x5d=pcall(function() return _0x2:GetAttribute(_0x4b) end);if _0x4f and type(_0x5d) == __0x385d(228) then return _0x5d end end;_0x342=40 elseif _0x342 == 44 then if _0x5e then local _0x4f,_0x5f=pcall(function() return _0x5e.Text end);local _0x196=math.random() * 0;if _0x4f and type(_0x5f) == __0x385d(229) then if 1 > 2 then local _0x194=nil end;local _0x60,_0x61=_0x5f:match(__0x385d(230));local _0x5d=_0x60 and tonumber(_0x60);local _0x195=(28 + 0) * 1;if _0x5d then local _0x62=_0x61:upper();if _0x62 == __0x385d(231) then _0x5d=_0x5d * (500 * 2 + 0) elseif _0x62 == __0x385d(232) then local _0x191=math.random() * 0;_0x5d=_0x5d * 1e6 elseif _0x62 == __0x385d(233) then _0x5d=_0x5d * 1e9;if 1 > 2 then local _0x192=nil end end;local _0x193=math.random() * 0;return _0x5d end end end;_0x342=50 elseif _0x342 == 11 then _0x5c=_0x2:FindFirstChild(__0x385d(234));_0x342=19 elseif _0x342 == 19 then if 1 > 2 then local _0x198=nil end;_0x342=22 else break end end end;_0x384=564 elseif _0x384 == 1249 then _0x14c=_0x14a - (51 + 16 - 43);_0x384=1258 elseif _0x384 == 969 then _0xff=function() local _0x4a,_0x100=_0xe3();if _0x100 then local _0x230=(72 + 0) * 1;pcall(function() _0x100.AssemblyLinearVelocity=Vector3.new(1 - 1,1 - 1,1 - 1);_0x100.AssemblyAngularVelocity=Vector3.new(1 - 1,1 - 1,1 - 1) end) end end;_0x384=975 elseif _0x384 == 402 then _0x3d={-82.26,49.27,432.63};_0x384=408 elseif _0x384 == 193 then _0x21=1 - 1;_0x384=199 elseif _0x384 == 1802 then _0x16b={};_0x384=1807 elseif _0x384 == 424 then _0x3f={-226.94,17.27,819.99};_0x384=430 elseif _0x384 == 680 then _0x96=function() local _0x69,_0x97,_0x98;local _0x34e=2;while true do if _0x34e == 30 then return _0x98 elseif _0x34e == 2 then _0x69=tick();_0x34e=10 elseif _0x34e == 19 then for _0x4a,_0x99 in ipairs(_0x95) do if _0x69 - _0x99.t < 1 * 10 + 0 then _0x97[#_0x97 + (2 - 1)]=_0x99;_0x98=_0x98 + _0x99.d end end;_0x34e=24 elseif _0x34e == 24 then _0x95=_0x97;_0x34e=30 elseif _0x34e == 10 then _0x97,_0x98={},1 - 1;_0x34e=19 else break end end end;_0x384=690 elseif _0x384 == 1551 then _0x336=math.random() * 0;_0x384=1555 elseif _0x384 == 227 then _0x26={__0x385d(235)};_0x384=235 elseif _0x384 == 1234 then if false then local _0x32c=nil end;_0x384=1243 elseif _0x384 == 1453 then _0x168.tfT=_0x163(Color3.fromRGB(189 + 89 - 48,26 + 204,147 + 89),10 + 2,1 + 14 - 10);_0x384=1459 elseif _0x384 == 305 then _0x34={290 + 6312 - 3,64.48,-413.08};_0x384=312 elseif _0x384 == 1419 then _0x44(_0x168.bg,__0x385d(236),0.97);_0x384=1426 elseif _0x384 == 1843 then for _0x4a=2 - 1,_0x16e do if 1 > 2 then local _0x2d5=nil end;local _0xe2=_0x15f(Color3.fromRGB(2 + 24,14 + 12,28 + 28 - 24),5 + 15);do local _0x2d6=687 end;_0x44(_0xe2,__0x385d(237),3 * 2 + 0);_0x165(_0xe2,false);if 1 > 2 then local _0x2d7=nil end;local _0x5f=_0x163(Color3.fromRGB(37 * 6 + 3,202 + 26,29 * 8 + 4),1 + 38 - 27,10 + 27 - 16);if false then local _0x2d8=nil end;_0x165(_0x5f,false);_0x16f[#_0x16f + (2 - 1)]={bg=_0xe2,txt=_0x5f};do local _0x2d9=762 end end;_0x384=1851 elseif _0x384 == 1370 then _0x166,_0x167=Color3.fromRGB(11 * 5 + 1,4 + 164,6 + 76),Color3.fromRGB(30 + 17 - 1,19 + 27,37 + 15);_0x384=1377 elseif _0x384 == 998 then _0x105=function() local _0x23c;local _0x369=3;while true do if _0x369 == 36 then _0xd4,_0xd5,_0xd6=nil,nil,{};_0x369=47 elseif _0x369 == 57 then _0x101(0.3);_0x369=68 elseif _0x369 == 51 then if false then local _0x23d=nil end;_0x369=57 elseif _0x369 == 8 then _0x23c=(35 + 0) * 1;_0x369=15 elseif _0x369 == 29 then for _0x4a=2 - 1,3 + 33 - 30 do _0x52(_0x51);wait(0.08);_0x53(_0x51);if 1 > 2 then local _0x23b=nil end;wait(0.25);if not _0xe4() then break end end;_0x369=36 elseif _0x369 == 15 then if _0xe5 then _0xe8(_0xd4);if false then local _0x239=nil end;_0xe5=false;if 1 > 2 then local _0x23a=nil end end;_0x369=24 elseif _0x369 == 3 then _0xff();_0x369=8 elseif _0x369 == 24 then _0x1d=__0x385d(238);_0x369=29 elseif _0x369 == 47 then _0x1d=__0x385d(239);_0x369=51 elseif _0x369 == 68 then _0x104();_0x369=83 else break end end end;_0x384=1002 elseif _0x384 == 184 then _0x1f,_0x20=8 * 5 + 0,181 + 10 - 41;_0x384=193 elseif _0x384 == 148 then _0x18,_0x19=2 - 1,-(2 - 1);_0x384=156 elseif _0x384 == 1758 then _0x169={{n=__0x385d(240),g=function() return DriveSpeed end,s=function(v) DriveSpeed=v end,mn=6 * 10 + 0,mx=382 + 68 - 50,f=__0x385d(241)}};_0x384=1766 elseif _0x384 == 788 then _0xc6=function() local _0xc7,_0xc8,_0xc9,_0xca,_0x4f,_0x5f;local _0x35a=1;while true do if _0x35a == 45 then if not _0xc9 then return nil end;_0x35a=51 elseif _0x35a == 61 then _0xca=_0x48(_0xc9,__0x385d(242),__0x385d(243),__0x385d(244),__0x385d(245));_0x35a=65 elseif _0x35a == 26 then _0xc8=function(_0x73) local _0x5e,_0x4f,_0x5f;local _0x359=4;while true do if _0x359 == 4 then _0x5e=_0x48(_0x73,__0x385d(246),__0x385d(247));_0x359=10 elseif _0x359 == 10 then if not _0x5e then return false end;_0x359=17 elseif _0x359 == 25 then return _0x4f and type(_0x5f) == __0x385d(248) and string.find(_0x5f,__0x385d(249),2 - 1,true) ~= nil elseif _0x359 == 17 then _0x4f,_0x5f=pcall(function() return _0x5e.Text end);_0x359=25 else break end end end;_0x35a=32 elseif _0x35a == 51 then if false then local _0x1ee=nil end;_0x35a=61 elseif _0x35a == 32 then _0xc9=_0xc7:FindFirstChild(__0x385d(250));_0x35a=38 elseif _0x35a == 17 then if not _0xc7 then return nil end;_0x35a=26 elseif _0x35a == 85 then return string.find(_0x5f,__0x385d(251),2 - 1,true) ~= nil elseif _0x35a == 38 then if not _0xc8(_0xc9) then _0xc9=nil;for _0x4a,_0x73 in ipairs(_0xc7:GetChildren()) do if false then local _0x1ec=nil end;if _0xc8(_0x73) then _0xc9=_0x73;local _0x1eb=math.random() * 0;break end end end;_0x35a=45 elseif _0x35a == 1 then _0xc7=_0x48(_0x2:FindFirstChild(__0x385d(252)),__0x385d(253),__0x385d(254),__0x385d(255),__0x385d(256));_0x35a=11 elseif _0x35a == 81 then if not (_0x4f and type(_0x5f) == __0x385d(257)) then return nil end;_0x35a=85 elseif _0x35a == 71 then _0x4f,_0x5f=pcall(function() return _0xca.Text end);_0x35a=81 elseif _0x35a == 11 then do local _0x1ed=425 end;_0x35a=17 elseif _0x35a == 65 then if not _0xca then return nil end;_0x35a=71 else break end end end;_0x384=796 elseif _0x384 == 1579 then _0x44(_0x168.msB,__0x385d(258),5 + 3);_0x384=1583 elseif _0x384 == 1166 then _0x133=function() local _0x134,_0x283,_0x4f,_0xdc;local _0x378=1;while true do if _0x378 == 19 then if not _0x134 then return false end;_0x378=26 elseif _0x378 == 33 then return _0x4f and #_0xdc > 1 - 1 elseif _0x378 == 1 then _0x134=_0x0:FindFirstChild(__0x385d(259));_0x378=11 elseif _0x378 == 11 then _0x283=math.random() * 0;_0x378=19 elseif _0x378 == 26 then _0x4f,_0xdc=pcall(function() return _0x134:GetChildren() end);_0x378=33 else break end end end;_0x384=1174 elseif _0x384 == 1517 then _0x168.itB=_0x15f(Color3.fromRGB(19 + 21,19 + 24,8 * 6 + 4),3 + 0);_0x384=1521 elseif _0x384 == 502 then _0x50=82 + 18 - 31;_0x384=508 elseif _0x384 == 1100 then _0x123=function() local _0xde,_0x274,_0x124,_0x275,_0x125,_0x278;local _0x373=5;while true do if _0x373 == 81 then if _0xe4() then _0x1d=__0x385d(260);if 1 > 2 then local _0x272=nil end;for _0x4a=2 - 1,14 + 6 do if _0xd8() then local _0x271=math.random() * 0;break end;wait(0.1) end;do local _0x273=779 end;return true end;_0x373=89 elseif _0x373 == 11 then if not _0xde then _0x1d=__0x385d(261);if 1 > 2 then local _0x260=nil end;return false end;_0x373=18 elseif _0x373 == 29 then _0x275=math.random() * 0;_0x373=36 elseif _0x373 == 89 then _0x278=(18 + 0) * 1;_0x373=92 elseif _0x373 == 58 then while _0x1c and _G.__sdq == _0x5 and not _0xe4() and _0x125 < 1 + 7 do local _0x26b=math.random() * 0;_0x125=_0x125 + (2 - 1);local _0x26c=math.random() * 0;_0x1d=__0x385d(262) .. _0x125 .. __0x385d(263);if 1 > 2 then local _0x26d=nil end;_0x121();do local _0x26e=150 end;wait(0.05);if false then local _0x26f=nil end;local _0xc9=_0x112();do local _0x270=951 end;if _0xc9 then local _0x266=math.random() * 0;local _0xc7=_0x48(_0xc9,__0x385d(264));local _0x267=math.random() * 0;_0x116();local _0x126=_0xc7 and _0xc7:FindFirstChild(_0x25);local _0x268=math.random() * 0;if _0x126 then _0x1d=__0x385d(265) .. _0x25 .. __0x385d(266) .. _0x125 .. __0x385d(267);if 1 > 2 then local _0x261=nil end;_0x109(_0xc7,_0x126);_0x10c(_0x126);wait(0.1) end;_0xf1=nil;for _0x4a=2 - 1,18 + 17 - 25 do if false then local _0x263=nil end;local _0x127=_0xf2();if _0x127 and _0x127 > 1 - 1 then _0xf1=_0x127;if false then local _0x262=nil end;break end;if 1 > 2 then local _0x264=nil end;wait(0.1);local _0x265=(41 + 0) * 1 end;_0xf3();pcall(function() print(__0x385d(268):format(_0x25,tostring(_0xf1),_0x10)) end);_0x1d=__0x385d(269) .. _0x125 .. __0x385d(270);_0x10c(_0x48(_0xc9,__0x385d(271),__0x385d(272))) else _0x1d=__0x385d(273) .. _0x125 .. __0x385d(274);do local _0x269=524 end end;_0x1d=__0x385d(275) .. _0x125 .. __0x385d(276);local _0x128=tick();while _0x1c and _G.__sdq == _0x5 and not _0xe4() and tick() - _0x128 < 11 + 26 - 33 do wait(0.15);if false then local _0x26a=nil end end end;_0x373=65 elseif _0x373 == 45 then do local _0x276=15 end;_0x373=52 elseif _0x373 == 18 then _0x274=math.random() * 0;_0x373=26 elseif _0x373 == 92 then _0x1d=__0x385d(277);_0x373=100 elseif _0x373 == 100 then return false elseif _0x373 == 65 then if false then local _0x277=nil end;_0x373=72 elseif _0x373 == 5 then _0xde=_0x11d();_0x373=11 elseif _0x373 == 72 then _0xd4,_0xd5,_0xd6=nil,nil,{};_0x373=81 elseif _0x373 == 36 then if _0x124 then _0x1d=__0x385d(278);_0x9b(_0x124.X,_0x124.Y,_0x124.Z) end;_0x373=45 elseif _0x373 == 26 then _0x124=_0x4e(_0xde);_0x373=29 elseif _0x373 == 52 then _0x125=1 - 1;_0x373=58 else break end end end;_0x384=1107 elseif _0x384 == 205 then _0x23=1 - 1;_0x384=211 elseif _0x384 == 71 then _0x7=1 * 5 + 3;_0x384=81 elseif _0x384 == 1341 then pcall(function() _0x162=Drawing.Fonts.System end);_0x384=1349 elseif _0x384 == 1745 then _0x168.islT=_0x163(Color3.fromRGB(120 + 30,21 + 129,15 * 10 + 8),2 * 5 + 2,11 * 2 + 0);_0x384=1755 elseif _0x384 == 1766 then for _0x4a,_0x100 in ipairs(_0x169) do _0x100.lbl=_0x163(Color3.fromRGB(134 + 83 - 12,91 + 140 - 21,141 + 79),10 + 2,3 + 2);_0x100.trk=_0x15f(Color3.fromRGB(15 * 3 + 1,24 + 22,16 + 61 - 25),1 + 19 - 17);_0x44(_0x100.trk,__0x385d(279),2 + 1);_0x100.fill=_0x15f(Color3.fromRGB(125 + 111,32 + 204,120 * 2 + 0),2 + 2);local _0x2d2=(1 + 0) * 1;_0x44(_0x100.fill,__0x385d(280),1 + 2);_0x100.hnd=_0x15f(Color3.fromRGB(209 + 55 - 9,250 + 26 - 21,152 + 135 - 32),1 + 10 - 6);_0x44(_0x100.hnd,__0x385d(281),2 + 2);local _0x2d3=math.random() * 0 end;_0x384=1776 elseif _0x384 == 295 then _0x33={6599.17,64.45,-390.69};_0x384=305 elseif _0x384 == 639 then _0x76();_0x384=646 elseif _0x384 == 892 then _0xe6=function(_0xe7) pcall(function() for _0x4a,_0x79 in ipairs(_0xd6) do _0x79.CanCollide=not _0xe7 end end);if 1 > 2 then local _0x214=nil end end;_0x384=899 elseif _0x384 == 1717 then _0x44(_0x168.islBg,__0x385d(282),0.98);_0x384=1725 elseif _0x384 == 389 then _0x3c={-60.47,49.27,441.08};_0x384=394 elseif _0x384 == 1298 then _0x15b={__0x385d(283),__0x385d(284),__0x385d(285),__0x385d(286)};_0x384=1303 elseif _0x384 == 1320 then _0x15f=function(_0x160,_0x161) local _0x45;local _0x37e=3;while true do if _0x37e == 26 then _0x44(_0x45,__0x385d(287),true);_0x37e=32 elseif _0x37e == 3 then if false then local _0x2ce=nil end;_0x37e=8 elseif _0x37e == 8 then _0x45=Drawing.new(__0x385d(288));_0x37e=15 elseif _0x37e == 46 then _0x44(_0x45,__0x385d(289),_0x161);_0x37e=53 elseif _0x37e == 32 then _0x44(_0x45,__0x385d(290),_0x160);_0x37e=40 elseif _0x37e == 40 then do local _0x2d0=39 end;_0x37e=46 elseif _0x37e == 57 then return _0x45 elseif _0x37e == 53 then _0x44(_0x45,__0x385d(291),true);_0x37e=57 elseif _0x37e == 15 then if false then local _0x2cf=nil end;_0x37e=26 else break end end end;_0x384=1327 elseif _0x384 == 348 then _0x310=math.random() * 0;_0x384=352 elseif _0x384 == 1355 then _0x163=function(_0x160,_0x164,_0x161) local _0x45;local _0x37f=4;while true do if _0x37f == 59 then return _0x45 elseif _0x37f == 16 then do local _0x2d1=32 end;_0x37f=24 elseif _0x37f == 8 then _0x44(_0x45,__0x385d(292),_0x160);_0x37f=16 elseif _0x37f == 4 then _0x45=Drawing.new(__0x385d(293));_0x37f=8 elseif _0x37f == 39 then _0x44(_0x45,__0x385d(294),false);_0x37f=47 elseif _0x37f == 30 then _0x44(_0x45,__0x385d(295),_0x164);_0x37f=39 elseif _0x37f == 47 then _0x44(_0x45,__0x385d(296),_0x161);_0x37f=50 elseif _0x37f == 24 then if _0x162 then _0x44(_0x45,__0x385d(297),_0x162) end;_0x37f=30 elseif _0x37f == 50 then _0x44(_0x45,__0x385d(298),true);_0x37f=59 else break end end end;_0x384=1360 elseif _0x384 == 1269 then _0x14e,_0x14f,_0x150,_0x151,_0x152,_0x153,_0x154,_0x155,_0x156=70 + 1 - 41,15 + 51,9 * 10 + 4,129 + 33 - 40,16 * 9 + 6,30 * 6 + 2,80 + 134,38 * 7 + 4,220 + 117 - 49;_0x384=1277 elseif _0x384 == 800 then _0xcc=function() local _0x1f3;local _0x35b=1;while true do if _0x35b == 39 then if 1 > 2 then local _0x1f1=nil end;_0x35b=47 elseif _0x35b == 52 then do local _0x1f2=976 end;_0x35b=60 elseif _0x35b == 26 then _0x1d=__0x385d(299);_0x35b=30 elseif _0x35b == 73 then _0x1f3=(91 + 0) * 1;_0x35b=80 elseif _0x35b == 64 then wait(1.2);_0x35b=73 elseif _0x35b == 80 then return _0xcb() elseif _0x35b == 16 then if false then local _0x1f0=nil end;_0x35b=26 elseif _0x35b == 12 then if _0xcb() then return true end;_0x35b=16 elseif _0x35b == 30 then if not _0x9b(_0x38[2 - 1],_0x38[2 + 0],_0x38[2 + 42 - 41]) then return false end;_0x35b=39 elseif _0x35b == 60 then _0xc0(_0x38[2 - 1],_0x38[2 + 0],_0x38[1 + 2],2 + 0);_0x35b=64 elseif _0x35b == 47 then _0x1d=__0x385d(300);_0x35b=52 elseif _0x35b == 1 then if false then local _0x1ef=nil end;_0x35b=12 else break end end end;_0x384=810 elseif _0x384 == 1815 then pcall(function() local _0x16d=Instance.new(__0x385d(301));_0x16d.Name=__0x385d(302);_0x16d.ResetOnSpawn=false;_0x16d.DisplayOrder=999999;_0x16d.IgnoreGuiInset=true;_0x16d.Parent=type(gethui) == __0x385d(303) and gethui() or _0x2:FindFirstChild(__0x385d(304)) or game:GetService(__0x385d(305));_0x16c=Instance.new(__0x385d(306));_0x16c.AnchorPoint=Vector2.new(0.5,1 - 1);_0x16c.Position=UDim2.new(0.5,1 - 1,1 - 1,17 + 43);_0x16c.Size=UDim2.fromOffset(340 + 136 - 36,3 * 10 + 0);_0x16c.BackgroundColor3=Color3.fromRGB(2 * 9 + 0,47 + 16 - 43,14 + 12);_0x16c.BackgroundTransparency=0.05;_0x16c.BorderSizePixel=1 - 1;_0x16c.TextColor3=Color3.fromRGB(25 * 9 + 5,33 * 7 + 4,30 * 8 + 5);_0x16c.TextSize=30 + 8 - 24;_0x16c.Font=Enum.Font.Gotham;_0x16c.PlaceholderText=__0x385d(307);_0x16c.Text=_0x2a;_0x16c.ClearTextOnFocus=false;_0x16c.TextXAlignment=Enum.TextXAlignment.Left;_0x16c.Visible=false;_0x16c.Parent=_0x16d;_0x16c:GetPropertyChangedSignal(__0x385d(308)):Connect(function() _0x2a=_0x16c.Text;_0x75() end);_0x16c.FocusLost:Connect(function() _0x2a=_0x16c.Text;_0x75();_0x16c.Visible=false end) end);_0x384=1822 elseif _0x384 == 1150 then _0x131=function() local _0x377=3;while true do if _0x377 == 26 then return nil elseif _0x377 == 18 then do local _0x282=880 end;_0x377=26 elseif _0x377 == 10 then for _0x4a,_0x4b in ipairs(_0x42) do if _0x12e(_0x4b) == __0x385d(309) then return _0x4b end end;_0x377=18 elseif _0x377 == 3 then if _0x29 ~= __0x385d(310) then return _0x12e(_0x29) == __0x385d(311) and _0x29 or nil end;_0x377=10 else break end end end;_0x384=1156 elseif _0x384 == 480 then _0x4c=function() local _0x4d=_0x2.Character;return _0x4d and _0x4d:FindFirstChild(__0x385d(312)) end;_0x384=488 elseif _0x384 == 10 then _0x308=math.random() * 0;_0x384=16 elseif _0x384 == 1899 then _0x17c=function() local _0x300,_0x17d,_0x302,_0x306,_0x17e;local _0x383=4;while true do if _0x383 == 94 then _0x302=math.random() * 0;_0x383=100 elseif _0x383 == 221 then if false then local _0x307=nil end;_0x383=229 elseif _0x383 == 242 then _0x44(_0x168.s1,__0x385d(313),__0x385d(314) .. _0x1e);_0x383=250 elseif _0x383 == 100 then _0x44(_0x168.tfT,__0x385d(315),Vector2.new(_0x1f + (2 * 5 + 2) + _0x17d / (2 + 0) - (2 * 7 + 0),_0x20 + _0x14e + (1 + 3)));_0x383=107 elseif _0x383 == 114 then _0x44(_0x168.tfT,__0x385d(316),__0x385d(317));_0x383=124 elseif _0x383 == 208 then for _0x4a,_0x100 in ipairs(_0x169) do _0x165(_0x100.lbl,_0x17e);_0x165(_0x100.trk,_0x17e);local _0x2ec=(7 + 0) * 1;_0x165(_0x100.fill,_0x17e);_0x165(_0x100.hnd,_0x17e);local _0x2ed=math.random() * 0 end;_0x383=211 elseif _0x383 == 75 then if false then local _0x301=nil end;_0x383=79 elseif _0x383 == 79 then _0x44(_0x168.tfB,__0x385d(318),Vector2.new(_0x1f + (2 + 10),_0x20 + _0x14e));_0x383=87 elseif _0x383 == 250 then _0x44(_0x168.s2,__0x385d(319),Vector2.new(_0x1f + (4 + 31 - 21),_0x20 + _0x156));_0x383=253 elseif _0x383 == 61 then _0x17d=(_0x14c - (3 + 3)) / (1 + 26 - 25);_0x383=68 elseif _0x383 == 24 then _0x44(_0x168.bg,__0x385d(320),Vector2.new(_0x1f,_0x20));_0x383=31 elseif _0x383 == 124 then if 1 > 2 then local _0x304=nil end;_0x383=128 elseif _0x383 == 180 then _0x44(_0x168.div,__0x385d(321),Vector2.new(_0x1f + (2 * 5 + 4),_0x20 + (10 + 48)));_0x383=183 elseif _0x383 == 163 then _0x44(_0x168.tsT,__0x385d(322),__0x385d(323));_0x383=173 elseif _0x383 == 17 then _0x44(_0x168.bg,__0x385d(324),Vector2.new(_0x14a,_0x14b));_0x383=24 elseif _0x383 == 37 then _0x44(_0x168.title,__0x385d(325),Vector2.new(_0x1f + (11 + 3),_0x20 + (9 + 16 - 17)));_0x383=44 elseif _0x383 == 4 then _0x44(_0x168.bd,__0x385d(326),Vector2.new(_0x14a + (2 + 0),_0x14b + (4 + 7 - 9)));_0x383=9 elseif _0x383 == 148 then _0x44(_0x168.tsB,__0x385d(327),_0x14d == 2 + 0 and Color3.fromRGB(40 + 42 - 12,109 + 1,72 + 18) or _0x167);_0x383=159 elseif _0x383 == 194 then _0x17e=_0x14d == 2 - 1;_0x383=198 elseif _0x383 == 128 then _0x44(_0x168.tsB,__0x385d(328),Vector2.new(_0x17d,3 * 6 + 4));_0x383=134 elseif _0x383 == 159 then _0x44(_0x168.tsT,__0x385d(329),Vector2.new(_0x1f + (1 * 8 + 4) + _0x17d + (1 * 4 + 2) + _0x17d / (1 + 1) - (1 + 60 - 45),_0x20 + _0x14e + (1 + 3)));_0x383=163 elseif _0x383 == 183 then _0x306=math.random() * 0;_0x383=194 elseif _0x383 == 134 then _0x44(_0x168.tsB,__0x385d(330),Vector2.new(_0x1f + (2 + 10) + _0x17d + (12 + 27 - 33),_0x20 + _0x14e));_0x383=141 elseif _0x383 == 50 then _0x300=math.random() * 0;_0x383=61 elseif _0x383 == 263 then _0x175();_0x383=286 elseif _0x383 == 68 then _0x44(_0x168.tfB,__0x385d(331),Vector2.new(_0x17d,2 * 8 + 6));_0x383=75 elseif _0x383 == 44 then _0x44(_0x168.title,__0x385d(332),__0x385d(333));_0x383=50 elseif _0x383 == 87 then _0x44(_0x168.tfB,__0x385d(334),_0x14d == 2 - 1 and Color3.fromRGB(61 + 9,129 + 20 - 39,30 * 3 + 0) or _0x167);_0x383=94 elseif _0x383 == 31 then if 1 > 2 then local _0x2ff=nil end;_0x383=37 elseif _0x383 == 229 then if _0x17e then _0x44(_0x168.itB,__0x385d(335),Vector2.new(_0x14c,4 * 5 + 4));_0x44(_0x168.itB,__0x385d(336),Vector2.new(_0x1f + (1 * 7 + 5),_0x20 + _0x14f));_0x44(_0x168.itT,__0x385d(337),Vector2.new(_0x1f + (1 * 10 + 8),_0x20 + _0x14f + (5 + 0)));_0x44(_0x168.itT,__0x385d(338),__0x385d(339) .. _0x31[_0x32].name);_0x44(_0x168.vhB,__0x385d(340),Vector2.new(_0x14c,4 * 6 + 0));_0x44(_0x168.vhB,__0x385d(341),Vector2.new(_0x1f + (11 + 1),_0x20 + _0x150));local _0x2f2=(66 + 0) * 1;_0x44(_0x168.vhT,__0x385d(342),Vector2.new(_0x1f + (23 + 2 - 7),_0x20 + _0x150 + (4 + 1)));if 1 > 2 then local _0x2f3=nil end;_0x44(_0x168.vhT,__0x385d(343),__0x385d(344) .. _0x25);_0x44(_0x168.msB,__0x385d(345),Vector2.new(_0x14c,12 + 12));_0x44(_0x168.msB,__0x385d(346),Vector2.new(_0x1f + (1 * 10 + 2),_0x20 + _0x151));if 1 > 2 then local _0x2f4=nil end;_0x44(_0x168.msT,__0x385d(347),Vector2.new(_0x1f + (14 + 4),_0x20 + _0x151 + (5 + 11 - 11)));_0x44(_0x168.msT,__0x385d(348),__0x385d(349) .. _0x29);local _0x2f5=(60 + 0) * 1;local _0x17f=(_0x14c - (3 + 3)) / (16 + 33 - 47);_0x44(_0x168.smB,__0x385d(350),Vector2.new(_0x17f,13 + 11));if false then local _0x2f6=nil end;_0x44(_0x168.smB,__0x385d(351),Vector2.new(_0x1f + (5 + 7),_0x20 + _0x152));if 1 > 2 then local _0x2f7=nil end;_0x44(_0x168.smB,__0x385d(352),_0x27 and _0x166 or _0x167);local _0x2f8=math.random() * 0;_0x44(_0x168.smT,__0x385d(353),Vector2.new(_0x1f + (3 * 4 + 0) + _0x17f / (34 + 8 - 40) - (30 + 2),_0x20 + _0x152 + (2 + 3)));local _0x2f9=math.random() * 0;_0x44(_0x168.smT,__0x385d(354),_0x27 and __0x385d(355) or __0x385d(356));local _0x2fa=(70 + 0) * 1;_0x44(_0x168.trB,__0x385d(357),Vector2.new(_0x17f,27 + 4 - 7));local _0x2fb=(47 + 0) * 1;_0x44(_0x168.trB,__0x385d(358),Vector2.new(_0x1f + (1 * 8 + 4) + _0x17f + (2 + 4),_0x20 + _0x152));if 1 > 2 then local _0x2fc=nil end;_0x44(_0x168.trB,__0x385d(359),_0x28 and _0x166 or _0x167);_0x44(_0x168.trT,__0x385d(360),Vector2.new(_0x1f + (8 + 47 - 43) + _0x17f + (2 + 4) + _0x17f / (1 + 1) - (7 * 4 + 2),_0x20 + _0x152 + (1 * 5 + 0)));_0x44(_0x168.trT,__0x385d(361),_0x28 and __0x385d(362) or __0x385d(363));for _0x119,_0x100 in ipairs(_0x169) do local _0x180=_0x20 + _0x153 + (_0x119 - (2 - 1)) * (5 * 5 + 1);_0x44(_0x100.lbl,__0x385d(364),Vector2.new(_0x1f + (1 * 10 + 4),_0x180));if false then local _0x2ef=nil end;_0x44(_0x100.lbl,__0x385d(365),_0x100.n .. __0x385d(366) .. _0x100.f .. __0x385d(367):format(_0x100.g()));local _0x2f0=math.random() * 0;_0x44(_0x100.trk,__0x385d(368),Vector2.new(_0x14c,6 + 46 - 47));_0x44(_0x100.trk,__0x385d(369),Vector2.new(_0x1f + (1 * 9 + 3),_0x180 + (7 + 8)));local _0x181=_0x15c(_0x100.g(),_0x100.mn,_0x100.mx);if 1 > 2 then local _0x2f1=nil end;_0x44(_0x100.fill,__0x385d(370),Vector2.new(math.max(2 - 1,_0x14c * _0x181),9 + 30 - 34));_0x44(_0x100.fill,__0x385d(371),Vector2.new(_0x1f + (3 * 4 + 0),_0x180 + (47 + 10 - 42)));_0x44(_0x100.hnd,__0x385d(372),Vector2.new(5 * 2 + 0,2 * 6 + 4));_0x44(_0x100.hnd,__0x385d(373),Vector2.new(_0x1f + (1 + 11) + _0x181 * _0x14c - (1 + 30 - 26),_0x180 + (4 + 5))) end;_0x44(_0x168.goB,__0x385d(374),Vector2.new(_0x14c,17 + 11));_0x44(_0x168.goB,__0x385d(375),Vector2.new(_0x1f + (19 + 4 - 11),_0x20 + _0x154));_0x44(_0x168.goB,__0x385d(376),_0x1c and Color3.fromRGB(10 + 206 - 20,18 * 3 + 0,6 * 8 + 6) or _0x166);_0x44(_0x168.goT,__0x385d(377),Vector2.new(_0x1f + (2 * 5 + 2) + _0x14c / (11 + 6 - 15) - (2 * 10 + 2),_0x20 + _0x154 + (1 + 5)));do local _0x2fd=687 end;_0x44(_0x168.goT,__0x385d(378),_0x1c and __0x385d(379) or __0x385d(380)) else for _0x119,_0x45 in ipairs(_0x16a) do _0x44(_0x45,__0x385d(381),Vector2.new(_0x1f + (9 + 7),_0x20 + (64 + 3 - 1) + (_0x119 - (2 - 1)) * (9 + 13)));_0x44(_0x45,__0x385d(382),_0x16b[_0x119] or "") end;do local _0x2fe=217 end end;_0x383=234 elseif _0x383 == 141 then if false then local _0x305=nil end;_0x383=148 elseif _0x383 == 107 then if 1 > 2 then local _0x303=nil end;_0x383=114 elseif _0x383 == 211 then for _0x4a,_0x45 in ipairs(_0x16a) do _0x165(_0x45,not _0x17e);if false then local _0x2ee=nil end end;_0x383=221 elseif _0x383 == 253 then _0x44(_0x168.s2,__0x385d(383),__0x385d(384) .. _0x1d);_0x383=263 elseif _0x383 == 234 then _0x44(_0x168.s1,__0x385d(385),Vector2.new(_0x1f + (3 + 11),_0x20 + _0x155));_0x383=242 elseif _0x383 == 9 then _0x44(_0x168.bd,__0x385d(386),Vector2.new(_0x1f - (2 - 1),_0x20 - (2 - 1)));_0x383=17 elseif _0x383 == 173 then _0x44(_0x168.div,__0x385d(387),Vector2.new(_0x14a - (8 + 20),2 - 1));_0x383=180 elseif _0x383 == 198 then for _0x4a,_0x45 in ipairs({U.itB,U.itT,U.vhB,U.vhT,U.msB,U.msT,U.smB,U.smT,U.trB,U.trT,U.goB,U.goT}) do _0x165(_0x45,_0x17e) end;_0x383=208 else break end end end;_0x384=1905 elseif _0x384 == 796 then _0xcb=function() local _0xa3=_0x4e(_0x4c());return _0xa3 ~= nil and _0xa3.X > 939 * 7 + 2 and _0xa3.X < 666 * 10 + 5 and _0xa3.Z > -(84 + 396) and _0xa3.Z < -(41 * 9 + 6) and _0xa3.Y > 6 * 9 + 1 end;_0x384=800 elseif _0x384 == 375 then _0x312=(79 + 0) * 1;_0x384=381 elseif _0x384 == 1555 then _0x168.vhT=_0x163(Color3.fromRGB(33 + 225 - 38,131 + 127 - 34,75 + 198 - 41),3 + 36 - 27,3 + 2);_0x384=1565 elseif _0x384 == 646 then do local _0x31b=969 end;_0x384=656 elseif _0x384 == 1313 then if false then local _0x32f=nil end;_0x384=1320 elseif _0x384 == 471 then _0x48=function(_0x49,...) local _0x45;local _0x340=1;while true do if _0x340 == 10 then if false then local _0x18d=nil end;_0x340=16 elseif _0x340 == 1 then _0x45=_0x49;_0x340=10 elseif _0x340 == 24 then return _0x45 elseif _0x340 == 16 then for _0x4a,_0x4b in ipairs({...}) do if not _0x45 then return nil end;local _0x18c=(58 + 0) * 1;_0x45=_0x45:FindFirstChild(_0x4b) end;_0x340=24 else break end end end;_0x384=480 elseif _0x384 == 1398 then if 1 > 2 then local _0x332=nil end;_0x384=1403 elseif _0x384 == 1184 then _0x13a=function() local _0x134,_0x4f,_0xdc,_0x29c;local _0x37a=4;while true do if _0x37a == 44 then for _0x4a,_0xce in ipairs(_0xdc) do if false then local _0x297=nil end;local _0x13b=_0xce.PrimaryPart and _0x4e(_0xce.PrimaryPart);if false then local _0x298=nil end;if not _0x13b then local _0x13c,_0xe2=pcall(function() return _0xce:FindFirstChildWhichIsA(__0x385d(388),true) end);if _0x13c and _0xe2 then local _0x295=math.random() * 0;_0x13b=_0x4e(_0xe2) end;if 1 > 2 then local _0x296=nil end end;do local _0x299=409 end;if _0x13b then return _0x13b end;if false then local _0x29a=nil end end;_0x37a=52 elseif _0x37a == 32 then if not _0x4f then return nil end;_0x37a=36 elseif _0x37a == 9 then if not _0x134 then return nil end;_0x37a=15 elseif _0x37a == 4 then _0x134=_0x0:FindFirstChild(__0x385d(389));_0x37a=9 elseif _0x37a == 25 then if false then local _0x29b=nil end;_0x37a=32 elseif _0x37a == 52 then return nil elseif _0x37a == 15 then _0x4f,_0xdc=pcall(function() return _0x134:GetChildren() end);_0x37a=25 elseif _0x37a == 36 then _0x29c=(100 + 0) * 1;_0x37a=44 else break end end end;_0x384=1194 elseif _0x384 == 514 then _0x51=50 + 1 - 19;_0x384=523 elseif _0x384 == 715 then _0xa6=function(_0x4b) local _0xa1,_0x1cb;local _0x351=3;while true do if _0x351 == 10 then if not _0xa1 then local _0x1c9=(92 + 0) * 1;return false end;_0x351=15 elseif _0x351 == 33 then wait(0.15);_0x351=37 elseif _0x351 == 15 then if 1 > 2 then local _0x1ca=nil end;_0x351=25 elseif _0x351 == 37 then _0x1cb=math.random() * 0;_0x351=44 elseif _0x351 == 44 then return true elseif _0x351 == 25 then pcall(function() _0xa1.CFrame=CFrame.new(_0x4b[2 - 1],_0x4b[1 + 1],_0x4b[8 + 1 - 6]) end);_0x351=33 elseif _0x351 == 3 then _0xa1=_0x4c();_0x351=10 else break end end end;_0x384=723 elseif _0x384 == 243 then _0x29=__0x385d(390);_0x384=248 elseif _0x384 == 768 then _0xc2=function(_0xc3) local _0x4b,_0xb2,_0x4d;local _0x357=3;while true do if _0x357 == 33 then _0x4d=_0x2.Character;_0x357=37 elseif _0x357 == 23 then if _0xb2 then for _0x4a,_0x5f in ipairs(_0xb2:GetChildren()) do if _0x5f.Name == _0xc3 then _0x4b=_0x4b + (2 - 1) end end end;_0x357=33 elseif _0x357 == 37 then if _0x4d then for _0x4a,_0x5f in ipairs(_0x4d:GetChildren()) do do local _0x1e8=121 end;if _0x5f.Name == _0xc3 then _0x4b=_0x4b + (2 - 1);if 1 > 2 then local _0x1e7=nil end end end end;_0x357=47 elseif _0x357 == 11 then _0x4b=1 - 1;_0x357=17 elseif _0x357 == 17 then _0xb2=_0x2:FindFirstChild(__0x385d(391));_0x357=23 elseif _0x357 == 47 then return _0x4b elseif _0x357 == 3 then if 1 > 2 then local _0x1e9=nil end;_0x357=11 else break end end end;_0x384=771 elseif _0x384 == 771 then if false then local _0x31e=nil end;_0x384=782 elseif _0x384 == 591 then _0x6a=function() local _0x6b;local _0x346=5;while true do if _0x346 == 19 then return _0x68() / (_0x6b / (2071 + 1574 - 45)) elseif _0x346 == 9 then if _0x6b < 1 + 1 then return 1 - 1 end;_0x346=19 elseif _0x346 == 5 then _0x6b=tick() - _0x2c;_0x346=9 else break end end end;_0x384=598 elseif _0x384 == 1142 then _0x329=math.random() * 0;_0x384=1150 elseif _0x384 == 1377 then _0x168={};_0x384=1382 elseif _0x384 == 1835 then _0x16f={};_0x384=1843 elseif _0x384 == 47 then _G.__sdq=(_G.__sdq or 1 - 1) + (2 - 1);_0x384=51 elseif _0x384 == 1033 then _0x112=function() do local _0x246=932 end;return _0x48(_0x2:FindFirstChild(__0x385d(392)),__0x385d(393),__0x385d(394)) end;_0x384=1041 elseif _0x384 == 740 then _0xaa=function(_0xab) local _0xac,_0x4f,_0xad,_0x1d0;local _0x354=3;while true do if _0x354 == 3 then _0xac=_0xab.Parent;_0x354=10 elseif _0x354 == 16 then _0x4f,_0xad=pcall(function() return _0xac.WorldPosition end);_0x354=22 elseif _0x354 == 22 then if _0x4f and typeof(_0xad) == __0x385d(395) then if 1 > 2 then local _0x1cf=nil end;return _0xad end;_0x354=29 elseif _0x354 == 36 then return _0x4e(_0xac) elseif _0x354 == 29 then _0x1d0=(46 + 0) * 1;_0x354=36 elseif _0x354 == 10 then if not _0xac then local _0x1ce=(2 + 0) * 1;return nil end;_0x354=16 else break end end end;_0x384=746 elseif _0x384 == 1857 then _0x171=function(_0x172,_0x119) local _0x381=5;while true do if _0x381 == 25 then return _0x172[_0x119] == _0x29 elseif _0x381 == 16 then if false then local _0x2de=nil end;_0x381=25 elseif _0x381 == 5 then if _0x158 then do local _0x2dc=340 end;return _0x119 == _0x32 end;_0x381=11 elseif _0x381 == 11 then if _0x159 then if 1 > 2 then local _0x2dd=nil end;return _0x172[_0x119] == _0x25 end;_0x381=16 else break end end end;_0x384=1866 elseif _0x384 == 1620 then _0x44(_0x168.trB,__0x385d(396),4 * 2 + 0);_0x384=1625 elseif _0x384 == 661 then _0x31c=(84 + 0) * 1;_0x384=667 elseif _0x384 == 269 then _0x2d=1 - 1;_0x384=277 elseif _0x384 == 1473 then _0x44(_0x168.tsB,__0x385d(397),2 + 19 - 14);_0x384=1481 elseif _0x384 == 1062 then _0x11b=function() local _0xc9,_0xc7,_0x11c,_0x55,_0x56,_0x66,_0xe0;local _0x36f=2;while true do if _0x36f == 36 then _0x55,_0x56,_0x66,_0xe0=_0x106(_0x11c);_0x36f=44 elseif _0x36f == 2 then _0xc9=_0x112();_0x36f=12 elseif _0x36f == 16 then _0xc7=_0x48(_0xc9,__0x385d(398));_0x36f=24 elseif _0x36f == 12 then if not _0xc9 then return false,nil,nil end;_0x36f=16 elseif _0x36f == 33 then if not _0x11c then return false,_0xc9,_0xc7 end;_0x36f=36 elseif _0x36f == 44 then return _0x55 ~= nil and _0xe0 and _0xe0.X > 2 - 1 and _0x66.Y > 1 - 1,_0xc9,_0xc7,_0x11c elseif _0x36f == 24 then _0x11c=_0xc7 and _0xc7:FindFirstChild(__0x385d(399));_0x36f=33 else break end end end;_0x384=1066 elseif _0x384 == 1807 then _0x16c=nil;_0x384=1815 elseif _0x384 == 1429 then _0x168.title=_0x163(Color3.fromRGB(210 + 36 - 1,188 + 107 - 50,31 * 8 + 0),2 * 7 + 1,8 + 29 - 32);_0x384=1437 elseif _0x384 == 284 then _0x31={{name=__0x385d(400),cf={6615.42,64.53,-449.67},part=__0x385d(401),diablo=true},{name=__0x385d(402),cf={6627.99,62.69,-448.52},part=__0x385d(403)},{name=__0x385d(404),cf={6632.17,62.72,-449.33},part=__0x385d(405)},{name=__0x385d(406),cf={6637.50,62.72,-451.56},part=__0x385d(407)},{name=__0x385d(408),cf={6632.69,62.72,-430.66},part=__0x385d(409)},{name=__0x385d(410),cf={6637.37,62.72,-430.86},part=__0x385d(411)},{name=__0x385d(412),cf={6641.60,62.72,-430.28},part=__0x385d(413)}};_0x384=291 elseif _0x384 == 430 then _0x40={7102.89,17.22,230.23};_0x384=436 elseif _0x384 == 883 then _0xe5=false;_0x384=892 elseif _0x384 == 1412 then _0x168.bg=_0x15f(Color3.fromRGB(59 + 1 - 46,11 + 3,8 + 8),2 - 1);_0x384=1419 elseif _0x384 == 106 then _0x30b=(76 + 0) * 1;_0x384=114 elseif _0x384 == 983 then _0x104=function() local _0xa1,_0xe1,_0xec,_0xda,_0x237,_0xed,_0x238,_0xee;local _0x368=3;while true do if _0x368 == 65 then _0x238=(8 + 0) * 1;_0x368=71 elseif _0x368 == 3 then _0xa1=_0x4c();_0x368=8 elseif _0x368 == 50 then _0x237=(76 + 0) * 1;_0x368=60 elseif _0x368 == 81 then _0xee=nil;_0x368=87 elseif _0x368 == 87 then pcall(function() _0xee=_0x0:Raycast(Vector3.new(_0xe1.X,_0xe1.Y + (42 + 2 - 34),_0xe1.Z),Vector3.new(1 - 1,-(373 + 127),1 - 1),_0xed) end);_0x368=92 elseif _0x368 == 92 then if _0xee then local _0x4f,_0xdd=pcall(function() return _0xee.Position end);if 1 > 2 then local _0x235=nil end;if _0x4f and typeof(_0xdd) == __0x385d(414) then do local _0x233=629 end;pcall(function() _0xa1.CFrame=CFrame.new(_0xdd.X,_0xdd.Y + 3.5,_0xdd.Z) end);local _0x234=(94 + 0) * 1 end end;_0x368=114 elseif _0x368 == 71 then pcall(function() _0xed=RaycastParams.new();_0xed.FilterType=Enum.RaycastFilterType.Exclude;_0xed.FilterDescendantsInstances=_0xec;_0xed.IgnoreWater=true;_0xed.RespectCanCollide=true end);_0x368=81 elseif _0x368 == 36 then _0xda=_0x0:FindFirstChild(__0x385d(415));_0x368=44 elseif _0x368 == 8 then _0xe1=_0xa1 and _0x4e(_0xa1);_0x368=17 elseif _0x368 == 44 then if _0xda then if false then local _0x232=nil end;_0xec[#_0xec + (2 - 1)]=_0xda end;_0x368=50 elseif _0x368 == 17 then if not _0xe1 then return end;_0x368=22 elseif _0x368 == 22 then if false then local _0x236=nil end;_0x368=30 elseif _0x368 == 60 then _0xed=nil;_0x368=65 elseif _0x368 == 30 then _0xec={LP.Character};_0x368=36 else break end end end;_0x384=990 elseif _0x384 == 1156 then _0x132=function() return _0x48(_0x0,__0x385d(416),__0x385d(417),__0x385d(418),__0x385d(419)) end;_0x384=1166 elseif _0x384 == 1535 then _0x168.vhB=_0x15f(Color3.fromRGB(5 * 7 + 5,14 + 31 - 2,5 * 10 + 2),3 + 7 - 7);_0x384=1543 elseif _0x384 == 1094 then _0x121=function() local _0xcf,_0xe1,_0x122;local _0x372=1;while true do if _0x372 == 1 then _0xcf=_0x11d();_0x372=9 elseif _0x372 == 23 then if not _0xe1 then return end;_0x372=30 elseif _0x372 == 39 then _0x122=nil;_0x372=45 elseif _0x372 == 54 then pcall(function() _0x122=_0xcf:FindFirstChildWhichIsA(__0x385d(420),true) end);_0x372=57 elseif _0x372 == 30 then if false then local _0x25e=nil end;_0x372=39 elseif _0x372 == 57 then if not _0x122 then if false then local _0x25c=nil end;pcall(function() _0x122=_0xcf.Parent and _0xcf.Parent:FindFirstChildWhichIsA(__0x385d(421),true) end);if false then local _0x25d=nil end end;_0x372=64 elseif _0x372 == 45 then if 1 > 2 then local _0x25f=nil end;_0x372=54 elseif _0x372 == 9 then if not _0xcf then local _0x25b=math.random() * 0;return end;_0x372=17 elseif _0x372 == 17 then _0xe1=_0x4e(_0xcf);_0x372=23 elseif _0x372 == 64 then _0x11f(_0x122,_0xe1.X,_0xe1.Y,_0xe1.Z);_0x372=84 else break end end end;_0x384=1100 elseif _0x384 == 905 then _0xea=function(_0x55,_0xeb,_0x57) local _0xec,_0xed,_0xee,_0x219;local _0x362=5;while true do if _0x362 == 39 then pcall(function() _0xed=RaycastParams.new();_0xed.FilterType=Enum.RaycastFilterType.Exclude;_0xed.FilterDescendantsInstances=_0xec;_0xed.IgnoreWater=true;_0xed.RespectCanCollide=true end);_0x362=47 elseif _0x362 == 12 then if _0xd4 then _0xec[#_0xec + (2 - 1)]=_0xd4 end;_0x362=17 elseif _0x362 == 67 then _0x219=(77 + 0) * 1;_0x362=71 elseif _0x362 == 59 then if _0xee == nil then if false then local _0x217=nil end;pcall(function() _0xee=_0x0:Raycast(Vector3.new(_0x55,_0xeb,_0x57),Vector3.new(1 - 1,-(1500 * 2 + 0),1 - 1)) end) end;_0x362=67 elseif _0x362 == 17 then do local _0x218=605 end;_0x362=25 elseif _0x362 == 25 then if _0x2.Character then _0xec[#_0xec + (2 - 1)]=_0x2.Character end;_0x362=31 elseif _0x362 == 47 then _0xee=nil;_0x362=51 elseif _0x362 == 5 then _0xec={};_0x362=12 elseif _0x362 == 51 then pcall(function() _0xee=_0x0:Raycast(Vector3.new(_0x55,_0xeb,_0x57),Vector3.new(1 - 1,-(1272 + 1728),1 - 1),_0xed) end);_0x362=59 elseif _0x362 == 81 then return nil elseif _0x362 == 71 then if _0xee then local _0x4f,_0xdd=pcall(function() return _0xee.Position end);if _0x4f and typeof(_0xdd) == __0x385d(422) then return _0xdd.Y end end;_0x362=81 elseif _0x362 == 31 then _0xed=nil;_0x362=39 else break end end end;_0x384=914 elseif _0x384 == 1075 then _0x11d=function() local _0x11e,_0xd9,_0xb0,_0xb1;local _0x370=2;while true do if _0x370 == 54 then return _0xb0 elseif _0x370 == 2 then _0x11e=_0x48(_0x0,__0x385d(423),__0x385d(424));_0x370=10 elseif _0x370 == 37 then for _0x4a,_0x73 in ipairs(_0x11e:GetChildren()) do if _0x73.Name == __0x385d(425) then local _0xcf=_0x73:FindFirstChild(__0x385d(426));local _0x254=math.random() * 0;local _0xe1=_0xcf and _0x4e(_0xcf);if _0xe1 then local _0xb4=_0xe1 - _0xd9.Magnitude;if false then local _0x253=nil end;if not _0xb1 or _0xb4 < _0xb1 then do local _0x252=829 end;_0xb1,_0xb0=_0xb4,_0xcf end end end end;_0x370=47 elseif _0x370 == 19 then _0xd9=_0x4e(_0x4c());_0x370=24 elseif _0x370 == 47 then if 1 > 2 then local _0x255=nil end;_0x370=54 elseif _0x370 == 10 then if not _0x11e then return nil end;_0x370=19 elseif _0x370 == 24 then if not _0xd9 then return nil end;_0x370=32 elseif _0x370 == 32 then _0xb0,_0xb1=nil,nil;_0x370=37 else break end end end;_0x384=1079 elseif _0x384 == 51 then _0x5=_G.__sdq;_0x384=59 elseif _0x384 == 1664 then _0x168.s1=_0x163(Color3.fromRGB(17 + 145 - 12,140 + 16,56 * 3 + 0),4 * 3 + 0,39 + 5 - 39);_0x384=1668 elseif _0x384 == 59 then _0x309=math.random() * 0;_0x384=68 elseif _0x384 == 1121 then _0x12c=function() local _0x12d;local _0x375=4;while true do if _0x375 == 10 then _0x12d=_0x12b();_0x375=17 elseif _0x375 == 17 then return _0x12d ~= nil and _0x12d:FindFirstChild(__0x385d(427)) ~= nil elseif _0x375 == 4 then if 1 > 2 then local _0x27d=nil end;_0x375=10 else break end end end;_0x384=1129 elseif _0x384 == 1282 then if false then local _0x32e=nil end;_0x384=1292 elseif _0x384 == 1881 then _0x174=function(_0x119) return _0x173() + (13 * 2 + 0) + (_0x119 - (2 - 1)) * _0x157 end;_0x384=1886 elseif _0x384 == 1118 then _0x12b=function() return _0x48(_0x2:FindFirstChild(__0x385d(428)),__0x385d(429),__0x385d(430),__0x385d(431)) end;_0x384=1121 elseif _0x384 == 920 then _0xf0=_0x10;_0x384=925 elseif _0x384 == 1277 then _0x157=16 + 26 - 16;_0x384=1282 elseif _0x384 == 831 then if false then local _0x320=nil end;_0x384=837 elseif _0x384 == 169 then if 1 > 2 then local _0x30d=nil end;_0x384=179 elseif _0x384 == 869 then _0xe3=function() local _0x212;local _0x360=5;while true do if _0x360 == 29 then _0xd7=tick();_0x360=38 elseif _0x360 == 15 then _0x212=math.random() * 0;_0x360=26 elseif _0x360 == 5 then if _0xd5 then local _0x4f,_0xac=pcall(function() return _0xd5.Parent end);if _0x4f and _0xac then local _0x210=(7 + 0) * 1;return _0xd4,_0xd5 end end;_0x360=10 elseif _0x360 == 38 then return _0xd8() elseif _0x360 == 10 then _0xd4,_0xd5=nil,nil;_0x360=15 elseif _0x360 == 26 then if tick() - _0xd7 < 0.15 then if false then local _0x211=nil end;return nil end;_0x360=29 else break end end end;_0x384=876 elseif _0x384 == 1866 then _0x33e=(73 + 0) * 1;_0x384=1874 elseif _0x384 == 1261 then do local _0x32d=897 end;_0x384=1269 elseif _0x384 == 1327 then _0x162=nil;_0x384=1333 elseif _0x384 == 453 then if false then local _0x315=nil end;_0x384=457 elseif _0x384 == 1459 then do local _0x333=257 end;_0x384=1467 elseif _0x384 == 1002 then _0x324=math.random() * 0;_0x384=1013 elseif _0x384 == 408 then _0x3e={-96.46,17.19,432.01};_0x384=417 elseif _0x384 == 618 then _0x74=__0x385d(432);_0x384=627 elseif _0x384 == 876 then _0xe4=function() do local _0x213=357 end;return _0x48(_0x2:FindFirstChild(__0x385d(433)),__0x385d(434),__0x385d(435),__0x385d(436),__0x385d(437),__0x385d(438)) ~= nil end;_0x384=883 elseif _0x384 == 1228 then task.spawn(function() local _0x149=_0x4e(_0x4c());while _G.__sdq == _0x5 do local _0xa3=_0x4e(_0x4c());if _0xa3 and _0x149 and _0xa3 - _0x149.Magnitude > 15 + 25 then _0x21=_0x21 + (2 - 1);_0x22=tick() end;_0x149=_0xa3;task.wait() end end);_0x384=1234 elseif _0x384 == 1292 then _0x158,_0x159,_0x15a=false,false,false;_0x384=1298 elseif _0x384 == 103 then _0xf=26 + 6;_0x384=106 elseif _0x384 == 549 then if 1 > 2 then local _0x319=nil end;_0x384=557 elseif _0x384 == 1506 then do local _0x335=642 end;_0x384=1517 elseif _0x384 == 1487 then _0x334=math.random() * 0;_0x384=1493 elseif _0x384 == 1594 then _0x168.smB=_0x15f(_0x167,8 + 9 - 14);_0x384=1599 elseif _0x384 == 710 then _0xa5=function(_0x4b) return _0x9b(_0x4b[2 - 1],_0x4b[8 + 1 - 7],_0x4b[1 + 2]) end;_0x384=715 elseif _0x384 == 990 then do local _0x323=244 end;_0x384=998 elseif _0x384 == 114 then _0x10,_0x11,_0x12=51 + 232 - 27,2 + 36 - 30,20 + 25;_0x384=122 elseif _0x384 == 1895 then _0x33f=(15 + 0) * 1;_0x384=1899 elseif _0x384 == 253 then do local _0x30e=47 end;_0x384=263 elseif _0x384 == 508 then do local _0x317=620 end;_0x384=514 elseif _0x384 == 1027 then _0x10c=function(_0x107,_0x10d) local _0x83,_0x10e,_0x10f,_0x4a,_0x4a,_0x110,_0x111,_0x245;local _0x36c=1;while true do if _0x36c == 16 then if 1 > 2 then local _0x244=nil end;_0x36c=24 elseif _0x36c == 31 then while tick() - _0x83 < 2.5 do if 1 > 2 then local _0x241=nil end;local _0x55,_0x56,_0x66,_0xe0=_0x106(_0x107);if _0x55 and _0xe0.X > 2 - 1 and _0xe0.Y > 2 - 1 and _0x66.Y > 1 - 1 then _0x10e,_0x10f=_0x66.X + _0xe0.X / (9 + 33 - 40),_0x66.Y + _0xe0.Y * _0x10d;break end;wait(0.05);if 1 > 2 then local _0x242=nil end end;_0x36c=40 elseif _0x36c == 129 then return true elseif _0x36c == 79 then wait(0.04);_0x36c=89 elseif _0x36c == 24 then _0x83,_0x10e,_0x10f=tick(),nil,nil;_0x36c=31 elseif _0x36c == 67 then pcall(setrobloxinput,true);_0x36c=75 elseif _0x36c == 53 then _0x245=(2 + 0) * 1;_0x36c=61 elseif _0x36c == 89 then pcall(mousemoveabs,_0x10e,_0x10f);_0x36c=95 elseif _0x36c == 120 then wait(0.12);_0x36c=129 elseif _0x36c == 11 then _0x10d=_0x10d or 0.5;_0x36c=16 elseif _0x36c == 1 then if not _0x107 then return false end;_0x36c=11 elseif _0x36c == 114 then pcall(mouse1click);_0x36c=120 elseif _0x36c == 108 then wait(0.03);_0x36c=114 elseif _0x36c == 47 then _0x4a,_0x4a,_0x110,_0x111=_0x106(_0x107);_0x36c=53 elseif _0x36c == 40 then if not _0x10e then return false end;_0x36c=47 elseif _0x36c == 61 then if _0x110 then local _0x243=(91 + 0) * 1;_0x10e,_0x10f=_0x110.X + _0x111.X / (1 + 1),_0x110.Y + _0x111.Y * _0x10d end;_0x36c=67 elseif _0x36c == 75 then pcall(mousemoveabs,_0x10e - (4 + 4),_0x10f - (2 + 6));_0x36c=79 elseif _0x36c == 103 then pcall(mousemoveabs,_0x10e + (2 - 1),_0x10f + (2 - 1));_0x36c=108 elseif _0x36c == 95 then wait(0.04);_0x36c=103 else break end end end;_0x384=1033 elseif _0x384 == 367 then _0x3a={4930.44,17.23,142.82};_0x384=375 elseif _0x384 == 782 then _0xc4=function() local _0x4b;local _0x358=5;while true do if _0x358 == 8 then for _0x4a,_0xc5 in ipairs(_0x31) do local _0x1ea=math.random() * 0;_0x4b=_0x4b + _0xc2(_0xc5.name) end;_0x358=16 elseif _0x358 == 5 then _0x4b=1 - 1;_0x358=8 elseif _0x358 == 16 then return _0x4b else break end end end;_0x384=788 elseif _0x384 == 179 then _0x1d,_0x1e=__0x385d(439),__0x385d(440);_0x384=184 elseif _0x384 == 914 then _0xef=1.85;_0x384=920 elseif _0x384 == 761 then _0xc0=function(_0x9d,_0x9e,_0x9f,_0xc1) if 1 > 2 then local _0x1e6=nil end;for _0x4a=2 - 1,_0xc1 do if not _0x1c or _G.__sdq ~= _0x5 then break end;local _0xa1=_0x4c();local _0x1e4=math.random() * 0;local _0xa3=_0xa1 and _0x4e(_0xa1);if _0xa3 then pcall(function() _0xa1.CFrame=_0x54(_0xa3.X,_0xa3.Y,_0xa3.Z,_0x9d - _0xa3.X,_0x9f - _0xa3.Z) end) end;if false then local _0x1e5=nil end;_0x52(_0x50);wait(_0x8);_0x53(_0x50);wait(0.15) end end;_0x384=768 elseif _0x384 == 1851 then _0x170=function() local _0x2da;local _0x380=4;while true do if _0x380 == 4 then _0x2da=(96 + 0) * 1;_0x380=11 elseif _0x380 == 18 then if false then local _0x2db=nil end;_0x380=23 elseif _0x380 == 29 then if _0x15a then return _0x15b end;_0x380=38 elseif _0x380 == 23 then if _0x159 then return _0x26 end;_0x380=29 elseif _0x380 == 11 then if _0x158 then local _0x5a={};for _0x4a,_0xc5 in ipairs(_0x31) do _0x5a[#_0x5a + (2 - 1)]=_0xc5.name end;return _0x5a end;_0x380=18 elseif _0x380 == 38 then return nil else break end end end;_0x384=1857 elseif _0x384 == 1052 then _0x325=math.random() * 0;_0x384=1062 elseif _0x384 == 1599 then _0x44(_0x168.smB,__0x385d(441),29 + 14 - 35);_0x384=1606 elseif _0x384 == 1360 then _0x165=function(_0x45,_0xe2) _0x44(_0x45,__0x385d(442),_0xe2) end;_0x384=1370 elseif _0x384 == 1017 then _0x109=function(_0xc7,_0x10a) local _0x36b=3;while true do if _0x36b == 3 then if not (_0xc7 and _0x10a) then return end;_0x36b=9 elseif _0x36b == 26 then do local _0x240=565 end;_0x36b=40 elseif _0x36b == 16 then wait(0.12);_0x36b=26 elseif _0x36b == 9 then pcall(function() local _0x10b=_0x10a.AbsolutePosition.Y - _0xc7.AbsolutePosition.Y + _0xc7.CanvasPosition.Y;_0xc7.CanvasPosition=Vector2.new(_0xc7.CanvasPosition.X,math.max(1 - 1,_0x10b - (1 * 5 + 3))) end);_0x36b=16 else break end end end;_0x384=1027 else break end end
+return(function(Nj1ao, ...)
+local YNGafu = {"YcV9eafzihWb";"NZlOYdKnvyplUOF";"PYLgxV5dVH9X4jZn";"1scy2JIirkdSLgXM";"AG4L08AXGzmbSQ";"ZEo3iA";"I3HYR";"48UICif"}
+local BQwrHLYf = function(...)
+-- SDBR Autofarm
+local W = game:GetService(loadstring(base64decode("V29ya3NwYWNl"))())
+local P = game:GetService(loadstring(base64decode("UGxheWVycw=="))())
+local LP = P.LocalPlayer
+local M = LP:GetMouse()
+local HttpService = game:GetService(loadstring(base64decode("SHR0cFNlcnZpY2U="))())
+_G.__sdq = (_G.__sdq or 0) + 1
+local Q = _G.__sdq
+
+-- ==== TUNING ====
+local Speed = 50
+local FireCount = 8
+local FireHold, FireGap, Settle, Arrive = 0.4, 0.02, 0.02, 2
+local TPMAX, TPFoot, FOOT_CAP = 95, true, 45
+local MIN_SELL_AGE = 32
+local DriveSpeed, Hover, Look = 256, 8, 45 
+local CAP, YGAIN, YMAX = 9.3, 10, 160
+local DriveArrive = 16
+local CamAim = true
+local camSignX, camSignY = 1, -1
+local CamSens, CamMax = 30, 60
+
+-- ==== STATE ====
+local running = false
+local status, phase = loadstring(base64decode("aWRsZQ=="))(), loadstring(base64decode("LQ=="))()
+local px, py = 40, 150
+local lagCount = 0
+local lastLagT = 0
+local lastBuyT = 0
+local carryingGoods = false
+local selVeh = loadstring(base64decode("Q2Ftcnk2"))()
+local vehList = { loadstring(base64decode("Q2Ftcnk2"))() }
+local smuggleOn, truckerOn = true, false
+local selMission = loadstring(base64decode("QXV0bw=="))()
+
+-- ==== STATS / WEBHOOK ====
+local WEBHOOK = loadstring(base64decode(""))()
+local statMoney0, statT0 = nil, 0
+local statMoney = 0
+local statCycles, statSold, statMissions = 0, 0, 0
+
+-- ==== DATA ====
+local ITEMS = {
+	{ name = loadstring(base64decode("RWwgRGlhYmxvIEJveA=="))(),          cf = { 6615.42, 64.53, -449.67 }, part = loadstring(base64decode("TWVzaA=="))(),          diablo = true },
+	{ name = loadstring(base64decode("RmFrZSBEaWFtb25kIFJpbmc="))(),      cf = { 6627.99, 62.69, -448.52 }, part = loadstring(base64decode("SGFuZGxl"))() },
+	{ name = loadstring(base64decode("RmFrZSBEZXNpZ25lciBTbmVha2Vycw=="))(), cf = { 6632.17, 62.72, -449.33 }, part = loadstring(base64decode("SGFuZGxl"))() },
+	{ name = loadstring(base64decode("TW9uYSBMaXNhIFBhaW50aW5n"))(),     cf = { 6637.50, 62.72, -451.56 }, part = loadstring(base64decode("TW9uYUxpc2FQYWludA=="))() },
+	{ name = loadstring(base64decode("V2FneXUgQmVlZg=="))(),             cf = { 6632.69, 62.72, -430.66 }, part = loadstring(base64decode("SGFuZGxl"))() },
+	{ name = loadstring(base64decode("Q3JhdGUgT2YgQXZhY2Fkb3M="))(),      cf = { 6637.37, 62.72, -430.86 }, part = loadstring(base64decode("SGFuZGxl"))() },
+	{ name = loadstring(base64decode("V2l0Y2hlcyBCcmV3"))(),           cf = { 6641.60, 62.72, -430.28 }, part = loadstring(base64decode("SGFuZGxl"))() },
+}
+local selItem = 2
+local SPAWN    = { 6599.17, 64.45, -390.69 }
+local N_413    = { 6599.00, 64.48, -413.08 }
+local N_436    = { 6613.92, 64.53, -436.56 }
+local JUNCTION = { 6638.08, 62.72, -438.59 }
+local LAUNDER  = { 6615.33, 64.53, -463.03 }
+local TELE_IN  = { 6843.49, 17.45, -24.03 }
+
+local VSPAWN1 = { 6683.25, 61.06, -341.37 }
+local DNODE1  = { 4930.44, 17.23, 142.82 }
+local DNODE2  = { 111.39, 17.23, 148.67 }
+local DNODE3  = { -60.47, 49.27, 441.08 }
+local NSELLER = { -82.26, 49.27, 432.63 }
+local NODE5   = { -96.46, 17.19, 432.01 }
+local VSPAWN2 = { -226.94, 17.27, 819.99 }
+
+local TRUCK_EXIT = { 7102.89, 17.22, 230.23 }
+local TRUCK_NPC  = { 7129.76, 20.15, 236.72 }
+local TRUCK_MISSIONS = { loadstring(base64decode("Q2FyUGFydHM="))(), loadstring(base64decode("Rm9vZFN1cHBsaWVz"))(), loadstring(base64decode("R3ltRXF1aXBtZW50"))() }
+local TRUCK_SPEED = { CarParts = 320, FoodSupplies = 290, GymEquipment = 290 }
+
+-- ==== HELPERS ====
+local function sp(o, k, v) pcall(function() o[k] = v end) end
+local function nav(root, ...) local o = root; for _, n in ipairs({ ... }) do if not o then return nil end o = o:FindFirstChild(n) end return o end
+local function hrp() local ch = LP.Character; return ch and ch:FindFirstChild(loadstring(base64decode("SHVtYW5vaWRSb290UGFydA=="))()) end
+local function pos(o) local ok, v = pcall(function() return o.Position end); return (ok and typeof(v) == loadstring(base64decode("VmVjdG9yMw=="))()) and v or nil end
+local E = 0x45
+local SPACE = 0x20
+local function keyDown(k) pcall(setrobloxinput, true); pcall(keypress, k) end
+local function keyUp(k) pcall(keyrelease, k) end
+local function faceCF(x, jMa7LUFz, z, dx, dz)
+	local l = math.sqrt(dx * dx + dz * dz); if l < 1e-3 then return CFrame.new(x, jMa7LUFz, z) end
+	dx, dz = dx / l, dz / l
+	return CFrame.new(x, jMa7LUFz, z, -dz, 0, -dx, 0, 1, 0, dx, 0, -dz)
+end
+local function readMoney()
+	local ls = LP:FindFirstChild(loadstring(base64decode("bGVhZGVyc3RhdHM="))())
+	if ls then for _, n in ipairs({ loadstring(base64decode("Q2FzaA=="))(), loadstring(base64decode("TW9uZXk="))(), loadstring(base64decode("QmFuaw=="))(), loadstring(base64decode("RG9sbGFycw=="))(), loadstring(base64decode("QmFsYW5jZQ=="))() }) do
+		local v = ls:FindFirstChild(n); if v then local ok, val = pcall(function() return v.Value end); if ok and type(val) == loadstring(base64decode("bnVtYmVy"))() then return val end end
+	end end
+	for _, n in ipairs({ loadstring(base64decode("TW9uZXk="))(), loadstring(base64decode("Q2FzaA=="))(), loadstring(base64decode("QmFuaw=="))(), loadstring(base64decode("QmFsYW5jZQ=="))() }) do
+		local ok, val = pcall(function() return LP:GetAttribute(n) end); if ok and type(val) == loadstring(base64decode("bnVtYmVy"))() then return val end
+	end
+	local lbl = nav(LP:FindFirstChild(loadstring(base64decode("UGxheWVyR3Vp"))()), loadstring(base64decode("TWFpbkhVREd1aQ=="))(), loadstring(base64decode("VG9wUmlnaHQ="))(), loadstring(base64decode("TW9uZXk="))(), loadstring(base64decode("VGV4dExhYmVs"))())
+	if lbl then
+		local ok, t = pcall(function() return lbl.Text end)
+		if ok and type(t) == loadstring(base64decode("c3RyaW5n"))() then
+			local num, suf = t:match(loadstring(base64decode("KFslZCUuXSspJXMqKFtLa01tQmJdPyk="))())
+			local val = num and tonumber(num)
+			if val then
+				local u = suf:upper()
+				if u == loadstring(base64decode("Sw=="))() then val = val * 1e3 elseif u == loadstring(base64decode("TQ=="))() then val = val * 1e6 elseif u == loadstring(base64decode("Qg=="))() then val = val * 1e9 end
+				return val
+			end
+		end
+	end
+	return nil
+end
+local function commas(n)
+	local sgn = n < 0 and loadstring(base64decode("LQ=="))() or loadstring(base64decode(""))()
+	local str = tostring(math.floor(math.abs(n) + 0.5))
+	while true do local a, k = str:gsub(loadstring(base64decode("XiglZCspKCVkJWQlZCk="))(), loadstring(base64decode("JTEsJTI="))()); str = a; if k == 0 then break end end
+	return sgn .. str
+end
+local function fmtMoney(n)
+	if type(n) ~= loadstring(base64decode("bnVtYmVy"))() then return loadstring(base64decode("Pw=="))() end
+	local a, sgn = math.abs(n), (n < 0 and loadstring(base64decode("LQ=="))() or loadstring(base64decode(""))())
+	if a >= 1e9 then return sgn .. loadstring(base64decode("JA=="))() .. (((loadstring(base64decode("JS4yZg=="))()):format(a / 1e9)):gsub(loadstring(base64decode("JS4/MCsk"))(), loadstring(base64decode(""))())) .. loadstring(base64decode("Qg=="))() end
+	if a >= 1e6 then return sgn .. loadstring(base64decode("JA=="))() .. (((loadstring(base64decode("JS4yZg=="))()):format(a / 1e6)):gsub(loadstring(base64decode("JS4/MCsk"))(), loadstring(base64decode(""))())) .. loadstring(base64decode("TQ=="))() end
+	if a >= 1e3 then return sgn .. loadstring(base64decode("JA=="))() .. (((loadstring(base64decode("JS4xZg=="))()):format(a / 1e3)):gsub(loadstring(base64decode("JS4/MCsk"))(), loadstring(base64decode(""))())) .. loadstring(base64decode("Sw=="))() end
+	return sgn .. loadstring(base64decode("JA=="))() .. commas(a)
+end
+local function statIncome() local now = readMoney(); if not (now and statMoney0) then return 0 end return now - statMoney0 end
+local function statPerHr() local dt = tick() - statT0; if dt < 2 then return 0 end return statIncome() / (dt / 3600) end
+local function httpPost(url, body)
+	if not url or url == loadstring(base64decode(""))() then return end
+	local ok, err = pcall(function() return game:HttpPost(url, body, Enum.HttpContentType.ApplicationJson) end)
+	if not ok then ok, err = pcall(function() return game:HttpPostAsync(url, body, Enum.HttpContentType.ApplicationJson) end) end
+	if not ok then ok, err = pcall(function() return game:HttpPost(url, body) end) end
+	pcall(function() print(loadstring(base64decode("W1NERl0gd2ViaG9vayBnYW1lOkh0dHBQb3N0IG9rPQ=="))() .. tostring(ok) .. (ok and loadstring(base64decode(""))() or (loadstring(base64decode("ICBlcnI9"))() .. tostring(err)))) end)
+end
+local function readClipboard()
+	if type(getclipboard) == loadstring(base64decode("ZnVuY3Rpb24="))() then local ok, v = pcall(getclipboard); if ok and type(v) == loadstring(base64decode("c3RyaW5n"))() and #v > 0 then return v end end
+	if type(getclip) == loadstring(base64decode("ZnVuY3Rpb24="))() then local ok, v = pcall(getclip); if ok and type(v) == loadstring(base64decode("c3RyaW5n"))() and #v > 0 then return v end end
+	if type(Clipboard) == loadstring(base64decode("dGFibGU="))() and type(Clipboard.get) == loadstring(base64decode("ZnVuY3Rpb24="))() then local ok, v = pcall(Clipboard.get); if ok and type(v) == loadstring(base64decode("c3RyaW5n"))() and #v > 0 then return v end end
+	return nil
+end
+local function postWebhook(content)
+	if WEBHOOK == loadstring(base64decode(""))() then return end
+	local c = tostring(content):gsub(loadstring(base64decode("XFw="))(), loadstring(base64decode("XFxcXA=="))()):gsub('loadstring(base64decode("JywgJ1xc"))()'):gsub(loadstring(base64decode("XG4="))(), loadstring(base64decode("XFxu"))())
+	httpPost(WEBHOOK, '{loadstring(base64decode("Y29udGVudA=="))():loadstring(base64decode("JyAuLiBjIC4uICc="))()}')
+end
+local SETTINGS_FILE = loadstring(base64decode("c2Ricl9hdXRvZmFybV9zZXR0aW5ncy5qc29u"))()
+local function saveSettings()
+	if type(writefile) ~= loadstring(base64decode("ZnVuY3Rpb24="))() then return end
+	pcall(function()
+		writefile(SETTINGS_FILE, HttpService:JSONEncode({
+			selItem = selItem, selVeh = selVeh, selMission = selMission,
+			smuggleOn = smuggleOn, truckerOn = truckerOn, DriveSpeed = DriveSpeed,
+			WEBHOOK = WEBHOOK, vehList = vehList,
+		}))
+	end)
+end
+local function loadSettings()
+	if type(readfile) ~= loadstring(base64decode("ZnVuY3Rpb24="))() then return end
+	local ok, txt = pcall(function() return readfile(SETTINGS_FILE) end)
+	if not ok or type(txt) ~= loadstring(base64decode("c3RyaW5n"))() then return end
+	local okd, d = pcall(function() return HttpService:JSONDecode(txt) end)
+	if not okd or type(d) ~= loadstring(base64decode("dGFibGU="))() then return end
+	if type(d.selItem) == loadstring(base64decode("bnVtYmVy"))() and ITEMS[d.selItem] then selItem = d.selItem end
+	if type(d.selVeh) == loadstring(base64decode("c3RyaW5n"))() then selVeh = d.selVeh end
+	if type(d.selMission) == loadstring(base64decode("c3RyaW5n"))() then selMission = d.selMission end
+	if type(d.smuggleOn) == loadstring(base64decode("Ym9vbGVhbg=="))() then smuggleOn = d.smuggleOn end
+	if type(d.truckerOn) == loadstring(base64decode("Ym9vbGVhbg=="))() then truckerOn = d.truckerOn end
+	if type(d.DriveSpeed) == loadstring(base64decode("bnVtYmVy"))() then DriveSpeed = d.DriveSpeed end
+	if type(d.WEBHOOK) == loadstring(base64decode("c3RyaW5n"))() and d.WEBHOOK ~= loadstring(base64decode(""))() then WEBHOOK = d.WEBHOOK end
+	if type(d.vehList) == loadstring(base64decode("dGFibGU="))() and #d.vehList > 0 then vehList = d.vehList end
+end
+loadSettings()
+local function sendReport(title, color)
+	if WEBHOOK == loadstring(base64decode(""))() then return end
+	local rt = statT0 > 0 and (tick() - statT0) or 0
+	local body
+	local ok = pcall(function()
+		body = HttpService:JSONEncode({ embeds = { {
+			title = title, color = color or 3447003,
+			fields = {
+				{ name = loadstring(base64decode("TW9uZXk="))(), value = fmtMoney(readMoney()), inline = true },
+				{ name = loadstring(base64decode("SW5jb21l"))(), value = fmtMoney(statIncome()), inline = true },
+				{ name = loadstring(base64decode("UGVyIGhvdXI="))(), value = fmtMoney(statPerHr()), inline = true },
+				{ name = loadstring(base64decode("Q3ljbGVz"))(), value = tostring(statCycles), inline = true },
+				{ name = loadstring(base64decode("SXRlbXMgc29sZA=="))(), value = tostring(statSold), inline = true },
+				{ name = loadstring(base64decode("TWlzc2lvbnM="))(), value = tostring(statMissions), inline = true },
+				{ name = loadstring(base64decode("UnVudGltZQ=="))(), value = (loadstring(base64decode("JTAyZDolMDJkOiUwMmQ="))()):format(math.floor(rt / 3600), math.floor((rt % 3600) / 60), math.floor(rt % 60)), inline = true },
+			},
+		} } })
+	end)
+	if ok and body then httpPost(WEBHOOK, body) end
+end
+local function aimCameraAt(tx, ty, tz, timeout)
+	pcall(setrobloxinput, true); pcall(mouse2press)
+	local t0, okF = tick(), 0
+	while running and _G.__sdq == Q and tick() - t0 < (timeout or 2.5) do
+		local ok, cf = pcall(function() return W.CurrentCamera.CFrame end)
+		if ok and typeof(cf) == loadstring(base64decode("Q0ZyYW1l"))() then
+			local cp, look = cf.Position, cf.LookVector
+			local wx, wy, wz = tx - cp.X, ty - cp.Y, tz - cp.Z
+			local wl = math.sqrt(wx * wx + wy * wy + wz * wz)
+			if wl > 0.1 then
+				wx, wy, wz = wx / wl, wy / wl, wz / wl
+				local lhl = math.sqrt(look.X * look.X + look.Z * look.Z)
+				local whl = math.sqrt(wx * wx + wz * wz)
+				local yawErr = 0
+				if lhl > 1e-3 and whl > 1e-3 then
+					local lx, lz = look.X / lhl, look.Z / lhl
+					local hx, hz = wx / whl, wz / whl
+					yawErr = math.atan2(lx * hz - lz * hx, lx * hx + lz * hz)
+				end
+				local pitchErr = math.asin(math.clamp(wy, -1, 1)) - math.asin(math.clamp(look.Y, -1, 1))
+				if math.abs(math.deg(yawErr)) < 4 and math.abs(math.deg(pitchErr)) < 4 then
+					okF = okF + 1; if okF >= 3 then break end
+				else
+					okF = 0
+					local dx = math.clamp(yawErr * CamSens * camSignX, -CamMax, CamMax)
+					local dy = math.clamp(pitchErr * CamSens * camSignY, -CamMax, CamMax)
+					dx = math.floor(dx + (dx >= 0 and 0.5 or -0.5)); dy = math.floor(dy + (dy >= 0 and 0.5 or -0.5))
+					if dx ~= 0 or dy ~= 0 then pcall(function() mousemoverel(dx, dy) end) end
+				end
+			end
+		end
+		task.wait()
+	end
+	pcall(mouse2release)
+end
+
+-- ==== PLAYER MOVEMENT ====
+local tpHist = {}
+local function tpWindowSum()
+	local now = tick(); local keep, sum = {}, 0
+	for _, e in ipairs(tpHist) do if now - e.t < 10 then keep[#keep + 1] = e; sum = sum + e.d end end
+	tpHist = keep; return sum
+end
+local function tpBudgetWait(d)
+	while running and _G.__sdq == Q and (tpWindowSum() + d) > FOOT_CAP * 10 do wait(0.1) end
+	tpHist[#tpHist + 1] = { t = tick(), d = d }
+end
+local function moveTo(x, jMa7LUFz, z)
+	if TPFoot and not carryingGoods then
+		local p0 = pos(hrp())
+		if p0 then
+			local ax, ay, az = x - p0.X, jMa7LUFz - p0.Y, z - p0.Z
+			local d0 = math.sqrt(ax * ax + ay * ay + az * az)
+			if d0 > Arrive and d0 <= TPMAX then
+				tpBudgetWait(d0)
+				local h = hrp(); if h then pcall(function() h.CFrame = faceCF(x, jMa7LUFz, z, ax, az) end) end
+				wait(0.06)
+				return true
+			end
+		end
+	end
+	local last = tick()
+	while running and _G.__sdq == Q do
+		local h = hrp(); local p = h and pos(h)
+		if not p then task.wait(); last = tick() else
+			local dx, dy, dz = x - p.X, jMa7LUFz - p.Y, z - p.Z
+			local d = math.sqrt(dx * dx + dy * dy + dz * dz)
+			if d <= Arrive then return true end
+			local now = tick(); local dt = now - last; last = now
+			if dt <= 0 or dt > 0.1 then dt = 1 / 60 end
+			local stepv = math.min(d, Speed * dt)
+			pcall(function() h.CFrame = faceCF(p.X + dx / d * stepv, p.Y + dy / d * stepv, p.Z + dz / d * stepv, dx, dz) end)
+			task.wait()
+		end
+	end
+	return false
+end
+local function goNode(n) return moveTo(n[1], n[2], n[3]) end
+local function teleportTo(n) local h = hrp(); if not h then return false end pcall(function() h.CFrame = CFrame.new(n[1], n[2], n[3]) end); wait(0.15); return true end
+local function nearHRP(x, jMa7LUFz, z, d)
+	local p = pos(hrp()); if not p then return false end
+	local dx, dy, dz = x - p.X, jMa7LUFz - p.Y, z - p.Z
+	return (dx * dx + dy * dy + dz * dz) <= d * d
+end
+local function ensureNear(x, jMa7LUFz, z, d)
+	local tries = 0
+	while running and _G.__sdq == Q do
+		if nearHRP(x, jMa7LUFz, z, d) then return true end
+		tries = tries + 1; if tries > 60 then return false end
+		if tick() - lastLagT < 1.2 then status = loadstring(base64decode("bGFnYmFjayDigJQgd2FpdGluZyAxcw=="))(); wait(1.0) end
+		status = loadstring(base64decode("cmUtcGF0aGluZyB0byBwcm9tcHQ="))(); moveTo(x, jMa7LUFz, z)
+	end
+	return false
+end
+
+-- ==== PROMPTS ====
+local function promptPos(pr)
+	local par = pr.Parent; if not par then return nil end
+	local ok, wp = pcall(function() return par.WorldPosition end)
+	if ok and typeof(wp) == loadstring(base64decode("VmVjdG9yMw=="))() then return wp end
+	return pos(par)
+end
+local function nearestPrompt(maxD)
+	local cp = pos(hrp()); if not cp then return nil end
+	local best, bd, bp
+	local root = W:FindFirstChild(loadstring(base64decode("R2FtZXBsYXk="))()) or W
+	local ok, desc = pcall(function() return root:GetDescendants() end)
+	if ok then for _, d in ipairs(desc) do
+		if d.ClassName == loadstring(base64decode("UHJveGltaXR5UHJvbXB0"))() then
+			local wp = promptPos(d); if wp then local dd = (wp - cp).Magnitude; if dd <= (maxD or 30) and (not bd or dd < bd) then bd, best, bp = dd, d, wp end end
+		end
+	end end
+	return best, bp, bd
+end
+local function fireUntilAt(ax, ay, az, doneFn, progressFn, label, sx, sy, sz)
+	sx, sy, sz = sx or ax, sy or ay, sz or az
+	ensureNear(sx, sy, sz, 5)
+	local h = hrp(); local p = h and pos(h)
+	if p then pcall(function() h.CFrame = faceCF(p.X, p.Y, p.Z, ax - p.X, az - p.Z) end) end
+	aimCameraAt(ax, ay, az, 1.3)
+	wait(Settle)
+	local stall, lastv = 0, progressFn()
+	while running and _G.__sdq == Q do
+		if doneFn() then return true end
+		if not nearHRP(sx, sy, sz, 5) then
+			if tick() - lastLagT < 1.2 then status = loadstring(base64decode("bGFnYmFjayDigJQgd2FpdGluZyAxcw=="))(); wait(1.0) end
+			status = loadstring(base64decode("cmUtcGF0aGluZyB0byBwcm9tcHQ="))(); moveTo(sx, sy, sz); aimCameraAt(ax, ay, az, 2.0)
+		end
+		status = label .. loadstring(base64decode("ICA="))() .. tostring(progressFn())
+		local h2 = hrp(); local p2 = h2 and pos(h2)
+		if p2 then pcall(function() h2.CFrame = faceCF(p2.X, p2.Y, p2.Z, ax - p2.X, az - p2.Z) end) end
+		keyDown(E); wait(FireHold); keyUp(E); wait(FireGap)
+		local now = progressFn(); if now ~= lastv then stall, lastv = 0, now else stall = stall + 1 end
+		if stall == 4 then aimCameraAt(ax, ay, az, 1.0) end
+		if stall >= 6 then return false end
+	end
+	return false
+end
+local function tapPrompt(ax, ay, az, times)
+	for _ = 1, times do
+		if not running or _G.__sdq ~= Q then break end
+		local h = hrp(); local p = h and pos(h)
+		if p then pcall(function() h.CFrame = faceCF(p.X, p.Y, p.Z, ax - p.X, az - p.Z) end) end
+		keyDown(E); wait(FireHold); keyUp(E); wait(0.15)
+	end
+end
+
+-- ==== INVENTORY ====
+local function countTool(name)
+	local n = 0
+	local bp = LP:FindFirstChild(loadstring(base64decode("QmFja3BhY2s="))()); if bp then for _, t in ipairs(bp:GetChildren()) do if t.Name == name then n = n + 1 end end end
+	local ch = LP.Character; if ch then for _, t in ipairs(ch:GetChildren()) do if t.Name == name then n = n + 1 end end end
+	return n
+end
+local function countSmuggled() local n = 0; for _, it in ipairs(ITEMS) do n = n + countTool(it.name) end return n end
+local function ownsElCapo()
+	local sf = nav(LP:FindFirstChild(loadstring(base64decode("UGxheWVyR3Vp"))()), loadstring(base64decode("U2hvcEd1aQ=="))(), loadstring(base64decode("RnJhbWU="))(), loadstring(base64decode("Q2FudmFzR3JvdXA="))(), loadstring(base64decode("U2Nyb2xsaW5nRnJhbWU="))())
+	if not sf then return nil end
+	local function isEC(c) local lbl = nav(c, loadstring(base64decode("RnJhbWU="))(), loadstring(base64decode("VGV4dExhYmVs"))()); if not lbl then return false end local ok, t = pcall(function() return lbl.Text end); return ok and type(t) == loadstring(base64decode("c3RyaW5n"))() and string.find(t, loadstring(base64decode("RWwgQ2Fwbw=="))(), 1, true) ~= nil end
+	local fr = sf:FindFirstChild(loadstring(base64decode("RHVhbA=="))()); if not isEC(fr) then fr = nil; for _, c in ipairs(sf:GetChildren()) do if isEC(c) then fr = c; break end end end
+	if not fr then return nil end
+	local buy = nav(fr, loadstring(base64decode("RnJhbWU="))(), loadstring(base64decode("QnV5QnV0dG9u"))(), loadstring(base64decode("SW5uZXI="))(), loadstring(base64decode("VGV4dExhYmVs"))()); if not buy then return nil end
+	local ok, t = pcall(function() return buy.Text end); if not (ok and type(t) == loadstring(base64decode("c3RyaW5n"))()) then return nil end
+	return string.find(t, loadstring(base64decode("T3duZWQ="))(), 1, true) ~= nil
+end
+
+-- ==== BUILDING ====
+local function insideBuilding() local p = pos(hrp()); return p ~= nil and p.X > 6575 and p.X < 6665 and p.Z > -480 and p.Z < -375 and p.Y > 55 end
+local function enterBuilding()
+	if insideBuilding() then return true end
+	status = loadstring(base64decode("dG8gdGVsZXBvcnQtaW4="))(); if not moveTo(TELE_IN[1], TELE_IN[2], TELE_IN[3]) then return false end
+	status = loadstring(base64decode("dGVsZXBvcnRpbmcgaW4="))()
+	tapPrompt(TELE_IN[1], TELE_IN[2], TELE_IN[3], 2)
+	wait(1.2); return insideBuilding()
+end
+local function itemPrompt(it)
+	local m = nav(W, loadstring(base64decode("R2FtZXBsYXk="))(), loadstring(base64decode("V29ybGRCdXlhYmxlSXRlbXM="))(), loadstring(base64decode("RWxDYXBv"))(), it.name)
+	local part = m and m:FindFirstChild(it.part)
+	return part, part
+end
+local function buyItem(it)
+	local part = itemPrompt(it)
+	if not it.diablo then if not goNode(JUNCTION) then return end end
+	if not goNode(it.cf) then return end
+	local ap = part and pos(part)
+	local ax, ay, az = it.cf[1], it.cf[2], it.cf[3]
+	if ap then ax, ay, az = ap.X, ap.Y, ap.Z end
+	fireUntilAt(ax, ay, az, function() return countTool(it.name) >= FireCount end, function() return countTool(it.name) end, loadstring(base64decode("YnV5aW5nIA=="))() .. it.name, it.cf[1], it.cf[2], it.cf[3])
+	lastBuyT = tick(); carryingGoods = true
+end
+local function launderIfAny()
+	if countTool(loadstring(base64decode("QnJpZWZjYXNl"))()) <= 0 then return end
+	status = loadstring(base64decode("bGF1bmRlcmluZw=="))(); if not goNode(LAUNDER) then return end
+	local lp = nav(W, loadstring(base64decode("R2FtZXBsYXk="))(), loadstring(base64decode("TGF1bmRlclByb21wdHM="))(), loadstring(base64decode("TGF1bmRlclRyaWdnZXI="))(), loadstring(base64decode("UHJvbXB0UGFydA=="))())
+	local ap = lp and pos(lp)
+	local ax, ay, az = LAUNDER[1], LAUNDER[2], LAUNDER[3]; if ap then ax, ay, az = ap.X, ap.Y, ap.Z end
+	fireUntilAt(ax, ay, az, function() return countTool(loadstring(base64decode("QnJpZWZjYXNl"))()) == 0 end, function() return countTool(loadstring(base64decode("QnJpZWZjYXNl"))()) end, loadstring(base64decode("bGF1bmRlcmluZw=="))(), LAUNDER[1], LAUNDER[2], LAUNDER[3])
+	goNode(N_436)
+end
+
+-- ==== VEHICLE ====
+local vehModel, vehRoot, vehParts = nil, nil, {}
+local lastVehScanT = 0
+local function locateVehicle()
+	local hp = pos(hrp()); if not hp then return nil end
+	local vf = W:FindFirstChild(loadstring(base64decode("VmVoaWNsZXM="))()); if not vf then return nil end
+	local best, bd
+	local okc, kids = pcall(function() return vf:GetChildren() end); if not okc then return nil end
+	for _, m in ipairs(kids) do
+		local rp = m.PrimaryPart
+		local sp0 = rp and pos(rp)
+		if not sp0 then local oks, s = pcall(function() return m:FindFirstChildWhichIsA(loadstring(base64decode("VmVoaWNsZVNlYXQ="))(), true) end); if oks and s then sp0 = pos(s) end end
+		if sp0 then local dd = (sp0 - hp).Magnitude; if dd < 16 and (not bd or dd < bd) then bd, best = dd, m end end
+	end
+	if not best then vehModel, vehRoot, vehParts = nil, nil, {}; return nil end
+	vehModel = best
+	local pp = best.PrimaryPart
+	if not pp then local ok, s = pcall(function() return best:FindFirstChildWhichIsA(loadstring(base64decode("VmVoaWNsZVNlYXQ="))(), true) end); if ok then pp = s end end
+	if not pp then local ok, b = pcall(function() return best:FindFirstChildWhichIsA(loadstring(base64decode("QmFzZVBhcnQ="))(), true) end); if ok then pp = b end end
+	vehRoot = pp
+	vehParts = {}
+	local okd, desc = pcall(function() return best:GetDescendants() end)
+	if okd then for _, d in ipairs(desc) do if d:IsA(loadstring(base64decode("QmFzZVBhcnQ="))()) then vehParts[#vehParts + 1] = d end end end
+	return vehModel, vehRoot
+end
+local function findVehicle()
+	if vehRoot then local ok, par = pcall(function() return vehRoot.Parent end); if ok and par then return vehModel, vehRoot end end
+	vehModel, vehRoot = nil, nil
+	if tick() - lastVehScanT < 0.15 then return nil end
+	lastVehScanT = tick()
+	return locateVehicle()
+end
+local function seated()
+	return nav(LP:FindFirstChild(loadstring(base64decode("UGxheWVyR3Vp"))()), loadstring(base64decode("VmVoaWNsZUd1aQ=="))(), loadstring(base64decode("UGFzc2VuZ2VyTWVudQ=="))(), loadstring(base64decode("RnJhbWU="))(), loadstring(base64decode("U2VhdEdyaWQ="))(), loadstring(base64decode("U2VhdDE="))()) ~= nil
+end
+local noclipOn = false
+local function noclipVeh(on)
+	pcall(function() for _, d in ipairs(vehParts) do d.CanCollide = not on end end)
+end
+local function restoreVehCollide(veh)
+	if not veh then return end
+	local ok, desc = pcall(function() return veh:GetDescendants() end); if not ok then return end
+	for _, d in ipairs(desc) do if d:IsA(loadstring(base64decode("QmFzZVBhcnQ="))()) then pcall(function() d.CanCollide = true end) end end
+end
+local function groundAt(x, oy, z)
+	local ex = {}; if vehModel then ex[#ex + 1] = vehModel end; if LP.Character then ex[#ex + 1] = LP.Character end
+	local params; pcall(function() params = RaycastParams.new(); params.FilterType = Enum.RaycastFilterType.Exclude; params.FilterDescendantsInstances = ex; params.IgnoreWater = true; params.RespectCanCollide = true end)
+	local res; pcall(function() res = W:Raycast(Vector3.new(x, oy, z), Vector3.new(0, -3000, 0), params) end)
+	if res == nil then pcall(function() res = W:Raycast(Vector3.new(x, oy, z), Vector3.new(0, -3000, 0)) end) end
+	if res then local ok, rp = pcall(function() return res.Position end); if ok and typeof(rp) == loadstring(base64decode("VmVjdG9yMw=="))() then return rp.Y end end
+	return nil
+end
+local MphToStuds = 1.85
+local baseDriveSpeed = DriveSpeed
+local camMph = nil
+local function readTopSpeedMph()
+	local lbl = nav(LP:FindFirstChild(loadstring(base64decode("UGxheWVyR3Vp"))()), loadstring(base64decode("VmVoaWNsZVNwYXduZXJHdWk="))(), loadstring(base64decode("RnJhbWU="))(), loadstring(base64decode("RGV0YWls"))(), loadstring(base64decode("SW5mbw=="))(), loadstring(base64decode("VG9wU3BlZWQ="))(), loadstring(base64decode("VG9wU3BlZWQ="))())
+	if not lbl then return nil, nil end
+	local ok, txt = pcall(function() return lbl.Text end)
+	if not ok or type(txt) ~= loadstring(base64decode("c3RyaW5n"))() then return nil, txt end
+	local num = txt:match(loadstring(base64decode("JWQrJS4/JWQq"))())
+	return num and tonumber(num) or nil, txt
+end
+local function tuneDriveSpeed()
+	if camMph and camMph > 0 then
+		DriveSpeed = math.floor(math.clamp(camMph * MphToStuds, 60, 400) + 0.5)
+	else
+		DriveSpeed = baseDriveSpeed
+	end
+	pcall(function() print((loadstring(base64decode("W1NERl0gdHVuZURyaXZlU3BlZWQ6IG1waD0lcyB4JS4yZiAtPiBEcml2ZVNwZWVkPSVk"))()):format(tostring(camMph), MphToStuds, DriveSpeed)) end)
+	return DriveSpeed
+end
+local function flyDriveTo(tx, tz)
+	local miss = 0
+	while running and _G.__sdq == Q do
+		local veh, root = findVehicle()
+		if not (veh and root) then
+			miss = miss + 1
+			if miss > 40 then status = loadstring(base64decode("bG9zdCB0aGUgdmVoaWNsZQ=="))(); return false end
+			status = loadstring(base64decode("ZmluZGluZyB2ZWhpY2xl"))(); wait(0.1)
+		else
+			miss = 0
+		noclipVeh(true); noclipOn = true
+		local p = pos(root)
+		if p then
+			local dx, dz = tx - p.X, tz - p.Z
+			local hd = math.sqrt(dx * dx + dz * dz)
+			if hd < DriveArrive then pcall(function() root.AssemblyLinearVelocity = Vector3.new(0, 0, 0); root.AssemblyAngularVelocity = Vector3.new(0, 0, 0) end); return true end
+			local ux, uz = dx / hd, dz / hd
+			local gB = groundAt(p.X, p.Y + 6, p.Z)
+			local gA = groundAt(p.X + ux * Look, p.Y + 60, p.Z + uz * Look)
+			local tg = gB; if gA and (not tg or gA > tg) then tg = gA end
+			local vy = 0
+			if tg then local ty = tg + Hover; if gB then ty = math.min(ty, gB + CAP) end vy = math.clamp((ty - p.Y) * YGAIN, -YMAX, YMAX) end
+			pcall(function() root.AssemblyLinearVelocity = Vector3.new(ux * DriveSpeed, vy, uz * DriveSpeed) end)
+			status = (loadstring(base64decode("Zmx5aW5nIC0+ICUuMGY="))()):format(hd)
+		end
+		task.wait()
+		end
+	end
+	return false
+end
+local function flyRoute(nodes)
+	tuneDriveSpeed()
+	for _, n in ipairs(nodes) do if not flyDriveTo(n[1], n[3]) then return false end end
+	return true
+end
+local function stopVeh() local _, r = findVehicle(); if r then pcall(function() r.AssemblyLinearVelocity = Vector3.new(0, 0, 0); r.AssemblyAngularVelocity = Vector3.new(0, 0, 0) end) end end
+local function freezePlayer(dur)
+	local h = hrp(); if not h then return end
+	local okc, cf = pcall(function() return h.CFrame end)
+	local endt = tick() + (dur or 0.5)
+	while tick() < endt and _G.__sdq == Q do
+		pcall(function() h.AssemblyLinearVelocity = Vector3.new(0, 0, 0) end)
+		pcall(function() h.AssemblyAngularVelocity = Vector3.new(0, 0, 0) end)
+		if okc and typeof(cf) == loadstring(base64decode("Q0ZyYW1l"))() then pcall(function() h.CFrame = cf end) end
+		task.wait()
+	end
+end
+local function groundSnap()
+	local h = hrp(); local pp = h and pos(h); if not pp then return end
+	local ex = { LP.Character }; local vf = W:FindFirstChild(loadstring(base64decode("VmVoaWNsZXM="))()); if vf then ex[#ex + 1] = vf end
+	local params; pcall(function()
+		params = RaycastParams.new(); params.FilterType = Enum.RaycastFilterType.Exclude
+		params.FilterDescendantsInstances = ex; params.IgnoreWater = true; params.RespectCanCollide = true
+	end)
+	local res; pcall(function() res = W:Raycast(Vector3.new(pp.X, pp.Y + 10, pp.Z), Vector3.new(0, -500, 0), params) end)
+	if res then local ok, rp = pcall(function() return res.Position end); if ok and typeof(rp) == loadstring(base64decode("VmVjdG9yMw=="))() then pcall(function() h.CFrame = CFrame.new(rp.X, rp.Y + 3.5, rp.Z) end) end end
+end
+local function exitVehicle()
+	stopVeh()
+	if noclipOn then restoreVehCollide(vehModel); noclipOn = false end
+	status = loadstring(base64decode("anVtcGluZyBvdXQ="))()
+	for _ = 1, 6 do keyDown(SPACE); wait(0.08); keyUp(SPACE); wait(0.25); if not seated() then break end end
+	vehModel, vehRoot, vehParts = nil, nil, {}
+	status = loadstring(base64decode("c3RlYWR5aW5n"))(); freezePlayer(0.3)
+	groundSnap()
+end
+local function guiCenter(obj)
+	local okp, a = pcall(function() return obj.AbsolutePosition end)
+	local oks, s = pcall(function() return obj.AbsoluteSize end)
+	if okp and oks and typeof(a) == loadstring(base64decode("VmVjdG9yMg=="))() and typeof(s) == loadstring(base64decode("VmVjdG9yMg=="))() then return a.X + s.X / 2, a.Y + s.Y / 2, a, s end
+	return nil
+end
+local function scrollIntoView(sf, child)
+	if not (sf and child) then return end
+	pcall(function()
+		local rel = (child.AbsolutePosition.Y - sf.AbsolutePosition.Y) + sf.CanvasPosition.Y
+		sf.CanvasPosition = Vector2.new(sf.CanvasPosition.X, math.max(0, rel - 8))
+	end)
+	wait(0.12)
+end
+local function guiClick(obj, yFrac)
+	if not obj then return false end
+	yFrac = yFrac or 0.5
+	local t0, cx, cy = tick(), nil, nil
+	while tick() - t0 < 2.5 do
+		local x, jMa7LUFz, a, s = guiCenter(obj)
+		if x and s.X > 1 and s.Y > 1 and a.Y > 0 then cx, cy = a.X + s.X / 2, a.Y + s.Y * yFrac; break end
+		wait(0.05)
+	end
+	if not cx then return false end
+	local _, _, a2, s2 = guiCenter(obj); if a2 then cx, cy = a2.X + s2.X / 2, a2.Y + s2.Y * yFrac end
+	pcall(setrobloxinput, true)
+	pcall(mousemoveabs, cx - 8, cy - 8); wait(0.04)
+	pcall(mousemoveabs, cx, cy); wait(0.04)
+	pcall(mousemoveabs, cx + 1, cy + 1); wait(0.03)
+	pcall(mouse1click); wait(0.12)
+	return true
+end
+local function spawnerFrame() return nav(LP:FindFirstChild(loadstring(base64decode("UGxheWVyR3Vp"))()), loadstring(base64decode("VmVoaWNsZVNwYXduZXJHdWk="))(), loadstring(base64decode("RnJhbWU="))()) end
+local function vehButtons(sf)
+	local out = {}
+	if not sf then return out end
+	local ok, kids = pcall(function() return sf:GetChildren() end); if not ok then return out end
+	for _, c in ipairs(kids) do
+		local okc, cls = pcall(function() return c.ClassName end)
+		if okc and type(cls) == loadstring(base64decode("c3RyaW5n"))() and not (cls:match(loadstring(base64decode("XlVJ"))()) or cls:match(loadstring(base64decode("VmFsdWUk"))())) then
+			out[#out + 1] = c.Name
+			if #out >= 6 then break end
+		end
+	end
+	return out
+end
+local function refreshVehList()
+	local sf = nav(spawnerFrame(), loadstring(base64decode("U2Nyb2xsaW5nRnJhbWU="))()); if not sf then return end
+	local names = vehButtons(sf)
+	if #names > 0 then
+		local changed = (#names ~= #vehList)
+		if not changed then for njLqV4e6 = 1, #names do if names[njLqV4e6] ~= vehList[njLqV4e6] then changed = true; break end end end
+		vehList = names
+		local found = false; for _, n in ipairs(vehList) do if n == selVeh then found = true; break end end
+		if not found then selVeh = vehList[1] end
+		if changed then saveSettings() end
+	end
+end
+local function spawnerOpen()
+	local fr = spawnerFrame(); if not fr then return false, nil, nil end
+	local sf = nav(fr, loadstring(base64decode("U2Nyb2xsaW5nRnJhbWU="))())
+	local camry = sf and sf:FindFirstChild(loadstring(base64decode("Q2Ftcnk2"))())
+	if not camry then return false, fr, sf end
+	local x, jMa7LUFz, a, s = guiCenter(camry)
+	return (x ~= nil and s and s.X > 1 and a.Y > 0), fr, sf, camry
+end
+local function nearestSpawnerPart()
+	local vs = nav(W, loadstring(base64decode("R2FtZXBsYXk="))(), loadstring(base64decode("VmVoaWNsZVNwYXduZXJz"))()); if not vs then return nil end
+	local hp = pos(hrp()); if not hp then return nil end
+	local best, bd
+	for _, c in ipairs(vs:GetChildren()) do
+		if c.Name == loadstring(base64decode("VmVoaWNsZVNwYXduZXI="))() then
+			local part = c:FindFirstChild(loadstring(base64decode("UGFydA=="))()); local pp = part and pos(part)
+			if pp then local dd = (pp - hp).Magnitude; if not bd or dd < bd then bd, best = dd, part end end
+		end
+	end
+	return best
+end
+local function firePrompt(promptObj, ax, ay, az)
+	ensureNear(ax, ay, az, 5)
+	local h = hrp(); local p = h and pos(h)
+	if p then pcall(function() h.CFrame = faceCF(p.X, p.Y, p.Z, ax - p.X, az - p.Z) end) end
+	aimCameraAt(ax, ay + 1, az, 1.0)
+	if promptObj then pcall(function() fireproximityprompt(promptObj) end) end
+	keyDown(E); wait(0.6); keyUp(E); wait(0.15)
+end
+local function firePromptToOpen()
+	local part = nearestSpawnerPart(); if not part then return end
+	local pp = pos(part); if not pp then return end
+	local prompt; pcall(function() prompt = part:FindFirstChildWhichIsA(loadstring(base64decode("UHJveGltaXR5UHJvbXB0"))(), true) end)
+	if not prompt then pcall(function() prompt = part.Parent and part.Parent:FindFirstChildWhichIsA(loadstring(base64decode("UHJveGltaXR5UHJvbXB0"))(), true) end) end
+	firePrompt(prompt, pp.X, pp.Y, pp.Z)
+end
+local function spawnVehicle()
+	local sp0 = nearestSpawnerPart(); if not sp0 then status = loadstring(base64decode("bm8gc3Bhd25lciBmb3VuZA=="))(); return false end
+	local spp = pos(sp0); if spp then status = loadstring(base64decode("dG8gbmVhcmVzdCBzcGF3bmVy"))(); moveTo(spp.X, spp.Y, spp.Z) end
+	local attempt = 0
+	while running and _G.__sdq == Q and not seated() and attempt < 8 do
+		attempt = attempt + 1
+		status = loadstring(base64decode("b3BlbiBzcGF3bmVyICh0cnkg"))() .. attempt .. loadstring(base64decode("KQ=="))(); firePromptToOpen()
+		wait(0.05)
+		local fr = spawnerFrame()
+		if fr then
+			local sf = nav(fr, loadstring(base64decode("U2Nyb2xsaW5nRnJhbWU="))())
+			refreshVehList()
+			local car = sf and sf:FindFirstChild(selVeh)
+			if car then status = loadstring(base64decode("c2VsZWN0IA=="))() .. selVeh .. loadstring(base64decode("ICh0cnkg"))() .. attempt .. loadstring(base64decode("KQ=="))(); scrollIntoView(sf, car); guiClick(car); wait(0.1) end
+			camMph = nil
+			for _ = 1, 10 do local mph = readTopSpeedMph(); if mph and mph > 0 then camMph = mph; break end wait(0.1) end
+			tuneDriveSpeed()
+			pcall(function() print((loadstring(base64decode("W1NERl0gJXMgLT4gbXBoPSVzICBEcml2ZVNwZWVkPSVk"))()):format(selVeh, tostring(camMph), DriveSpeed)) end)
+			status = loadstring(base64decode("YnV5IHZlaGljbGUgKHRyeSA="))() .. attempt .. loadstring(base64decode("KQ=="))(); guiClick(nav(fr, loadstring(base64decode("RGV0YWls"))(), loadstring(base64decode("QnV5QnV0dG9u"))()))
+		else
+			status = loadstring(base64decode("bm8gVmVoaWNsZVNwYXduZXJHdWkgKHRyeSA="))() .. attempt .. loadstring(base64decode("KQ=="))()
+		end
+		status = loadstring(base64decode("d2FpdGluZyB0byBzZWF0ICh0cnkg"))() .. attempt .. loadstring(base64decode("KQ=="))()
+		local t1 = tick()
+		while running and _G.__sdq == Q and not seated() and tick() - t1 < 4 do wait(0.15) end
+	end
+	vehModel, vehRoot, vehParts = nil, nil, {}
+	if seated() then status = loadstring(base64decode("bG9jYXRpbmcgY2Fy"))(); for _ = 1, 20 do if locateVehicle() then break end wait(0.1) end; return true end
+	status = loadstring(base64decode("c3Bhd24gZmFpbGVk"))(); return false
+end
+local function sellAt(n)
+	status = loadstring(base64decode("dG8gc2VsbGVy"))(); moveTo(n[1], n[2], n[3])
+	while running and _G.__sdq == Q and (tick() - lastBuyT) < MIN_SELL_AGE do
+		status = (loadstring(base64decode("YWdpbmcgZ29vZHMgJWRz"))()):format(math.max(0, math.ceil(MIN_SELL_AGE - (tick() - lastBuyT))))
+		wait(0.5)
+	end
+	status = loadstring(base64decode("c2VsbGluZw=="))()
+	local pr, wp = nearestPrompt(35)
+	local ax, ay, az = n[1], n[2], n[3]; if wp then ax, ay, az = wp.X, wp.Y, wp.Z end
+	local soldOk = fireUntilAt(ax, ay, az, function() return countSmuggled() == 0 end, countSmuggled, loadstring(base64decode("c2VsbGluZw=="))(), n[1], n[2], n[3])
+	carryingGoods = false
+	return soldOk
+end
+
+-- ==== TRUCKER ====
+local function truckList() return nav(LP:FindFirstChild(loadstring(base64decode("UGxheWVyR3Vp"))()), loadstring(base64decode("VHJ1Y2tTaG9wR3Vp"))(), loadstring(base64decode("RnJhbWU="))(), loadstring(base64decode("VHJ1Y2tMaXN0"))()) end
+local function truckShopOpen() local tl = truckList(); return tl ~= nil and tl:FindFirstChild(loadstring(base64decode("Q2FyUGFydHM="))()) ~= nil end
+local function missionState(name)
+	local tl = truckList(); if not tl then return loadstring(base64decode("bWlzc2luZw=="))() end
+	local mi = tl:FindFirstChild(name); if not mi then return loadstring(base64decode("bWlzc2luZw=="))() end
+	if mi:FindFirstChild(loadstring(base64decode("T3ZlcmxheQ=="))()) then return loadstring(base64decode("bG9ja2Vk"))() end
+	local cd = nav(mi, loadstring(base64decode("Q29vbGRvd24="))(), loadstring(base64decode("VGV4dExhYmVs"))())
+	if cd then local ok, t = pcall(function() return cd.Text end); if ok and type(t) == loadstring(base64decode("c3RyaW5n"))() and t:find(loadstring(base64decode("JWQ="))()) then return loadstring(base64decode("Y29vbGRvd24="))() end end
+	return loadstring(base64decode("YXZhaWxhYmxl"))()
+end
+local function pickMission()
+	if selMission ~= loadstring(base64decode("QXV0bw=="))() then return (missionState(selMission) == loadstring(base64decode("YXZhaWxhYmxl"))()) and selMission or nil end
+	for _, n in ipairs(TRUCK_MISSIONS) do if missionState(n) == loadstring(base64decode("YXZhaWxhYmxl"))() then return n end end
+	return nil
+end
+local function truckNpcHRP() return nav(W, loadstring(base64decode("R2FtZXBsYXk="))(), loadstring(base64decode("TlBD"))(), loadstring(base64decode("VHJ1Y2tlck5QQw=="))(), loadstring(base64decode("SHVtYW5vaWRSb290UGFydA=="))()) end
+local function truckMissionActive()
+	local tdp = W:FindFirstChild(loadstring(base64decode("VHJ1Y2tEZWxpdmVyeVBvaW50cw=="))()); if not tdp then return false end
+	local ok, kids = pcall(function() return tdp:GetChildren() end)
+	return ok and #kids > 0
+end
+local function doTruckMission()
+	local npc = truckNpcHRP(); if not npc then status = loadstring(base64decode("bm8gdHJ1Y2tlciBOUEM="))(); return false end
+	local np = pos(npc); if not np then np = Vector3.new(TRUCK_NPC[1], TRUCK_NPC[2], TRUCK_NPC[3]) end
+	local dx, dz = TRUCK_EXIT[1] - np.X, TRUCK_EXIT[3] - np.Z
+	local dl = math.sqrt(dx * dx + dz * dz)
+	local sx, sz = np.X, np.Z
+	if dl > 1 then sx, sz = np.X + dx / dl * 5, np.Z + dz / dl * 5 end
+	local prompt = npc:FindFirstChild(loadstring(base64decode("VHJ1Y2tTaG9wUHJvbXB0"))())
+	status = loadstring(base64decode("dG8gdHJ1Y2tlciBOUEM="))(); moveTo(sx, np.Y, sz)
+	local attempt = 0
+	while running and _G.__sdq == Q and not (seated() or truckMissionActive()) and attempt < 6 do
+		attempt = attempt + 1
+		ensureNear(sx, np.Y, sz, 5)
+		local h = hrp(); local p = h and pos(h)
+		if p then pcall(function() h.CFrame = faceCF(p.X, p.Y, p.Z, np.X - p.X, np.Z - p.Z) end) end
+		aimCameraAt(np.X, np.Y + 2, np.Z, 1.5)
+		if prompt then pcall(function() fireproximityprompt(prompt) end) end
+		status = loadstring(base64decode("dGFwIEUgKHRyeSA="))() .. attempt .. loadstring(base64decode("KQ=="))(); keyDown(E); wait(0.06); keyUp(E); wait(0.25)
+		local m = pickMission()
+		if m then
+			local mi = truckList() and truckList():FindFirstChild(m)
+			local btn = mi and mi:FindFirstChild(loadstring(base64decode("U3RhcnRCdXR0b24="))())
+			if btn then status = loadstring(base64decode("c3RhcnQg"))() .. m; guiClick(btn, 0.8); wait(0.6); if TRUCK_SPEED[m] then DriveSpeed = TRUCK_SPEED[m] end end
+		end
+	end
+	if seated() or truckMissionActive() then vehModel, vehRoot, vehParts = nil, nil, {}; for _ = 1, 20 do if locateVehicle() then break end wait(0.1) end end
+	return seated() or truckMissionActive()
+end
+local function deliveryPos()
+	local tdp = W:FindFirstChild(loadstring(base64decode("VHJ1Y2tEZWxpdmVyeVBvaW50cw=="))()); if not tdp then return nil end
+	local ok, kids = pcall(function() return tdp:GetChildren() end); if not ok then return nil end
+	for _, m in ipairs(kids) do
+		local dpp = m.PrimaryPart and pos(m.PrimaryPart)
+		if not dpp then local okb, b = pcall(function() return m:FindFirstChildWhichIsA(loadstring(base64decode("QmFzZVBhcnQ="))(), true) end); if okb and b then dpp = pos(b) end end
+		if dpp then return dpp end
+	end
+	return nil
+end
+local function deliverTruck()
+	local dp; local t0 = tick()
+	while running and _G.__sdq == Q and not dp and tick() - t0 < 10 do dp = deliveryPos(); if not dp then wait(0.3) end end
+	if not dp then status = loadstring(base64decode("bm8gZGVsaXZlcnkgcG9pbnQ="))(); return false end
+	status = loadstring(base64decode("dHJ1Y2tlcjogdG8gbm9kZTE="))(); if not flyDriveTo(DNODE1[1], DNODE1[3]) then return false end
+	status = loadstring(base64decode("dHJ1Y2tlcjogdG8gbm9kZTI="))(); if not flyDriveTo(DNODE2[1], DNODE2[3]) then return false end
+	dp = deliveryPos() or dp
+	status = loadstring(base64decode("dHJ1Y2tlcjogdG8gZGVzdGluYXRpb24="))(); flyDriveTo(dp.X, dp.Z)
+	status = loadstring(base64decode("ZGVsaXZlcmluZw=="))()
+	local hold = tick() + 120
+	local frozenCF = nil
+	while running and _G.__sdq == Q and tick() < hold do
+		local cur = deliveryPos(); if not cur then break end
+		local _, root = findVehicle(); local rp = root and pos(root)
+		if rp then
+			local dx, dz = cur.X - rp.X, cur.Z - rp.Z; local hd = math.sqrt(dx * dx + dz * dz)
+			if hd > 5 then
+				frozenCF = nil; noclipVeh(true)
+				local ux, uz = dx / hd, dz / hd
+				local crawl = math.clamp(hd * 1.5, 5, 28)
+				local gB = groundAt(rp.X, rp.Y + 6, rp.Z)
+				local vy = -10; if gB then vy = math.clamp((gB + 2 - rp.Y) * YGAIN, -YMAX, YMAX) end
+				pcall(function() root.AssemblyLinearVelocity = Vector3.new(ux * crawl, vy, uz * crawl) end)
+			else
+				status = loadstring(base64decode("ZGVsaXZlcmluZyAoZnJvemVuKQ=="))()
+				if not frozenCF then local okc, c = pcall(function() return root.CFrame end); frozenCF = okc and c or nil end
+				pcall(function() root.AssemblyLinearVelocity = Vector3.new(0, 0, 0); root.AssemblyAngularVelocity = Vector3.new(0, 0, 0) end)
+				if frozenCF then pcall(function() root.CFrame = frozenCF end) end
+			end
+		end
+		wait(0.05)
+	end
+	stopVeh()
+	if noclipOn then restoreVehCollide(vehModel); noclipOn = false end
+	status = loadstring(base64decode("ZGVsaXZlcmVk"))(); return true
+end
+
+-- ==== CYCLE ====
+local function cycle()
+	if not smuggleOn and not truckerOn then status = loadstring(base64decode("bm8gbW9kZSBlbmFibGVk"))(); wait(0.5); return true end
+	local wantTruck = truckerOn and (pickMission() ~= nil)
+	if truckerOn and not wantTruck then status = loadstring(base64decode("bm8gbWlzc2lvbiBhdmFpbGFibGU="))() end
+	if not smuggleOn and not wantTruck then wait(5); return true end
+	
+	if smuggleOn then
+		carryingGoods = false
+		phase = loadstring(base64decode("Z3JhYiBpdGVtcw=="))()
+		if not enterBuilding() then status = loadstring(base64decode("Y2FuJ3QgZW50ZXIgYnVpbGRpbmc="))(); return false end
+		goNode(SPAWN); goNode(N_413); goNode(N_436)
+		launderIfAny()
+		local it = ITEMS[selItem]
+		buyItem(it)
+		if not running then return false end
+		if not it.diablo then goNode(JUNCTION) end
+		goNode(N_436); goNode(N_413); goNode(SPAWN)
+	end
+		phase = loadstring(base64decode("c3Bhd24gY2FyIDE="))()
+	if not spawnVehicle() then status = loadstring(base64decode("c3Bhd24gIzEgZmFpbGVk"))(); return false end
+		local haveTruck = false
+	if wantTruck then
+		phase = loadstring(base64decode("dHJ1Y2tlcjogdG8gTlBD"))()
+		if flyDriveTo(TRUCK_EXIT[1], TRUCK_EXIT[3]) then
+			exitVehicle()
+			if doTruckMission() then
+				phase = loadstring(base64decode("dHJ1Y2tlcjogZGVsaXZlcg=="))()
+				if deliverTruck() then statMissions = statMissions + 1 end
+				haveTruck = seated()
+			else status = loadstring(base64decode("bWlzc2lvbiBzdGFydCBmYWlsZWQ="))() end
+		else status = loadstring(base64decode("Y291bGRuJ3QgcmVhY2ggTlBD"))() end
+	end
+	
+	if smuggleOn then
+		phase = loadstring(base64decode("dG8gc2VsbGVy"))()
+		if haveTruck then
+			flyDriveTo(NSELLER[1], NSELLER[3]); exitVehicle()
+		elseif seated() then
+			if not flyRoute({ DNODE1, DNODE2, DNODE3 }) then return false end
+			exitVehicle()
+		else
+			moveTo(NSELLER[1], NSELLER[2], NSELLER[3])
+		end
+		statSold = statSold + countSmuggled()
+		phase = loadstring(base64decode("c2VsbA=="))(); sellAt(NSELLER)
+		if not running then return false end
+		phase = loadstring(base64decode("Y2FyIDIgLT4gYmFjaw=="))()
+		if not spawnVehicle() then status = loadstring(base64decode("c3Bhd24gIzIgZmFpbGVk"))(); return false end
+		if not flyRoute({ DNODE2, DNODE1, SPAWN }) then return false end
+		exitVehicle()
+		teleportTo(SPAWN)
+	else
+		if seated() then flyRoute({ DNODE2, DNODE1, SPAWN }) end
+		if seated() then exitVehicle() end
+		teleportTo(SPAWN)
+	end
+	statCycles = statCycles + 1
+	sendReport((loadstring(base64decode("Q3ljbGUgJWQgZG9uZQ=="))()):format(statCycles), 3066993)
+	return true
+end
+local function startFarm()
+	running = true
+	statMoney0 = readMoney(); statT0 = tick(); statCycles, statSold, statMissions = 0, 0, 0
+	sendReport(loadstring(base64decode("QXV0b2Zhcm0gc3RhcnRlZA=="))(), 3066993)
+	local owned = ownsElCapo(); FireCount = 5
+	print(loadstring(base64decode("W1NEQlJQXSBFbCBDYXBvIG93bmVkOg=="))(), tostring(owned), loadstring(base64decode("LT4gRmlyZUNvdW50"))(), FireCount)
+	task.spawn(function()
+		while running and _G.__sdq == Q do
+			if not cycle() then break end
+		end
+		keyUp(E); if noclipOn then restoreVehCollide(vehModel); noclipOn = false end
+		stopVeh(); running = false; phase = loadstring(base64decode("LQ=="))()
+		if status ~= loadstring(base64decode("Y2FuJ3QgZW50ZXIgYnVpbGRpbmc="))() then status = loadstring(base64decode("c3RvcHBlZA=="))() end
+		sendReport(loadstring(base64decode("QXV0b2Zhcm0gc3RvcHBlZA=="))(), 15158332)
+	end)
+end
+local function stopFarm() running = false; status = loadstring(base64decode("c3RvcHBpbmc="))() end
+
+-- ==== LAGBACK MONITOR ====
+task.spawn(function()
+	local lastP = pos(hrp())
+	while _G.__sdq == Q do
+		local p = pos(hrp())
+		if p and lastP and (p - lastP).Magnitude > 40 then lagCount = lagCount + 1; lastLagT = tick() end
+		lastP = p
+		task.wait()
+	end
+end)
+
+-- ==== UI ====
+local pw, ph = 300, 304
+local W2 = pw - 24
+local tab = 1
+local Y_TABS, Y_ITEM, Y_VEH, Y_MISS, Y_TOG, Y_SLIDER, Y_GO, Y_S1, Y_S2 = 30, 66, 94, 122, 150, 182, 214, 270, 288
+local ISLROW = 26
+local itemOpen, vehOpen, missOpen = false, false, false
+local MISS_OPTS = { loadstring(base64decode("QXV0bw=="))(), loadstring(base64decode("Q2FyUGFydHM="))(), loadstring(base64decode("Rm9vZFN1cHBsaWVz"))(), loadstring(base64decode("R3ltRXF1aXBtZW50"))() }
+local function frac(v, mn, mx) return math.clamp((v - mn) / (mx - mn), 0, 1) end
+local function mS(cl, zi) local o = Drawing.new(loadstring(base64decode("U3F1YXJl"))()); sp(o, loadstring(base64decode("RmlsbGVk"))(), true); sp(o, loadstring(base64decode("Q29sb3I="))(), cl); sp(o, loadstring(base64decode("WkluZGV4"))(), zi); sp(o, loadstring(base64decode("VmlzaWJsZQ=="))(), true); return o end
+local FONT; pcall(function() FONT = Drawing.Fonts.System end)
+local function mT(cl, fs, zi) local o = Drawing.new(loadstring(base64decode("VGV4dA=="))()); sp(o, loadstring(base64decode("Q29sb3I="))(), cl); if FONT then sp(o, loadstring(base64decode("Rm9udA=="))(), FONT) end sp(o, loadstring(base64decode("U2l6ZQ=="))(), fs); sp(o, loadstring(base64decode("T3V0bGluZQ=="))(), false); sp(o, loadstring(base64decode("WkluZGV4"))(), zi); sp(o, loadstring(base64decode("VmlzaWJsZQ=="))(), true); return o end
+local function vis(o, b) sp(o, loadstring(base64decode("VmlzaWJsZQ=="))(), b) end
+local ON, OFF = Color3.fromRGB(56, 168, 82), Color3.fromRGB(46, 46, 52)
+
+local U = {}
+U.bd = mS(Color3.fromRGB(255, 255, 255), 0); sp(U.bd, loadstring(base64decode("VHJhbnNwYXJlbmN5"))(), 0.16); sp(U.bd, loadstring(base64decode("Q29ybmVy"))(), 12)
+U.bg = mS(Color3.fromRGB(14, 14, 16), 1); sp(U.bg, loadstring(base64decode("VHJhbnNwYXJlbmN5"))(), 0.97); sp(U.bg, loadstring(base64decode("Q29ybmVy"))(), 11)
+U.title = mT(Color3.fromRGB(245, 245, 248), 15, 5)
+U.tfB = mS(OFF, 3); sp(U.tfB, loadstring(base64decode("Q29ybmVy"))(), 7); U.tfT = mT(Color3.fromRGB(230, 230, 236), 12, 5)
+U.tsB = mS(OFF, 3); sp(U.tsB, loadstring(base64decode("Q29ybmVy"))(), 7); U.tsT = mT(Color3.fromRGB(230, 230, 236), 12, 5)
+U.div = mS(Color3.fromRGB(74, 74, 82), 3); sp(U.div, loadstring(base64decode("VHJhbnNwYXJlbmN5"))(), 0.85)
+U.itB = mS(Color3.fromRGB(40, 43, 52), 3); sp(U.itB, loadstring(base64decode("Q29ybmVy"))(), 8); U.itT = mT(Color3.fromRGB(220, 224, 232), 12, 5)
+U.vhB = mS(Color3.fromRGB(40, 43, 52), 3); sp(U.vhB, loadstring(base64decode("Q29ybmVy"))(), 8); U.vhT = mT(Color3.fromRGB(220, 224, 232), 12, 5)
+U.msB = mS(Color3.fromRGB(40, 43, 52), 3); sp(U.msB, loadstring(base64decode("Q29ybmVy"))(), 8); U.msT = mT(Color3.fromRGB(220, 224, 232), 12, 5)
+U.smB = mS(OFF, 3); sp(U.smB, loadstring(base64decode("Q29ybmVy"))(), 8); U.smT = mT(Color3.fromRGB(255, 255, 255), 12, 5)
+U.trB = mS(OFF, 3); sp(U.trB, loadstring(base64decode("Q29ybmVy"))(), 8); U.trT = mT(Color3.fromRGB(255, 255, 255), 12, 5)
+U.goB = mS(ON, 3); sp(U.goB, loadstring(base64decode("Q29ybmVy"))(), 8); U.goT = mT(Color3.fromRGB(255, 255, 255), 14, 5)
+U.s1 = mT(Color3.fromRGB(150, 156, 168), 12, 5)
+U.s2 = mT(Color3.fromRGB(150, 156, 168), 12, 5)
+U.islB = mS(Color3.fromRGB(255, 255, 255), 18); sp(U.islB, loadstring(base64decode("VHJhbnNwYXJlbmN5"))(), 0.16); sp(U.islB, loadstring(base64decode("Q29ybmVy"))(), 12); vis(U.islB, false)
+U.islBg = mS(Color3.fromRGB(14, 14, 16), 19); sp(U.islBg, loadstring(base64decode("VHJhbnNwYXJlbmN5"))(), 0.98); sp(U.islBg, loadstring(base64decode("Q29ybmVy"))(), 11); vis(U.islBg, false)
+U.islT = mT(Color3.fromRGB(150, 150, 158), 12, 22); vis(U.islT, false)
+local SET = {
+    { n = loadstring(base64decode("VmVoaWNsZSBzcGVlZCAoYXV0byk="))(), g = function() return DriveSpeed end, s = function(v) DriveSpeed = v end, mn = 60, mx = 400, f = loadstring(base64decode("JS4wZg=="))() },
+}
+for _, r in ipairs(SET) do
+    r.lbl = mT(Color3.fromRGB(205, 210, 220), 12, 5)
+    r.trk = mS(Color3.fromRGB(46, 46, 52), 3); sp(r.trk, loadstring(base64decode("Q29ybmVy"))(), 3)
+    r.fill = mS(Color3.fromRGB(236, 236, 240), 4); sp(r.fill, loadstring(base64decode("Q29ybmVy"))(), 3)
+    r.hnd = mS(Color3.fromRGB(255, 255, 255), 5); sp(r.hnd, loadstring(base64decode("Q29ybmVy"))(), 4)
+end
+local STAT = {}
+for _ = 1, 9 do STAT[#STAT + 1] = mT(Color3.fromRGB(210, 215, 224), 13, 5) end
+local statRows = {}
+local whBox
+pcall(function()
+	local g = Instance.new(loadstring(base64decode("U2NyZWVuR3Vp"))())
+	g.Name = loadstring(base64decode("U0RCUndo"))(); g.ResetOnSpawn = false; g.DisplayOrder = 999999; g.IgnoreGuiInset = true
+	g.Parent = (type(gethui) == loadstring(base64decode("ZnVuY3Rpb24="))() and gethui()) or LP:FindFirstChild(loadstring(base64decode("UGxheWVyR3Vp"))()) or game:GetService(loadstring(base64decode("Q29yZUd1aQ=="))())
+	whBox = Instance.new(loadstring(base64decode("VGV4dEJveA=="))())
+	whBox.AnchorPoint = Vector2.new(0.5, 0)
+	whBox.Position = UDim2.new(0.5, 0, 0, 60)
+	whBox.Size = UDim2.fromOffset(440, 30)
+	whBox.BackgroundColor3 = Color3.fromRGB(18, 20, 26); whBox.BackgroundTransparency = 0.05; whBox.BorderSizePixel = 0
+	whBox.TextColor3 = Color3.fromRGB(230, 235, 245); whBox.TextSize = 14; whBox.Font = Enum.Font.Gotham
+	whBox.PlaceholderText = loadstring(base64decode("UGFzdGUgRGlzY29yZCB3ZWJob29rIFVSTCBoZXJlLCB0aGVuIHByZXNzIEVudGVy"))()
+	whBox.Text = WEBHOOK; whBox.ClearTextOnFocus = false; whBox.TextXAlignment = Enum.TextXAlignment.Left; whBox.Visible = false
+	whBox.Parent = g
+	whBox:GetPropertyChangedSignal(loadstring(base64decode("VGV4dA=="))()):Connect(function() WEBHOOK = whBox.Text; saveSettings() end)
+	whBox.FocusLost:Connect(function() WEBHOOK = whBox.Text; saveSettings(); whBox.Visible = false end)
+end)
+local MAXV = 26
+local POOL = {}
+for _ = 1, MAXV do
+    local b = mS(Color3.fromRGB(26, 26, 32), 20); sp(b, loadstring(base64decode("Q29ybmVy"))(), 6); vis(b, false)
+    local t = mT(Color3.fromRGB(225, 228, 236), 12, 21); vis(t, false)
+    POOL[#POOL + 1] = { bg = b, txt = t }
+end
+local function popList()
+    if itemOpen then local l = {}; for _, it in ipairs(ITEMS) do l[#l + 1] = it.name end return l end
+    if vehOpen then return vehList end
+    if missOpen then return MISS_OPTS end
+    return nil
+end
+local function rowSelected(list, njLqV4e6)
+    if itemOpen then return njLqV4e6 == selItem end
+    if vehOpen then return list[njLqV4e6] == selVeh end
+    return list[njLqV4e6] == selMission
+end
+local function islandY() return py + ph + 6 end
+local function islandRowY(njLqV4e6) return islandY() + 26 + (njLqV4e6 - 1) * ISLROW end
+local function layIsland()
+    local open = (tab == 1) and (itemOpen or vehOpen or missOpen)
+    local list = open and popList() or nil
+    vis(U.islB, open); vis(U.islBg, open); vis(U.islT, open)
+    if open and list then
+        local n = math.min(#list, MAXV)
+        local islH = 24 + math.max(#list, 1) * ISLROW + 8
+        local iy0 = islandY()
+        sp(U.islB, loadstring(base64decode("U2l6ZQ=="))(), Vector2.new(pw + 2, islH + 2)); sp(U.islB, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px - 1, iy0 - 1))
+        sp(U.islBg, loadstring(base64decode("U2l6ZQ=="))(), Vector2.new(pw, islH)); sp(U.islBg, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px, iy0))
+        local hdr = itemOpen and loadstring(base64decode("U2VsZWN0IGl0ZW0="))() or (vehOpen and loadstring(base64decode("U2VsZWN0IHZlaGljbGU="))() or loadstring(base64decode("U2VsZWN0IG1pc3Npb24="))())
+        sp(U.islT, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 14, iy0 + 6)); sp(U.islT, loadstring(base64decode("VGV4dA=="))(), hdr .. loadstring(base64decode("ICAo"))() .. #list .. loadstring(base64decode("KQ=="))())
+        for njLqV4e6 = 1, MAXV do
+            local show = njLqV4e6 <= n
+            vis(POOL[njLqV4e6].bg, show); vis(POOL[njLqV4e6].txt, show)
+            if show then
+                local iy = islandRowY(njLqV4e6)
+                sp(POOL[njLqV4e6].bg, loadstring(base64decode("U2l6ZQ=="))(), Vector2.new(pw - 24, 22)); sp(POOL[njLqV4e6].bg, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 12, iy))
+                sp(POOL[njLqV4e6].bg, loadstring(base64decode("Q29sb3I="))(), rowSelected(list, njLqV4e6) and Color3.fromRGB(46, 96, 64) or Color3.fromRGB(26, 26, 32))
+                sp(POOL[njLqV4e6].txt, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 18, iy + 4)); sp(POOL[njLqV4e6].txt, loadstring(base64decode("VGV4dA=="))(), tostring(list[njLqV4e6]))
+            end
+        end
+    else
+        for njLqV4e6 = 1, MAXV do vis(POOL[njLqV4e6].bg, false); vis(POOL[njLqV4e6].txt, false) end
+    end
+end
+
+local function lay()
+    sp(U.bd, loadstring(base64decode("U2l6ZQ=="))(), Vector2.new(pw + 2, ph + 2)); sp(U.bd, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px - 1, py - 1))
+    sp(U.bg, loadstring(base64decode("U2l6ZQ=="))(), Vector2.new(pw, ph)); sp(U.bg, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px, py))
+    sp(U.title, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 14, py + 8)); sp(U.title, loadstring(base64decode("VGV4dA=="))(), loadstring(base64decode("QnVzdGVyIFNEQlIgQXV0b2Zhcm0="))())
+    local halfT = (W2 - 6) / 2
+    sp(U.tfB, loadstring(base64decode("U2l6ZQ=="))(), Vector2.new(halfT, 22)); sp(U.tfB, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 12, py + Y_TABS)); sp(U.tfB, loadstring(base64decode("Q29sb3I="))(), tab == 1 and Color3.fromRGB(70, 110, 90) or OFF)
+    sp(U.tfT, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 12 + halfT / 2 - 14, py + Y_TABS + 4)); sp(U.tfT, loadstring(base64decode("VGV4dA=="))(), loadstring(base64decode("RmFybQ=="))())
+    sp(U.tsB, loadstring(base64decode("U2l6ZQ=="))(), Vector2.new(halfT, 22)); sp(U.tsB, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 12 + halfT + 6, py + Y_TABS)); sp(U.tsB, loadstring(base64decode("Q29sb3I="))(), tab == 2 and Color3.fromRGB(70, 110, 90) or OFF)
+    sp(U.tsT, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 12 + halfT + 6 + halfT / 2 - 16, py + Y_TABS + 4)); sp(U.tsT, loadstring(base64decode("VGV4dA=="))(), loadstring(base64decode("U3RhdHM="))())
+    sp(U.div, loadstring(base64decode("U2l6ZQ=="))(), Vector2.new(pw - 28, 1)); sp(U.div, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 14, py + 58))
+
+    local farmOn = (tab == 1)
+    for _, o in ipairs({ U.itB, U.itT, U.vhB, U.vhT, U.msB, U.msT, U.smB, U.smT, U.trB, U.trT, U.goB, U.goT }) do vis(o, farmOn) end
+    for _, r in ipairs(SET) do vis(r.lbl, farmOn); vis(r.trk, farmOn); vis(r.fill, farmOn); vis(r.hnd, farmOn) end
+    for _, o in ipairs(STAT) do vis(o, not farmOn) end
+
+    if farmOn then
+        sp(U.itB, loadstring(base64decode("U2l6ZQ=="))(), Vector2.new(W2, 24)); sp(U.itB, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 12, py + Y_ITEM))
+        sp(U.itT, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 18, py + Y_ITEM + 5)); sp(U.itT, loadstring(base64decode("VGV4dA=="))(), loadstring(base64decode("SXRlbTogIA=="))() .. ITEMS[selItem].name)
+        sp(U.vhB, loadstring(base64decode("U2l6ZQ=="))(), Vector2.new(W2, 24)); sp(U.vhB, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 12, py + Y_VEH))
+        sp(U.vhT, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 18, py + Y_VEH + 5)); sp(U.vhT, loadstring(base64decode("VGV4dA=="))(), loadstring(base64decode("VmVoaWNsZTogIA=="))() .. selVeh)
+        sp(U.msB, loadstring(base64decode("U2l6ZQ=="))(), Vector2.new(W2, 24)); sp(U.msB, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 12, py + Y_MISS))
+        sp(U.msT, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 18, py + Y_MISS + 5)); sp(U.msT, loadstring(base64decode("VGV4dA=="))(), loadstring(base64decode("TWlzc2lvbjogIA=="))() .. selMission)
+        local half = (W2 - 6) / 2
+        sp(U.smB, loadstring(base64decode("U2l6ZQ=="))(), Vector2.new(half, 24)); sp(U.smB, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 12, py + Y_TOG)); sp(U.smB, loadstring(base64decode("Q29sb3I="))(), smuggleOn and ON or OFF)
+        sp(U.smT, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 12 + half / 2 - 32, py + Y_TOG + 5)); sp(U.smT, loadstring(base64decode("VGV4dA=="))(), smuggleOn and loadstring(base64decode("U211Z2dsZTogT04="))() or loadstring(base64decode("U211Z2dsZTogT0ZG"))())
+        sp(U.trB, loadstring(base64decode("U2l6ZQ=="))(), Vector2.new(half, 24)); sp(U.trB, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 12 + half + 6, py + Y_TOG)); sp(U.trB, loadstring(base64decode("Q29sb3I="))(), truckerOn and ON or OFF)
+        sp(U.trT, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 12 + half + 6 + half / 2 - 30, py + Y_TOG + 5)); sp(U.trT, loadstring(base64decode("VGV4dA=="))(), truckerOn and loadstring(base64decode("VHJ1Y2tlcjogT04="))() or loadstring(base64decode("VHJ1Y2tlcjogT0ZG"))())
+        for njLqV4e6, r in ipairs(SET) do
+            local ry = py + Y_SLIDER + (njLqV4e6 - 1) * 26
+            sp(r.lbl, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 14, ry)); sp(r.lbl, loadstring(base64decode("VGV4dA=="))(), (r.n .. loadstring(base64decode("ICAgWyA="))() .. r.f .. loadstring(base64decode("IF0="))()):format(r.g()))
+            sp(r.trk, loadstring(base64decode("U2l6ZQ=="))(), Vector2.new(W2, 5)); sp(r.trk, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 12, ry + 15))
+            local f = frac(r.g(), r.mn, r.mx)
+            sp(r.fill, loadstring(base64decode("U2l6ZQ=="))(), Vector2.new(math.max(1, W2 * f), 5)); sp(r.fill, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 12, ry + 15))
+            sp(r.hnd, loadstring(base64decode("U2l6ZQ=="))(), Vector2.new(10, 16)); sp(r.hnd, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 12 + f * W2 - 5, ry + 9))
+        end
+        sp(U.goB, loadstring(base64decode("U2l6ZQ=="))(), Vector2.new(W2, 28)); sp(U.goB, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 12, py + Y_GO))
+        sp(U.goB, loadstring(base64decode("Q29sb3I="))(), running and Color3.fromRGB(196, 54, 54) or ON)
+        sp(U.goT, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 12 + W2 / 2 - 22, py + Y_GO + 6)); sp(U.goT, loadstring(base64decode("VGV4dA=="))(), running and loadstring(base64decode("U1RPUA=="))() or loadstring(base64decode("U1RBUlQ="))())
+    else
+        for njLqV4e6, o in ipairs(STAT) do sp(o, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 16, py + 66 + (njLqV4e6 - 1) * 22)); sp(o, loadstring(base64decode("VGV4dA=="))(), statRows[njLqV4e6] or loadstring(base64decode(""))()) end
+    end
+    sp(U.s1, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 14, py + Y_S1)); sp(U.s1, loadstring(base64decode("VGV4dA=="))(), loadstring(base64decode("UGhhc2U6IA=="))() .. phase)
+    sp(U.s2, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 14, py + Y_S2)); sp(U.s2, loadstring(base64decode("VGV4dA=="))(), loadstring(base64decode("U3RhdHVzOiA="))() .. status)
+    layIsland()
+end
+lay()
+
+task.spawn(function()
+    local wd, dpn, ox, oy, dRow, lastVL, lastStatT = false, false, 0, 0, 0, 0, 0
+    while _G.__sdq == Q do
+        if tick() - lastVL > 0.5 then refreshVehList(); lastVL = tick() end
+        if tab == 2 and tick() - lastStatT > 0.4 then
+            statMoney = readMoney() or statMoney
+            local rt = statT0 > 0 and (tick() - statT0) or 0
+            statRows = {
+                loadstring(base64decode("TW9uZXk6ICA="))() .. fmtMoney(statMoney),
+                loadstring(base64decode("SW5jb21lOiAg"))() .. fmtMoney(statIncome()),
+                loadstring(base64decode("UGVyIGhvdXI6ICA="))() .. fmtMoney(statPerHr()),
+                (loadstring(base64decode("UnVudGltZTogICUwMmQ6JTAyZDolMDJk"))()):format(math.floor(rt / 3600), math.floor((rt % 3600) / 60), math.floor(rt % 60)),
+                loadstring(base64decode("Q3ljbGVzOiAg"))() .. statCycles,
+                loadstring(base64decode("SXRlbXMgc29sZDogIA=="))() .. statSold,
+                loadstring(base64decode("TWlzc2lvbnMgZG9uZTogIA=="))() .. statMissions,
+                loadstring(base64decode("TGFnYmFja3M6ICA="))() .. lagCount,
+                loadstring(base64decode("V2ViaG9vazogIA=="))() .. (WEBHOOK ~= loadstring(base64decode(""))() and loadstring(base64decode("U0VUIChjbGljayA9IHBhc3RlIGNsaXBib2FyZCk="))() or loadstring(base64decode("KGNvcHkgVVJMIHRoZW4gY2xpY2sp"))()),
+            }
+            lastStatT = tick()
+        end
+        local dn = ismouse1pressed()
+        local mx, my = M.X, M.Y
+        local halfT = (W2 - 6) / 2
+        local half = (W2 - 6) / 2
+        if dn and not wd then
+            if itemOpen or vehOpen or missOpen then
+                local list = popList()
+                local n = list and math.min(#list, MAXV) or 0
+                if mx >= px + 12 and mx <= px + pw - 12 then
+                    for njLqV4e6 = 1, n do
+                        local iy = islandRowY(njLqV4e6)
+                        if my >= iy and my <= iy + 22 then
+                            if itemOpen then selItem = njLqV4e6 elseif vehOpen then selVeh = list[njLqV4e6] else selMission = list[njLqV4e6] end
+                            saveSettings()
+                            break
+                        end
+                    end
+                end
+                itemOpen, vehOpen, missOpen = false, false, false
+            elseif my >= py + Y_TABS and my <= py + Y_TABS + 22 then
+                if mx >= px + 12 and mx <= px + 12 + halfT then tab = 1
+                elseif mx >= px + 12 + halfT + 6 and mx <= px + 12 + halfT + 6 + halfT then tab = 2 end
+            elseif tab == 2 and mx >= px + 12 and mx <= px + pw - 12 and my >= py + 238 and my <= py + 262 then
+                local cb = readClipboard()
+                if cb and (string.find(cb, loadstring(base64decode("aHR0cA=="))(), 1, true) or string.find(cb, loadstring(base64decode("ZGlzY29yZA=="))(), 1, true)) then WEBHOOK = cb; saveSettings(); status = loadstring(base64decode("d2ViaG9vayBzZXQgZnJvbSBjbGlwYm9hcmQ="))() else status = loadstring(base64decode("Y2xpcGJvYXJkIGhhcyBubyBVUkwgKGNvcHkgaXQgZmlyc3Qp"))() end
+                if whBox then pcall(function() whBox.Text = WEBHOOK; whBox.Visible = true; whBox:CaptureFocus() end) end
+            elseif tab == 1 and mx >= px + 12 and mx <= px + pw - 12 and my >= py + Y_ITEM and my <= py + Y_ITEM + 24 then
+                itemOpen = true
+            elseif tab == 1 and mx >= px + 12 and mx <= px + pw - 12 and my >= py + Y_VEH and my <= py + Y_VEH + 24 then
+                vehOpen = true; refreshVehList()
+            elseif tab == 1 and mx >= px + 12 and mx <= px + pw - 12 and my >= py + Y_MISS and my <= py + Y_MISS + 24 then
+                missOpen = true
+            elseif tab == 1 and my >= py + Y_TOG and my <= py + Y_TOG + 24 and mx >= px + 12 and mx <= px + 12 + half then
+                smuggleOn = not smuggleOn; saveSettings()
+            elseif tab == 1 and my >= py + Y_TOG and my <= py + Y_TOG + 24 and mx >= px + 12 + half + 6 and mx <= px + 12 + half + 6 + half then
+                truckerOn = not truckerOn; saveSettings()
+            elseif tab == 1 and mx >= px + 12 and mx <= px + pw - 12 and my >= py + Y_GO and my <= py + Y_GO + 28 then
+                if running then stopFarm() else startFarm() end
+            elseif tab == 1 and mx >= px + 8 and mx <= px + pw - 8 and my >= py + Y_SLIDER + 9 and my <= py + Y_SLIDER + 27 then
+                dRow = 1
+            elseif my >= py and my <= py + 28 and mx >= px and mx <= px + pw then
+                dpn = true; ox, oy = mx - px, my - py
+            end
+        end
+        if not dn and dRow > 0 then saveSettings() end
+        if not dn then dpn = false; dRow = 0 end
+        wd = dn
+        if dpn then px, py = mx - ox, my - oy end
+        if dRow > 0 then local r = SET[dRow]; r.s(r.mn + math.clamp((mx - (px + 12)) / W2, 0, 1) * (r.mx - r.mn)) end
+        lay()
+        task.wait()
+    end
+    for _, o in pairs(U) do sp(o, loadstring(base64decode("VmlzaWJsZQ=="))(), false) end
+    for _, r in ipairs(SET) do sp(r.lbl, loadstring(base64decode("VmlzaWJsZQ=="))(), false); sp(r.trk, loadstring(base64decode("VmlzaWJsZQ=="))(), false); sp(r.fill, loadstring(base64decode("VmlzaWJsZQ=="))(), false); sp(r.hnd, loadstring(base64decode("VmlzaWJsZQ=="))(), false) end
+    for _, o in ipairs(STAT) do sp(o, loadstring(base64decode("VmlzaWJsZQ=="))(), false) end
+    for _, e in ipairs(POOL) do sp(e.bg, loadstring(base64decode("VmlzaWJsZQ=="))(), false); sp(e.txt, loadstring(base64decode("VmlzaWJsZQ=="))(), false) end
+    if whBox then pcall(function() whBox.Visible = false end) end
+end)
+end
+BxZDem1I(1lrT1)
+end)(...)
