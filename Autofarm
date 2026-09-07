@@ -1,12 +1,9 @@
-return(function(Nj1ao, ...)
-local YNGafu = {"YcV9eafzihWb";"NZlOYdKnvyplUOF";"PYLgxV5dVH9X4jZn";"1scy2JIirkdSLgXM";"AG4L08AXGzmbSQ";"ZEo3iA";"I3HYR";"48UICif"}
-local BQwrHLYf = function(...)
 -- SDBR Autofarm
-local W = game:GetService(loadstring(base64decode("V29ya3NwYWNl"))())
-local P = game:GetService(loadstring(base64decode("UGxheWVycw=="))())
+local W = game:GetService("Workspace")
+local P = game:GetService("Players")
 local LP = P.LocalPlayer
 local M = LP:GetMouse()
-local HttpService = game:GetService(loadstring(base64decode("SHR0cFNlcnZpY2U="))())
+local HttpService = game:GetService("HttpService")
 _G.__sdq = (_G.__sdq or 0) + 1
 local Q = _G.__sdq
 
@@ -25,32 +22,32 @@ local CamSens, CamMax = 30, 60
 
 -- ==== STATE ====
 local running = false
-local status, phase = loadstring(base64decode("aWRsZQ=="))(), loadstring(base64decode("LQ=="))()
+local status, phase = "idle", "-"
 local px, py = 40, 150
 local lagCount = 0
 local lastLagT = 0
 local lastBuyT = 0
 local carryingGoods = false
-local selVeh = loadstring(base64decode("Q2Ftcnk2"))()
-local vehList = { loadstring(base64decode("Q2Ftcnk2"))() }
+local selVeh = "Camry6"
+local vehList = { "Camry6" }
 local smuggleOn, truckerOn = true, false
-local selMission = loadstring(base64decode("QXV0bw=="))()
+local selMission = "Auto"
 
 -- ==== STATS / WEBHOOK ====
-local WEBHOOK = loadstring(base64decode(""))()
+local WEBHOOK = ""
 local statMoney0, statT0 = nil, 0
 local statMoney = 0
 local statCycles, statSold, statMissions = 0, 0, 0
 
 -- ==== DATA ====
 local ITEMS = {
-	{ name = loadstring(base64decode("RWwgRGlhYmxvIEJveA=="))(),          cf = { 6615.42, 64.53, -449.67 }, part = loadstring(base64decode("TWVzaA=="))(),          diablo = true },
-	{ name = loadstring(base64decode("RmFrZSBEaWFtb25kIFJpbmc="))(),      cf = { 6627.99, 62.69, -448.52 }, part = loadstring(base64decode("SGFuZGxl"))() },
-	{ name = loadstring(base64decode("RmFrZSBEZXNpZ25lciBTbmVha2Vycw=="))(), cf = { 6632.17, 62.72, -449.33 }, part = loadstring(base64decode("SGFuZGxl"))() },
-	{ name = loadstring(base64decode("TW9uYSBMaXNhIFBhaW50aW5n"))(),     cf = { 6637.50, 62.72, -451.56 }, part = loadstring(base64decode("TW9uYUxpc2FQYWludA=="))() },
-	{ name = loadstring(base64decode("V2FneXUgQmVlZg=="))(),             cf = { 6632.69, 62.72, -430.66 }, part = loadstring(base64decode("SGFuZGxl"))() },
-	{ name = loadstring(base64decode("Q3JhdGUgT2YgQXZhY2Fkb3M="))(),      cf = { 6637.37, 62.72, -430.86 }, part = loadstring(base64decode("SGFuZGxl"))() },
-	{ name = loadstring(base64decode("V2l0Y2hlcyBCcmV3"))(),           cf = { 6641.60, 62.72, -430.28 }, part = loadstring(base64decode("SGFuZGxl"))() },
+	{ name = "El Diablo Box",          cf = { 6615.42, 64.53, -449.67 }, part = "Mesh",          diablo = true },
+	{ name = "Fake Diamond Ring",      cf = { 6627.99, 62.69, -448.52 }, part = "Handle" },
+	{ name = "Fake Designer Sneakers", cf = { 6632.17, 62.72, -449.33 }, part = "Handle" },
+	{ name = "Mona Lisa Painting",     cf = { 6637.50, 62.72, -451.56 }, part = "MonaLisaPaint" },
+	{ name = "Wagyu Beef",             cf = { 6632.69, 62.72, -430.66 }, part = "Handle" },
+	{ name = "Crate Of Avacados",      cf = { 6637.37, 62.72, -430.86 }, part = "Handle" },
+	{ name = "Witches Brew",           cf = { 6641.60, 62.72, -430.28 }, part = "Handle" },
 }
 local selItem = 2
 local SPAWN    = { 6599.17, 64.45, -390.69 }
@@ -70,40 +67,40 @@ local VSPAWN2 = { -226.94, 17.27, 819.99 }
 
 local TRUCK_EXIT = { 7102.89, 17.22, 230.23 }
 local TRUCK_NPC  = { 7129.76, 20.15, 236.72 }
-local TRUCK_MISSIONS = { loadstring(base64decode("Q2FyUGFydHM="))(), loadstring(base64decode("Rm9vZFN1cHBsaWVz"))(), loadstring(base64decode("R3ltRXF1aXBtZW50"))() }
+local TRUCK_MISSIONS = { "CarParts", "FoodSupplies", "GymEquipment" }
 local TRUCK_SPEED = { CarParts = 320, FoodSupplies = 290, GymEquipment = 290 }
 
 -- ==== HELPERS ====
 local function sp(o, k, v) pcall(function() o[k] = v end) end
 local function nav(root, ...) local o = root; for _, n in ipairs({ ... }) do if not o then return nil end o = o:FindFirstChild(n) end return o end
-local function hrp() local ch = LP.Character; return ch and ch:FindFirstChild(loadstring(base64decode("SHVtYW5vaWRSb290UGFydA=="))()) end
-local function pos(o) local ok, v = pcall(function() return o.Position end); return (ok and typeof(v) == loadstring(base64decode("VmVjdG9yMw=="))()) and v or nil end
+local function hrp() local ch = LP.Character; return ch and ch:FindFirstChild("HumanoidRootPart") end
+local function pos(o) local ok, v = pcall(function() return o.Position end); return (ok and typeof(v) == "Vector3") and v or nil end
 local E = 0x45
 local SPACE = 0x20
 local function keyDown(k) pcall(setrobloxinput, true); pcall(keypress, k) end
 local function keyUp(k) pcall(keyrelease, k) end
-local function faceCF(x, jMa7LUFz, z, dx, dz)
-	local l = math.sqrt(dx * dx + dz * dz); if l < 1e-3 then return CFrame.new(x, jMa7LUFz, z) end
+local function faceCF(x, y, z, dx, dz)
+	local l = math.sqrt(dx * dx + dz * dz); if l < 1e-3 then return CFrame.new(x, y, z) end
 	dx, dz = dx / l, dz / l
-	return CFrame.new(x, jMa7LUFz, z, -dz, 0, -dx, 0, 1, 0, dx, 0, -dz)
+	return CFrame.new(x, y, z, -dz, 0, -dx, 0, 1, 0, dx, 0, -dz)
 end
 local function readMoney()
-	local ls = LP:FindFirstChild(loadstring(base64decode("bGVhZGVyc3RhdHM="))())
-	if ls then for _, n in ipairs({ loadstring(base64decode("Q2FzaA=="))(), loadstring(base64decode("TW9uZXk="))(), loadstring(base64decode("QmFuaw=="))(), loadstring(base64decode("RG9sbGFycw=="))(), loadstring(base64decode("QmFsYW5jZQ=="))() }) do
-		local v = ls:FindFirstChild(n); if v then local ok, val = pcall(function() return v.Value end); if ok and type(val) == loadstring(base64decode("bnVtYmVy"))() then return val end end
+	local ls = LP:FindFirstChild("leaderstats")
+	if ls then for _, n in ipairs({ "Cash", "Money", "Bank", "Dollars", "Balance" }) do
+		local v = ls:FindFirstChild(n); if v then local ok, val = pcall(function() return v.Value end); if ok and type(val) == "number" then return val end end
 	end end
-	for _, n in ipairs({ loadstring(base64decode("TW9uZXk="))(), loadstring(base64decode("Q2FzaA=="))(), loadstring(base64decode("QmFuaw=="))(), loadstring(base64decode("QmFsYW5jZQ=="))() }) do
-		local ok, val = pcall(function() return LP:GetAttribute(n) end); if ok and type(val) == loadstring(base64decode("bnVtYmVy"))() then return val end
+	for _, n in ipairs({ "Money", "Cash", "Bank", "Balance" }) do
+		local ok, val = pcall(function() return LP:GetAttribute(n) end); if ok and type(val) == "number" then return val end
 	end
-	local lbl = nav(LP:FindFirstChild(loadstring(base64decode("UGxheWVyR3Vp"))()), loadstring(base64decode("TWFpbkhVREd1aQ=="))(), loadstring(base64decode("VG9wUmlnaHQ="))(), loadstring(base64decode("TW9uZXk="))(), loadstring(base64decode("VGV4dExhYmVs"))())
+	local lbl = nav(LP:FindFirstChild("PlayerGui"), "MainHUDGui", "TopRight", "Money", "TextLabel")
 	if lbl then
 		local ok, t = pcall(function() return lbl.Text end)
-		if ok and type(t) == loadstring(base64decode("c3RyaW5n"))() then
-			local num, suf = t:match(loadstring(base64decode("KFslZCUuXSspJXMqKFtLa01tQmJdPyk="))())
+		if ok and type(t) == "string" then
+			local num, suf = t:match("([%d%.]+)%s*([KkMmBb]?)")
 			local val = num and tonumber(num)
 			if val then
 				local u = suf:upper()
-				if u == loadstring(base64decode("Sw=="))() then val = val * 1e3 elseif u == loadstring(base64decode("TQ=="))() then val = val * 1e6 elseif u == loadstring(base64decode("Qg=="))() then val = val * 1e9 end
+				if u == "K" then val = val * 1e3 elseif u == "M" then val = val * 1e6 elseif u == "B" then val = val * 1e9 end
 				return val
 			end
 		end
@@ -111,42 +108,42 @@ local function readMoney()
 	return nil
 end
 local function commas(n)
-	local sgn = n < 0 and loadstring(base64decode("LQ=="))() or loadstring(base64decode(""))()
+	local sgn = n < 0 and "-" or ""
 	local str = tostring(math.floor(math.abs(n) + 0.5))
-	while true do local a, k = str:gsub(loadstring(base64decode("XiglZCspKCVkJWQlZCk="))(), loadstring(base64decode("JTEsJTI="))()); str = a; if k == 0 then break end end
+	while true do local a, k = str:gsub("^(%d+)(%d%d%d)", "%1,%2"); str = a; if k == 0 then break end end
 	return sgn .. str
 end
 local function fmtMoney(n)
-	if type(n) ~= loadstring(base64decode("bnVtYmVy"))() then return loadstring(base64decode("Pw=="))() end
-	local a, sgn = math.abs(n), (n < 0 and loadstring(base64decode("LQ=="))() or loadstring(base64decode(""))())
-	if a >= 1e9 then return sgn .. loadstring(base64decode("JA=="))() .. (((loadstring(base64decode("JS4yZg=="))()):format(a / 1e9)):gsub(loadstring(base64decode("JS4/MCsk"))(), loadstring(base64decode(""))())) .. loadstring(base64decode("Qg=="))() end
-	if a >= 1e6 then return sgn .. loadstring(base64decode("JA=="))() .. (((loadstring(base64decode("JS4yZg=="))()):format(a / 1e6)):gsub(loadstring(base64decode("JS4/MCsk"))(), loadstring(base64decode(""))())) .. loadstring(base64decode("TQ=="))() end
-	if a >= 1e3 then return sgn .. loadstring(base64decode("JA=="))() .. (((loadstring(base64decode("JS4xZg=="))()):format(a / 1e3)):gsub(loadstring(base64decode("JS4/MCsk"))(), loadstring(base64decode(""))())) .. loadstring(base64decode("Sw=="))() end
-	return sgn .. loadstring(base64decode("JA=="))() .. commas(a)
+	if type(n) ~= "number" then return "?" end
+	local a, sgn = math.abs(n), (n < 0 and "-" or "")
+	if a >= 1e9 then return sgn .. "$" .. ((("%.2f"):format(a / 1e9)):gsub("%.?0+$", "")) .. "B" end
+	if a >= 1e6 then return sgn .. "$" .. ((("%.2f"):format(a / 1e6)):gsub("%.?0+$", "")) .. "M" end
+	if a >= 1e3 then return sgn .. "$" .. ((("%.1f"):format(a / 1e3)):gsub("%.?0+$", "")) .. "K" end
+	return sgn .. "$" .. commas(a)
 end
 local function statIncome() local now = readMoney(); if not (now and statMoney0) then return 0 end return now - statMoney0 end
 local function statPerHr() local dt = tick() - statT0; if dt < 2 then return 0 end return statIncome() / (dt / 3600) end
 local function httpPost(url, body)
-	if not url or url == loadstring(base64decode(""))() then return end
+	if not url or url == "" then return end
 	local ok, err = pcall(function() return game:HttpPost(url, body, Enum.HttpContentType.ApplicationJson) end)
 	if not ok then ok, err = pcall(function() return game:HttpPostAsync(url, body, Enum.HttpContentType.ApplicationJson) end) end
 	if not ok then ok, err = pcall(function() return game:HttpPost(url, body) end) end
-	pcall(function() print(loadstring(base64decode("W1NERl0gd2ViaG9vayBnYW1lOkh0dHBQb3N0IG9rPQ=="))() .. tostring(ok) .. (ok and loadstring(base64decode(""))() or (loadstring(base64decode("ICBlcnI9"))() .. tostring(err)))) end)
+	pcall(function() print("[SDF] webhook game:HttpPost ok=" .. tostring(ok) .. (ok and "" or ("  err=" .. tostring(err)))) end)
 end
 local function readClipboard()
-	if type(getclipboard) == loadstring(base64decode("ZnVuY3Rpb24="))() then local ok, v = pcall(getclipboard); if ok and type(v) == loadstring(base64decode("c3RyaW5n"))() and #v > 0 then return v end end
-	if type(getclip) == loadstring(base64decode("ZnVuY3Rpb24="))() then local ok, v = pcall(getclip); if ok and type(v) == loadstring(base64decode("c3RyaW5n"))() and #v > 0 then return v end end
-	if type(Clipboard) == loadstring(base64decode("dGFibGU="))() and type(Clipboard.get) == loadstring(base64decode("ZnVuY3Rpb24="))() then local ok, v = pcall(Clipboard.get); if ok and type(v) == loadstring(base64decode("c3RyaW5n"))() and #v > 0 then return v end end
+	if type(getclipboard) == "function" then local ok, v = pcall(getclipboard); if ok and type(v) == "string" and #v > 0 then return v end end
+	if type(getclip) == "function" then local ok, v = pcall(getclip); if ok and type(v) == "string" and #v > 0 then return v end end
+	if type(Clipboard) == "table" and type(Clipboard.get) == "function" then local ok, v = pcall(Clipboard.get); if ok and type(v) == "string" and #v > 0 then return v end end
 	return nil
 end
 local function postWebhook(content)
-	if WEBHOOK == loadstring(base64decode(""))() then return end
-	local c = tostring(content):gsub(loadstring(base64decode("XFw="))(), loadstring(base64decode("XFxcXA=="))()):gsub('loadstring(base64decode("JywgJ1xc"))()'):gsub(loadstring(base64decode("XG4="))(), loadstring(base64decode("XFxu"))())
-	httpPost(WEBHOOK, '{loadstring(base64decode("Y29udGVudA=="))():loadstring(base64decode("JyAuLiBjIC4uICc="))()}')
+	if WEBHOOK == "" then return end
+	local c = tostring(content):gsub("\\", "\\\\"):gsub('"', '\\"'):gsub("\n", "\\n")
+	httpPost(WEBHOOK, '{"content":"' .. c .. '"}')
 end
-local SETTINGS_FILE = loadstring(base64decode("c2Ricl9hdXRvZmFybV9zZXR0aW5ncy5qc29u"))()
+local SETTINGS_FILE = "sdbr_autofarm_settings.json"
 local function saveSettings()
-	if type(writefile) ~= loadstring(base64decode("ZnVuY3Rpb24="))() then return end
+	if type(writefile) ~= "function" then return end
 	pcall(function()
 		writefile(SETTINGS_FILE, HttpService:JSONEncode({
 			selItem = selItem, selVeh = selVeh, selMission = selMission,
@@ -156,36 +153,36 @@ local function saveSettings()
 	end)
 end
 local function loadSettings()
-	if type(readfile) ~= loadstring(base64decode("ZnVuY3Rpb24="))() then return end
+	if type(readfile) ~= "function" then return end
 	local ok, txt = pcall(function() return readfile(SETTINGS_FILE) end)
-	if not ok or type(txt) ~= loadstring(base64decode("c3RyaW5n"))() then return end
+	if not ok or type(txt) ~= "string" then return end
 	local okd, d = pcall(function() return HttpService:JSONDecode(txt) end)
-	if not okd or type(d) ~= loadstring(base64decode("dGFibGU="))() then return end
-	if type(d.selItem) == loadstring(base64decode("bnVtYmVy"))() and ITEMS[d.selItem] then selItem = d.selItem end
-	if type(d.selVeh) == loadstring(base64decode("c3RyaW5n"))() then selVeh = d.selVeh end
-	if type(d.selMission) == loadstring(base64decode("c3RyaW5n"))() then selMission = d.selMission end
-	if type(d.smuggleOn) == loadstring(base64decode("Ym9vbGVhbg=="))() then smuggleOn = d.smuggleOn end
-	if type(d.truckerOn) == loadstring(base64decode("Ym9vbGVhbg=="))() then truckerOn = d.truckerOn end
-	if type(d.DriveSpeed) == loadstring(base64decode("bnVtYmVy"))() then DriveSpeed = d.DriveSpeed end
-	if type(d.WEBHOOK) == loadstring(base64decode("c3RyaW5n"))() and d.WEBHOOK ~= loadstring(base64decode(""))() then WEBHOOK = d.WEBHOOK end
-	if type(d.vehList) == loadstring(base64decode("dGFibGU="))() and #d.vehList > 0 then vehList = d.vehList end
+	if not okd or type(d) ~= "table" then return end
+	if type(d.selItem) == "number" and ITEMS[d.selItem] then selItem = d.selItem end
+	if type(d.selVeh) == "string" then selVeh = d.selVeh end
+	if type(d.selMission) == "string" then selMission = d.selMission end
+	if type(d.smuggleOn) == "boolean" then smuggleOn = d.smuggleOn end
+	if type(d.truckerOn) == "boolean" then truckerOn = d.truckerOn end
+	if type(d.DriveSpeed) == "number" then DriveSpeed = d.DriveSpeed end
+	if type(d.WEBHOOK) == "string" and d.WEBHOOK ~= "" then WEBHOOK = d.WEBHOOK end
+	if type(d.vehList) == "table" and #d.vehList > 0 then vehList = d.vehList end
 end
 loadSettings()
 local function sendReport(title, color)
-	if WEBHOOK == loadstring(base64decode(""))() then return end
+	if WEBHOOK == "" then return end
 	local rt = statT0 > 0 and (tick() - statT0) or 0
 	local body
 	local ok = pcall(function()
 		body = HttpService:JSONEncode({ embeds = { {
 			title = title, color = color or 3447003,
 			fields = {
-				{ name = loadstring(base64decode("TW9uZXk="))(), value = fmtMoney(readMoney()), inline = true },
-				{ name = loadstring(base64decode("SW5jb21l"))(), value = fmtMoney(statIncome()), inline = true },
-				{ name = loadstring(base64decode("UGVyIGhvdXI="))(), value = fmtMoney(statPerHr()), inline = true },
-				{ name = loadstring(base64decode("Q3ljbGVz"))(), value = tostring(statCycles), inline = true },
-				{ name = loadstring(base64decode("SXRlbXMgc29sZA=="))(), value = tostring(statSold), inline = true },
-				{ name = loadstring(base64decode("TWlzc2lvbnM="))(), value = tostring(statMissions), inline = true },
-				{ name = loadstring(base64decode("UnVudGltZQ=="))(), value = (loadstring(base64decode("JTAyZDolMDJkOiUwMmQ="))()):format(math.floor(rt / 3600), math.floor((rt % 3600) / 60), math.floor(rt % 60)), inline = true },
+				{ name = "Money", value = fmtMoney(readMoney()), inline = true },
+				{ name = "Income", value = fmtMoney(statIncome()), inline = true },
+				{ name = "Per hour", value = fmtMoney(statPerHr()), inline = true },
+				{ name = "Cycles", value = tostring(statCycles), inline = true },
+				{ name = "Items sold", value = tostring(statSold), inline = true },
+				{ name = "Missions", value = tostring(statMissions), inline = true },
+				{ name = "Runtime", value = ("%02d:%02d:%02d"):format(math.floor(rt / 3600), math.floor((rt % 3600) / 60), math.floor(rt % 60)), inline = true },
 			},
 		} } })
 	end)
@@ -196,7 +193,7 @@ local function aimCameraAt(tx, ty, tz, timeout)
 	local t0, okF = tick(), 0
 	while running and _G.__sdq == Q and tick() - t0 < (timeout or 2.5) do
 		local ok, cf = pcall(function() return W.CurrentCamera.CFrame end)
-		if ok and typeof(cf) == loadstring(base64decode("Q0ZyYW1l"))() then
+		if ok and typeof(cf) == "CFrame" then
 			local cp, look = cf.Position, cf.LookVector
 			local wx, wy, wz = tx - cp.X, ty - cp.Y, tz - cp.Z
 			local wl = math.sqrt(wx * wx + wy * wy + wz * wz)
@@ -238,15 +235,15 @@ local function tpBudgetWait(d)
 	while running and _G.__sdq == Q and (tpWindowSum() + d) > FOOT_CAP * 10 do wait(0.1) end
 	tpHist[#tpHist + 1] = { t = tick(), d = d }
 end
-local function moveTo(x, jMa7LUFz, z)
+local function moveTo(x, y, z)
 	if TPFoot and not carryingGoods then
 		local p0 = pos(hrp())
 		if p0 then
-			local ax, ay, az = x - p0.X, jMa7LUFz - p0.Y, z - p0.Z
+			local ax, ay, az = x - p0.X, y - p0.Y, z - p0.Z
 			local d0 = math.sqrt(ax * ax + ay * ay + az * az)
 			if d0 > Arrive and d0 <= TPMAX then
 				tpBudgetWait(d0)
-				local h = hrp(); if h then pcall(function() h.CFrame = faceCF(x, jMa7LUFz, z, ax, az) end) end
+				local h = hrp(); if h then pcall(function() h.CFrame = faceCF(x, y, z, ax, az) end) end
 				wait(0.06)
 				return true
 			end
@@ -256,7 +253,7 @@ local function moveTo(x, jMa7LUFz, z)
 	while running and _G.__sdq == Q do
 		local h = hrp(); local p = h and pos(h)
 		if not p then task.wait(); last = tick() else
-			local dx, dy, dz = x - p.X, jMa7LUFz - p.Y, z - p.Z
+			local dx, dy, dz = x - p.X, y - p.Y, z - p.Z
 			local d = math.sqrt(dx * dx + dy * dy + dz * dz)
 			if d <= Arrive then return true end
 			local now = tick(); local dt = now - last; last = now
@@ -270,18 +267,18 @@ local function moveTo(x, jMa7LUFz, z)
 end
 local function goNode(n) return moveTo(n[1], n[2], n[3]) end
 local function teleportTo(n) local h = hrp(); if not h then return false end pcall(function() h.CFrame = CFrame.new(n[1], n[2], n[3]) end); wait(0.15); return true end
-local function nearHRP(x, jMa7LUFz, z, d)
+local function nearHRP(x, y, z, d)
 	local p = pos(hrp()); if not p then return false end
-	local dx, dy, dz = x - p.X, jMa7LUFz - p.Y, z - p.Z
+	local dx, dy, dz = x - p.X, y - p.Y, z - p.Z
 	return (dx * dx + dy * dy + dz * dz) <= d * d
 end
-local function ensureNear(x, jMa7LUFz, z, d)
+local function ensureNear(x, y, z, d)
 	local tries = 0
 	while running and _G.__sdq == Q do
-		if nearHRP(x, jMa7LUFz, z, d) then return true end
+		if nearHRP(x, y, z, d) then return true end
 		tries = tries + 1; if tries > 60 then return false end
-		if tick() - lastLagT < 1.2 then status = loadstring(base64decode("bGFnYmFjayDigJQgd2FpdGluZyAxcw=="))(); wait(1.0) end
-		status = loadstring(base64decode("cmUtcGF0aGluZyB0byBwcm9tcHQ="))(); moveTo(x, jMa7LUFz, z)
+		if tick() - lastLagT < 1.2 then status = "lagback — waiting 1s"; wait(1.0) end
+		status = "re-pathing to prompt"; moveTo(x, y, z)
 	end
 	return false
 end
@@ -290,16 +287,16 @@ end
 local function promptPos(pr)
 	local par = pr.Parent; if not par then return nil end
 	local ok, wp = pcall(function() return par.WorldPosition end)
-	if ok and typeof(wp) == loadstring(base64decode("VmVjdG9yMw=="))() then return wp end
+	if ok and typeof(wp) == "Vector3" then return wp end
 	return pos(par)
 end
 local function nearestPrompt(maxD)
 	local cp = pos(hrp()); if not cp then return nil end
 	local best, bd, bp
-	local root = W:FindFirstChild(loadstring(base64decode("R2FtZXBsYXk="))()) or W
+	local root = W:FindFirstChild("Gameplay") or W
 	local ok, desc = pcall(function() return root:GetDescendants() end)
 	if ok then for _, d in ipairs(desc) do
-		if d.ClassName == loadstring(base64decode("UHJveGltaXR5UHJvbXB0"))() then
+		if d.ClassName == "ProximityPrompt" then
 			local wp = promptPos(d); if wp then local dd = (wp - cp).Magnitude; if dd <= (maxD or 30) and (not bd or dd < bd) then bd, best, bp = dd, d, wp end end
 		end
 	end end
@@ -316,10 +313,10 @@ local function fireUntilAt(ax, ay, az, doneFn, progressFn, label, sx, sy, sz)
 	while running and _G.__sdq == Q do
 		if doneFn() then return true end
 		if not nearHRP(sx, sy, sz, 5) then
-			if tick() - lastLagT < 1.2 then status = loadstring(base64decode("bGFnYmFjayDigJQgd2FpdGluZyAxcw=="))(); wait(1.0) end
-			status = loadstring(base64decode("cmUtcGF0aGluZyB0byBwcm9tcHQ="))(); moveTo(sx, sy, sz); aimCameraAt(ax, ay, az, 2.0)
+			if tick() - lastLagT < 1.2 then status = "lagback — waiting 1s"; wait(1.0) end
+			status = "re-pathing to prompt"; moveTo(sx, sy, sz); aimCameraAt(ax, ay, az, 2.0)
 		end
-		status = label .. loadstring(base64decode("ICA="))() .. tostring(progressFn())
+		status = label .. "  " .. tostring(progressFn())
 		local h2 = hrp(); local p2 = h2 and pos(h2)
 		if p2 then pcall(function() h2.CFrame = faceCF(p2.X, p2.Y, p2.Z, ax - p2.X, az - p2.Z) end) end
 		keyDown(E); wait(FireHold); keyUp(E); wait(FireGap)
@@ -341,33 +338,33 @@ end
 -- ==== INVENTORY ====
 local function countTool(name)
 	local n = 0
-	local bp = LP:FindFirstChild(loadstring(base64decode("QmFja3BhY2s="))()); if bp then for _, t in ipairs(bp:GetChildren()) do if t.Name == name then n = n + 1 end end end
+	local bp = LP:FindFirstChild("Backpack"); if bp then for _, t in ipairs(bp:GetChildren()) do if t.Name == name then n = n + 1 end end end
 	local ch = LP.Character; if ch then for _, t in ipairs(ch:GetChildren()) do if t.Name == name then n = n + 1 end end end
 	return n
 end
 local function countSmuggled() local n = 0; for _, it in ipairs(ITEMS) do n = n + countTool(it.name) end return n end
 local function ownsElCapo()
-	local sf = nav(LP:FindFirstChild(loadstring(base64decode("UGxheWVyR3Vp"))()), loadstring(base64decode("U2hvcEd1aQ=="))(), loadstring(base64decode("RnJhbWU="))(), loadstring(base64decode("Q2FudmFzR3JvdXA="))(), loadstring(base64decode("U2Nyb2xsaW5nRnJhbWU="))())
+	local sf = nav(LP:FindFirstChild("PlayerGui"), "ShopGui", "Frame", "CanvasGroup", "ScrollingFrame")
 	if not sf then return nil end
-	local function isEC(c) local lbl = nav(c, loadstring(base64decode("RnJhbWU="))(), loadstring(base64decode("VGV4dExhYmVs"))()); if not lbl then return false end local ok, t = pcall(function() return lbl.Text end); return ok and type(t) == loadstring(base64decode("c3RyaW5n"))() and string.find(t, loadstring(base64decode("RWwgQ2Fwbw=="))(), 1, true) ~= nil end
-	local fr = sf:FindFirstChild(loadstring(base64decode("RHVhbA=="))()); if not isEC(fr) then fr = nil; for _, c in ipairs(sf:GetChildren()) do if isEC(c) then fr = c; break end end end
+	local function isEC(c) local lbl = nav(c, "Frame", "TextLabel"); if not lbl then return false end local ok, t = pcall(function() return lbl.Text end); return ok and type(t) == "string" and string.find(t, "El Capo", 1, true) ~= nil end
+	local fr = sf:FindFirstChild("Dual"); if not isEC(fr) then fr = nil; for _, c in ipairs(sf:GetChildren()) do if isEC(c) then fr = c; break end end end
 	if not fr then return nil end
-	local buy = nav(fr, loadstring(base64decode("RnJhbWU="))(), loadstring(base64decode("QnV5QnV0dG9u"))(), loadstring(base64decode("SW5uZXI="))(), loadstring(base64decode("VGV4dExhYmVs"))()); if not buy then return nil end
-	local ok, t = pcall(function() return buy.Text end); if not (ok and type(t) == loadstring(base64decode("c3RyaW5n"))()) then return nil end
-	return string.find(t, loadstring(base64decode("T3duZWQ="))(), 1, true) ~= nil
+	local buy = nav(fr, "Frame", "BuyButton", "Inner", "TextLabel"); if not buy then return nil end
+	local ok, t = pcall(function() return buy.Text end); if not (ok and type(t) == "string") then return nil end
+	return string.find(t, "Owned", 1, true) ~= nil
 end
 
 -- ==== BUILDING ====
 local function insideBuilding() local p = pos(hrp()); return p ~= nil and p.X > 6575 and p.X < 6665 and p.Z > -480 and p.Z < -375 and p.Y > 55 end
 local function enterBuilding()
 	if insideBuilding() then return true end
-	status = loadstring(base64decode("dG8gdGVsZXBvcnQtaW4="))(); if not moveTo(TELE_IN[1], TELE_IN[2], TELE_IN[3]) then return false end
-	status = loadstring(base64decode("dGVsZXBvcnRpbmcgaW4="))()
+	status = "to teleport-in"; if not moveTo(TELE_IN[1], TELE_IN[2], TELE_IN[3]) then return false end
+	status = "teleporting in"
 	tapPrompt(TELE_IN[1], TELE_IN[2], TELE_IN[3], 2)
 	wait(1.2); return insideBuilding()
 end
 local function itemPrompt(it)
-	local m = nav(W, loadstring(base64decode("R2FtZXBsYXk="))(), loadstring(base64decode("V29ybGRCdXlhYmxlSXRlbXM="))(), loadstring(base64decode("RWxDYXBv"))(), it.name)
+	local m = nav(W, "Gameplay", "WorldBuyableItems", "ElCapo", it.name)
 	local part = m and m:FindFirstChild(it.part)
 	return part, part
 end
@@ -378,16 +375,16 @@ local function buyItem(it)
 	local ap = part and pos(part)
 	local ax, ay, az = it.cf[1], it.cf[2], it.cf[3]
 	if ap then ax, ay, az = ap.X, ap.Y, ap.Z end
-	fireUntilAt(ax, ay, az, function() return countTool(it.name) >= FireCount end, function() return countTool(it.name) end, loadstring(base64decode("YnV5aW5nIA=="))() .. it.name, it.cf[1], it.cf[2], it.cf[3])
+	fireUntilAt(ax, ay, az, function() return countTool(it.name) >= FireCount end, function() return countTool(it.name) end, "buying " .. it.name, it.cf[1], it.cf[2], it.cf[3])
 	lastBuyT = tick(); carryingGoods = true
 end
 local function launderIfAny()
-	if countTool(loadstring(base64decode("QnJpZWZjYXNl"))()) <= 0 then return end
-	status = loadstring(base64decode("bGF1bmRlcmluZw=="))(); if not goNode(LAUNDER) then return end
-	local lp = nav(W, loadstring(base64decode("R2FtZXBsYXk="))(), loadstring(base64decode("TGF1bmRlclByb21wdHM="))(), loadstring(base64decode("TGF1bmRlclRyaWdnZXI="))(), loadstring(base64decode("UHJvbXB0UGFydA=="))())
+	if countTool("Briefcase") <= 0 then return end
+	status = "laundering"; if not goNode(LAUNDER) then return end
+	local lp = nav(W, "Gameplay", "LaunderPrompts", "LaunderTrigger", "PromptPart")
 	local ap = lp and pos(lp)
 	local ax, ay, az = LAUNDER[1], LAUNDER[2], LAUNDER[3]; if ap then ax, ay, az = ap.X, ap.Y, ap.Z end
-	fireUntilAt(ax, ay, az, function() return countTool(loadstring(base64decode("QnJpZWZjYXNl"))()) == 0 end, function() return countTool(loadstring(base64decode("QnJpZWZjYXNl"))()) end, loadstring(base64decode("bGF1bmRlcmluZw=="))(), LAUNDER[1], LAUNDER[2], LAUNDER[3])
+	fireUntilAt(ax, ay, az, function() return countTool("Briefcase") == 0 end, function() return countTool("Briefcase") end, "laundering", LAUNDER[1], LAUNDER[2], LAUNDER[3])
 	goNode(N_436)
 end
 
@@ -396,24 +393,24 @@ local vehModel, vehRoot, vehParts = nil, nil, {}
 local lastVehScanT = 0
 local function locateVehicle()
 	local hp = pos(hrp()); if not hp then return nil end
-	local vf = W:FindFirstChild(loadstring(base64decode("VmVoaWNsZXM="))()); if not vf then return nil end
+	local vf = W:FindFirstChild("Vehicles"); if not vf then return nil end
 	local best, bd
 	local okc, kids = pcall(function() return vf:GetChildren() end); if not okc then return nil end
 	for _, m in ipairs(kids) do
 		local rp = m.PrimaryPart
 		local sp0 = rp and pos(rp)
-		if not sp0 then local oks, s = pcall(function() return m:FindFirstChildWhichIsA(loadstring(base64decode("VmVoaWNsZVNlYXQ="))(), true) end); if oks and s then sp0 = pos(s) end end
+		if not sp0 then local oks, s = pcall(function() return m:FindFirstChildWhichIsA("VehicleSeat", true) end); if oks and s then sp0 = pos(s) end end
 		if sp0 then local dd = (sp0 - hp).Magnitude; if dd < 16 and (not bd or dd < bd) then bd, best = dd, m end end
 	end
 	if not best then vehModel, vehRoot, vehParts = nil, nil, {}; return nil end
 	vehModel = best
 	local pp = best.PrimaryPart
-	if not pp then local ok, s = pcall(function() return best:FindFirstChildWhichIsA(loadstring(base64decode("VmVoaWNsZVNlYXQ="))(), true) end); if ok then pp = s end end
-	if not pp then local ok, b = pcall(function() return best:FindFirstChildWhichIsA(loadstring(base64decode("QmFzZVBhcnQ="))(), true) end); if ok then pp = b end end
+	if not pp then local ok, s = pcall(function() return best:FindFirstChildWhichIsA("VehicleSeat", true) end); if ok then pp = s end end
+	if not pp then local ok, b = pcall(function() return best:FindFirstChildWhichIsA("BasePart", true) end); if ok then pp = b end end
 	vehRoot = pp
 	vehParts = {}
 	local okd, desc = pcall(function() return best:GetDescendants() end)
-	if okd then for _, d in ipairs(desc) do if d:IsA(loadstring(base64decode("QmFzZVBhcnQ="))()) then vehParts[#vehParts + 1] = d end end end
+	if okd then for _, d in ipairs(desc) do if d:IsA("BasePart") then vehParts[#vehParts + 1] = d end end end
 	return vehModel, vehRoot
 end
 local function findVehicle()
@@ -424,7 +421,7 @@ local function findVehicle()
 	return locateVehicle()
 end
 local function seated()
-	return nav(LP:FindFirstChild(loadstring(base64decode("UGxheWVyR3Vp"))()), loadstring(base64decode("VmVoaWNsZUd1aQ=="))(), loadstring(base64decode("UGFzc2VuZ2VyTWVudQ=="))(), loadstring(base64decode("RnJhbWU="))(), loadstring(base64decode("U2VhdEdyaWQ="))(), loadstring(base64decode("U2VhdDE="))()) ~= nil
+	return nav(LP:FindFirstChild("PlayerGui"), "VehicleGui", "PassengerMenu", "Frame", "SeatGrid", "Seat1") ~= nil
 end
 local noclipOn = false
 local function noclipVeh(on)
@@ -433,25 +430,25 @@ end
 local function restoreVehCollide(veh)
 	if not veh then return end
 	local ok, desc = pcall(function() return veh:GetDescendants() end); if not ok then return end
-	for _, d in ipairs(desc) do if d:IsA(loadstring(base64decode("QmFzZVBhcnQ="))()) then pcall(function() d.CanCollide = true end) end end
+	for _, d in ipairs(desc) do if d:IsA("BasePart") then pcall(function() d.CanCollide = true end) end end
 end
 local function groundAt(x, oy, z)
 	local ex = {}; if vehModel then ex[#ex + 1] = vehModel end; if LP.Character then ex[#ex + 1] = LP.Character end
 	local params; pcall(function() params = RaycastParams.new(); params.FilterType = Enum.RaycastFilterType.Exclude; params.FilterDescendantsInstances = ex; params.IgnoreWater = true; params.RespectCanCollide = true end)
 	local res; pcall(function() res = W:Raycast(Vector3.new(x, oy, z), Vector3.new(0, -3000, 0), params) end)
 	if res == nil then pcall(function() res = W:Raycast(Vector3.new(x, oy, z), Vector3.new(0, -3000, 0)) end) end
-	if res then local ok, rp = pcall(function() return res.Position end); if ok and typeof(rp) == loadstring(base64decode("VmVjdG9yMw=="))() then return rp.Y end end
+	if res then local ok, rp = pcall(function() return res.Position end); if ok and typeof(rp) == "Vector3" then return rp.Y end end
 	return nil
 end
 local MphToStuds = 1.85
 local baseDriveSpeed = DriveSpeed
 local camMph = nil
 local function readTopSpeedMph()
-	local lbl = nav(LP:FindFirstChild(loadstring(base64decode("UGxheWVyR3Vp"))()), loadstring(base64decode("VmVoaWNsZVNwYXduZXJHdWk="))(), loadstring(base64decode("RnJhbWU="))(), loadstring(base64decode("RGV0YWls"))(), loadstring(base64decode("SW5mbw=="))(), loadstring(base64decode("VG9wU3BlZWQ="))(), loadstring(base64decode("VG9wU3BlZWQ="))())
+	local lbl = nav(LP:FindFirstChild("PlayerGui"), "VehicleSpawnerGui", "Frame", "Detail", "Info", "TopSpeed", "TopSpeed")
 	if not lbl then return nil, nil end
 	local ok, txt = pcall(function() return lbl.Text end)
-	if not ok or type(txt) ~= loadstring(base64decode("c3RyaW5n"))() then return nil, txt end
-	local num = txt:match(loadstring(base64decode("JWQrJS4/JWQq"))())
+	if not ok or type(txt) ~= "string" then return nil, txt end
+	local num = txt:match("%d+%.?%d*")
 	return num and tonumber(num) or nil, txt
 end
 local function tuneDriveSpeed()
@@ -460,7 +457,7 @@ local function tuneDriveSpeed()
 	else
 		DriveSpeed = baseDriveSpeed
 	end
-	pcall(function() print((loadstring(base64decode("W1NERl0gdHVuZURyaXZlU3BlZWQ6IG1waD0lcyB4JS4yZiAtPiBEcml2ZVNwZWVkPSVk"))()):format(tostring(camMph), MphToStuds, DriveSpeed)) end)
+	pcall(function() print(("[SDF] tuneDriveSpeed: mph=%s x%.2f -> DriveSpeed=%d"):format(tostring(camMph), MphToStuds, DriveSpeed)) end)
 	return DriveSpeed
 end
 local function flyDriveTo(tx, tz)
@@ -469,8 +466,8 @@ local function flyDriveTo(tx, tz)
 		local veh, root = findVehicle()
 		if not (veh and root) then
 			miss = miss + 1
-			if miss > 40 then status = loadstring(base64decode("bG9zdCB0aGUgdmVoaWNsZQ=="))(); return false end
-			status = loadstring(base64decode("ZmluZGluZyB2ZWhpY2xl"))(); wait(0.1)
+			if miss > 40 then status = "lost the vehicle"; return false end
+			status = "finding vehicle"; wait(0.1)
 		else
 			miss = 0
 		noclipVeh(true); noclipOn = true
@@ -486,7 +483,7 @@ local function flyDriveTo(tx, tz)
 			local vy = 0
 			if tg then local ty = tg + Hover; if gB then ty = math.min(ty, gB + CAP) end vy = math.clamp((ty - p.Y) * YGAIN, -YMAX, YMAX) end
 			pcall(function() root.AssemblyLinearVelocity = Vector3.new(ux * DriveSpeed, vy, uz * DriveSpeed) end)
-			status = (loadstring(base64decode("Zmx5aW5nIC0+ICUuMGY="))()):format(hd)
+			status = ("flying -> %.0f"):format(hd)
 		end
 		task.wait()
 		end
@@ -506,33 +503,33 @@ local function freezePlayer(dur)
 	while tick() < endt and _G.__sdq == Q do
 		pcall(function() h.AssemblyLinearVelocity = Vector3.new(0, 0, 0) end)
 		pcall(function() h.AssemblyAngularVelocity = Vector3.new(0, 0, 0) end)
-		if okc and typeof(cf) == loadstring(base64decode("Q0ZyYW1l"))() then pcall(function() h.CFrame = cf end) end
+		if okc and typeof(cf) == "CFrame" then pcall(function() h.CFrame = cf end) end
 		task.wait()
 	end
 end
 local function groundSnap()
 	local h = hrp(); local pp = h and pos(h); if not pp then return end
-	local ex = { LP.Character }; local vf = W:FindFirstChild(loadstring(base64decode("VmVoaWNsZXM="))()); if vf then ex[#ex + 1] = vf end
+	local ex = { LP.Character }; local vf = W:FindFirstChild("Vehicles"); if vf then ex[#ex + 1] = vf end
 	local params; pcall(function()
 		params = RaycastParams.new(); params.FilterType = Enum.RaycastFilterType.Exclude
 		params.FilterDescendantsInstances = ex; params.IgnoreWater = true; params.RespectCanCollide = true
 	end)
 	local res; pcall(function() res = W:Raycast(Vector3.new(pp.X, pp.Y + 10, pp.Z), Vector3.new(0, -500, 0), params) end)
-	if res then local ok, rp = pcall(function() return res.Position end); if ok and typeof(rp) == loadstring(base64decode("VmVjdG9yMw=="))() then pcall(function() h.CFrame = CFrame.new(rp.X, rp.Y + 3.5, rp.Z) end) end end
+	if res then local ok, rp = pcall(function() return res.Position end); if ok and typeof(rp) == "Vector3" then pcall(function() h.CFrame = CFrame.new(rp.X, rp.Y + 3.5, rp.Z) end) end end
 end
 local function exitVehicle()
 	stopVeh()
 	if noclipOn then restoreVehCollide(vehModel); noclipOn = false end
-	status = loadstring(base64decode("anVtcGluZyBvdXQ="))()
+	status = "jumping out"
 	for _ = 1, 6 do keyDown(SPACE); wait(0.08); keyUp(SPACE); wait(0.25); if not seated() then break end end
 	vehModel, vehRoot, vehParts = nil, nil, {}
-	status = loadstring(base64decode("c3RlYWR5aW5n"))(); freezePlayer(0.3)
+	status = "steadying"; freezePlayer(0.3)
 	groundSnap()
 end
 local function guiCenter(obj)
 	local okp, a = pcall(function() return obj.AbsolutePosition end)
 	local oks, s = pcall(function() return obj.AbsoluteSize end)
-	if okp and oks and typeof(a) == loadstring(base64decode("VmVjdG9yMg=="))() and typeof(s) == loadstring(base64decode("VmVjdG9yMg=="))() then return a.X + s.X / 2, a.Y + s.Y / 2, a, s end
+	if okp and oks and typeof(a) == "Vector2" and typeof(s) == "Vector2" then return a.X + s.X / 2, a.Y + s.Y / 2, a, s end
 	return nil
 end
 local function scrollIntoView(sf, child)
@@ -548,7 +545,7 @@ local function guiClick(obj, yFrac)
 	yFrac = yFrac or 0.5
 	local t0, cx, cy = tick(), nil, nil
 	while tick() - t0 < 2.5 do
-		local x, jMa7LUFz, a, s = guiCenter(obj)
+		local x, y, a, s = guiCenter(obj)
 		if x and s.X > 1 and s.Y > 1 and a.Y > 0 then cx, cy = a.X + s.X / 2, a.Y + s.Y * yFrac; break end
 		wait(0.05)
 	end
@@ -561,14 +558,14 @@ local function guiClick(obj, yFrac)
 	pcall(mouse1click); wait(0.12)
 	return true
 end
-local function spawnerFrame() return nav(LP:FindFirstChild(loadstring(base64decode("UGxheWVyR3Vp"))()), loadstring(base64decode("VmVoaWNsZVNwYXduZXJHdWk="))(), loadstring(base64decode("RnJhbWU="))()) end
+local function spawnerFrame() return nav(LP:FindFirstChild("PlayerGui"), "VehicleSpawnerGui", "Frame") end
 local function vehButtons(sf)
 	local out = {}
 	if not sf then return out end
 	local ok, kids = pcall(function() return sf:GetChildren() end); if not ok then return out end
 	for _, c in ipairs(kids) do
 		local okc, cls = pcall(function() return c.ClassName end)
-		if okc and type(cls) == loadstring(base64decode("c3RyaW5n"))() and not (cls:match(loadstring(base64decode("XlVJ"))()) or cls:match(loadstring(base64decode("VmFsdWUk"))())) then
+		if okc and type(cls) == "string" and not (cls:match("^UI") or cls:match("Value$")) then
 			out[#out + 1] = c.Name
 			if #out >= 6 then break end
 		end
@@ -576,11 +573,11 @@ local function vehButtons(sf)
 	return out
 end
 local function refreshVehList()
-	local sf = nav(spawnerFrame(), loadstring(base64decode("U2Nyb2xsaW5nRnJhbWU="))()); if not sf then return end
+	local sf = nav(spawnerFrame(), "ScrollingFrame"); if not sf then return end
 	local names = vehButtons(sf)
 	if #names > 0 then
 		local changed = (#names ~= #vehList)
-		if not changed then for njLqV4e6 = 1, #names do if names[njLqV4e6] ~= vehList[njLqV4e6] then changed = true; break end end end
+		if not changed then for i = 1, #names do if names[i] ~= vehList[i] then changed = true; break end end end
 		vehList = names
 		local found = false; for _, n in ipairs(vehList) do if n == selVeh then found = true; break end end
 		if not found then selVeh = vehList[1] end
@@ -589,19 +586,19 @@ local function refreshVehList()
 end
 local function spawnerOpen()
 	local fr = spawnerFrame(); if not fr then return false, nil, nil end
-	local sf = nav(fr, loadstring(base64decode("U2Nyb2xsaW5nRnJhbWU="))())
-	local camry = sf and sf:FindFirstChild(loadstring(base64decode("Q2Ftcnk2"))())
+	local sf = nav(fr, "ScrollingFrame")
+	local camry = sf and sf:FindFirstChild("Camry6")
 	if not camry then return false, fr, sf end
-	local x, jMa7LUFz, a, s = guiCenter(camry)
+	local x, y, a, s = guiCenter(camry)
 	return (x ~= nil and s and s.X > 1 and a.Y > 0), fr, sf, camry
 end
 local function nearestSpawnerPart()
-	local vs = nav(W, loadstring(base64decode("R2FtZXBsYXk="))(), loadstring(base64decode("VmVoaWNsZVNwYXduZXJz"))()); if not vs then return nil end
+	local vs = nav(W, "Gameplay", "VehicleSpawners"); if not vs then return nil end
 	local hp = pos(hrp()); if not hp then return nil end
 	local best, bd
 	for _, c in ipairs(vs:GetChildren()) do
-		if c.Name == loadstring(base64decode("VmVoaWNsZVNwYXduZXI="))() then
-			local part = c:FindFirstChild(loadstring(base64decode("UGFydA=="))()); local pp = part and pos(part)
+		if c.Name == "VehicleSpawner" then
+			local part = c:FindFirstChild("Part"); local pp = part and pos(part)
 			if pp then local dd = (pp - hp).Magnitude; if not bd or dd < bd then bd, best = dd, part end end
 		end
 	end
@@ -618,85 +615,85 @@ end
 local function firePromptToOpen()
 	local part = nearestSpawnerPart(); if not part then return end
 	local pp = pos(part); if not pp then return end
-	local prompt; pcall(function() prompt = part:FindFirstChildWhichIsA(loadstring(base64decode("UHJveGltaXR5UHJvbXB0"))(), true) end)
-	if not prompt then pcall(function() prompt = part.Parent and part.Parent:FindFirstChildWhichIsA(loadstring(base64decode("UHJveGltaXR5UHJvbXB0"))(), true) end) end
+	local prompt; pcall(function() prompt = part:FindFirstChildWhichIsA("ProximityPrompt", true) end)
+	if not prompt then pcall(function() prompt = part.Parent and part.Parent:FindFirstChildWhichIsA("ProximityPrompt", true) end) end
 	firePrompt(prompt, pp.X, pp.Y, pp.Z)
 end
 local function spawnVehicle()
-	local sp0 = nearestSpawnerPart(); if not sp0 then status = loadstring(base64decode("bm8gc3Bhd25lciBmb3VuZA=="))(); return false end
-	local spp = pos(sp0); if spp then status = loadstring(base64decode("dG8gbmVhcmVzdCBzcGF3bmVy"))(); moveTo(spp.X, spp.Y, spp.Z) end
+	local sp0 = nearestSpawnerPart(); if not sp0 then status = "no spawner found"; return false end
+	local spp = pos(sp0); if spp then status = "to nearest spawner"; moveTo(spp.X, spp.Y, spp.Z) end
 	local attempt = 0
 	while running and _G.__sdq == Q and not seated() and attempt < 8 do
 		attempt = attempt + 1
-		status = loadstring(base64decode("b3BlbiBzcGF3bmVyICh0cnkg"))() .. attempt .. loadstring(base64decode("KQ=="))(); firePromptToOpen()
+		status = "open spawner (try " .. attempt .. ")"; firePromptToOpen()
 		wait(0.05)
 		local fr = spawnerFrame()
 		if fr then
-			local sf = nav(fr, loadstring(base64decode("U2Nyb2xsaW5nRnJhbWU="))())
+			local sf = nav(fr, "ScrollingFrame")
 			refreshVehList()
 			local car = sf and sf:FindFirstChild(selVeh)
-			if car then status = loadstring(base64decode("c2VsZWN0IA=="))() .. selVeh .. loadstring(base64decode("ICh0cnkg"))() .. attempt .. loadstring(base64decode("KQ=="))(); scrollIntoView(sf, car); guiClick(car); wait(0.1) end
+			if car then status = "select " .. selVeh .. " (try " .. attempt .. ")"; scrollIntoView(sf, car); guiClick(car); wait(0.1) end
 			camMph = nil
 			for _ = 1, 10 do local mph = readTopSpeedMph(); if mph and mph > 0 then camMph = mph; break end wait(0.1) end
 			tuneDriveSpeed()
-			pcall(function() print((loadstring(base64decode("W1NERl0gJXMgLT4gbXBoPSVzICBEcml2ZVNwZWVkPSVk"))()):format(selVeh, tostring(camMph), DriveSpeed)) end)
-			status = loadstring(base64decode("YnV5IHZlaGljbGUgKHRyeSA="))() .. attempt .. loadstring(base64decode("KQ=="))(); guiClick(nav(fr, loadstring(base64decode("RGV0YWls"))(), loadstring(base64decode("QnV5QnV0dG9u"))()))
+			pcall(function() print(("[SDF] %s -> mph=%s  DriveSpeed=%d"):format(selVeh, tostring(camMph), DriveSpeed)) end)
+			status = "buy vehicle (try " .. attempt .. ")"; guiClick(nav(fr, "Detail", "BuyButton"))
 		else
-			status = loadstring(base64decode("bm8gVmVoaWNsZVNwYXduZXJHdWkgKHRyeSA="))() .. attempt .. loadstring(base64decode("KQ=="))()
+			status = "no VehicleSpawnerGui (try " .. attempt .. ")"
 		end
-		status = loadstring(base64decode("d2FpdGluZyB0byBzZWF0ICh0cnkg"))() .. attempt .. loadstring(base64decode("KQ=="))()
+		status = "waiting to seat (try " .. attempt .. ")"
 		local t1 = tick()
 		while running and _G.__sdq == Q and not seated() and tick() - t1 < 4 do wait(0.15) end
 	end
 	vehModel, vehRoot, vehParts = nil, nil, {}
-	if seated() then status = loadstring(base64decode("bG9jYXRpbmcgY2Fy"))(); for _ = 1, 20 do if locateVehicle() then break end wait(0.1) end; return true end
-	status = loadstring(base64decode("c3Bhd24gZmFpbGVk"))(); return false
+	if seated() then status = "locating car"; for _ = 1, 20 do if locateVehicle() then break end wait(0.1) end; return true end
+	status = "spawn failed"; return false
 end
 local function sellAt(n)
-	status = loadstring(base64decode("dG8gc2VsbGVy"))(); moveTo(n[1], n[2], n[3])
+	status = "to seller"; moveTo(n[1], n[2], n[3])
 	while running and _G.__sdq == Q and (tick() - lastBuyT) < MIN_SELL_AGE do
-		status = (loadstring(base64decode("YWdpbmcgZ29vZHMgJWRz"))()):format(math.max(0, math.ceil(MIN_SELL_AGE - (tick() - lastBuyT))))
+		status = ("aging goods %ds"):format(math.max(0, math.ceil(MIN_SELL_AGE - (tick() - lastBuyT))))
 		wait(0.5)
 	end
-	status = loadstring(base64decode("c2VsbGluZw=="))()
+	status = "selling"
 	local pr, wp = nearestPrompt(35)
 	local ax, ay, az = n[1], n[2], n[3]; if wp then ax, ay, az = wp.X, wp.Y, wp.Z end
-	local soldOk = fireUntilAt(ax, ay, az, function() return countSmuggled() == 0 end, countSmuggled, loadstring(base64decode("c2VsbGluZw=="))(), n[1], n[2], n[3])
+	local soldOk = fireUntilAt(ax, ay, az, function() return countSmuggled() == 0 end, countSmuggled, "selling", n[1], n[2], n[3])
 	carryingGoods = false
 	return soldOk
 end
 
 -- ==== TRUCKER ====
-local function truckList() return nav(LP:FindFirstChild(loadstring(base64decode("UGxheWVyR3Vp"))()), loadstring(base64decode("VHJ1Y2tTaG9wR3Vp"))(), loadstring(base64decode("RnJhbWU="))(), loadstring(base64decode("VHJ1Y2tMaXN0"))()) end
-local function truckShopOpen() local tl = truckList(); return tl ~= nil and tl:FindFirstChild(loadstring(base64decode("Q2FyUGFydHM="))()) ~= nil end
+local function truckList() return nav(LP:FindFirstChild("PlayerGui"), "TruckShopGui", "Frame", "TruckList") end
+local function truckShopOpen() local tl = truckList(); return tl ~= nil and tl:FindFirstChild("CarParts") ~= nil end
 local function missionState(name)
-	local tl = truckList(); if not tl then return loadstring(base64decode("bWlzc2luZw=="))() end
-	local mi = tl:FindFirstChild(name); if not mi then return loadstring(base64decode("bWlzc2luZw=="))() end
-	if mi:FindFirstChild(loadstring(base64decode("T3ZlcmxheQ=="))()) then return loadstring(base64decode("bG9ja2Vk"))() end
-	local cd = nav(mi, loadstring(base64decode("Q29vbGRvd24="))(), loadstring(base64decode("VGV4dExhYmVs"))())
-	if cd then local ok, t = pcall(function() return cd.Text end); if ok and type(t) == loadstring(base64decode("c3RyaW5n"))() and t:find(loadstring(base64decode("JWQ="))()) then return loadstring(base64decode("Y29vbGRvd24="))() end end
-	return loadstring(base64decode("YXZhaWxhYmxl"))()
+	local tl = truckList(); if not tl then return "missing" end
+	local mi = tl:FindFirstChild(name); if not mi then return "missing" end
+	if mi:FindFirstChild("Overlay") then return "locked" end
+	local cd = nav(mi, "Cooldown", "TextLabel")
+	if cd then local ok, t = pcall(function() return cd.Text end); if ok and type(t) == "string" and t:find("%d") then return "cooldown" end end
+	return "available"
 end
 local function pickMission()
-	if selMission ~= loadstring(base64decode("QXV0bw=="))() then return (missionState(selMission) == loadstring(base64decode("YXZhaWxhYmxl"))()) and selMission or nil end
-	for _, n in ipairs(TRUCK_MISSIONS) do if missionState(n) == loadstring(base64decode("YXZhaWxhYmxl"))() then return n end end
+	if selMission ~= "Auto" then return (missionState(selMission) == "available") and selMission or nil end
+	for _, n in ipairs(TRUCK_MISSIONS) do if missionState(n) == "available" then return n end end
 	return nil
 end
-local function truckNpcHRP() return nav(W, loadstring(base64decode("R2FtZXBsYXk="))(), loadstring(base64decode("TlBD"))(), loadstring(base64decode("VHJ1Y2tlck5QQw=="))(), loadstring(base64decode("SHVtYW5vaWRSb290UGFydA=="))()) end
+local function truckNpcHRP() return nav(W, "Gameplay", "NPC", "TruckerNPC", "HumanoidRootPart") end
 local function truckMissionActive()
-	local tdp = W:FindFirstChild(loadstring(base64decode("VHJ1Y2tEZWxpdmVyeVBvaW50cw=="))()); if not tdp then return false end
+	local tdp = W:FindFirstChild("TruckDeliveryPoints"); if not tdp then return false end
 	local ok, kids = pcall(function() return tdp:GetChildren() end)
 	return ok and #kids > 0
 end
 local function doTruckMission()
-	local npc = truckNpcHRP(); if not npc then status = loadstring(base64decode("bm8gdHJ1Y2tlciBOUEM="))(); return false end
+	local npc = truckNpcHRP(); if not npc then status = "no trucker NPC"; return false end
 	local np = pos(npc); if not np then np = Vector3.new(TRUCK_NPC[1], TRUCK_NPC[2], TRUCK_NPC[3]) end
 	local dx, dz = TRUCK_EXIT[1] - np.X, TRUCK_EXIT[3] - np.Z
 	local dl = math.sqrt(dx * dx + dz * dz)
 	local sx, sz = np.X, np.Z
 	if dl > 1 then sx, sz = np.X + dx / dl * 5, np.Z + dz / dl * 5 end
-	local prompt = npc:FindFirstChild(loadstring(base64decode("VHJ1Y2tTaG9wUHJvbXB0"))())
-	status = loadstring(base64decode("dG8gdHJ1Y2tlciBOUEM="))(); moveTo(sx, np.Y, sz)
+	local prompt = npc:FindFirstChild("TruckShopPrompt")
+	status = "to trucker NPC"; moveTo(sx, np.Y, sz)
 	local attempt = 0
 	while running and _G.__sdq == Q and not (seated() or truckMissionActive()) and attempt < 6 do
 		attempt = attempt + 1
@@ -705,23 +702,23 @@ local function doTruckMission()
 		if p then pcall(function() h.CFrame = faceCF(p.X, p.Y, p.Z, np.X - p.X, np.Z - p.Z) end) end
 		aimCameraAt(np.X, np.Y + 2, np.Z, 1.5)
 		if prompt then pcall(function() fireproximityprompt(prompt) end) end
-		status = loadstring(base64decode("dGFwIEUgKHRyeSA="))() .. attempt .. loadstring(base64decode("KQ=="))(); keyDown(E); wait(0.06); keyUp(E); wait(0.25)
+		status = "tap E (try " .. attempt .. ")"; keyDown(E); wait(0.06); keyUp(E); wait(0.25)
 		local m = pickMission()
 		if m then
 			local mi = truckList() and truckList():FindFirstChild(m)
-			local btn = mi and mi:FindFirstChild(loadstring(base64decode("U3RhcnRCdXR0b24="))())
-			if btn then status = loadstring(base64decode("c3RhcnQg"))() .. m; guiClick(btn, 0.8); wait(0.6); if TRUCK_SPEED[m] then DriveSpeed = TRUCK_SPEED[m] end end
+			local btn = mi and mi:FindFirstChild("StartButton")
+			if btn then status = "start " .. m; guiClick(btn, 0.8); wait(0.6); if TRUCK_SPEED[m] then DriveSpeed = TRUCK_SPEED[m] end end
 		end
 	end
 	if seated() or truckMissionActive() then vehModel, vehRoot, vehParts = nil, nil, {}; for _ = 1, 20 do if locateVehicle() then break end wait(0.1) end end
 	return seated() or truckMissionActive()
 end
 local function deliveryPos()
-	local tdp = W:FindFirstChild(loadstring(base64decode("VHJ1Y2tEZWxpdmVyeVBvaW50cw=="))()); if not tdp then return nil end
+	local tdp = W:FindFirstChild("TruckDeliveryPoints"); if not tdp then return nil end
 	local ok, kids = pcall(function() return tdp:GetChildren() end); if not ok then return nil end
 	for _, m in ipairs(kids) do
 		local dpp = m.PrimaryPart and pos(m.PrimaryPart)
-		if not dpp then local okb, b = pcall(function() return m:FindFirstChildWhichIsA(loadstring(base64decode("QmFzZVBhcnQ="))(), true) end); if okb and b then dpp = pos(b) end end
+		if not dpp then local okb, b = pcall(function() return m:FindFirstChildWhichIsA("BasePart", true) end); if okb and b then dpp = pos(b) end end
 		if dpp then return dpp end
 	end
 	return nil
@@ -729,12 +726,12 @@ end
 local function deliverTruck()
 	local dp; local t0 = tick()
 	while running and _G.__sdq == Q and not dp and tick() - t0 < 10 do dp = deliveryPos(); if not dp then wait(0.3) end end
-	if not dp then status = loadstring(base64decode("bm8gZGVsaXZlcnkgcG9pbnQ="))(); return false end
-	status = loadstring(base64decode("dHJ1Y2tlcjogdG8gbm9kZTE="))(); if not flyDriveTo(DNODE1[1], DNODE1[3]) then return false end
-	status = loadstring(base64decode("dHJ1Y2tlcjogdG8gbm9kZTI="))(); if not flyDriveTo(DNODE2[1], DNODE2[3]) then return false end
+	if not dp then status = "no delivery point"; return false end
+	status = "trucker: to node1"; if not flyDriveTo(DNODE1[1], DNODE1[3]) then return false end
+	status = "trucker: to node2"; if not flyDriveTo(DNODE2[1], DNODE2[3]) then return false end
 	dp = deliveryPos() or dp
-	status = loadstring(base64decode("dHJ1Y2tlcjogdG8gZGVzdGluYXRpb24="))(); flyDriveTo(dp.X, dp.Z)
-	status = loadstring(base64decode("ZGVsaXZlcmluZw=="))()
+	status = "trucker: to destination"; flyDriveTo(dp.X, dp.Z)
+	status = "delivering"
 	local hold = tick() + 120
 	local frozenCF = nil
 	while running and _G.__sdq == Q and tick() < hold do
@@ -750,7 +747,7 @@ local function deliverTruck()
 				local vy = -10; if gB then vy = math.clamp((gB + 2 - rp.Y) * YGAIN, -YMAX, YMAX) end
 				pcall(function() root.AssemblyLinearVelocity = Vector3.new(ux * crawl, vy, uz * crawl) end)
 			else
-				status = loadstring(base64decode("ZGVsaXZlcmluZyAoZnJvemVuKQ=="))()
+				status = "delivering (frozen)"
 				if not frozenCF then local okc, c = pcall(function() return root.CFrame end); frozenCF = okc and c or nil end
 				pcall(function() root.AssemblyLinearVelocity = Vector3.new(0, 0, 0); root.AssemblyAngularVelocity = Vector3.new(0, 0, 0) end)
 				if frozenCF then pcall(function() root.CFrame = frozenCF end) end
@@ -760,20 +757,20 @@ local function deliverTruck()
 	end
 	stopVeh()
 	if noclipOn then restoreVehCollide(vehModel); noclipOn = false end
-	status = loadstring(base64decode("ZGVsaXZlcmVk"))(); return true
+	status = "delivered"; return true
 end
 
 -- ==== CYCLE ====
 local function cycle()
-	if not smuggleOn and not truckerOn then status = loadstring(base64decode("bm8gbW9kZSBlbmFibGVk"))(); wait(0.5); return true end
+	if not smuggleOn and not truckerOn then status = "no mode enabled"; wait(0.5); return true end
 	local wantTruck = truckerOn and (pickMission() ~= nil)
-	if truckerOn and not wantTruck then status = loadstring(base64decode("bm8gbWlzc2lvbiBhdmFpbGFibGU="))() end
+	if truckerOn and not wantTruck then status = "no mission available" end
 	if not smuggleOn and not wantTruck then wait(5); return true end
 	
 	if smuggleOn then
 		carryingGoods = false
-		phase = loadstring(base64decode("Z3JhYiBpdGVtcw=="))()
-		if not enterBuilding() then status = loadstring(base64decode("Y2FuJ3QgZW50ZXIgYnVpbGRpbmc="))(); return false end
+		phase = "grab items"
+		if not enterBuilding() then status = "can't enter building"; return false end
 		goNode(SPAWN); goNode(N_413); goNode(N_436)
 		launderIfAny()
 		local it = ITEMS[selItem]
@@ -782,23 +779,23 @@ local function cycle()
 		if not it.diablo then goNode(JUNCTION) end
 		goNode(N_436); goNode(N_413); goNode(SPAWN)
 	end
-		phase = loadstring(base64decode("c3Bhd24gY2FyIDE="))()
-	if not spawnVehicle() then status = loadstring(base64decode("c3Bhd24gIzEgZmFpbGVk"))(); return false end
+		phase = "spawn car 1"
+	if not spawnVehicle() then status = "spawn #1 failed"; return false end
 		local haveTruck = false
 	if wantTruck then
-		phase = loadstring(base64decode("dHJ1Y2tlcjogdG8gTlBD"))()
+		phase = "trucker: to NPC"
 		if flyDriveTo(TRUCK_EXIT[1], TRUCK_EXIT[3]) then
 			exitVehicle()
 			if doTruckMission() then
-				phase = loadstring(base64decode("dHJ1Y2tlcjogZGVsaXZlcg=="))()
+				phase = "trucker: deliver"
 				if deliverTruck() then statMissions = statMissions + 1 end
 				haveTruck = seated()
-			else status = loadstring(base64decode("bWlzc2lvbiBzdGFydCBmYWlsZWQ="))() end
-		else status = loadstring(base64decode("Y291bGRuJ3QgcmVhY2ggTlBD"))() end
+			else status = "mission start failed" end
+		else status = "couldn't reach NPC" end
 	end
 	
 	if smuggleOn then
-		phase = loadstring(base64decode("dG8gc2VsbGVy"))()
+		phase = "to seller"
 		if haveTruck then
 			flyDriveTo(NSELLER[1], NSELLER[3]); exitVehicle()
 		elseif seated() then
@@ -808,10 +805,10 @@ local function cycle()
 			moveTo(NSELLER[1], NSELLER[2], NSELLER[3])
 		end
 		statSold = statSold + countSmuggled()
-		phase = loadstring(base64decode("c2VsbA=="))(); sellAt(NSELLER)
+		phase = "sell"; sellAt(NSELLER)
 		if not running then return false end
-		phase = loadstring(base64decode("Y2FyIDIgLT4gYmFjaw=="))()
-		if not spawnVehicle() then status = loadstring(base64decode("c3Bhd24gIzIgZmFpbGVk"))(); return false end
+		phase = "car 2 -> back"
+		if not spawnVehicle() then status = "spawn #2 failed"; return false end
 		if not flyRoute({ DNODE2, DNODE1, SPAWN }) then return false end
 		exitVehicle()
 		teleportTo(SPAWN)
@@ -821,26 +818,26 @@ local function cycle()
 		teleportTo(SPAWN)
 	end
 	statCycles = statCycles + 1
-	sendReport((loadstring(base64decode("Q3ljbGUgJWQgZG9uZQ=="))()):format(statCycles), 3066993)
+	sendReport(("Cycle %d done"):format(statCycles), 3066993)
 	return true
 end
 local function startFarm()
 	running = true
 	statMoney0 = readMoney(); statT0 = tick(); statCycles, statSold, statMissions = 0, 0, 0
-	sendReport(loadstring(base64decode("QXV0b2Zhcm0gc3RhcnRlZA=="))(), 3066993)
+	sendReport("Autofarm started", 3066993)
 	local owned = ownsElCapo(); FireCount = 5
-	print(loadstring(base64decode("W1NEQlJQXSBFbCBDYXBvIG93bmVkOg=="))(), tostring(owned), loadstring(base64decode("LT4gRmlyZUNvdW50"))(), FireCount)
+	print("[SDBRP] El Capo owned:", tostring(owned), "-> FireCount", FireCount)
 	task.spawn(function()
 		while running and _G.__sdq == Q do
 			if not cycle() then break end
 		end
 		keyUp(E); if noclipOn then restoreVehCollide(vehModel); noclipOn = false end
-		stopVeh(); running = false; phase = loadstring(base64decode("LQ=="))()
-		if status ~= loadstring(base64decode("Y2FuJ3QgZW50ZXIgYnVpbGRpbmc="))() then status = loadstring(base64decode("c3RvcHBlZA=="))() end
-		sendReport(loadstring(base64decode("QXV0b2Zhcm0gc3RvcHBlZA=="))(), 15158332)
+		stopVeh(); running = false; phase = "-"
+		if status ~= "can't enter building" then status = "stopped" end
+		sendReport("Autofarm stopped", 15158332)
 	end)
 end
-local function stopFarm() running = false; status = loadstring(base64decode("c3RvcHBpbmc="))() end
+local function stopFarm() running = false; status = "stopping" end
 
 -- ==== LAGBACK MONITOR ====
 task.spawn(function()
@@ -860,65 +857,65 @@ local tab = 1
 local Y_TABS, Y_ITEM, Y_VEH, Y_MISS, Y_TOG, Y_SLIDER, Y_GO, Y_S1, Y_S2 = 30, 66, 94, 122, 150, 182, 214, 270, 288
 local ISLROW = 26
 local itemOpen, vehOpen, missOpen = false, false, false
-local MISS_OPTS = { loadstring(base64decode("QXV0bw=="))(), loadstring(base64decode("Q2FyUGFydHM="))(), loadstring(base64decode("Rm9vZFN1cHBsaWVz"))(), loadstring(base64decode("R3ltRXF1aXBtZW50"))() }
+local MISS_OPTS = { "Auto", "CarParts", "FoodSupplies", "GymEquipment" }
 local function frac(v, mn, mx) return math.clamp((v - mn) / (mx - mn), 0, 1) end
-local function mS(cl, zi) local o = Drawing.new(loadstring(base64decode("U3F1YXJl"))()); sp(o, loadstring(base64decode("RmlsbGVk"))(), true); sp(o, loadstring(base64decode("Q29sb3I="))(), cl); sp(o, loadstring(base64decode("WkluZGV4"))(), zi); sp(o, loadstring(base64decode("VmlzaWJsZQ=="))(), true); return o end
+local function mS(cl, zi) local o = Drawing.new("Square"); sp(o, "Filled", true); sp(o, "Color", cl); sp(o, "ZIndex", zi); sp(o, "Visible", true); return o end
 local FONT; pcall(function() FONT = Drawing.Fonts.System end)
-local function mT(cl, fs, zi) local o = Drawing.new(loadstring(base64decode("VGV4dA=="))()); sp(o, loadstring(base64decode("Q29sb3I="))(), cl); if FONT then sp(o, loadstring(base64decode("Rm9udA=="))(), FONT) end sp(o, loadstring(base64decode("U2l6ZQ=="))(), fs); sp(o, loadstring(base64decode("T3V0bGluZQ=="))(), false); sp(o, loadstring(base64decode("WkluZGV4"))(), zi); sp(o, loadstring(base64decode("VmlzaWJsZQ=="))(), true); return o end
-local function vis(o, b) sp(o, loadstring(base64decode("VmlzaWJsZQ=="))(), b) end
+local function mT(cl, fs, zi) local o = Drawing.new("Text"); sp(o, "Color", cl); if FONT then sp(o, "Font", FONT) end sp(o, "Size", fs); sp(o, "Outline", false); sp(o, "ZIndex", zi); sp(o, "Visible", true); return o end
+local function vis(o, b) sp(o, "Visible", b) end
 local ON, OFF = Color3.fromRGB(56, 168, 82), Color3.fromRGB(46, 46, 52)
 
 local U = {}
-U.bd = mS(Color3.fromRGB(255, 255, 255), 0); sp(U.bd, loadstring(base64decode("VHJhbnNwYXJlbmN5"))(), 0.16); sp(U.bd, loadstring(base64decode("Q29ybmVy"))(), 12)
-U.bg = mS(Color3.fromRGB(14, 14, 16), 1); sp(U.bg, loadstring(base64decode("VHJhbnNwYXJlbmN5"))(), 0.97); sp(U.bg, loadstring(base64decode("Q29ybmVy"))(), 11)
+U.bd = mS(Color3.fromRGB(255, 255, 255), 0); sp(U.bd, "Transparency", 0.16); sp(U.bd, "Corner", 12)
+U.bg = mS(Color3.fromRGB(14, 14, 16), 1); sp(U.bg, "Transparency", 0.97); sp(U.bg, "Corner", 11)
 U.title = mT(Color3.fromRGB(245, 245, 248), 15, 5)
-U.tfB = mS(OFF, 3); sp(U.tfB, loadstring(base64decode("Q29ybmVy"))(), 7); U.tfT = mT(Color3.fromRGB(230, 230, 236), 12, 5)
-U.tsB = mS(OFF, 3); sp(U.tsB, loadstring(base64decode("Q29ybmVy"))(), 7); U.tsT = mT(Color3.fromRGB(230, 230, 236), 12, 5)
-U.div = mS(Color3.fromRGB(74, 74, 82), 3); sp(U.div, loadstring(base64decode("VHJhbnNwYXJlbmN5"))(), 0.85)
-U.itB = mS(Color3.fromRGB(40, 43, 52), 3); sp(U.itB, loadstring(base64decode("Q29ybmVy"))(), 8); U.itT = mT(Color3.fromRGB(220, 224, 232), 12, 5)
-U.vhB = mS(Color3.fromRGB(40, 43, 52), 3); sp(U.vhB, loadstring(base64decode("Q29ybmVy"))(), 8); U.vhT = mT(Color3.fromRGB(220, 224, 232), 12, 5)
-U.msB = mS(Color3.fromRGB(40, 43, 52), 3); sp(U.msB, loadstring(base64decode("Q29ybmVy"))(), 8); U.msT = mT(Color3.fromRGB(220, 224, 232), 12, 5)
-U.smB = mS(OFF, 3); sp(U.smB, loadstring(base64decode("Q29ybmVy"))(), 8); U.smT = mT(Color3.fromRGB(255, 255, 255), 12, 5)
-U.trB = mS(OFF, 3); sp(U.trB, loadstring(base64decode("Q29ybmVy"))(), 8); U.trT = mT(Color3.fromRGB(255, 255, 255), 12, 5)
-U.goB = mS(ON, 3); sp(U.goB, loadstring(base64decode("Q29ybmVy"))(), 8); U.goT = mT(Color3.fromRGB(255, 255, 255), 14, 5)
+U.tfB = mS(OFF, 3); sp(U.tfB, "Corner", 7); U.tfT = mT(Color3.fromRGB(230, 230, 236), 12, 5)
+U.tsB = mS(OFF, 3); sp(U.tsB, "Corner", 7); U.tsT = mT(Color3.fromRGB(230, 230, 236), 12, 5)
+U.div = mS(Color3.fromRGB(74, 74, 82), 3); sp(U.div, "Transparency", 0.85)
+U.itB = mS(Color3.fromRGB(40, 43, 52), 3); sp(U.itB, "Corner", 8); U.itT = mT(Color3.fromRGB(220, 224, 232), 12, 5)
+U.vhB = mS(Color3.fromRGB(40, 43, 52), 3); sp(U.vhB, "Corner", 8); U.vhT = mT(Color3.fromRGB(220, 224, 232), 12, 5)
+U.msB = mS(Color3.fromRGB(40, 43, 52), 3); sp(U.msB, "Corner", 8); U.msT = mT(Color3.fromRGB(220, 224, 232), 12, 5)
+U.smB = mS(OFF, 3); sp(U.smB, "Corner", 8); U.smT = mT(Color3.fromRGB(255, 255, 255), 12, 5)
+U.trB = mS(OFF, 3); sp(U.trB, "Corner", 8); U.trT = mT(Color3.fromRGB(255, 255, 255), 12, 5)
+U.goB = mS(ON, 3); sp(U.goB, "Corner", 8); U.goT = mT(Color3.fromRGB(255, 255, 255), 14, 5)
 U.s1 = mT(Color3.fromRGB(150, 156, 168), 12, 5)
 U.s2 = mT(Color3.fromRGB(150, 156, 168), 12, 5)
-U.islB = mS(Color3.fromRGB(255, 255, 255), 18); sp(U.islB, loadstring(base64decode("VHJhbnNwYXJlbmN5"))(), 0.16); sp(U.islB, loadstring(base64decode("Q29ybmVy"))(), 12); vis(U.islB, false)
-U.islBg = mS(Color3.fromRGB(14, 14, 16), 19); sp(U.islBg, loadstring(base64decode("VHJhbnNwYXJlbmN5"))(), 0.98); sp(U.islBg, loadstring(base64decode("Q29ybmVy"))(), 11); vis(U.islBg, false)
+U.islB = mS(Color3.fromRGB(255, 255, 255), 18); sp(U.islB, "Transparency", 0.16); sp(U.islB, "Corner", 12); vis(U.islB, false)
+U.islBg = mS(Color3.fromRGB(14, 14, 16), 19); sp(U.islBg, "Transparency", 0.98); sp(U.islBg, "Corner", 11); vis(U.islBg, false)
 U.islT = mT(Color3.fromRGB(150, 150, 158), 12, 22); vis(U.islT, false)
 local SET = {
-    { n = loadstring(base64decode("VmVoaWNsZSBzcGVlZCAoYXV0byk="))(), g = function() return DriveSpeed end, s = function(v) DriveSpeed = v end, mn = 60, mx = 400, f = loadstring(base64decode("JS4wZg=="))() },
+    { n = "Vehicle speed (auto)", g = function() return DriveSpeed end, s = function(v) DriveSpeed = v end, mn = 60, mx = 400, f = "%.0f" },
 }
 for _, r in ipairs(SET) do
     r.lbl = mT(Color3.fromRGB(205, 210, 220), 12, 5)
-    r.trk = mS(Color3.fromRGB(46, 46, 52), 3); sp(r.trk, loadstring(base64decode("Q29ybmVy"))(), 3)
-    r.fill = mS(Color3.fromRGB(236, 236, 240), 4); sp(r.fill, loadstring(base64decode("Q29ybmVy"))(), 3)
-    r.hnd = mS(Color3.fromRGB(255, 255, 255), 5); sp(r.hnd, loadstring(base64decode("Q29ybmVy"))(), 4)
+    r.trk = mS(Color3.fromRGB(46, 46, 52), 3); sp(r.trk, "Corner", 3)
+    r.fill = mS(Color3.fromRGB(236, 236, 240), 4); sp(r.fill, "Corner", 3)
+    r.hnd = mS(Color3.fromRGB(255, 255, 255), 5); sp(r.hnd, "Corner", 4)
 end
 local STAT = {}
 for _ = 1, 9 do STAT[#STAT + 1] = mT(Color3.fromRGB(210, 215, 224), 13, 5) end
 local statRows = {}
 local whBox
 pcall(function()
-	local g = Instance.new(loadstring(base64decode("U2NyZWVuR3Vp"))())
-	g.Name = loadstring(base64decode("U0RCUndo"))(); g.ResetOnSpawn = false; g.DisplayOrder = 999999; g.IgnoreGuiInset = true
-	g.Parent = (type(gethui) == loadstring(base64decode("ZnVuY3Rpb24="))() and gethui()) or LP:FindFirstChild(loadstring(base64decode("UGxheWVyR3Vp"))()) or game:GetService(loadstring(base64decode("Q29yZUd1aQ=="))())
-	whBox = Instance.new(loadstring(base64decode("VGV4dEJveA=="))())
+	local g = Instance.new("ScreenGui")
+	g.Name = "SDBRwh"; g.ResetOnSpawn = false; g.DisplayOrder = 999999; g.IgnoreGuiInset = true
+	g.Parent = (type(gethui) == "function" and gethui()) or LP:FindFirstChild("PlayerGui") or game:GetService("CoreGui")
+	whBox = Instance.new("TextBox")
 	whBox.AnchorPoint = Vector2.new(0.5, 0)
 	whBox.Position = UDim2.new(0.5, 0, 0, 60)
 	whBox.Size = UDim2.fromOffset(440, 30)
 	whBox.BackgroundColor3 = Color3.fromRGB(18, 20, 26); whBox.BackgroundTransparency = 0.05; whBox.BorderSizePixel = 0
 	whBox.TextColor3 = Color3.fromRGB(230, 235, 245); whBox.TextSize = 14; whBox.Font = Enum.Font.Gotham
-	whBox.PlaceholderText = loadstring(base64decode("UGFzdGUgRGlzY29yZCB3ZWJob29rIFVSTCBoZXJlLCB0aGVuIHByZXNzIEVudGVy"))()
+	whBox.PlaceholderText = "Paste Discord webhook URL here, then press Enter"
 	whBox.Text = WEBHOOK; whBox.ClearTextOnFocus = false; whBox.TextXAlignment = Enum.TextXAlignment.Left; whBox.Visible = false
 	whBox.Parent = g
-	whBox:GetPropertyChangedSignal(loadstring(base64decode("VGV4dA=="))()):Connect(function() WEBHOOK = whBox.Text; saveSettings() end)
+	whBox:GetPropertyChangedSignal("Text"):Connect(function() WEBHOOK = whBox.Text; saveSettings() end)
 	whBox.FocusLost:Connect(function() WEBHOOK = whBox.Text; saveSettings(); whBox.Visible = false end)
 end)
 local MAXV = 26
 local POOL = {}
 for _ = 1, MAXV do
-    local b = mS(Color3.fromRGB(26, 26, 32), 20); sp(b, loadstring(base64decode("Q29ybmVy"))(), 6); vis(b, false)
+    local b = mS(Color3.fromRGB(26, 26, 32), 20); sp(b, "Corner", 6); vis(b, false)
     local t = mT(Color3.fromRGB(225, 228, 236), 12, 21); vis(t, false)
     POOL[#POOL + 1] = { bg = b, txt = t }
 end
@@ -928,13 +925,13 @@ local function popList()
     if missOpen then return MISS_OPTS end
     return nil
 end
-local function rowSelected(list, njLqV4e6)
-    if itemOpen then return njLqV4e6 == selItem end
-    if vehOpen then return list[njLqV4e6] == selVeh end
-    return list[njLqV4e6] == selMission
+local function rowSelected(list, i)
+    if itemOpen then return i == selItem end
+    if vehOpen then return list[i] == selVeh end
+    return list[i] == selMission
 end
 local function islandY() return py + ph + 6 end
-local function islandRowY(njLqV4e6) return islandY() + 26 + (njLqV4e6 - 1) * ISLROW end
+local function islandRowY(i) return islandY() + 26 + (i - 1) * ISLROW end
 local function layIsland()
     local open = (tab == 1) and (itemOpen or vehOpen or missOpen)
     local list = open and popList() or nil
@@ -943,35 +940,35 @@ local function layIsland()
         local n = math.min(#list, MAXV)
         local islH = 24 + math.max(#list, 1) * ISLROW + 8
         local iy0 = islandY()
-        sp(U.islB, loadstring(base64decode("U2l6ZQ=="))(), Vector2.new(pw + 2, islH + 2)); sp(U.islB, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px - 1, iy0 - 1))
-        sp(U.islBg, loadstring(base64decode("U2l6ZQ=="))(), Vector2.new(pw, islH)); sp(U.islBg, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px, iy0))
-        local hdr = itemOpen and loadstring(base64decode("U2VsZWN0IGl0ZW0="))() or (vehOpen and loadstring(base64decode("U2VsZWN0IHZlaGljbGU="))() or loadstring(base64decode("U2VsZWN0IG1pc3Npb24="))())
-        sp(U.islT, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 14, iy0 + 6)); sp(U.islT, loadstring(base64decode("VGV4dA=="))(), hdr .. loadstring(base64decode("ICAo"))() .. #list .. loadstring(base64decode("KQ=="))())
-        for njLqV4e6 = 1, MAXV do
-            local show = njLqV4e6 <= n
-            vis(POOL[njLqV4e6].bg, show); vis(POOL[njLqV4e6].txt, show)
+        sp(U.islB, "Size", Vector2.new(pw + 2, islH + 2)); sp(U.islB, "Position", Vector2.new(px - 1, iy0 - 1))
+        sp(U.islBg, "Size", Vector2.new(pw, islH)); sp(U.islBg, "Position", Vector2.new(px, iy0))
+        local hdr = itemOpen and "Select item" or (vehOpen and "Select vehicle" or "Select mission")
+        sp(U.islT, "Position", Vector2.new(px + 14, iy0 + 6)); sp(U.islT, "Text", hdr .. "  (" .. #list .. ")")
+        for i = 1, MAXV do
+            local show = i <= n
+            vis(POOL[i].bg, show); vis(POOL[i].txt, show)
             if show then
-                local iy = islandRowY(njLqV4e6)
-                sp(POOL[njLqV4e6].bg, loadstring(base64decode("U2l6ZQ=="))(), Vector2.new(pw - 24, 22)); sp(POOL[njLqV4e6].bg, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 12, iy))
-                sp(POOL[njLqV4e6].bg, loadstring(base64decode("Q29sb3I="))(), rowSelected(list, njLqV4e6) and Color3.fromRGB(46, 96, 64) or Color3.fromRGB(26, 26, 32))
-                sp(POOL[njLqV4e6].txt, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 18, iy + 4)); sp(POOL[njLqV4e6].txt, loadstring(base64decode("VGV4dA=="))(), tostring(list[njLqV4e6]))
+                local iy = islandRowY(i)
+                sp(POOL[i].bg, "Size", Vector2.new(pw - 24, 22)); sp(POOL[i].bg, "Position", Vector2.new(px + 12, iy))
+                sp(POOL[i].bg, "Color", rowSelected(list, i) and Color3.fromRGB(46, 96, 64) or Color3.fromRGB(26, 26, 32))
+                sp(POOL[i].txt, "Position", Vector2.new(px + 18, iy + 4)); sp(POOL[i].txt, "Text", tostring(list[i]))
             end
         end
     else
-        for njLqV4e6 = 1, MAXV do vis(POOL[njLqV4e6].bg, false); vis(POOL[njLqV4e6].txt, false) end
+        for i = 1, MAXV do vis(POOL[i].bg, false); vis(POOL[i].txt, false) end
     end
 end
 
 local function lay()
-    sp(U.bd, loadstring(base64decode("U2l6ZQ=="))(), Vector2.new(pw + 2, ph + 2)); sp(U.bd, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px - 1, py - 1))
-    sp(U.bg, loadstring(base64decode("U2l6ZQ=="))(), Vector2.new(pw, ph)); sp(U.bg, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px, py))
-    sp(U.title, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 14, py + 8)); sp(U.title, loadstring(base64decode("VGV4dA=="))(), loadstring(base64decode("QnVzdGVyIFNEQlIgQXV0b2Zhcm0="))())
+    sp(U.bd, "Size", Vector2.new(pw + 2, ph + 2)); sp(U.bd, "Position", Vector2.new(px - 1, py - 1))
+    sp(U.bg, "Size", Vector2.new(pw, ph)); sp(U.bg, "Position", Vector2.new(px, py))
+    sp(U.title, "Position", Vector2.new(px + 14, py + 8)); sp(U.title, "Text", "Buster SDBR Autofarm")
     local halfT = (W2 - 6) / 2
-    sp(U.tfB, loadstring(base64decode("U2l6ZQ=="))(), Vector2.new(halfT, 22)); sp(U.tfB, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 12, py + Y_TABS)); sp(U.tfB, loadstring(base64decode("Q29sb3I="))(), tab == 1 and Color3.fromRGB(70, 110, 90) or OFF)
-    sp(U.tfT, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 12 + halfT / 2 - 14, py + Y_TABS + 4)); sp(U.tfT, loadstring(base64decode("VGV4dA=="))(), loadstring(base64decode("RmFybQ=="))())
-    sp(U.tsB, loadstring(base64decode("U2l6ZQ=="))(), Vector2.new(halfT, 22)); sp(U.tsB, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 12 + halfT + 6, py + Y_TABS)); sp(U.tsB, loadstring(base64decode("Q29sb3I="))(), tab == 2 and Color3.fromRGB(70, 110, 90) or OFF)
-    sp(U.tsT, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 12 + halfT + 6 + halfT / 2 - 16, py + Y_TABS + 4)); sp(U.tsT, loadstring(base64decode("VGV4dA=="))(), loadstring(base64decode("U3RhdHM="))())
-    sp(U.div, loadstring(base64decode("U2l6ZQ=="))(), Vector2.new(pw - 28, 1)); sp(U.div, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 14, py + 58))
+    sp(U.tfB, "Size", Vector2.new(halfT, 22)); sp(U.tfB, "Position", Vector2.new(px + 12, py + Y_TABS)); sp(U.tfB, "Color", tab == 1 and Color3.fromRGB(70, 110, 90) or OFF)
+    sp(U.tfT, "Position", Vector2.new(px + 12 + halfT / 2 - 14, py + Y_TABS + 4)); sp(U.tfT, "Text", "Farm")
+    sp(U.tsB, "Size", Vector2.new(halfT, 22)); sp(U.tsB, "Position", Vector2.new(px + 12 + halfT + 6, py + Y_TABS)); sp(U.tsB, "Color", tab == 2 and Color3.fromRGB(70, 110, 90) or OFF)
+    sp(U.tsT, "Position", Vector2.new(px + 12 + halfT + 6 + halfT / 2 - 16, py + Y_TABS + 4)); sp(U.tsT, "Text", "Stats")
+    sp(U.div, "Size", Vector2.new(pw - 28, 1)); sp(U.div, "Position", Vector2.new(px + 14, py + 58))
 
     local farmOn = (tab == 1)
     for _, o in ipairs({ U.itB, U.itT, U.vhB, U.vhT, U.msB, U.msT, U.smB, U.smT, U.trB, U.trT, U.goB, U.goT }) do vis(o, farmOn) end
@@ -979,33 +976,33 @@ local function lay()
     for _, o in ipairs(STAT) do vis(o, not farmOn) end
 
     if farmOn then
-        sp(U.itB, loadstring(base64decode("U2l6ZQ=="))(), Vector2.new(W2, 24)); sp(U.itB, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 12, py + Y_ITEM))
-        sp(U.itT, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 18, py + Y_ITEM + 5)); sp(U.itT, loadstring(base64decode("VGV4dA=="))(), loadstring(base64decode("SXRlbTogIA=="))() .. ITEMS[selItem].name)
-        sp(U.vhB, loadstring(base64decode("U2l6ZQ=="))(), Vector2.new(W2, 24)); sp(U.vhB, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 12, py + Y_VEH))
-        sp(U.vhT, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 18, py + Y_VEH + 5)); sp(U.vhT, loadstring(base64decode("VGV4dA=="))(), loadstring(base64decode("VmVoaWNsZTogIA=="))() .. selVeh)
-        sp(U.msB, loadstring(base64decode("U2l6ZQ=="))(), Vector2.new(W2, 24)); sp(U.msB, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 12, py + Y_MISS))
-        sp(U.msT, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 18, py + Y_MISS + 5)); sp(U.msT, loadstring(base64decode("VGV4dA=="))(), loadstring(base64decode("TWlzc2lvbjogIA=="))() .. selMission)
+        sp(U.itB, "Size", Vector2.new(W2, 24)); sp(U.itB, "Position", Vector2.new(px + 12, py + Y_ITEM))
+        sp(U.itT, "Position", Vector2.new(px + 18, py + Y_ITEM + 5)); sp(U.itT, "Text", "Item:  " .. ITEMS[selItem].name)
+        sp(U.vhB, "Size", Vector2.new(W2, 24)); sp(U.vhB, "Position", Vector2.new(px + 12, py + Y_VEH))
+        sp(U.vhT, "Position", Vector2.new(px + 18, py + Y_VEH + 5)); sp(U.vhT, "Text", "Vehicle:  " .. selVeh)
+        sp(U.msB, "Size", Vector2.new(W2, 24)); sp(U.msB, "Position", Vector2.new(px + 12, py + Y_MISS))
+        sp(U.msT, "Position", Vector2.new(px + 18, py + Y_MISS + 5)); sp(U.msT, "Text", "Mission:  " .. selMission)
         local half = (W2 - 6) / 2
-        sp(U.smB, loadstring(base64decode("U2l6ZQ=="))(), Vector2.new(half, 24)); sp(U.smB, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 12, py + Y_TOG)); sp(U.smB, loadstring(base64decode("Q29sb3I="))(), smuggleOn and ON or OFF)
-        sp(U.smT, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 12 + half / 2 - 32, py + Y_TOG + 5)); sp(U.smT, loadstring(base64decode("VGV4dA=="))(), smuggleOn and loadstring(base64decode("U211Z2dsZTogT04="))() or loadstring(base64decode("U211Z2dsZTogT0ZG"))())
-        sp(U.trB, loadstring(base64decode("U2l6ZQ=="))(), Vector2.new(half, 24)); sp(U.trB, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 12 + half + 6, py + Y_TOG)); sp(U.trB, loadstring(base64decode("Q29sb3I="))(), truckerOn and ON or OFF)
-        sp(U.trT, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 12 + half + 6 + half / 2 - 30, py + Y_TOG + 5)); sp(U.trT, loadstring(base64decode("VGV4dA=="))(), truckerOn and loadstring(base64decode("VHJ1Y2tlcjogT04="))() or loadstring(base64decode("VHJ1Y2tlcjogT0ZG"))())
-        for njLqV4e6, r in ipairs(SET) do
-            local ry = py + Y_SLIDER + (njLqV4e6 - 1) * 26
-            sp(r.lbl, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 14, ry)); sp(r.lbl, loadstring(base64decode("VGV4dA=="))(), (r.n .. loadstring(base64decode("ICAgWyA="))() .. r.f .. loadstring(base64decode("IF0="))()):format(r.g()))
-            sp(r.trk, loadstring(base64decode("U2l6ZQ=="))(), Vector2.new(W2, 5)); sp(r.trk, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 12, ry + 15))
+        sp(U.smB, "Size", Vector2.new(half, 24)); sp(U.smB, "Position", Vector2.new(px + 12, py + Y_TOG)); sp(U.smB, "Color", smuggleOn and ON or OFF)
+        sp(U.smT, "Position", Vector2.new(px + 12 + half / 2 - 32, py + Y_TOG + 5)); sp(U.smT, "Text", smuggleOn and "Smuggle: ON" or "Smuggle: OFF")
+        sp(U.trB, "Size", Vector2.new(half, 24)); sp(U.trB, "Position", Vector2.new(px + 12 + half + 6, py + Y_TOG)); sp(U.trB, "Color", truckerOn and ON or OFF)
+        sp(U.trT, "Position", Vector2.new(px + 12 + half + 6 + half / 2 - 30, py + Y_TOG + 5)); sp(U.trT, "Text", truckerOn and "Trucker: ON" or "Trucker: OFF")
+        for i, r in ipairs(SET) do
+            local ry = py + Y_SLIDER + (i - 1) * 26
+            sp(r.lbl, "Position", Vector2.new(px + 14, ry)); sp(r.lbl, "Text", (r.n .. "   [ " .. r.f .. " ]"):format(r.g()))
+            sp(r.trk, "Size", Vector2.new(W2, 5)); sp(r.trk, "Position", Vector2.new(px + 12, ry + 15))
             local f = frac(r.g(), r.mn, r.mx)
-            sp(r.fill, loadstring(base64decode("U2l6ZQ=="))(), Vector2.new(math.max(1, W2 * f), 5)); sp(r.fill, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 12, ry + 15))
-            sp(r.hnd, loadstring(base64decode("U2l6ZQ=="))(), Vector2.new(10, 16)); sp(r.hnd, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 12 + f * W2 - 5, ry + 9))
+            sp(r.fill, "Size", Vector2.new(math.max(1, W2 * f), 5)); sp(r.fill, "Position", Vector2.new(px + 12, ry + 15))
+            sp(r.hnd, "Size", Vector2.new(10, 16)); sp(r.hnd, "Position", Vector2.new(px + 12 + f * W2 - 5, ry + 9))
         end
-        sp(U.goB, loadstring(base64decode("U2l6ZQ=="))(), Vector2.new(W2, 28)); sp(U.goB, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 12, py + Y_GO))
-        sp(U.goB, loadstring(base64decode("Q29sb3I="))(), running and Color3.fromRGB(196, 54, 54) or ON)
-        sp(U.goT, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 12 + W2 / 2 - 22, py + Y_GO + 6)); sp(U.goT, loadstring(base64decode("VGV4dA=="))(), running and loadstring(base64decode("U1RPUA=="))() or loadstring(base64decode("U1RBUlQ="))())
+        sp(U.goB, "Size", Vector2.new(W2, 28)); sp(U.goB, "Position", Vector2.new(px + 12, py + Y_GO))
+        sp(U.goB, "Color", running and Color3.fromRGB(196, 54, 54) or ON)
+        sp(U.goT, "Position", Vector2.new(px + 12 + W2 / 2 - 22, py + Y_GO + 6)); sp(U.goT, "Text", running and "STOP" or "START")
     else
-        for njLqV4e6, o in ipairs(STAT) do sp(o, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 16, py + 66 + (njLqV4e6 - 1) * 22)); sp(o, loadstring(base64decode("VGV4dA=="))(), statRows[njLqV4e6] or loadstring(base64decode(""))()) end
+        for i, o in ipairs(STAT) do sp(o, "Position", Vector2.new(px + 16, py + 66 + (i - 1) * 22)); sp(o, "Text", statRows[i] or "") end
     end
-    sp(U.s1, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 14, py + Y_S1)); sp(U.s1, loadstring(base64decode("VGV4dA=="))(), loadstring(base64decode("UGhhc2U6IA=="))() .. phase)
-    sp(U.s2, loadstring(base64decode("UG9zaXRpb24="))(), Vector2.new(px + 14, py + Y_S2)); sp(U.s2, loadstring(base64decode("VGV4dA=="))(), loadstring(base64decode("U3RhdHVzOiA="))() .. status)
+    sp(U.s1, "Position", Vector2.new(px + 14, py + Y_S1)); sp(U.s1, "Text", "Phase: " .. phase)
+    sp(U.s2, "Position", Vector2.new(px + 14, py + Y_S2)); sp(U.s2, "Text", "Status: " .. status)
     layIsland()
 end
 lay()
@@ -1018,15 +1015,15 @@ task.spawn(function()
             statMoney = readMoney() or statMoney
             local rt = statT0 > 0 and (tick() - statT0) or 0
             statRows = {
-                loadstring(base64decode("TW9uZXk6ICA="))() .. fmtMoney(statMoney),
-                loadstring(base64decode("SW5jb21lOiAg"))() .. fmtMoney(statIncome()),
-                loadstring(base64decode("UGVyIGhvdXI6ICA="))() .. fmtMoney(statPerHr()),
-                (loadstring(base64decode("UnVudGltZTogICUwMmQ6JTAyZDolMDJk"))()):format(math.floor(rt / 3600), math.floor((rt % 3600) / 60), math.floor(rt % 60)),
-                loadstring(base64decode("Q3ljbGVzOiAg"))() .. statCycles,
-                loadstring(base64decode("SXRlbXMgc29sZDogIA=="))() .. statSold,
-                loadstring(base64decode("TWlzc2lvbnMgZG9uZTogIA=="))() .. statMissions,
-                loadstring(base64decode("TGFnYmFja3M6ICA="))() .. lagCount,
-                loadstring(base64decode("V2ViaG9vazogIA=="))() .. (WEBHOOK ~= loadstring(base64decode(""))() and loadstring(base64decode("U0VUIChjbGljayA9IHBhc3RlIGNsaXBib2FyZCk="))() or loadstring(base64decode("KGNvcHkgVVJMIHRoZW4gY2xpY2sp"))()),
+                "Money:  " .. fmtMoney(statMoney),
+                "Income:  " .. fmtMoney(statIncome()),
+                "Per hour:  " .. fmtMoney(statPerHr()),
+                ("Runtime:  %02d:%02d:%02d"):format(math.floor(rt / 3600), math.floor((rt % 3600) / 60), math.floor(rt % 60)),
+                "Cycles:  " .. statCycles,
+                "Items sold:  " .. statSold,
+                "Missions done:  " .. statMissions,
+                "Lagbacks:  " .. lagCount,
+                "Webhook:  " .. (WEBHOOK ~= "" and "SET (click = paste clipboard)" or "(copy URL then click)"),
             }
             lastStatT = tick()
         end
@@ -1039,10 +1036,10 @@ task.spawn(function()
                 local list = popList()
                 local n = list and math.min(#list, MAXV) or 0
                 if mx >= px + 12 and mx <= px + pw - 12 then
-                    for njLqV4e6 = 1, n do
-                        local iy = islandRowY(njLqV4e6)
+                    for i = 1, n do
+                        local iy = islandRowY(i)
                         if my >= iy and my <= iy + 22 then
-                            if itemOpen then selItem = njLqV4e6 elseif vehOpen then selVeh = list[njLqV4e6] else selMission = list[njLqV4e6] end
+                            if itemOpen then selItem = i elseif vehOpen then selVeh = list[i] else selMission = list[i] end
                             saveSettings()
                             break
                         end
@@ -1054,7 +1051,7 @@ task.spawn(function()
                 elseif mx >= px + 12 + halfT + 6 and mx <= px + 12 + halfT + 6 + halfT then tab = 2 end
             elseif tab == 2 and mx >= px + 12 and mx <= px + pw - 12 and my >= py + 238 and my <= py + 262 then
                 local cb = readClipboard()
-                if cb and (string.find(cb, loadstring(base64decode("aHR0cA=="))(), 1, true) or string.find(cb, loadstring(base64decode("ZGlzY29yZA=="))(), 1, true)) then WEBHOOK = cb; saveSettings(); status = loadstring(base64decode("d2ViaG9vayBzZXQgZnJvbSBjbGlwYm9hcmQ="))() else status = loadstring(base64decode("Y2xpcGJvYXJkIGhhcyBubyBVUkwgKGNvcHkgaXQgZmlyc3Qp"))() end
+                if cb and (string.find(cb, "http", 1, true) or string.find(cb, "discord", 1, true)) then WEBHOOK = cb; saveSettings(); status = "webhook set from clipboard" else status = "clipboard has no URL (copy it first)" end
                 if whBox then pcall(function() whBox.Text = WEBHOOK; whBox.Visible = true; whBox:CaptureFocus() end) end
             elseif tab == 1 and mx >= px + 12 and mx <= px + pw - 12 and my >= py + Y_ITEM and my <= py + Y_ITEM + 24 then
                 itemOpen = true
@@ -1082,12 +1079,9 @@ task.spawn(function()
         lay()
         task.wait()
     end
-    for _, o in pairs(U) do sp(o, loadstring(base64decode("VmlzaWJsZQ=="))(), false) end
-    for _, r in ipairs(SET) do sp(r.lbl, loadstring(base64decode("VmlzaWJsZQ=="))(), false); sp(r.trk, loadstring(base64decode("VmlzaWJsZQ=="))(), false); sp(r.fill, loadstring(base64decode("VmlzaWJsZQ=="))(), false); sp(r.hnd, loadstring(base64decode("VmlzaWJsZQ=="))(), false) end
-    for _, o in ipairs(STAT) do sp(o, loadstring(base64decode("VmlzaWJsZQ=="))(), false) end
-    for _, e in ipairs(POOL) do sp(e.bg, loadstring(base64decode("VmlzaWJsZQ=="))(), false); sp(e.txt, loadstring(base64decode("VmlzaWJsZQ=="))(), false) end
+    for _, o in pairs(U) do sp(o, "Visible", false) end
+    for _, r in ipairs(SET) do sp(r.lbl, "Visible", false); sp(r.trk, "Visible", false); sp(r.fill, "Visible", false); sp(r.hnd, "Visible", false) end
+    for _, o in ipairs(STAT) do sp(o, "Visible", false) end
+    for _, e in ipairs(POOL) do sp(e.bg, "Visible", false); sp(e.txt, "Visible", false) end
     if whBox then pcall(function() whBox.Visible = false end) end
 end)
-end
-BxZDem1I(1lrT1)
-end)(...)
