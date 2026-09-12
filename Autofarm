@@ -25,7 +25,6 @@ local CamSens, CamMax = 30, 60
 local running = false
 local status, phase = "Idle", "-"
 local px, py = 40, 150
-local lagCount = 0
 local lastLagT = 0
 local lastTpTarget, lastTpT = nil, 0
 local lastBuyT = 0
@@ -1070,7 +1069,7 @@ task.spawn(function()
 		local p = pos(hrp())
 		if p and lastP and (p - lastP).Magnitude > 40 then
 			local expected = lastTpTarget and (tick() - lastTpT) < 0.6 and (p - lastTpTarget).Magnitude < 14
-			if not expected then lagCount = lagCount + 1; lastLagT = tick() end
+			if not expected then lastLagT = tick() end
 		end
 		lastP = p
 		task.wait()
@@ -1179,7 +1178,7 @@ whShow = function()
 end
 
 local STAT = {}
-for _ = 1, 9 do STAT[#STAT + 1] = mT(Color3.fromRGB(210,215,224), 13, 5) end
+for _ = 1, 8 do STAT[#STAT + 1] = mT(Color3.fromRGB(210,215,224), 13, 5) end
 local statRows = {}
 local MAXV = 26
 local POOL = {}
@@ -1337,7 +1336,7 @@ end
 lay()
 
 task.spawn(function()
-    local wd, dpn, ox, oy, dragSpd, lastVL, lastStatT = false, false, 0, 0, false, 0, 0
+    local wd, dpn, ox, oy, dragSpd, lastVL, lastStatT, lastLay = false, false, 0, 0, false, 0, 0, 0
     local prevFarm = false
     while _G.__sdq == Q do
         if tick() - lastVL > 0.5 then refreshVehList(); lastVL = tick() end
@@ -1352,7 +1351,6 @@ task.spawn(function()
                 "Cycles:  " .. statCycles,
                 "Items sold:  " .. statSold,
                 "Missions done:  " .. statMissions,
-                "Lagbacks:  " .. lagCount,
                 "Webhook:  " .. (webhookOn and (WEBHOOK ~= "" and ("ON, every " .. webhookEvery .. " cycles") or "ON but not set") or "OFF"),
             }
             lastStatT = tick()
@@ -1444,7 +1442,7 @@ task.spawn(function()
         wd = dn
         if dpn then px, py = mx - ox, my - oy end
         if dragSpd then DriveSpeed = math.floor(60 + math.clamp((mx - (px + 12)) / (W2 - 78), 0, 1) * (400 - 60) + 0.5) end
-        lay()
+        if dpn or dragSpd or itemOpen or vehOpen or missOpen or binding or nf.show or tick() - lastLay >= 0.06 then lay(); lastLay = tick() end
         task.wait()
     end
     for k, o in pairs(U) do
