@@ -1,4 +1,3 @@
--- SDBR Autofarm
 local W = game:GetService("Workspace")
 local P = game:GetService("Players")
 local LP = P.LocalPlayer
@@ -7,39 +6,48 @@ local HttpService = game:GetService("HttpService")
 _G.__sdq = (_G.__sdq or 0) + 1
 local Q = _G.__sdq
 
--- ==== TUNING ====
 local Speed = 50
 local FireCount = 8
 local FireHold, FireGap, Settle, Arrive = 0.4, 0.02, 0.02, 2
-local TPMAX, TPFoot, FOOT_CAP = 95, true, 45
+local TPMAX, TPFoot, FOOT_CAP = 100, true, 400
+local TRUCK_HIDE = 9
+local TP_WHILE_EARNING = true
 local MIN_SELL_AGE = 32
-local DriveSpeed, Hover, Look = 256, 8, 45 
+local DriveSpeed, Hover, Look = 256, 8, 45
 local CAP, YGAIN, YMAX = 9.3, 10, 160
 local DriveArrive = 16
-local CamAim = true
+local EMPTY_NEEDLE_X, EMPTY_NEEDLE_Y = 1251, 1152
+local EMPTY_NEEDLE_TOL = 0.3
+local EMPTY_FUEL_SPEED = 90
 local camSignX, camSignY = 1, -1
 local CamSens, CamMax = 30, 60
 
--- ==== STATE ====
 local running = false
-local status, phase = "idle", "-"
+local status, phase = "Idle", "-"
 local px, py = 40, 150
 local lagCount = 0
 local lastLagT = 0
+local lastTpTarget, lastTpT = nil, 0
 local lastBuyT = 0
 local carryingGoods = false
+local stuckReset = false
+local function on() return running and _G.__sdq == Q and not stuckReset and not _G.__sdModPause end
 local selVeh = "Camry6"
 local vehList = { "Camry6" }
 local smuggleOn, truckerOn = true, false
+local hkFarm = 0x47
+local binding = nil
 local selMission = "Auto"
-
--- ==== STATS / WEBHOOK ====
 local WEBHOOK = ""
 local statMoney0, statT0 = nil, 0
 local statMoney = 0
 local statCycles, statSold, statMissions = 0, 0, 0
+local undergroundOn = false
+local webhookOn = false
+local webhookEvery = 5
+local driveMode = "A"
+local elCapoOwned = nil
 
--- ==== DATA ====
 local ITEMS = {
 	{ name = "El Diablo Box",          cf = { 6615.42, 64.53, -449.67 }, part = "Mesh",          diablo = true },
 	{ name = "Fake Diamond Ring",      cf = { 6627.99, 62.69, -448.52 }, part = "Handle" },
@@ -51,26 +59,19 @@ local ITEMS = {
 }
 local selItem = 2
 local SPAWN    = { 6599.17, 64.45, -390.69 }
-local N_413    = { 6599.00, 64.48, -413.08 }
-local N_436    = { 6613.92, 64.53, -436.56 }
-local JUNCTION = { 6638.08, 62.72, -438.59 }
 local LAUNDER  = { 6615.33, 64.53, -463.03 }
 local TELE_IN  = { 6843.49, 17.45, -24.03 }
 
-local VSPAWN1 = { 6683.25, 61.06, -341.37 }
 local DNODE1  = { 4930.44, 17.23, 142.82 }
 local DNODE2  = { 111.39, 17.23, 148.67 }
 local DNODE3  = { -60.47, 49.27, 441.08 }
 local NSELLER = { -82.26, 49.27, 432.63 }
-local NODE5   = { -96.46, 17.19, 432.01 }
-local VSPAWN2 = { -226.94, 17.27, 819.99 }
 
 local TRUCK_EXIT = { 7102.89, 17.22, 230.23 }
 local TRUCK_NPC  = { 7129.76, 20.15, 236.72 }
 local TRUCK_MISSIONS = { "CarParts", "FoodSupplies", "GymEquipment" }
 local TRUCK_SPEED = { CarParts = 320, FoodSupplies = 290, GymEquipment = 290 }
 
--- ==== HELPERS ====
 local function sp(o, k, v) pcall(function() o[k] = v end) end
 local function nav(root, ...) local o = root; for _, n in ipairs({ ... }) do if not o then return nil end o = o:FindFirstChild(n) end return o end
 local function hrp() local ch = LP.Character; return ch and ch:FindFirstChild("HumanoidRootPart") end
@@ -79,6 +80,18 @@ local E = 0x45
 local SPACE = 0x20
 local function keyDown(k) pcall(setrobloxinput, true); pcall(keypress, k) end
 local function keyUp(k) pcall(keyrelease, k) end
+local function keyd(k) local ok, v = pcall(iskeypressed, k); return ok and v == true end
+local HKEYS = {}
+do
+	local function add(c, n) HKEYS[#HKEYS + 1] = { c = c, n = n } end
+	for i = 0, 25 do add(0x41 + i, string.char(65 + i)) end
+	for i = 0, 9 do add(0x30 + i, tostring(i)) end
+	for i = 1, 12 do add(0x6F + i, "F" .. i) end
+	add(0xC0, "`"); add(0x09, "Tab"); add(0x2D, "Ins"); add(0x2E, "Del"); add(0x24, "Home"); add(0x23, "End")
+end
+local NOBIND = { [0x57] = true, [0x41] = true, [0x53] = true, [0x44] = true, [0x20] = true, [0x10] = true, [0x45] = true }
+local function keyName(c) for _, e in ipairs(HKEYS) do if e.c == c then return e.n end end return "#" .. tostring(c) end
+local function scanAnyKey() for _, e in ipairs(HKEYS) do if not NOBIND[e.c] and keyd(e.c) then return e.c end end return nil end
 local function faceCF(x, y, z, dx, dz)
 	local l = math.sqrt(dx * dx + dz * dz); if l < 1e-3 then return CFrame.new(x, y, z) end
 	dx, dz = dx / l, dz / l
@@ -136,11 +149,6 @@ local function readClipboard()
 	if type(Clipboard) == "table" and type(Clipboard.get) == "function" then local ok, v = pcall(Clipboard.get); if ok and type(v) == "string" and #v > 0 then return v end end
 	return nil
 end
-local function postWebhook(content)
-	if WEBHOOK == "" then return end
-	local c = tostring(content):gsub("\\", "\\\\"):gsub('"', '\\"'):gsub("\n", "\\n")
-	httpPost(WEBHOOK, '{"content":"' .. c .. '"}')
-end
 local SETTINGS_FILE = "sdbr_autofarm_settings.json"
 local function saveSettings()
 	if type(writefile) ~= "function" then return end
@@ -149,6 +157,7 @@ local function saveSettings()
 			selItem = selItem, selVeh = selVeh, selMission = selMission,
 			smuggleOn = smuggleOn, truckerOn = truckerOn, DriveSpeed = DriveSpeed,
 			WEBHOOK = WEBHOOK, vehList = vehList,
+			hkFarm = hkFarm, webhookOn = webhookOn, webhookEvery = webhookEvery, driveMode = driveMode,
 		}))
 	end)
 end
@@ -166,10 +175,34 @@ local function loadSettings()
 	if type(d.DriveSpeed) == "number" then DriveSpeed = d.DriveSpeed end
 	if type(d.WEBHOOK) == "string" and d.WEBHOOK ~= "" then WEBHOOK = d.WEBHOOK end
 	if type(d.vehList) == "table" and #d.vehList > 0 then vehList = d.vehList end
+	if type(d.hkFarm) == "number" then hkFarm = d.hkFarm end
+	if type(d.webhookOn) == "boolean" then webhookOn = d.webhookOn end
+	if type(d.webhookEvery) == "number" then webhookEvery = math.clamp(math.floor(d.webhookEvery), 1, 999) end
+	if type(d.driveMode) == "string" then driveMode = d.driveMode end
+end
+local EL_CAPO_FILE = "sdbr_elcapo.json"
+local function elCapoKey() local ok, id = pcall(function() return tostring(LP.UserId) end); return (ok and id) or "0" end
+local function loadElCapo()
+	elCapoOwned = nil
+	if type(readfile) ~= "function" then return end
+	local ok, txt = pcall(function() return readfile(EL_CAPO_FILE) end)
+	if not ok or type(txt) ~= "string" then return end
+	local okd, d = pcall(function() return HttpService:JSONDecode(txt) end)
+	if not okd or type(d) ~= "table" then return end
+	local v = d[elCapoKey()]
+	if type(v) == "boolean" then elCapoOwned = v end
+end
+local function saveElCapo()
+	if type(writefile) ~= "function" then return end
+	local d = {}
+	if type(readfile) == "function" then local ok, txt = pcall(function() return readfile(EL_CAPO_FILE) end); if ok and type(txt) == "string" then local okd, dd = pcall(function() return HttpService:JSONDecode(txt) end); if okd and type(dd) == "table" then d = dd end end end
+	d[elCapoKey()] = elCapoOwned
+	pcall(function() writefile(EL_CAPO_FILE, HttpService:JSONEncode(d)) end)
 end
 loadSettings()
+loadElCapo()
 local function sendReport(title, color)
-	if WEBHOOK == "" then return end
+	if not webhookOn or WEBHOOK == "" then return end
 	local rt = statT0 > 0 and (tick() - statT0) or 0
 	local body
 	local ok = pcall(function()
@@ -191,7 +224,7 @@ end
 local function aimCameraAt(tx, ty, tz, timeout)
 	pcall(setrobloxinput, true); pcall(mouse2press)
 	local t0, okF = tick(), 0
-	while running and _G.__sdq == Q and tick() - t0 < (timeout or 2.5) do
+	while on() and tick() - t0 < (timeout or 2.5) do
 		local ok, cf = pcall(function() return W.CurrentCamera.CFrame end)
 		if ok and typeof(cf) == "CFrame" then
 			local cp, look = cf.Position, cf.LookVector
@@ -224,7 +257,6 @@ local function aimCameraAt(tx, ty, tz, timeout)
 	pcall(mouse2release)
 end
 
--- ==== PLAYER MOVEMENT ====
 local tpHist = {}
 local function tpWindowSum()
 	local now = tick(); local keep, sum = {}, 0
@@ -232,25 +264,27 @@ local function tpWindowSum()
 	tpHist = keep; return sum
 end
 local function tpBudgetWait(d)
-	while running and _G.__sdq == Q and (tpWindowSum() + d) > FOOT_CAP * 10 do wait(0.1) end
+	while on() and (tpWindowSum() + d) > FOOT_CAP * 10 do wait(0.1) end
 	tpHist[#tpHist + 1] = { t = tick(), d = d }
 end
 local function moveTo(x, y, z)
-	if TPFoot and not carryingGoods then
+	if TPFoot and (TP_WHILE_EARNING or not carryingGoods) then
 		local p0 = pos(hrp())
 		if p0 then
-			local ax, ay, az = x - p0.X, y - p0.Y, z - p0.Z
-			local d0 = math.sqrt(ax * ax + ay * ay + az * az)
+			local dx0, dy0, dz0 = x - p0.X, y - p0.Y, z - p0.Z
+			local d0 = math.sqrt(dx0 * dx0 + dy0 * dy0 + dz0 * dz0)
 			if d0 > Arrive and d0 <= TPMAX then
 				tpBudgetWait(d0)
-				local h = hrp(); if h then pcall(function() h.CFrame = faceCF(x, y, z, ax, az) end) end
+				local cf = faceCF(x, y, z, dx0, dz0)
+				pcall(function() local h = hrp(); if h then h.CFrame = cf end end)
+				lastTpTarget = Vector3.new(x, y, z); lastTpT = tick()
 				wait(0.06)
 				return true
 			end
 		end
 	end
 	local last = tick()
-	while running and _G.__sdq == Q do
+	while on() do
 		local h = hrp(); local p = h and pos(h)
 		if not p then task.wait(); last = tick() else
 			local dx, dy, dz = x - p.X, y - p.Y, z - p.Z
@@ -266,7 +300,7 @@ local function moveTo(x, y, z)
 	return false
 end
 local function goNode(n) return moveTo(n[1], n[2], n[3]) end
-local function teleportTo(n) local h = hrp(); if not h then return false end pcall(function() h.CFrame = CFrame.new(n[1], n[2], n[3]) end); wait(0.15); return true end
+local function teleportTo(n) local h = hrp(); if not h then return false end pcall(function() h.CFrame = CFrame.new(n[1], n[2], n[3]) end); lastTpTarget = Vector3.new(n[1], n[2], n[3]); lastTpT = tick(); wait(0.15); return true end
 local function nearHRP(x, y, z, d)
 	local p = pos(hrp()); if not p then return false end
 	local dx, dy, dz = x - p.X, y - p.Y, z - p.Z
@@ -274,16 +308,15 @@ local function nearHRP(x, y, z, d)
 end
 local function ensureNear(x, y, z, d)
 	local tries = 0
-	while running and _G.__sdq == Q do
+	while on() do
 		if nearHRP(x, y, z, d) then return true end
 		tries = tries + 1; if tries > 60 then return false end
-		if tick() - lastLagT < 1.2 then status = "lagback — waiting 1s"; wait(1.0) end
-		status = "re-pathing to prompt"; moveTo(x, y, z)
+		if tick() - lastLagT < 1.2 then status = "Recovering"; wait(1.0) end
+		status = "Repositioning"; moveTo(x, y, z)
 	end
 	return false
 end
 
--- ==== PROMPTS ====
 local function promptPos(pr)
 	local par = pr.Parent; if not par then return nil end
 	local ok, wp = pcall(function() return par.WorldPosition end)
@@ -310,13 +343,13 @@ local function fireUntilAt(ax, ay, az, doneFn, progressFn, label, sx, sy, sz)
 	aimCameraAt(ax, ay, az, 1.3)
 	wait(Settle)
 	local stall, lastv = 0, progressFn()
-	while running and _G.__sdq == Q do
+	while on() do
 		if doneFn() then return true end
 		if not nearHRP(sx, sy, sz, 5) then
-			if tick() - lastLagT < 1.2 then status = "lagback — waiting 1s"; wait(1.0) end
-			status = "re-pathing to prompt"; moveTo(sx, sy, sz); aimCameraAt(ax, ay, az, 2.0)
+			if tick() - lastLagT < 1.2 then status = "Recovering"; wait(1.0) end
+			status = "Repositioning"; moveTo(sx, sy, sz); aimCameraAt(ax, ay, az, 2.0)
 		end
-		status = label .. "  " .. tostring(progressFn())
+		status = label
 		local h2 = hrp(); local p2 = h2 and pos(h2)
 		if p2 then pcall(function() h2.CFrame = faceCF(p2.X, p2.Y, p2.Z, ax - p2.X, az - p2.Z) end) end
 		keyDown(E); wait(FireHold); keyUp(E); wait(FireGap)
@@ -335,7 +368,6 @@ local function tapPrompt(ax, ay, az, times)
 	end
 end
 
--- ==== INVENTORY ====
 local function countTool(name)
 	local n = 0
 	local bp = LP:FindFirstChild("Backpack"); if bp then for _, t in ipairs(bp:GetChildren()) do if t.Name == name then n = n + 1 end end end
@@ -346,20 +378,80 @@ local function countSmuggled() local n = 0; for _, it in ipairs(ITEMS) do n = n 
 local function ownsElCapo()
 	local sf = nav(LP:FindFirstChild("PlayerGui"), "ShopGui", "Frame", "CanvasGroup", "ScrollingFrame")
 	if not sf then return nil end
-	local function isEC(c) local lbl = nav(c, "Frame", "TextLabel"); if not lbl then return false end local ok, t = pcall(function() return lbl.Text end); return ok and type(t) == "string" and string.find(t, "El Capo", 1, true) ~= nil end
-	local fr = sf:FindFirstChild("Dual"); if not isEC(fr) then fr = nil; for _, c in ipairs(sf:GetChildren()) do if isEC(c) then fr = c; break end end end
-	if not fr then return nil end
-	local buy = nav(fr, "Frame", "BuyButton", "Inner", "TextLabel"); if not buy then return nil end
-	local ok, t = pcall(function() return buy.Text end); if not (ok and type(t) == "string") then return nil end
-	return string.find(t, "Owned", 1, true) ~= nil
+	local ok, desc = pcall(function() return sf:GetDescendants() end); if not ok then return nil end
+	for _, d in ipairs(desc) do
+		if d:IsA("TextLabel") then
+			local okt, t = pcall(function() return d.Text end)
+			if okt and type(t) == "string" and (t:gsub("^%s+", ""):gsub("%s+$", "")) == "El Capo" then
+				local card = d.Parent
+				local buy = card and nav(card, "BuyButton", "Inner", "TextLabel")
+				if buy then
+					local okb, bt = pcall(function() return buy.Text end)
+					if okb and type(bt) == "string" then return bt:find("Owned", 1, true) ~= nil end
+				end
+				return nil
+			end
+		end
+	end
+	return nil
+end
+local function myTeam() local ok, t = pcall(function() return LP.Team end); return ok and t or nil end
+local function enemyNear(x, y, z, r)
+	local mt = myTeam()
+	local ok, players = pcall(function() return P:GetPlayers() end); if not ok then return false end
+	for _, pl in ipairs(players) do
+		if pl ~= LP then
+			local okt, t = pcall(function() return pl.Team end)
+			local sameTeam = okt and mt ~= nil and t == mt
+			if not sameTeam then
+				local ch = pl.Character
+				local hh = ch and ch:FindFirstChild("HumanoidRootPart")
+				local pp = hh and pos(hh)
+				if pp then local dx, dy, dz = pp.X - x, pp.Y - y, pp.Z - z; if dx * dx + dy * dy + dz * dz <= r * r then return true end end
+			end
+		end
+	end
+	return false
+end
+local SELLER_ORDER = { "Seller2", "Seller3", "Seller", "Seller4" }
+local function sellerPos(name)
+	local npc = nav(W, "Gameplay", "NPC", name); if not npc then return nil end
+	local hh = npc:FindFirstChild("HumanoidRootPart"); local pp = hh and pos(hh); if pp then return pp end
+	local ok, piv = pcall(function() return npc:GetPivot() end); if ok and typeof(piv) == "CFrame" then return piv.Position end
+	return nil
+end
+local function pickSeller()
+	local first
+	for _, name in ipairs(SELLER_ORDER) do
+		local pp = sellerPos(name)
+		if pp then
+			if not first then first = { pp.X, pp.Y, pp.Z } end
+			if not enemyNear(pp.X, pp.Y, pp.Z, 30) then return { pp.X, pp.Y, pp.Z }, name end
+		end
+	end
+	return first or { NSELLER[1], NSELLER[2], NSELLER[3] }, "Seller"
+end
+local function nearestDNode()
+	local p = pos(hrp()); local DN = { DNODE1, DNODE2, DNODE3 }
+	if not p then return 1 end
+	local bi, bd = 1, nil
+	for i, n in ipairs(DN) do
+		local dx, dz = n[1] - p.X, n[3] - p.Z; local dd = dx * dx + dz * dz
+		if not bd or dd < bd then bd, bi = dd, i end
+	end
+	return bi
+end
+local function isDiscordWebhook(str)
+	if type(str) ~= "string" then return false end
+	local l = str:lower():gsub("%s", "")
+	return l:find("discord", 1, true) ~= nil and l:find("/webhooks/", 1, true) ~= nil
 end
 
--- ==== BUILDING ====
 local function insideBuilding() local p = pos(hrp()); return p ~= nil and p.X > 6575 and p.X < 6665 and p.Z > -480 and p.Z < -375 and p.Y > 55 end
 local function enterBuilding()
 	if insideBuilding() then return true end
-	status = "to teleport-in"; if not moveTo(TELE_IN[1], TELE_IN[2], TELE_IN[3]) then return false end
-	status = "teleporting in"
+	status = "Entering building"; if not moveTo(TELE_IN[1], TELE_IN[2], TELE_IN[3]) then return false end
+	status = "Entering building"
 	tapPrompt(TELE_IN[1], TELE_IN[2], TELE_IN[3], 2)
 	wait(1.2); return insideBuilding()
 end
@@ -370,25 +462,22 @@ local function itemPrompt(it)
 end
 local function buyItem(it)
 	local part = itemPrompt(it)
-	if not it.diablo then if not goNode(JUNCTION) then return end end
 	if not goNode(it.cf) then return end
 	local ap = part and pos(part)
 	local ax, ay, az = it.cf[1], it.cf[2], it.cf[3]
 	if ap then ax, ay, az = ap.X, ap.Y, ap.Z end
-	fireUntilAt(ax, ay, az, function() return countTool(it.name) >= FireCount end, function() return countTool(it.name) end, "buying " .. it.name, it.cf[1], it.cf[2], it.cf[3])
+	fireUntilAt(ax, ay, az, function() return countTool(it.name) >= FireCount end, function() return countTool(it.name) end, "Grabbing items", it.cf[1], it.cf[2], it.cf[3])
 	lastBuyT = tick(); carryingGoods = true
 end
 local function launderIfAny()
 	if countTool("Briefcase") <= 0 then return end
-	status = "laundering"; if not goNode(LAUNDER) then return end
+	status = "Going to Laundry"; if not goNode(LAUNDER) then return end
 	local lp = nav(W, "Gameplay", "LaunderPrompts", "LaunderTrigger", "PromptPart")
 	local ap = lp and pos(lp)
 	local ax, ay, az = LAUNDER[1], LAUNDER[2], LAUNDER[3]; if ap then ax, ay, az = ap.X, ap.Y, ap.Z end
-	fireUntilAt(ax, ay, az, function() return countTool("Briefcase") == 0 end, function() return countTool("Briefcase") end, "laundering", LAUNDER[1], LAUNDER[2], LAUNDER[3])
-	goNode(N_436)
+	fireUntilAt(ax, ay, az, function() return countTool("Briefcase") == 0 end, function() return countTool("Briefcase") end, "Laundering", LAUNDER[1], LAUNDER[2], LAUNDER[3])
 end
 
--- ==== VEHICLE ====
 local vehModel, vehRoot, vehParts = nil, nil, {}
 local lastVehScanT = 0
 local function locateVehicle()
@@ -432,6 +521,11 @@ local function restoreVehCollide(veh)
 	local ok, desc = pcall(function() return veh:GetDescendants() end); if not ok then return end
 	for _, d in ipairs(desc) do if d:IsA("BasePart") then pcall(function() d.CanCollide = true end) end end
 end
+
+local function setVehVel(vx, vy, vz)
+
+	if vehRoot then pcall(function() vehRoot.AssemblyLinearVelocity = Vector3.new(vx, vy, vz); vehRoot.AssemblyAngularVelocity = Vector3.new(0, 0, 0) end) end
+end
 local function groundAt(x, oy, z)
 	local ex = {}; if vehModel then ex[#ex + 1] = vehModel end; if LP.Character then ex[#ex + 1] = LP.Character end
 	local params; pcall(function() params = RaycastParams.new(); params.FilterType = Enum.RaycastFilterType.Exclude; params.FilterDescendantsInstances = ex; params.IgnoreWater = true; params.RespectCanCollide = true end)
@@ -452,22 +546,32 @@ local function readTopSpeedMph()
 	return num and tonumber(num) or nil, txt
 end
 local function tuneDriveSpeed()
+	if driveMode ~= "A" then return DriveSpeed end
 	if camMph and camMph > 0 then
-		DriveSpeed = math.floor(math.clamp(camMph * MphToStuds, 60, 400) + 0.5)
+		DriveSpeed = math.floor(math.clamp(camMph * MphToStuds, 60, 370) + 0.5)
 	else
 		DriveSpeed = baseDriveSpeed
 	end
 	pcall(function() print(("[SDF] tuneDriveSpeed: mph=%s x%.2f -> DriveSpeed=%d"):format(tostring(camMph), MphToStuds, DriveSpeed)) end)
 	return DriveSpeed
 end
+local function fuelEmpty()
+	local n = nav(LP:FindFirstChild("PlayerGui"), "VehicleGui", "Dials", "Fuel", "Dial", "Needle", "Frame")
+	if not n then return false end
+	local ok, ap = pcall(function() return n.AbsolutePosition end)
+	if not ok or typeof(ap) ~= "Vector2" then return false end
+	local dx, dy = ap.X - EMPTY_NEEDLE_X, ap.Y - EMPTY_NEEDLE_Y
+	return (dx * dx + dy * dy) <= EMPTY_NEEDLE_TOL * EMPTY_NEEDLE_TOL
+end
 local function flyDriveTo(tx, tz)
 	local miss = 0
-	while running and _G.__sdq == Q do
+	local lastGroundY
+	while on() do
 		local veh, root = findVehicle()
 		if not (veh and root) then
 			miss = miss + 1
-			if miss > 40 then status = "lost the vehicle"; return false end
-			status = "finding vehicle"; wait(0.1)
+			if miss > 40 then status = "Finding vehicle"; return false end
+			status = "Finding vehicle"; wait(0.1)
 		else
 			miss = 0
 		noclipVeh(true); noclipOn = true
@@ -475,15 +579,17 @@ local function flyDriveTo(tx, tz)
 		if p then
 			local dx, dz = tx - p.X, tz - p.Z
 			local hd = math.sqrt(dx * dx + dz * dz)
-			if hd < DriveArrive then pcall(function() root.AssemblyLinearVelocity = Vector3.new(0, 0, 0); root.AssemblyAngularVelocity = Vector3.new(0, 0, 0) end); return true end
+			if hd < DriveArrive then setVehVel(0, 0, 0); return true end
 			local ux, uz = dx / hd, dz / hd
+			local vy = 0
 			local gB = groundAt(p.X, p.Y + 6, p.Z)
 			local gA = groundAt(p.X + ux * Look, p.Y + 60, p.Z + uz * Look)
 			local tg = gB; if gA and (not tg or gA > tg) then tg = gA end
-			local vy = 0
-			if tg then local ty = tg + Hover; if gB then ty = math.min(ty, gB + CAP) end vy = math.clamp((ty - p.Y) * YGAIN, -YMAX, YMAX) end
-			pcall(function() root.AssemblyLinearVelocity = Vector3.new(ux * DriveSpeed, vy, uz * DriveSpeed) end)
-			status = ("flying -> %.0f"):format(hd)
+			if not tg then tg = lastGroundY end
+			if tg then lastGroundY = tg; local ty = tg + Hover; if gB then ty = math.min(ty, gB + CAP) end vy = math.clamp((ty - p.Y) * YGAIN, -YMAX, YMAX) end
+			local empty = fuelEmpty()
+			local dsv = empty and math.min(DriveSpeed, EMPTY_FUEL_SPEED) or DriveSpeed
+			setVehVel(ux * dsv, vy, uz * dsv)
 		end
 		task.wait()
 		end
@@ -520,10 +626,10 @@ end
 local function exitVehicle()
 	stopVeh()
 	if noclipOn then restoreVehCollide(vehModel); noclipOn = false end
-	status = "jumping out"
+	status = "Getting out"
 	for _ = 1, 6 do keyDown(SPACE); wait(0.08); keyUp(SPACE); wait(0.25); if not seated() then break end end
 	vehModel, vehRoot, vehParts = nil, nil, {}
-	status = "steadying"; freezePlayer(0.3)
+	status = "Getting out"; freezePlayer(0.3)
 	groundSnap()
 end
 local function guiCenter(obj)
@@ -584,25 +690,30 @@ local function refreshVehList()
 		if changed then saveSettings() end
 	end
 end
-local function spawnerOpen()
-	local fr = spawnerFrame(); if not fr then return false, nil, nil end
-	local sf = nav(fr, "ScrollingFrame")
-	local camry = sf and sf:FindFirstChild("Camry6")
-	if not camry then return false, fr, sf end
-	local x, y, a, s = guiCenter(camry)
-	return (x ~= nil and s and s.X > 1 and a.Y > 0), fr, sf, camry
-end
-local function nearestSpawnerPart()
-	local vs = nav(W, "Gameplay", "VehicleSpawners"); if not vs then return nil end
+local SPAWNERS = {
+	{ 2625.26, 18.03, -196.6 },
+	{ 2281.73, 15.69, 296.83 },
+	{ -1046.53, 15.77, -3.92 },
+	{ -845.44, 15.76, -3.92 },
+}
+local function nearestSpawnerPos()
 	local hp = pos(hrp()); if not hp then return nil end
-	local best, bd
-	for _, c in ipairs(vs:GetChildren()) do
-		if c.Name == "VehicleSpawner" then
-			local part = c:FindFirstChild("Part"); local pp = part and pos(part)
-			if pp then local dd = (pp - hp).Magnitude; if not bd or dd < bd then bd, best = dd, part end end
-		end
+	local cand = {}
+	for _, spn in ipairs(SPAWNERS) do cand[#cand + 1] = { spn[1], spn[2], spn[3] } end
+	local vs = nav(W, "Gameplay", "VehicleSpawners")
+	if vs then for _, c in ipairs(vs:GetChildren()) do
+		local part = (c.Name == "VehicleSpawner") and c:FindFirstChild("Part") or nil
+		local pp = part and pos(part)
+		if pp then cand[#cand + 1] = { pp.X, pp.Y, pp.Z } end
+	end end
+	local bestClear, bdC, bestAny, bdA
+	for _, s in ipairs(cand) do
+		local dx, dy, dz = s[1] - hp.X, s[2] - hp.Y, s[3] - hp.Z
+		local dd = dx * dx + dy * dy + dz * dz
+		if not bdA or dd < bdA then bdA, bestAny = dd, s end
+		if not enemyNear(s[1], s[2], s[3], 30) then if not bdC or dd < bdC then bdC, bestClear = dd, s end end
 	end
-	return best
+	return bestClear or bestAny
 end
 local function firePrompt(promptObj, ax, ay, az)
 	ensureNear(ax, ay, az, 5)
@@ -613,59 +724,55 @@ local function firePrompt(promptObj, ax, ay, az)
 	keyDown(E); wait(0.6); keyUp(E); wait(0.15)
 end
 local function firePromptToOpen()
-	local part = nearestSpawnerPart(); if not part then return end
-	local pp = pos(part); if not pp then return end
-	local prompt; pcall(function() prompt = part:FindFirstChildWhichIsA("ProximityPrompt", true) end)
-	if not prompt then pcall(function() prompt = part.Parent and part.Parent:FindFirstChildWhichIsA("ProximityPrompt", true) end) end
-	firePrompt(prompt, pp.X, pp.Y, pp.Z)
+	local s = nearestSpawnerPos(); if not s then return end
+	local prompt = nearestPrompt(20)
+	firePrompt(prompt, s[1], s[2], s[3])
 end
 local function spawnVehicle()
-	local sp0 = nearestSpawnerPart(); if not sp0 then status = "no spawner found"; return false end
-	local spp = pos(sp0); if spp then status = "to nearest spawner"; moveTo(spp.X, spp.Y, spp.Z) end
+	local s = nearestSpawnerPos(); if not s then status = "Getting a vehicle"; return false end
+	status = "Getting a vehicle"; moveTo(s[1], s[2], s[3])
 	local attempt = 0
-	while running and _G.__sdq == Q and not seated() and attempt < 8 do
+	while on() and not seated() and attempt < 8 do
 		attempt = attempt + 1
-		status = "open spawner (try " .. attempt .. ")"; firePromptToOpen()
+		status = "Getting a vehicle"; firePromptToOpen()
 		wait(0.05)
 		local fr = spawnerFrame()
 		if fr then
 			local sf = nav(fr, "ScrollingFrame")
 			refreshVehList()
 			local car = sf and sf:FindFirstChild(selVeh)
-			if car then status = "select " .. selVeh .. " (try " .. attempt .. ")"; scrollIntoView(sf, car); guiClick(car); wait(0.1) end
+			if car then status = "Getting a vehicle"; scrollIntoView(sf, car); guiClick(car); wait(0.1) end
 			camMph = nil
 			for _ = 1, 10 do local mph = readTopSpeedMph(); if mph and mph > 0 then camMph = mph; break end wait(0.1) end
 			tuneDriveSpeed()
 			pcall(function() print(("[SDF] %s -> mph=%s  DriveSpeed=%d"):format(selVeh, tostring(camMph), DriveSpeed)) end)
-			status = "buy vehicle (try " .. attempt .. ")"; guiClick(nav(fr, "Detail", "BuyButton"))
+			status = "Getting a vehicle"; guiClick(nav(fr, "Detail", "BuyButton"))
 		else
-			status = "no VehicleSpawnerGui (try " .. attempt .. ")"
+			status = "Getting a vehicle"
 		end
-		status = "waiting to seat (try " .. attempt .. ")"
+		status = "Getting a vehicle"
 		local t1 = tick()
-		while running and _G.__sdq == Q and not seated() and tick() - t1 < 4 do wait(0.15) end
+		while on() and not seated() and tick() - t1 < 4 do wait(0.15) end
 	end
 	vehModel, vehRoot, vehParts = nil, nil, {}
-	if seated() then status = "locating car"; for _ = 1, 20 do if locateVehicle() then break end wait(0.1) end; return true end
-	status = "spawn failed"; return false
+	if seated() then status = "Getting a vehicle"; for _ = 1, 20 do if locateVehicle() then break end wait(0.1) end; return true end
+	status = "Getting a vehicle"; return false
 end
 local function sellAt(n)
-	status = "to seller"; moveTo(n[1], n[2], n[3])
-	while running and _G.__sdq == Q and (tick() - lastBuyT) < MIN_SELL_AGE do
-		status = ("aging goods %ds"):format(math.max(0, math.ceil(MIN_SELL_AGE - (tick() - lastBuyT))))
+	status = "Going to Seller"; moveTo(n[1], n[2], n[3])
+	while on() and (tick() - lastBuyT) < MIN_SELL_AGE do
+		status = "Selling"
 		wait(0.5)
 	end
-	status = "selling"
+	status = "Selling"
 	local pr, wp = nearestPrompt(35)
 	local ax, ay, az = n[1], n[2], n[3]; if wp then ax, ay, az = wp.X, wp.Y, wp.Z end
-	local soldOk = fireUntilAt(ax, ay, az, function() return countSmuggled() == 0 end, countSmuggled, "selling", n[1], n[2], n[3])
+	local soldOk = fireUntilAt(ax, ay, az, function() return countSmuggled() == 0 end, countSmuggled, "Selling", n[1], n[2], n[3])
 	carryingGoods = false
 	return soldOk
 end
 
--- ==== TRUCKER ====
 local function truckList() return nav(LP:FindFirstChild("PlayerGui"), "TruckShopGui", "Frame", "TruckList") end
-local function truckShopOpen() local tl = truckList(); return tl ~= nil and tl:FindFirstChild("CarParts") ~= nil end
 local function missionState(name)
 	local tl = truckList(); if not tl then return "missing" end
 	local mi = tl:FindFirstChild(name); if not mi then return "missing" end
@@ -686,28 +793,28 @@ local function truckMissionActive()
 	return ok and #kids > 0
 end
 local function doTruckMission()
-	local npc = truckNpcHRP(); if not npc then status = "no trucker NPC"; return false end
+	local npc = truckNpcHRP(); if not npc then status = "Getting mission"; return false end
 	local np = pos(npc); if not np then np = Vector3.new(TRUCK_NPC[1], TRUCK_NPC[2], TRUCK_NPC[3]) end
 	local dx, dz = TRUCK_EXIT[1] - np.X, TRUCK_EXIT[3] - np.Z
 	local dl = math.sqrt(dx * dx + dz * dz)
 	local sx, sz = np.X, np.Z
 	if dl > 1 then sx, sz = np.X + dx / dl * 5, np.Z + dz / dl * 5 end
 	local prompt = npc:FindFirstChild("TruckShopPrompt")
-	status = "to trucker NPC"; moveTo(sx, np.Y, sz)
+	status = "Getting mission"; moveTo(sx, np.Y, sz)
 	local attempt = 0
-	while running and _G.__sdq == Q and not (seated() or truckMissionActive()) and attempt < 6 do
+	while on() and not (seated() or truckMissionActive()) and attempt < 6 do
 		attempt = attempt + 1
 		ensureNear(sx, np.Y, sz, 5)
 		local h = hrp(); local p = h and pos(h)
 		if p then pcall(function() h.CFrame = faceCF(p.X, p.Y, p.Z, np.X - p.X, np.Z - p.Z) end) end
 		aimCameraAt(np.X, np.Y + 2, np.Z, 1.5)
 		if prompt then pcall(function() fireproximityprompt(prompt) end) end
-		status = "tap E (try " .. attempt .. ")"; keyDown(E); wait(0.06); keyUp(E); wait(0.25)
+		status = "Getting mission"; keyDown(E); wait(0.06); keyUp(E); wait(0.25)
 		local m = pickMission()
 		if m then
 			local mi = truckList() and truckList():FindFirstChild(m)
 			local btn = mi and mi:FindFirstChild("StartButton")
-			if btn then status = "start " .. m; guiClick(btn, 0.8); wait(0.6); if TRUCK_SPEED[m] then DriveSpeed = TRUCK_SPEED[m] end end
+			if btn then status = "Getting mission"; guiClick(btn, 0.8); wait(0.6); if TRUCK_SPEED[m] then DriveSpeed = TRUCK_SPEED[m] end end
 		end
 	end
 	if seated() or truckMissionActive() then vehModel, vehRoot, vehParts = nil, nil, {}; for _ = 1, 20 do if locateVehicle() then break end wait(0.1) end end
@@ -725,16 +832,16 @@ local function deliveryPos()
 end
 local function deliverTruck()
 	local dp; local t0 = tick()
-	while running and _G.__sdq == Q and not dp and tick() - t0 < 10 do dp = deliveryPos(); if not dp then wait(0.3) end end
-	if not dp then status = "no delivery point"; return false end
-	status = "trucker: to node1"; if not flyDriveTo(DNODE1[1], DNODE1[3]) then return false end
-	status = "trucker: to node2"; if not flyDriveTo(DNODE2[1], DNODE2[3]) then return false end
+	while on() and not dp and tick() - t0 < 10 do dp = deliveryPos(); if not dp then wait(0.3) end end
+	if not dp then status = "Going to Trucker"; return false end
+	status = "Going to Trucker"; if not flyDriveTo(DNODE1[1], DNODE1[3]) then return false end
+	status = "Going to Trucker"; if not flyDriveTo(DNODE2[1], DNODE2[3]) then return false end
 	dp = deliveryPos() or dp
-	status = "trucker: to destination"; flyDriveTo(dp.X, dp.Z)
-	status = "delivering"
+	status = "Delivering"; flyDriveTo(dp.X, dp.Z)
+	status = "Delivering"
 	local hold = tick() + 120
 	local frozenCF = nil
-	while running and _G.__sdq == Q and tick() < hold do
+	while on() and tick() < hold do
 		local cur = deliveryPos(); if not cur then break end
 		local _, root = findVehicle(); local rp = root and pos(root)
 		if rp then
@@ -742,13 +849,18 @@ local function deliverTruck()
 			if hd > 5 then
 				frozenCF = nil; noclipVeh(true)
 				local ux, uz = dx / hd, dz / hd
-				local crawl = math.clamp(hd * 1.5, 5, 28)
+				local crawl = math.clamp(hd * 1.5, 5, DriveSpeed)
 				local gB = groundAt(rp.X, rp.Y + 6, rp.Z)
-				local vy = -10; if gB then vy = math.clamp((gB + 2 - rp.Y) * YGAIN, -YMAX, YMAX) end
-				pcall(function() root.AssemblyLinearVelocity = Vector3.new(ux * crawl, vy, uz * crawl) end)
+				local vy = -10; if gB then vy = math.clamp((gB - TRUCK_HIDE - rp.Y) * YGAIN, -YMAX, YMAX) end
+				setVehVel(ux * crawl, vy, uz * crawl)
 			else
-				status = "delivering (frozen)"
-				if not frozenCF then local okc, c = pcall(function() return root.CFrame end); frozenCF = okc and c or nil end
+				status = "Delivering"
+				if not frozenCF then
+					local g = groundAt(rp.X, rp.Y + 20, rp.Z)
+					local ty = g and (g - TRUCK_HIDE) or rp.Y
+					local okc, c = pcall(function() return root.CFrame end)
+					if okc and typeof(c) == "CFrame" then frozenCF = (c - c.Position) + Vector3.new(rp.X, ty, rp.Z) end
+				end
 				pcall(function() root.AssemblyLinearVelocity = Vector3.new(0, 0, 0); root.AssemblyAngularVelocity = Vector3.new(0, 0, 0) end)
 				if frozenCF then pcall(function() root.CFrame = frozenCF end) end
 			end
@@ -757,31 +869,35 @@ local function deliverTruck()
 	end
 	stopVeh()
 	if noclipOn then restoreVehCollide(vehModel); noclipOn = false end
-	status = "delivered"; return true
+	status = "Delivering"; return true
 end
 
--- ==== CYCLE ====
 local function cycle()
-	if not smuggleOn and not truckerOn then status = "no mode enabled"; wait(0.5); return true end
+	if not smuggleOn and not truckerOn then status = "No mode enabled"; wait(0.5); return true end
 	local wantTruck = truckerOn and (pickMission() ~= nil)
-	if truckerOn and not wantTruck then status = "no mission available" end
+	if truckerOn and not wantTruck then status = "No mission" end
 	if not smuggleOn and not wantTruck then wait(5); return true end
-	
+
 	if smuggleOn then
 		carryingGoods = false
+		if countTool("Briefcase") > 0 then
+			phase = "launder briefcase"
+			if not seated() then spawnVehicle() end
+			if seated() then flyDriveTo(LAUNDER[1], LAUNDER[3]); exitVehicle() end
+			launderIfAny()
+			if countTool("Briefcase") > 0 then return true end
+		end
 		phase = "grab items"
-		if not enterBuilding() then status = "can't enter building"; return false end
-		goNode(SPAWN); goNode(N_413); goNode(N_436)
-		launderIfAny()
+		if not enterBuilding() then status = "Can't enter building"; return false end
 		local it = ITEMS[selItem]
 		buyItem(it)
 		if not running then return false end
-		if not it.diablo then goNode(JUNCTION) end
-		goNode(N_436); goNode(N_413); goNode(SPAWN)
 	end
-		phase = "spawn car 1"
-	if not spawnVehicle() then status = "spawn #1 failed"; return false end
-		local haveTruck = false
+
+	phase = "spawn car 1"
+	if not spawnVehicle() then status = "Getting a vehicle"; return false end
+
+	local haveTruck = false
 	if wantTruck then
 		phase = "trucker: to NPC"
 		if flyDriveTo(TRUCK_EXIT[1], TRUCK_EXIT[3]) then
@@ -790,25 +906,26 @@ local function cycle()
 				phase = "trucker: deliver"
 				if deliverTruck() then statMissions = statMissions + 1 end
 				haveTruck = seated()
-			else status = "mission start failed" end
-		else status = "couldn't reach NPC" end
+			else status = "Getting mission" end
+		else status = "Getting mission" end
 	end
-	
+
 	if smuggleOn then
 		phase = "to seller"
+		local sellN = pickSeller()
 		if haveTruck then
-			flyDriveTo(NSELLER[1], NSELLER[3]); exitVehicle()
+			flyDriveTo(sellN[1], sellN[3]); exitVehicle()
 		elseif seated() then
 			if not flyRoute({ DNODE1, DNODE2, DNODE3 }) then return false end
-			exitVehicle()
+			flyDriveTo(sellN[1], sellN[3]); exitVehicle()
 		else
-			moveTo(NSELLER[1], NSELLER[2], NSELLER[3])
+			moveTo(sellN[1], sellN[2], sellN[3])
 		end
 		statSold = statSold + countSmuggled()
-		phase = "sell"; sellAt(NSELLER)
+		phase = "sell"; sellAt(sellN)
 		if not running then return false end
 		phase = "car 2 -> back"
-		if not spawnVehicle() then status = "spawn #2 failed"; return false end
+		if not spawnVehicle() then status = "Getting a vehicle"; return false end
 		if not flyRoute({ DNODE2, DNODE1, SPAWN }) then return false end
 		exitVehicle()
 		teleportTo(SPAWN)
@@ -818,106 +935,269 @@ local function cycle()
 		teleportTo(SPAWN)
 	end
 	statCycles = statCycles + 1
-	sendReport(("Cycle %d done"):format(statCycles), 3066993)
+	if statCycles % math.max(1, webhookEvery) == 0 then sendReport(("Cycle %d done"):format(statCycles), 3066993) end
 	return true
+end
+local function killCharacter()
+	local ch = LP.Character; if not ch then return end
+	pcall(function() local h = ch:FindFirstChildOfClass("Humanoid"); if h then h.Health = 0 end end)
+	pcall(function() ch:BreakJoints() end)
+end
+local function waitForRespawn()
+	status = "Restarting"
+	wait(0.6)
+	local t0 = tick()
+	while running and _G.__sdq == Q and tick() - t0 < 12 do
+		local ch = LP.Character
+		local h = ch and ch:FindFirstChildOfClass("Humanoid")
+		local rp = ch and ch:FindFirstChild("HumanoidRootPart")
+		local ok, hp = pcall(function() return h and h.Health end)
+		if rp and ok and type(hp) == "number" and hp > 0 then wait(0.4); return true end
+		wait(0.2)
+	end
+	return false
+end
+local function finishInterrupted()
+	local did = false
+	if truckMissionActive() then
+		did = true; phase = "resume deliver"
+		vehModel, vehRoot, vehParts = nil, nil, {}
+		for _ = 1, 20 do if locateVehicle() then break end wait(0.1) end
+		if deliverTruck() then statMissions = statMissions + 1 end
+	end
+	if smuggleOn and countSmuggled() > 0 then
+		did = true; carryingGoods = true
+		statSold = statSold + countSmuggled()
+		phase = "resume to seller"
+		local sellN = pickSeller()
+		if not seated() then spawnVehicle() end
+		if seated() then
+			local DN = { DNODE1, DNODE2, DNODE3 }
+			local route = {}; for i = nearestDNode(), 3 do route[#route + 1] = DN[i] end
+			flyRoute(route); flyDriveTo(sellN[1], sellN[3]); exitVehicle()
+		else
+			moveTo(sellN[1], sellN[2], sellN[3])
+		end
+		phase = "resume sell"; sellAt(sellN)
+	end
+	if did then
+		if seated() then exitVehicle() end
+		phase = "resume home"
+		if spawnVehicle() then flyRoute({ DNODE2, DNODE1, SPAWN }); exitVehicle() end
+		teleportTo(SPAWN)
+		statCycles = statCycles + 1
+	end
+	return did
 end
 local function startFarm()
 	running = true
 	statMoney0 = readMoney(); statT0 = tick(); statCycles, statSold, statMissions = 0, 0, 0
 	sendReport("Autofarm started", 3066993)
-	local owned = ownsElCapo(); FireCount = 5
-	print("[SDBRP] El Capo owned:", tostring(owned), "-> FireCount", FireCount)
+	if elCapoOwned == nil then elCapoOwned = ownsElCapo(); saveElCapo() end
+	FireCount = (elCapoOwned == true) and 8 or 5
+	print("[SDBRP] El Capo owned:", tostring(elCapoOwned), "-> FireCount", FireCount)
+	local MOD = { groupId = 0, minRank = 50, probed = false, words = { "mod", "admin", "staff", "dev", "owner", "head", "trial", "senior", "manage", "support", "intern" } }
+	MOD.isStaff = function(pl)
+		if pl == LP then return false end
+		local dev = false; pcall(function() dev = pl:GetAttribute("IsDeveloper") == true end)
+		if dev then return true, "Developer" end
+		if MOD.groupId > 0 then
+			local rank = 0; pcall(function() rank = pl:GetRankInGroup(MOD.groupId) end)
+			if type(rank) == "number" and rank >= MOD.minRank then return true, ("rank %d"):format(rank) end
+			local role = nil; pcall(function() role = pl:GetRoleInGroup(MOD.groupId) end)
+			if type(role) == "string" then local lr = string.lower(role); for _, w in ipairs(MOD.words) do if string.find(lr, w, 1, true) then return true, role end end end
+		end
+		return false
+	end
+	MOD.scan = function()
+		if not MOD.probed then
+			MOD.probed = true
+			pcall(function() print("[SDBRP mod-detect] group", MOD.groupId, "my rank =", LP:GetRankInGroup(MOD.groupId), "role =", LP:GetRoleInGroup(MOD.groupId)) end)
+		end
+		local okp, players = pcall(function() return game:GetService("Players"):GetPlayers() end)
+		if okp and players then
+			for _, pl in ipairs(players) do
+				local staff, why = MOD.isStaff(pl)
+				if staff then return true, pl.Name .. " (" .. tostring(why) .. ")" end
+			end
+		end
+		return false, ""
+	end
+	MOD.wander = function()
+		local hz = hrp(); local pp = hz and pos(hz); if not pp then return end
+		local ang = math.random() * 6.2831
+		local dist = 8 + math.random() * 22
+		pcall(function() local hum = LP.Character and LP.Character:FindFirstChildOfClass("Humanoid"); if hum then hum:MoveTo(Vector3.new(pp.X + math.cos(ang) * dist, pp.Y, pp.Z + math.sin(ang) * dist)) end end)
+	end
+	MOD.idle = function()
+		status = "Staff online - laying low"
+		if seated() then for _ = 1, 5 do keyDown(SPACE); wait(0.1); keyUp(SPACE); wait(0.2); if not seated() then break end end end
+		killCharacter(); waitForRespawn()
+		while running and _G.__sdq == Q and _G.__sdModPause do
+			MOD.wander()
+			wait(2 + math.random() * 3)
+		end
+		status = "Idle"
+	end
 	task.spawn(function()
+		while running and _G.__sdq == Q do local pr = MOD.scan(); _G.__sdModPause = pr; wait(3) end
+		_G.__sdModPause = false
+	end)
+	task.spawn(function()
+		finishInterrupted()
 		while running and _G.__sdq == Q do
-			if not cycle() then break end
+			if _G.__sdModPause then
+				MOD.idle()
+			else
+				local ok = cycle()
+				if stuckReset then
+					waitForRespawn(); stuckReset = false
+				elseif not ok and not _G.__sdModPause then
+					break
+				end
+			end
 		end
 		keyUp(E); if noclipOn then restoreVehCollide(vehModel); noclipOn = false end
 		stopVeh(); running = false; phase = "-"
-		if status ~= "can't enter building" then status = "stopped" end
+		if status ~= "Can't enter building" then status = "Idle" end
 		sendReport("Autofarm stopped", 15158332)
 	end)
 end
-local function stopFarm() running = false; status = "stopping" end
+local function stopFarm() running = false; status = "Stopping" end
 
--- ==== LAGBACK MONITOR ====
 task.spawn(function()
 	local lastP = pos(hrp())
 	while _G.__sdq == Q do
 		local p = pos(hrp())
-		if p and lastP and (p - lastP).Magnitude > 40 then lagCount = lagCount + 1; lastLagT = tick() end
+		if p and lastP and (p - lastP).Magnitude > 40 then
+			local expected = lastTpTarget and (tick() - lastTpT) < 0.6 and (p - lastTpTarget).Magnitude < 14
+			if not expected then lagCount = lagCount + 1; lastLagT = tick() end
+		end
 		lastP = p
 		task.wait()
 	end
 end)
 
--- ==== UI ====
-local pw, ph = 300, 304
+local wdT, wdP, wdStatus, wdPhase, wdInv = 0, nil, "", "", -1
+task.spawn(function()
+	wdT = tick()
+	while _G.__sdq == Q do
+		if running and not stuckReset then
+			local pnow = pos(hrp())
+			local inv = countSmuggled()
+			local idleWait = status:find("aging") or status:find("frozen") or status:find("waiting") or status:find("lagback") or status:find("respawn")
+			local moved = (pnow and wdP and (pnow - wdP).Magnitude > 6)
+			if idleWait or moved or status ~= wdStatus or phase ~= wdPhase or inv ~= wdInv then
+				wdT = tick(); wdP = pnow; wdStatus = status; wdPhase = phase; wdInv = inv
+			elseif tick() - wdT > 20 then
+				status = "Restarting"; stuckReset = true; killCharacter(); wdT = tick()
+			end
+		else
+			wdT = tick(); wdP = pos(hrp())
+		end
+		wait(1.0)
+	end
+end)
+
+local function buildUI()
+local pw, ph = 300, 444
 local W2 = pw - 24
 local tab = 1
-local Y_TABS, Y_ITEM, Y_VEH, Y_MISS, Y_TOG, Y_SLIDER, Y_GO, Y_S1, Y_S2 = 30, 66, 94, 122, 150, 182, 214, 270, 288
+local Y_ITEM, Y_EC, Y_VEH, Y_MISS, Y_TOG, Y_SPD, Y_WH, Y_CYC, Y_KEY, Y_UG, Y_GO, Y_S1, Y_S2 = 70, 100, 130, 160, 190, 220, 252, 282, 312, 342, 372, 408, 426
 local ISLROW = 26
 local itemOpen, vehOpen, missOpen = false, false, false
+local editingCyc, cycBuf = false, ""
 local MISS_OPTS = { "Auto", "CarParts", "FoodSupplies", "GymEquipment" }
+local DIGITS = { 0x30,0x31,0x32,0x33,0x34,0x35,0x36,0x37,0x38,0x39, 0x60,0x61,0x62,0x63,0x64,0x65,0x66,0x67,0x68,0x69 }
+local prevDig, prevBk, prevEnt = {}, false, false
+local BACKSP, ENTER = 0x08, 0x0D
+local whShow = nil
 local function frac(v, mn, mx) return math.clamp((v - mn) / (mx - mn), 0, 1) end
 local function mS(cl, zi) local o = Drawing.new("Square"); sp(o, "Filled", true); sp(o, "Color", cl); sp(o, "ZIndex", zi); sp(o, "Visible", true); return o end
 local FONT; pcall(function() FONT = Drawing.Fonts.System end)
 local function mT(cl, fs, zi) local o = Drawing.new("Text"); sp(o, "Color", cl); if FONT then sp(o, "Font", FONT) end sp(o, "Size", fs); sp(o, "Outline", false); sp(o, "ZIndex", zi); sp(o, "Visible", true); return o end
 local function vis(o, b) sp(o, "Visible", b) end
 local ON, OFF = Color3.fromRGB(56, 168, 82), Color3.fromRGB(46, 46, 52)
+local GREY = Color3.fromRGB(70, 72, 80)
+local BOX = Color3.fromRGB(40, 40, 46)
 
 local U = {}
-U.bd = mS(Color3.fromRGB(255, 255, 255), 0); sp(U.bd, "Transparency", 0.16); sp(U.bd, "Corner", 12)
-U.bg = mS(Color3.fromRGB(14, 14, 16), 1); sp(U.bg, "Transparency", 0.97); sp(U.bg, "Corner", 11)
-U.title = mT(Color3.fromRGB(245, 245, 248), 15, 5)
-U.tfB = mS(OFF, 3); sp(U.tfB, "Corner", 7); U.tfT = mT(Color3.fromRGB(230, 230, 236), 12, 5)
-U.tsB = mS(OFF, 3); sp(U.tsB, "Corner", 7); U.tsT = mT(Color3.fromRGB(230, 230, 236), 12, 5)
-U.div = mS(Color3.fromRGB(74, 74, 82), 3); sp(U.div, "Transparency", 0.85)
-U.itB = mS(Color3.fromRGB(40, 43, 52), 3); sp(U.itB, "Corner", 8); U.itT = mT(Color3.fromRGB(220, 224, 232), 12, 5)
-U.vhB = mS(Color3.fromRGB(40, 43, 52), 3); sp(U.vhB, "Corner", 8); U.vhT = mT(Color3.fromRGB(220, 224, 232), 12, 5)
-U.msB = mS(Color3.fromRGB(40, 43, 52), 3); sp(U.msB, "Corner", 8); U.msT = mT(Color3.fromRGB(220, 224, 232), 12, 5)
-U.smB = mS(OFF, 3); sp(U.smB, "Corner", 8); U.smT = mT(Color3.fromRGB(255, 255, 255), 12, 5)
-U.trB = mS(OFF, 3); sp(U.trB, "Corner", 8); U.trT = mT(Color3.fromRGB(255, 255, 255), 12, 5)
-U.goB = mS(ON, 3); sp(U.goB, "Corner", 8); U.goT = mT(Color3.fromRGB(255, 255, 255), 14, 5)
-U.s1 = mT(Color3.fromRGB(150, 156, 168), 12, 5)
-U.s2 = mT(Color3.fromRGB(150, 156, 168), 12, 5)
-U.islB = mS(Color3.fromRGB(255, 255, 255), 18); sp(U.islB, "Transparency", 0.16); sp(U.islB, "Corner", 12); vis(U.islB, false)
-U.islBg = mS(Color3.fromRGB(14, 14, 16), 19); sp(U.islBg, "Transparency", 0.98); sp(U.islBg, "Corner", 11); vis(U.islBg, false)
-U.islT = mT(Color3.fromRGB(150, 150, 158), 12, 22); vis(U.islT, false)
-local SET = {
-    { n = "Vehicle speed (auto)", g = function() return DriveSpeed end, s = function(v) DriveSpeed = v end, mn = 60, mx = 400, f = "%.0f" },
-}
-for _, r in ipairs(SET) do
-    r.lbl = mT(Color3.fromRGB(205, 210, 220), 12, 5)
-    r.trk = mS(Color3.fromRGB(46, 46, 52), 3); sp(r.trk, "Corner", 3)
-    r.fill = mS(Color3.fromRGB(236, 236, 240), 4); sp(r.fill, "Corner", 3)
-    r.hnd = mS(Color3.fromRGB(255, 255, 255), 5); sp(r.hnd, "Corner", 4)
+U.bd = mS(Color3.fromRGB(255,255,255), 0); sp(U.bd, "Transparency", 0.16); sp(U.bd, "Corner", 12)
+U.bg = mS(Color3.fromRGB(14,14,16), 1); sp(U.bg, "Transparency", 0.97); sp(U.bg, "Corner", 11)
+U.title = mT(Color3.fromRGB(245,245,248), 15, 5)
+U.tfB = mS(OFF, 3); sp(U.tfB, "Corner", 7); U.tfT = mT(Color3.fromRGB(230,230,236), 13, 5)
+U.tsB = mS(OFF, 3); sp(U.tsB, "Corner", 7); U.tsT = mT(Color3.fromRGB(230,230,236), 13, 5)
+U.div = mS(Color3.fromRGB(74,74,82), 3); sp(U.div, "Transparency", 0.85)
+U.itB = mS(BOX, 3); sp(U.itB, "Corner", 8); U.itT = mT(Color3.fromRGB(220,224,232), 13, 5)
+U.ecB = mS(OFF, 3); sp(U.ecB, "Corner", 8); U.ecT = mT(Color3.fromRGB(245,245,248), 13, 5)
+U.vhB = mS(BOX, 3); sp(U.vhB, "Corner", 8); U.vhT = mT(Color3.fromRGB(220,224,232), 13, 5)
+U.msB = mS(BOX, 3); sp(U.msB, "Corner", 8); U.msT = mT(Color3.fromRGB(220,224,232), 13, 5)
+U.smB = mS(OFF, 3); sp(U.smB, "Corner", 8); U.smT = mT(Color3.fromRGB(255,255,255), 13, 5)
+U.trB = mS(OFF, 3); sp(U.trB, "Corner", 8); U.trT = mT(Color3.fromRGB(255,255,255), 13, 5)
+U.spLbl = mT(Color3.fromRGB(205,210,220), 12, 5)
+U.spModeB = mS(OFF, 3); sp(U.spModeB, "Corner", 7); U.spModeT = mT(Color3.fromRGB(255,255,255), 13, 6)
+U.spTrk = mS(Color3.fromRGB(46,46,52), 3); sp(U.spTrk, "Corner", 3)
+U.spFill = mS(Color3.fromRGB(236,236,240), 4); sp(U.spFill, "Corner", 3)
+U.spHnd = mS(Color3.fromRGB(255,255,255), 5); sp(U.spHnd, "Corner", 4)
+U.whB = mS(OFF, 3); sp(U.whB, "Corner", 8); U.whT = mT(Color3.fromRGB(255,255,255), 13, 5)
+U.whSetB = mS(Color3.fromRGB(60,90,150), 3); sp(U.whSetB, "Corner", 8); U.whSetT = mT(Color3.fromRGB(255,255,255), 13, 5)
+U.cycLbl = mT(Color3.fromRGB(205,210,220), 12, 5)
+U.cycB = mS(BOX, 3); sp(U.cycB, "Corner", 6); U.cycT = mT(Color3.fromRGB(230,235,245), 13, 6)
+U.cycUnit = mT(Color3.fromRGB(205,210,220), 12, 5)
+U.hkLbl = mT(Color3.fromRGB(205,210,220), 12, 5)
+U.hkB = mS(BOX, 3); sp(U.hkB, "Corner", 6); U.hkT = mT(Color3.fromRGB(230,235,245), 13, 6)
+U.ugB = mS(Color3.fromRGB(34,34,40), 3); sp(U.ugB, "Corner", 8); U.ugT = mT(GREY, 13, 5)
+U.goB = mS(ON, 3); sp(U.goB, "Corner", 8); U.goT = mT(Color3.fromRGB(255,255,255), 15, 5)
+U.s1 = mT(Color3.fromRGB(150,156,168), 13, 5)
+U.s2 = mT(Color3.fromRGB(150,156,168), 13, 5)
+U.islB = mS(Color3.fromRGB(255,255,255), 18); sp(U.islB, "Transparency", 0.16); sp(U.islB, "Corner", 12); vis(U.islB, false)
+U.islBg = mS(Color3.fromRGB(14,14,16), 19); sp(U.islBg, "Transparency", 0.98); sp(U.islBg, "Corner", 11); vis(U.islBg, false)
+U.islT = mT(Color3.fromRGB(150,150,158), 12, 22); vis(U.islT, false)
+U.nDim = mS(Color3.fromRGB(0,0,0), 40); sp(U.nDim, "Transparency", 0.5); vis(U.nDim, false)
+U.nBd = mS(Color3.fromRGB(255,255,255), 41); sp(U.nBd, "Transparency", 0.22); sp(U.nBd, "Corner", 14); vis(U.nBd, false)
+U.nBg = mS(Color3.fromRGB(16,16,20), 42); sp(U.nBg, "Transparency", 0.99); sp(U.nBg, "Corner", 13); vis(U.nBg, false)
+U.nAc = mS(Color3.fromRGB(70,130,220), 43); sp(U.nAc, "Corner", 3); vis(U.nAc, false)
+U.nTl = mT(Color3.fromRGB(150,156,168), 12, 44); vis(U.nTl, false)
+U.nRs = mT(Color3.fromRGB(245,246,250), 16, 44); vis(U.nRs, false)
+U.nL = {}
+for i = 1, 4 do U.nL[i] = mT(Color3.fromRGB(205,210,220), 12, 44); vis(U.nL[i], false) end
+U.nOk = mS(Color3.fromRGB(70,130,220), 43); sp(U.nOk, "Corner", 8); U.nOkT = mT(Color3.fromRGB(255,255,255), 13, 44); vis(U.nOk, false); vis(U.nOkT, false)
+
+local nf = { show = false, title = "", lines = {}, t = 0 }
+local function notify(title, lines) nf.show = true; nf.title = title; nf.lines = lines or {}; nf.t = tick() end
+
+local WH_FILE = "sdbr_webhook.txt"
+whShow = function()
+    local url
+    if type(readfile) == "function" then local ok, v = pcall(readfile, WH_FILE); if ok and type(v) == "string" then url = v end end
+    if url and isDiscordWebhook(url) then
+        WEBHOOK = (url:gsub("^%s+", ""):gsub("%s+$", "")); webhookOn = true; saveSettings()
+        notify("Webhook saved and enabled", { "Loaded from " .. WH_FILE .. " and turned on." })
+    else
+        if type(writefile) == "function" and not url then pcall(writefile, WH_FILE, "") end
+        notify("Paste your webhook into a file", { "Open this file in your executor workspace:", WH_FILE, "paste the Discord webhook URL, save it,", "then click Set Webhook again." })
+    end
 end
+
 local STAT = {}
-for _ = 1, 9 do STAT[#STAT + 1] = mT(Color3.fromRGB(210, 215, 224), 13, 5) end
+for _ = 1, 9 do STAT[#STAT + 1] = mT(Color3.fromRGB(210,215,224), 13, 5) end
 local statRows = {}
-local whBox
-pcall(function()
-	local g = Instance.new("ScreenGui")
-	g.Name = "SDBRwh"; g.ResetOnSpawn = false; g.DisplayOrder = 999999; g.IgnoreGuiInset = true
-	g.Parent = (type(gethui) == "function" and gethui()) or LP:FindFirstChild("PlayerGui") or game:GetService("CoreGui")
-	whBox = Instance.new("TextBox")
-	whBox.AnchorPoint = Vector2.new(0.5, 0)
-	whBox.Position = UDim2.new(0.5, 0, 0, 60)
-	whBox.Size = UDim2.fromOffset(440, 30)
-	whBox.BackgroundColor3 = Color3.fromRGB(18, 20, 26); whBox.BackgroundTransparency = 0.05; whBox.BorderSizePixel = 0
-	whBox.TextColor3 = Color3.fromRGB(230, 235, 245); whBox.TextSize = 14; whBox.Font = Enum.Font.Gotham
-	whBox.PlaceholderText = "Paste Discord webhook URL here, then press Enter"
-	whBox.Text = WEBHOOK; whBox.ClearTextOnFocus = false; whBox.TextXAlignment = Enum.TextXAlignment.Left; whBox.Visible = false
-	whBox.Parent = g
-	whBox:GetPropertyChangedSignal("Text"):Connect(function() WEBHOOK = whBox.Text; saveSettings() end)
-	whBox.FocusLost:Connect(function() WEBHOOK = whBox.Text; saveSettings(); whBox.Visible = false end)
-end)
 local MAXV = 26
 local POOL = {}
 for _ = 1, MAXV do
-    local b = mS(Color3.fromRGB(26, 26, 32), 20); sp(b, "Corner", 6); vis(b, false)
-    local t = mT(Color3.fromRGB(225, 228, 236), 12, 21); vis(t, false)
+    local b = mS(Color3.fromRGB(26,26,32), 20); sp(b, "Corner", 6); vis(b, false)
+    local t = mT(Color3.fromRGB(225,228,236), 12, 21); vis(t, false)
     POOL[#POOL + 1] = { bg = b, txt = t }
+end
+local function diabloLocked() return elCapoOwned == false end
+local function isDiabloRow(i) return itemOpen and ITEMS[i] and ITEMS[i].diablo == true end
+local function verifyElCapo()
+    elCapoOwned = ownsElCapo()
+    if elCapoOwned == false and ITEMS[selItem] and ITEMS[selItem].diablo then selItem = 2 end
+    saveSettings(); saveElCapo()
+    if elCapoOwned == true then notify("El Capo owned", { "El Diablo unlocked; buying 8 items per run.", "Saved for this account." })
+    elseif elCapoOwned == false then notify("El Capo not owned", { "El Diablo locked; buying 5 items per run." })
+    else notify("Could not read the shop", { "Open the El Capo shop, then click", "Verify El Capo again." }) end
 end
 local function popList()
     if itemOpen then local l = {}; for _, it in ipairs(ITEMS) do l[#l + 1] = it.name end return l end
@@ -949,9 +1229,12 @@ local function layIsland()
             vis(POOL[i].bg, show); vis(POOL[i].txt, show)
             if show then
                 local iy = islandRowY(i)
+                local locked = isDiabloRow(i) and diabloLocked()
                 sp(POOL[i].bg, "Size", Vector2.new(pw - 24, 22)); sp(POOL[i].bg, "Position", Vector2.new(px + 12, iy))
-                sp(POOL[i].bg, "Color", rowSelected(list, i) and Color3.fromRGB(46, 96, 64) or Color3.fromRGB(26, 26, 32))
-                sp(POOL[i].txt, "Position", Vector2.new(px + 18, iy + 4)); sp(POOL[i].txt, "Text", tostring(list[i]))
+                sp(POOL[i].bg, "Color", locked and Color3.fromRGB(20,20,24) or (rowSelected(list, i) and Color3.fromRGB(46,96,64) or Color3.fromRGB(26,26,32)))
+                sp(POOL[i].txt, "Position", Vector2.new(px + 18, iy + 4))
+                sp(POOL[i].txt, "Color", locked and GREY or Color3.fromRGB(225,228,236))
+                sp(POOL[i].txt, "Text", tostring(list[i]) .. (locked and "   (needs El Capo)" or ""))
             end
         end
     else
@@ -959,56 +1242,104 @@ local function layIsland()
     end
 end
 
+local function layNotif()
+    local show = nf.show and (tick() - nf.t < 30)
+    if not show and nf.show then nf.show = false end
+    for _, o in ipairs({ U.nDim, U.nBd, U.nBg, U.nAc, U.nTl, U.nRs, U.nOk, U.nOkT }) do vis(o, show) end
+    for i = 1, 4 do vis(U.nL[i], show and nf.lines[i] ~= nil) end
+    if not show then return end
+    local vpx, vpy = 1280, 720
+    local okc, vp = pcall(function() return W.CurrentCamera.ViewportSize end)
+    if okc and typeof(vp) == "Vector2" and vp.X > 0 then vpx, vpy = vp.X, vp.Y end
+    sp(U.nDim, "Size", Vector2.new(vpx, vpy)); sp(U.nDim, "Position", Vector2.new(0, 0))
+    local nlines = 0; for i = 1, 4 do if nf.lines[i] then nlines = i end end
+    local nw, nh = 440, 100 + nlines * 20
+    local nx0, ny0 = math.floor(vpx / 2 - nw / 2), math.floor(vpy / 2 - nh / 2)
+    sp(U.nBd, "Size", Vector2.new(nw + 2, nh + 2)); sp(U.nBd, "Position", Vector2.new(nx0 - 1, ny0 - 1))
+    sp(U.nBg, "Size", Vector2.new(nw, nh)); sp(U.nBg, "Position", Vector2.new(nx0, ny0))
+    sp(U.nAc, "Size", Vector2.new(4, nh - 24)); sp(U.nAc, "Position", Vector2.new(nx0 + 16, ny0 + 12))
+    sp(U.nTl, "Position", Vector2.new(nx0 + 30, ny0 + 14)); sp(U.nTl, "Text", "SDBR AUTOFARM")
+    sp(U.nRs, "Position", Vector2.new(nx0 + 30, ny0 + 30)); sp(U.nRs, "Text", nf.title)
+    for i = 1, 4 do if nf.lines[i] then sp(U.nL[i], "Position", Vector2.new(nx0 + 30, ny0 + 58 + (i - 1) * 20)); sp(U.nL[i], "Text", nf.lines[i]) end end
+    local bh = 26
+    local okX, okY = nx0 + nw - 64 - 14, ny0 + nh - bh - 14
+    sp(U.nOk, "Size", Vector2.new(64, bh)); sp(U.nOk, "Position", Vector2.new(okX, okY))
+    sp(U.nOkT, "Position", Vector2.new(okX + 22, okY + 5)); sp(U.nOkT, "Text", "OK")
+    nf.okx, nf.oky, nf.okw, nf.okh = okX, okY, 64, bh
+end
+
 local function lay()
     sp(U.bd, "Size", Vector2.new(pw + 2, ph + 2)); sp(U.bd, "Position", Vector2.new(px - 1, py - 1))
     sp(U.bg, "Size", Vector2.new(pw, ph)); sp(U.bg, "Position", Vector2.new(px, py))
     sp(U.title, "Position", Vector2.new(px + 14, py + 8)); sp(U.title, "Text", "Buster SDBR Autofarm")
-    local halfT = (W2 - 6) / 2
-    sp(U.tfB, "Size", Vector2.new(halfT, 22)); sp(U.tfB, "Position", Vector2.new(px + 12, py + Y_TABS)); sp(U.tfB, "Color", tab == 1 and Color3.fromRGB(70, 110, 90) or OFF)
-    sp(U.tfT, "Position", Vector2.new(px + 12 + halfT / 2 - 14, py + Y_TABS + 4)); sp(U.tfT, "Text", "Farm")
-    sp(U.tsB, "Size", Vector2.new(halfT, 22)); sp(U.tsB, "Position", Vector2.new(px + 12 + halfT + 6, py + Y_TABS)); sp(U.tsB, "Color", tab == 2 and Color3.fromRGB(70, 110, 90) or OFF)
-    sp(U.tsT, "Position", Vector2.new(px + 12 + halfT + 6 + halfT / 2 - 16, py + Y_TABS + 4)); sp(U.tsT, "Text", "Stats")
-    sp(U.div, "Size", Vector2.new(pw - 28, 1)); sp(U.div, "Position", Vector2.new(px + 14, py + 58))
+    local halfT = (W2 - 8) / 2
+    sp(U.tfB, "Size", Vector2.new(halfT, 22)); sp(U.tfB, "Position", Vector2.new(px + 12, py + 32)); sp(U.tfB, "Color", tab == 1 and Color3.fromRGB(240,240,242) or BOX)
+    sp(U.tfT, "Position", Vector2.new(px + 12 + halfT / 2 - 15, py + 36)); sp(U.tfT, "Text", "Farm"); sp(U.tfT, "Color", tab == 1 and Color3.fromRGB(18,18,20) or Color3.fromRGB(170,170,178))
+    sp(U.tsB, "Size", Vector2.new(halfT, 22)); sp(U.tsB, "Position", Vector2.new(px + 12 + halfT + 8, py + 32)); sp(U.tsB, "Color", tab == 2 and Color3.fromRGB(240,240,242) or BOX)
+    sp(U.tsT, "Position", Vector2.new(px + 12 + halfT + 8 + halfT / 2 - 15, py + 36)); sp(U.tsT, "Text", "Stats"); sp(U.tsT, "Color", tab == 2 and Color3.fromRGB(18,18,20) or Color3.fromRGB(170,170,178))
+    sp(U.div, "Size", Vector2.new(pw - 28, 1)); sp(U.div, "Position", Vector2.new(px + 14, py + 60))
 
     local farmOn = (tab == 1)
-    for _, o in ipairs({ U.itB, U.itT, U.vhB, U.vhT, U.msB, U.msT, U.smB, U.smT, U.trB, U.trT, U.goB, U.goT }) do vis(o, farmOn) end
-    for _, r in ipairs(SET) do vis(r.lbl, farmOn); vis(r.trk, farmOn); vis(r.fill, farmOn); vis(r.hnd, farmOn) end
+    for _, o in ipairs({ U.itB,U.itT,U.ecB,U.ecT,U.vhB,U.vhT,U.msB,U.msT,U.smB,U.smT,U.trB,U.trT,U.spLbl,U.spModeB,U.spModeT,U.whB,U.whT,U.whSetB,U.whSetT,U.cycLbl,U.cycB,U.cycT,U.cycUnit,U.hkLbl,U.hkB,U.hkT,U.ugB,U.ugT,U.goB,U.goT }) do vis(o, farmOn) end
+    local manual = (driveMode == "M")
+    vis(U.spTrk, farmOn and manual); vis(U.spFill, farmOn and manual); vis(U.spHnd, farmOn and manual)
     for _, o in ipairs(STAT) do vis(o, not farmOn) end
 
     if farmOn then
+        local half = (W2 - 8) / 2
+        local col2 = px + 12 + half + 8
         sp(U.itB, "Size", Vector2.new(W2, 24)); sp(U.itB, "Position", Vector2.new(px + 12, py + Y_ITEM))
-        sp(U.itT, "Position", Vector2.new(px + 18, py + Y_ITEM + 5)); sp(U.itT, "Text", "Item:  " .. ITEMS[selItem].name)
+        sp(U.itT, "Position", Vector2.new(px + 20, py + Y_ITEM + 5)); sp(U.itT, "Text", "Item:  " .. ITEMS[selItem].name)
+        sp(U.ecB, "Size", Vector2.new(W2, 24)); sp(U.ecB, "Position", Vector2.new(px + 12, py + Y_EC))
+        sp(U.ecB, "Color", elCapoOwned == true and Color3.fromRGB(46,120,70) or (elCapoOwned == false and Color3.fromRGB(150,58,58) or Color3.fromRGB(60,64,74)))
+        sp(U.ecT, "Position", Vector2.new(px + 20, py + Y_EC + 5)); sp(U.ecT, "Text", elCapoOwned == true and "El Capo owned  -  8 items per run" or (elCapoOwned == false and "El Capo not owned  -  5 items" or "Verify El Capo ownership"))
         sp(U.vhB, "Size", Vector2.new(W2, 24)); sp(U.vhB, "Position", Vector2.new(px + 12, py + Y_VEH))
-        sp(U.vhT, "Position", Vector2.new(px + 18, py + Y_VEH + 5)); sp(U.vhT, "Text", "Vehicle:  " .. selVeh)
+        sp(U.vhT, "Position", Vector2.new(px + 20, py + Y_VEH + 5)); sp(U.vhT, "Text", "Vehicle:  " .. selVeh)
         sp(U.msB, "Size", Vector2.new(W2, 24)); sp(U.msB, "Position", Vector2.new(px + 12, py + Y_MISS))
-        sp(U.msT, "Position", Vector2.new(px + 18, py + Y_MISS + 5)); sp(U.msT, "Text", "Mission:  " .. selMission)
-        local half = (W2 - 6) / 2
+        sp(U.msT, "Position", Vector2.new(px + 20, py + Y_MISS + 5)); sp(U.msT, "Text", "Mission:  " .. selMission)
         sp(U.smB, "Size", Vector2.new(half, 24)); sp(U.smB, "Position", Vector2.new(px + 12, py + Y_TOG)); sp(U.smB, "Color", smuggleOn and ON or OFF)
-        sp(U.smT, "Position", Vector2.new(px + 12 + half / 2 - 32, py + Y_TOG + 5)); sp(U.smT, "Text", smuggleOn and "Smuggle: ON" or "Smuggle: OFF")
-        sp(U.trB, "Size", Vector2.new(half, 24)); sp(U.trB, "Position", Vector2.new(px + 12 + half + 6, py + Y_TOG)); sp(U.trB, "Color", truckerOn and ON or OFF)
-        sp(U.trT, "Position", Vector2.new(px + 12 + half + 6 + half / 2 - 30, py + Y_TOG + 5)); sp(U.trT, "Text", truckerOn and "Trucker: ON" or "Trucker: OFF")
-        for i, r in ipairs(SET) do
-            local ry = py + Y_SLIDER + (i - 1) * 26
-            sp(r.lbl, "Position", Vector2.new(px + 14, ry)); sp(r.lbl, "Text", (r.n .. "   [ " .. r.f .. " ]"):format(r.g()))
-            sp(r.trk, "Size", Vector2.new(W2, 5)); sp(r.trk, "Position", Vector2.new(px + 12, ry + 15))
-            local f = frac(r.g(), r.mn, r.mx)
-            sp(r.fill, "Size", Vector2.new(math.max(1, W2 * f), 5)); sp(r.fill, "Position", Vector2.new(px + 12, ry + 15))
-            sp(r.hnd, "Size", Vector2.new(10, 16)); sp(r.hnd, "Position", Vector2.new(px + 12 + f * W2 - 5, ry + 9))
+        sp(U.smT, "Position", Vector2.new(px + 20, py + Y_TOG + 5)); sp(U.smT, "Text", smuggleOn and "Smuggle: ON" or "Smuggle: OFF")
+        sp(U.trB, "Size", Vector2.new(half, 24)); sp(U.trB, "Position", Vector2.new(col2, py + Y_TOG)); sp(U.trB, "Color", truckerOn and ON or OFF)
+        sp(U.trT, "Position", Vector2.new(col2 + 8, py + Y_TOG + 5)); sp(U.trT, "Text", truckerOn and "Trucker: ON" or "Trucker: OFF")
+        sp(U.spLbl, "Position", Vector2.new(px + 14, py + Y_SPD + 5)); sp(U.spLbl, "Text", ("Vehicle speed:  %d%s"):format(math.floor(DriveSpeed), manual and "" or "  (auto)"))
+        sp(U.spModeB, "Size", Vector2.new(66, 22)); sp(U.spModeB, "Position", Vector2.new(px + pw - 12 - 66, py + Y_SPD)); sp(U.spModeB, "Color", manual and Color3.fromRGB(120,90,60) or Color3.fromRGB(60,90,120))
+        sp(U.spModeT, "Position", Vector2.new(px + pw - 12 - 66 + 12, py + Y_SPD + 4)); sp(U.spModeT, "Text", manual and "Manual" or "Auto")
+        if manual then
+            local sw = W2 - 78
+            sp(U.spTrk, "Size", Vector2.new(sw, 6)); sp(U.spTrk, "Position", Vector2.new(px + 12, py + Y_SPD + 22))
+            local f = frac(DriveSpeed, 60, 400)
+            sp(U.spFill, "Size", Vector2.new(math.max(1, sw * f), 6)); sp(U.spFill, "Position", Vector2.new(px + 12, py + Y_SPD + 22))
+            sp(U.spHnd, "Size", Vector2.new(10, 16)); sp(U.spHnd, "Position", Vector2.new(px + 12 + f * sw - 5, py + Y_SPD + 17))
         end
+        sp(U.whB, "Size", Vector2.new(half, 24)); sp(U.whB, "Position", Vector2.new(px + 12, py + Y_WH)); sp(U.whB, "Color", webhookOn and ON or OFF)
+        sp(U.whT, "Position", Vector2.new(px + 20, py + Y_WH + 5)); sp(U.whT, "Text", webhookOn and "Webhook: ON" or "Webhook: OFF")
+        sp(U.whSetB, "Size", Vector2.new(half, 24)); sp(U.whSetB, "Position", Vector2.new(col2, py + Y_WH))
+        sp(U.whSetT, "Position", Vector2.new(col2 + 8, py + Y_WH + 5)); sp(U.whSetT, "Text", WEBHOOK ~= "" and "Webhook set" or "Set Webhook")
+        sp(U.cycLbl, "Position", Vector2.new(px + 14, py + Y_CYC + 5)); sp(U.cycLbl, "Text", "Send webhook every")
+        sp(U.cycB, "Size", Vector2.new(38, 24)); sp(U.cycB, "Position", Vector2.new(px + 14 + 128, py + Y_CYC)); sp(U.cycB, "Color", editingCyc and Color3.fromRGB(60,70,90) or BOX)
+        sp(U.cycT, "Position", Vector2.new(px + 14 + 128 + 8, py + Y_CYC + 5)); sp(U.cycT, "Text", editingCyc and (cycBuf .. "_") or tostring(webhookEvery))
+        sp(U.cycUnit, "Position", Vector2.new(px + 14 + 128 + 46, py + Y_CYC + 5)); sp(U.cycUnit, "Text", "cycles")
+        sp(U.hkLbl, "Position", Vector2.new(px + 14, py + Y_KEY + 5)); sp(U.hkLbl, "Text", "Farm hotkey")
+        sp(U.hkB, "Size", Vector2.new(76, 24)); sp(U.hkB, "Position", Vector2.new(px + pw - 12 - 76, py + Y_KEY)); sp(U.hkB, "Color", (binding == "farm") and Color3.fromRGB(60,70,90) or BOX)
+        sp(U.hkT, "Position", Vector2.new(px + pw - 12 - 76 + 10, py + Y_KEY + 5)); sp(U.hkT, "Text", (binding == "farm") and "press..." or keyName(hkFarm))
+        sp(U.ugB, "Size", Vector2.new(W2, 24)); sp(U.ugB, "Position", Vector2.new(px + 12, py + Y_UG))
+        sp(U.ugT, "Position", Vector2.new(px + 20, py + Y_UG + 5)); sp(U.ugT, "Text", "Underground  (work in progress)")
         sp(U.goB, "Size", Vector2.new(W2, 28)); sp(U.goB, "Position", Vector2.new(px + 12, py + Y_GO))
-        sp(U.goB, "Color", running and Color3.fromRGB(196, 54, 54) or ON)
+        sp(U.goB, "Color", running and Color3.fromRGB(196,54,54) or ON)
         sp(U.goT, "Position", Vector2.new(px + 12 + W2 / 2 - 22, py + Y_GO + 6)); sp(U.goT, "Text", running and "STOP" or "START")
     else
-        for i, o in ipairs(STAT) do sp(o, "Position", Vector2.new(px + 16, py + 66 + (i - 1) * 22)); sp(o, "Text", statRows[i] or "") end
+        for i, o in ipairs(STAT) do sp(o, "Position", Vector2.new(px + 16, py + 74 + (i - 1) * 22)); sp(o, "Text", statRows[i] or "") end
     end
     sp(U.s1, "Position", Vector2.new(px + 14, py + Y_S1)); sp(U.s1, "Text", "Phase: " .. phase)
     sp(U.s2, "Position", Vector2.new(px + 14, py + Y_S2)); sp(U.s2, "Text", "Status: " .. status)
     layIsland()
+    layNotif()
 end
 lay()
 
 task.spawn(function()
-    local wd, dpn, ox, oy, dRow, lastVL, lastStatT = false, false, 0, 0, 0, 0, 0
+    local wd, dpn, ox, oy, dragSpd, lastVL, lastStatT = false, false, 0, 0, false, 0, 0
+    local prevFarm = false
     while _G.__sdq == Q do
         if tick() - lastVL > 0.5 then refreshVehList(); lastVL = tick() end
         if tab == 2 and tick() - lastStatT > 0.4 then
@@ -1023,65 +1354,105 @@ task.spawn(function()
                 "Items sold:  " .. statSold,
                 "Missions done:  " .. statMissions,
                 "Lagbacks:  " .. lagCount,
-                "Webhook:  " .. (WEBHOOK ~= "" and "SET (click = paste clipboard)" or "(copy URL then click)"),
+                "Webhook:  " .. (webhookOn and (WEBHOOK ~= "" and ("ON, every " .. webhookEvery .. " cycles") or "ON but not set") or "OFF"),
             }
             lastStatT = tick()
         end
+        local rbxAct = true; do local okA, vA = pcall(isrbxactive); if okA then rbxAct = (vA == true) end end
+        if binding then
+            local k = scanAnyKey()
+            if k then hkFarm = k; binding = nil; saveSettings(); prevFarm = keyd(hkFarm) end
+        else
+            local gNow = keyd(hkFarm)
+            if rbxAct and gNow and not prevFarm and not editingCyc then
+                if running then stopFarm() else startFarm() end
+            end
+            prevFarm = gNow
+        end
+        if editingCyc then
+            for di = 0, 9 do
+                local down = keyd(DIGITS[di + 1]) or keyd(DIGITS[di + 11])
+                if down and not prevDig[di] and #cycBuf < 3 then cycBuf = cycBuf .. tostring(di) end
+                prevDig[di] = down
+            end
+            local bk = keyd(BACKSP)
+            if bk and not prevBk and #cycBuf > 0 then cycBuf = cycBuf:sub(1, #cycBuf - 1) end
+            prevBk = bk
+            local ent = keyd(ENTER)
+            if ent and not prevEnt then webhookEvery = math.clamp(tonumber(cycBuf) or webhookEvery, 1, 999); editingCyc = false; saveSettings() end
+            prevEnt = ent
+        end
         local dn = ismouse1pressed()
         local mx, my = M.X, M.Y
-        local halfT = (W2 - 6) / 2
-        local half = (W2 - 6) / 2
+        local halfT = (W2 - 8) / 2
+        local half = (W2 - 8) / 2
+        local col2 = px + 12 + half + 8
         if dn and not wd then
-            if itemOpen or vehOpen or missOpen then
+            if nf.show then
+                nf.show = false
+            elseif itemOpen or vehOpen or missOpen then
                 local list = popList()
                 local n = list and math.min(#list, MAXV) or 0
                 if mx >= px + 12 and mx <= px + pw - 12 then
                     for i = 1, n do
                         local iy = islandRowY(i)
                         if my >= iy and my <= iy + 22 then
-                            if itemOpen then selItem = i elseif vehOpen then selVeh = list[i] else selMission = list[i] end
+                            if itemOpen then if not (isDiabloRow(i) and diabloLocked()) then selItem = i end
+                            elseif vehOpen then selVeh = list[i] else selMission = list[i] end
                             saveSettings()
                             break
                         end
                     end
                 end
                 itemOpen, vehOpen, missOpen = false, false, false
-            elseif my >= py + Y_TABS and my <= py + Y_TABS + 22 then
+            elseif my >= py + 32 and my <= py + 54 then
                 if mx >= px + 12 and mx <= px + 12 + halfT then tab = 1
-                elseif mx >= px + 12 + halfT + 6 and mx <= px + 12 + halfT + 6 + halfT then tab = 2 end
-            elseif tab == 2 and mx >= px + 12 and mx <= px + pw - 12 and my >= py + 238 and my <= py + 262 then
-                local cb = readClipboard()
-                if cb and (string.find(cb, "http", 1, true) or string.find(cb, "discord", 1, true)) then WEBHOOK = cb; saveSettings(); status = "webhook set from clipboard" else status = "clipboard has no URL (copy it first)" end
-                if whBox then pcall(function() whBox.Text = WEBHOOK; whBox.Visible = true; whBox:CaptureFocus() end) end
+                elseif mx >= px + 12 + halfT + 8 and mx <= px + 12 + halfT + 8 + halfT then tab = 2 end
             elseif tab == 1 and mx >= px + 12 and mx <= px + pw - 12 and my >= py + Y_ITEM and my <= py + Y_ITEM + 24 then
                 itemOpen = true
+            elseif tab == 1 and mx >= px + 12 and mx <= px + pw - 12 and my >= py + Y_EC and my <= py + Y_EC + 24 then
+                verifyElCapo()
             elseif tab == 1 and mx >= px + 12 and mx <= px + pw - 12 and my >= py + Y_VEH and my <= py + Y_VEH + 24 then
                 vehOpen = true; refreshVehList()
             elseif tab == 1 and mx >= px + 12 and mx <= px + pw - 12 and my >= py + Y_MISS and my <= py + Y_MISS + 24 then
                 missOpen = true
             elseif tab == 1 and my >= py + Y_TOG and my <= py + Y_TOG + 24 and mx >= px + 12 and mx <= px + 12 + half then
                 smuggleOn = not smuggleOn; saveSettings()
-            elseif tab == 1 and my >= py + Y_TOG and my <= py + Y_TOG + 24 and mx >= px + 12 + half + 6 and mx <= px + 12 + half + 6 + half then
+            elseif tab == 1 and my >= py + Y_TOG and my <= py + Y_TOG + 24 and mx >= col2 and mx <= col2 + half then
                 truckerOn = not truckerOn; saveSettings()
+            elseif tab == 1 and my >= py + Y_SPD and my <= py + Y_SPD + 22 and mx >= px + pw - 12 - 66 and mx <= px + pw - 12 then
+                driveMode = (driveMode == "A") and "M" or "A"; saveSettings()
+            elseif tab == 1 and driveMode == "M" and mx >= px + 8 and mx <= px + 12 + (W2 - 78) and my >= py + Y_SPD + 15 and my <= py + Y_SPD + 31 then
+                dragSpd = true
+            elseif tab == 1 and my >= py + Y_WH and my <= py + Y_WH + 24 and mx >= px + 12 and mx <= px + 12 + half then
+                webhookOn = not webhookOn; saveSettings()
+            elseif tab == 1 and my >= py + Y_WH and my <= py + Y_WH + 24 and mx >= col2 and mx <= col2 + half then
+                if whShow then whShow() end
+            elseif tab == 1 and my >= py + Y_CYC and my <= py + Y_CYC + 24 and mx >= px + 14 + 128 and mx <= px + 14 + 128 + 38 then
+                editingCyc = true; cycBuf = ""
+            elseif tab == 1 and my >= py + Y_KEY and my <= py + Y_KEY + 24 and mx >= px + pw - 12 - 76 and mx <= px + pw - 12 then
+                binding = "farm"
             elseif tab == 1 and mx >= px + 12 and mx <= px + pw - 12 and my >= py + Y_GO and my <= py + Y_GO + 28 then
                 if running then stopFarm() else startFarm() end
-            elseif tab == 1 and mx >= px + 8 and mx <= px + pw - 8 and my >= py + Y_SLIDER + 9 and my <= py + Y_SLIDER + 27 then
-                dRow = 1
             elseif my >= py and my <= py + 28 and mx >= px and mx <= px + pw then
                 dpn = true; ox, oy = mx - px, my - py
+            elseif editingCyc then
+                webhookEvery = math.clamp(tonumber(cycBuf) or webhookEvery, 1, 999); editingCyc = false; saveSettings()
             end
         end
-        if not dn and dRow > 0 then saveSettings() end
-        if not dn then dpn = false; dRow = 0 end
+        if not dn and dragSpd then saveSettings() end
+        if not dn then dpn = false; dragSpd = false end
         wd = dn
         if dpn then px, py = mx - ox, my - oy end
-        if dRow > 0 then local r = SET[dRow]; r.s(r.mn + math.clamp((mx - (px + 12)) / W2, 0, 1) * (r.mx - r.mn)) end
+        if dragSpd then DriveSpeed = math.floor(60 + math.clamp((mx - (px + 12)) / (W2 - 78), 0, 1) * (400 - 60) + 0.5) end
         lay()
         task.wait()
     end
-    for _, o in pairs(U) do sp(o, "Visible", false) end
-    for _, r in ipairs(SET) do sp(r.lbl, "Visible", false); sp(r.trk, "Visible", false); sp(r.fill, "Visible", false); sp(r.hnd, "Visible", false) end
-    for _, o in ipairs(STAT) do sp(o, "Visible", false) end
+    for k, o in pairs(U) do
+        if k == "nL" then for _, oo in ipairs(o) do sp(oo, "Visible", false) end else sp(o, "Visible", false) end
+    end
     for _, e in ipairs(POOL) do sp(e.bg, "Visible", false); sp(e.txt, "Visible", false) end
-    if whBox then pcall(function() whBox.Visible = false end) end
+    for _, o in ipairs(STAT) do sp(o, "Visible", false) end
 end)
+end
+buildUI()
