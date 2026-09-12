@@ -882,8 +882,7 @@ local function cycle()
 		carryingGoods = false
 		if countTool("Briefcase") > 0 then
 			phase = "launder briefcase"
-			if not seated() then spawnVehicle() end
-			if seated() then flyDriveTo(LAUNDER[1], LAUNDER[3]); exitVehicle() end
+			if seated() then exitVehicle() end
 			launderIfAny()
 			if countTool("Briefcase") > 0 then return true end
 		end
